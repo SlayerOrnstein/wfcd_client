@@ -1,5 +1,6 @@
-library wfcd_api_wrapper;
+library worldstate_wrapper;
 
+import 'package:http/http.dart' as http;
 import 'package:wfcd_api_wrapper/src/api_base_caller.dart';
 import 'package:wfcd_api_wrapper/src/utils.dart';
 import 'package:worldstate_model/worldstate_models.dart';
@@ -11,9 +12,10 @@ class WorldstateApiWrapper {
   WorldstateApiWrapper(this.worldstate);
 
   final Worldstate worldstate;
-  static final ApiBase _base = ApiBase();
 
-  static Future<WorldstateApiWrapper> getInstance(Platforms platform) async {
+  static Future<WorldstateApiWrapper> getInstance(Platforms platform,
+      [http.Client client]) async {
+    final ApiBase _base = ApiBase(client ?? http.Client());
     final json = await _base.get('/${platformToString(platform)}');
 
     return WorldstateApiWrapper(Worldstate.fromJson(json));

@@ -1,4 +1,4 @@
-import 'package:wfcd_api_wrapper/wfcd_api_wrapper.dart';
+import 'package:wfcd_api_wrapper/worldstate_wrapper.dart';
 
 platformToString(Platforms platform) => platform.toString().split('.').last;
 

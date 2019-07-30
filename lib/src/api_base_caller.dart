@@ -6,27 +6,31 @@ import 'package:http/http.dart' as http;
 import 'exceptions.dart';
 
 class ApiBase {
+  ApiBase(this.client) : assert(client != null);
+
+  final http.Client client;
+
   static const String _baseUrl = 'https://api.warframestat.us';
 
   Future<dynamic> get(String path) async {
     try {
-      final response = await http.get(_baseUrl + path);
+      final request = http.Request('GET', Uri.parse(_baseUrl + path));
+      final response = await client.send(request);
+
       return _returnResponse(response);
     } on SocketException {
       throw Exception();
     }
   }
 
-  dynamic _returnResponse(http.Response response) {
+  Future<dynamic> _returnResponse(http.StreamedResponse response) async {
     switch (response.statusCode) {
       case 200:
-        var responseJson = json.decode(response.body.toString());
-        return responseJson;
+        return json.decode(await response.stream.bytesToString());
       case 400:
-        throw BadRequestException(response.body.toString());
-      case 401:
+        throw BadRequestException(await response.stream.bytesToString());
       case 403:
-        throw UnauthorisedException(response.body.toString());
+        throw UnauthorisedException(response.statusCode);
       case 500:
       default:
         throw FetchDataException(

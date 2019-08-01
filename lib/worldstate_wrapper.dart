@@ -21,31 +21,31 @@ class WorldstateApiWrapper {
     return WorldstateApiWrapper(Worldstate.fromJson(json));
   }
 
-  String get timestamp => worldstate.timestamp;
+  String get timestamp => worldstate?.timestamp;
 
-  List<OrbiterNews> get news => worldstate.news;
+  List<OrbiterNews> get news => worldstate?.news;
 
-  List<Event> get events => worldstate.events;
+  List<Event> get events => worldstate?.events;
 
-  List<Alert> get alerts => worldstate.alerts;
+  List<Alert> get alerts => worldstate?.alerts;
 
-  Sortie get sortie => worldstate.sortie;
+  Sortie get sortie => worldstate?.sortie;
 
-  List<Syndicate> get syndicateMissions => worldstate.syndicateMissions;
+  List<Syndicate> get syndicateMissions => worldstate?.syndicateMissions;
 
-  List<VoidFissure> get fissures => worldstate.fissures;
+  List<VoidFissure> get fissures => worldstate?.fissures;
 
-  List<Invasion> get invasions => worldstate.invasions;
+  List<Invasion> get invasions => worldstate?.invasions;
 
-  VoidTrader get trader => worldstate.voidTrader;
+  VoidTrader get trader => worldstate?.voidTrader;
 
-  List<DarvoDeal> get dailyDeals => worldstate.dailyDeals;
+  List<DarvoDeal> get dailyDeals => worldstate?.dailyDeals;
 
-  List<PersistentEnemies> get acolytes => worldstate.persistentEnemies;
+  List<PersistentEnemies> get acolytes => worldstate?.persistentEnemies;
 
-  CycleObject get cetusCycle => worldstate.cetusCycle;
+  CycleObject get cetusCycle => worldstate?.cetusCycle;
 
-  CycleObject get earthCycle => worldstate.earthCycle;
+  CycleObject get earthCycle => worldstate?.earthCycle;
 
-  Nightwave get nightwave => worldstate.nightwave;
+  Nightwave get nightwave => worldstate?.nightwave;
 }

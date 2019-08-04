@@ -47,5 +47,7 @@ class WorldstateApiWrapper {
 
   CycleObject get earthCycle => worldstate?.earthCycle;
 
+  CycleObject get vallisCycle => worldstate?.vallisCycle;
+
   Nightwave get nightwave => worldstate?.nightwave;
 }

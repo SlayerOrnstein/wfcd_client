@@ -1,6 +1,6 @@
 name: wfcd_api_wrapper
 description: Simple wrapper for worldstate api and maybe other WFCD APIs.
-version: 1.0.0
+version: 1.0.1
 author: Ludwig <blacklightinglr@gmail.com>
 
 environment:

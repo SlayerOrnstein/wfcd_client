@@ -25,7 +25,7 @@ class WorldstateApiWrapper {
 
   List<OrbiterNews> get news => worldstate?.news;
 
-  List<Event> get events => worldstate?.events;
+  List<EventObject> get events => worldstate?.events;
 
   List<Alert> get alerts => worldstate?.alerts;
 

@@ -30,7 +30,7 @@ void main() {
       });
 
       test('Events', () {
-        expect(api.events, TypeMatcher<List<EventObject>>());
+        expect(api.events, TypeMatcher<List<Event>>());
       });
 
       test('Sortie', () {

@@ -6,7 +6,7 @@ import 'package:wfcd_api_wrapper/src/utils.dart';
 import 'package:worldstate_model/worldstate_models.dart';
 import 'package:worldstate_model/worldstate_objects.dart';
 
-enum Platforms { pc, ps4, xb1, swi }
+export 'package:wfcd_api_wrapper/src/api_base_caller.dart' show Platforms;
 
 class WorldstateApiWrapper {
   WorldstateApiWrapper(this.worldstate);
@@ -16,32 +16,33 @@ class WorldstateApiWrapper {
   static Future<WorldstateApiWrapper> getInstance(Platforms platform,
       [http.Client client]) async {
     final ApiBase _base = ApiBase(client ?? http.Client());
-    final json = await _base.get('/${platformToString(platform)}');
+    final json = await _base.get(platform);
 
     return WorldstateApiWrapper(Worldstate.fromJson(json));
   }
 
-  String get timestamp => worldstate?.timestamp;
+  String get timestamp =>
+      worldstate?.timestamp ?? DateTime.now().toIso8601String();
 
-  List<OrbiterNews> get news => worldstate?.news;
+  List<OrbiterNews> get news => worldstate?.news ?? [];
 
-  List<Event> get events => worldstate?.events;
+  List<Event> get events => worldstate?.events ?? [];
 
-  List<Alert> get alerts => worldstate?.alerts;
+  List<Alert> get alerts => worldstate?.alerts ?? [];
 
   Sortie get sortie => worldstate?.sortie;
 
-  List<Syndicate> get syndicateMissions => worldstate?.syndicateMissions;
+  List<Syndicate> get syndicateMissions => worldstate?.syndicateMissions ?? [];
 
-  List<VoidFissure> get fissures => worldstate?.fissures;
+  List<VoidFissure> get fissures => worldstate?.fissures ?? [];
 
-  List<Invasion> get invasions => worldstate?.invasions;
+  List<Invasion> get invasions => worldstate?.invasions ?? [];
 
   VoidTrader get trader => worldstate?.voidTrader;
 
-  List<DarvoDeal> get dailyDeals => worldstate?.dailyDeals;
+  List<DarvoDeal> get dailyDeals => worldstate?.dailyDeals ?? [];
 
-  List<PersistentEnemies> get acolytes => worldstate?.persistentEnemies;
+  List<PersistentEnemies> get acolytes => worldstate?.persistentEnemies ?? [];
 
   CycleObject get cetusCycle => worldstate?.cetusCycle;
 

@@ -25,7 +25,7 @@ class WorldstateApiWrapper {
   }
 
   Future<List<BasicItem>> searchItems(String searchTerm) async {
-    final List<dynamic> response = await _get('item/search/$searchTerm');
+    final List<dynamic> response = await _get('items/search/$searchTerm');
 
     return response.map((i) => BasicItem.fromJson(i)).toList();
   }

@@ -31,7 +31,7 @@ class WorldstateApiWrapper {
   }
 
   Future<dynamic> _get(String path, {String lang}) async {
-    Map<String, dynamic> headers;
+    Map<String, String> headers;
 
     if (lang != null) {
       if (lang.length < 2) throw Exception('not a valid lang id');

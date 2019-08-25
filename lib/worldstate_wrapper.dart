@@ -1,54 +1,50 @@
 library worldstate_wrapper;
 
+import 'dart:convert';
+
 import 'package:http/http.dart' as http;
-import 'package:wfcd_api_wrapper/src/api_base_caller.dart';
+import 'package:warframe_items_model/warframe_items_model.dart';
 import 'package:wfcd_api_wrapper/src/utils.dart';
 import 'package:worldstate_model/worldstate_models.dart';
-import 'package:worldstate_model/worldstate_objects.dart';
 
-export 'package:wfcd_api_wrapper/src/api_base_caller.dart' show Platforms;
+enum Platforms { pc, ps4, xb1, swi }
 
 class WorldstateApiWrapper {
-  WorldstateApiWrapper(this.worldstate);
+  WorldstateApiWrapper(this.client);
 
-  final Worldstate worldstate;
+  final http.Client client;
 
-  static Future<WorldstateApiWrapper> getInstance(Platforms platform,
-      [http.Client client]) async {
-    final ApiBase _base = ApiBase(client ?? http.Client());
-    final json = await _base.get(platform);
+  static const String _baseUrl = 'https://api.warframestat.us';
 
-    return WorldstateApiWrapper(Worldstate.fromJson(json));
+  Future<Worldstate> getWorldstate(Platforms platform,
+      {String lang = 'en'}) async {
+    final json = await _get(platformToString(platform), lang: lang);
+
+    return Worldstate.fromJson(json);
   }
 
-  String get timestamp =>
-      worldstate?.timestamp ?? DateTime.now().toIso8601String();
+  Future<List<BasicItem>> searchItems(String searchTerm) async {
+    final List<dynamic> response = await _get('item/search/$searchTerm');
 
-  List<OrbiterNews> get news => worldstate?.news ?? [];
+    return response.map((i) => BasicItem.fromJson(i)).toList();
+  }
 
-  List<Event> get events => worldstate?.events ?? [];
+  Future<dynamic> _get(String path, {String lang}) async {
+    Map<String, dynamic> headers;
 
-  List<Alert> get alerts => worldstate?.alerts ?? [];
+    if (lang != null) {
+      if (lang.length < 2) throw Exception('not a valid lang id');
 
-  Sortie get sortie => worldstate?.sortie;
+      headers = {'Accept-Language': lang};
+    }
 
-  List<Syndicate> get syndicateMissions => worldstate?.syndicateMissions ?? [];
+    final response = await http.get('$_baseUrl/$path', headers: headers);
 
-  List<VoidFissure> get fissures => worldstate?.fissures ?? [];
+    if (response.statusCode != 200) {
+      throw Exception(
+          response?.statusCode ?? 'Error connecting to api.warframestat.us');
+    }
 
-  List<Invasion> get invasions => worldstate?.invasions ?? [];
-
-  VoidTrader get trader => worldstate?.voidTrader;
-
-  List<DarvoDeal> get dailyDeals => worldstate?.dailyDeals ?? [];
-
-  List<PersistentEnemies> get acolytes => worldstate?.persistentEnemies ?? [];
-
-  CycleObject get cetusCycle => worldstate?.cetusCycle;
-
-  CycleObject get earthCycle => worldstate?.earthCycle;
-
-  CycleObject get vallisCycle => worldstate?.vallisCycle;
-
-  Nightwave get nightwave => worldstate?.nightwave;
+    return json.decode(await response.body);
+  }
 }

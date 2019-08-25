@@ -6,75 +6,78 @@ import 'package:worldstate_model/worldstate_models.dart';
 import 'package:worldstate_model/worldstate_objects.dart';
 
 void main() {
-  WorldstateApiWrapper api;
+  Worldstate worldstate;
   group('A group of tests', () {
     setUp(() async {
-      api = await WorldstateApiWrapper.getInstance(Platforms.pc, http.Client());
+      final api = WorldstateApiWrapper(http.Client());
+
+      worldstate = await api.getWorldstate(Platforms.pc);
     });
 
     group('TypeMatching', () {
       test('Worldstate', () {
-        expect(api.worldstate, TypeMatcher<Worldstate>());
+        expect(worldstate, TypeMatcher<Worldstate>());
       });
 
       test('Timestamp', () {
-        expect(api.timestamp, TypeMatcher<String>());
+        expect(worldstate.timestamp, TypeMatcher<String>());
       });
 
       test('News', () {
-        expect(api.news, TypeMatcher<List<OrbiterNews>>());
+        expect(worldstate.news, TypeMatcher<List<OrbiterNews>>());
       });
 
       test('Alerts', () {
-        expect(api.alerts, TypeMatcher<List<Alert>>());
+        expect(worldstate.alerts, TypeMatcher<List<Alert>>());
       });
 
       test('Events', () {
-        expect(api.events, TypeMatcher<List<Event>>());
+        expect(worldstate.events, TypeMatcher<List<Event>>());
       });
 
       test('Sortie', () {
-        expect(api.sortie, TypeMatcher<Sortie>());
+        expect(worldstate.sortie, TypeMatcher<Sortie>());
       });
 
       test('Syndicates', () {
-        expect(api.syndicateMissions, TypeMatcher<List<Syndicate>>());
+        expect(worldstate.syndicateMissions, TypeMatcher<List<Syndicate>>());
 
-        for (Syndicate s in api.syndicateMissions) {
+        for (Syndicate s in worldstate.syndicateMissions) {
           expect(s.jobs, TypeMatcher<List<Job>>());
         }
       });
 
       test('Fissures', () {
-        expect(api.fissures, TypeMatcher<List<VoidFissure>>());
+        expect(worldstate.fissures, TypeMatcher<List<VoidFissure>>());
       });
 
       test('Invasions', () {
-        expect(api.invasions, TypeMatcher<List<Invasion>>());
+        expect(worldstate.invasions, TypeMatcher<List<Invasion>>());
       });
 
       test('Baro', () {
-        expect(api.trader, TypeMatcher<VoidTrader>());
+        expect(worldstate.voidTrader, TypeMatcher<VoidTrader>());
       });
 
       test('Daily Deals', () {
-        expect(api.dailyDeals, TypeMatcher<List<DarvoDeal>>());
+        expect(worldstate.dailyDeals, TypeMatcher<List<DarvoDeal>>());
       });
 
       test('Acolytes', () {
-        expect(api.acolytes, TypeMatcher<List<PersistentEnemies>>());
+        expect(worldstate.persistentEnemies,
+            TypeMatcher<List<PersistentEnemies>>());
       });
 
       test('Cycles', () {
-        expect(api.cetusCycle, TypeMatcher<Earth>());
-        expect(api.earthCycle, TypeMatcher<Earth>());
-        expect(api.vallisCycle, TypeMatcher<Vallis>());
+        expect(worldstate.cetusCycle, TypeMatcher<Earth>());
+        expect(worldstate.earthCycle, TypeMatcher<Earth>());
+        expect(worldstate.vallisCycle, TypeMatcher<Vallis>());
       });
 
       test('Cycles extend CycleObject', () {
-        expect(api.cetusCycle, TypeMatcher<CycleObject>());
-        expect(api.earthCycle, TypeMatcher<CycleObject>());
-        expect(api.vallisCycle, TypeMatcher<CycleObject>());
+        expect(worldstate.cetusCycle, TypeMatcher<CycleObject>());
+        expect(worldstate.earthCycle, TypeMatcher<CycleObject>());
+        expect(worldstate.vallisCycle, TypeMatcher<CycleObject>());
       });
     });
   });

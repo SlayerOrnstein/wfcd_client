@@ -18,7 +18,8 @@ class WorldstateApiWrapper {
 
   Future<Worldstate> getWorldstate(Platforms platform,
       {String lang = 'en'}) async {
-    final json = await _get(platformToString(platform), lang: lang);
+    final Map<String, dynamic> json =
+        await _get(platformToString(platform), lang: lang);
 
     return Worldstate.fromJson(json);
   }

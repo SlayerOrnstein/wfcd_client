@@ -24,11 +24,21 @@ class WorldstateApiWrapper {
     return Worldstate.fromJson(json);
   }
 
-  Future<List<BasicItem>> searchItems(String searchTerm) async {
+  Future<List<ItemObject>> searchItems(String searchTerm) async {
     final List<dynamic> response =
         await _get('items/search/${searchTerm.toLowerCase()}');
 
-    return response.map((i) => BasicItem.fromJson(i)).toList();
+    return response.map((i) {
+      if (i['category'] == 'Warframe') return Warframe.fromJson(i);
+
+      if (i['category'] == 'Primary' ||
+          i['category'] == 'Secondry' ||
+          i['category'] == 'Melee') {
+        return Weapon.fromJson(i);
+      }
+
+      return BasicItem.fromJson(i);
+    }).toList();
   }
 
   Future<dynamic> _get(String path, {String lang}) async {

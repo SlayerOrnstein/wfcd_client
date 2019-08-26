@@ -25,11 +25,14 @@ class WorldstateApiWrapper {
   }
 
   Future<List<ItemObject>> searchItems(String searchTerm) async {
-    final List<dynamic> response =
-        await _get('items/search/${searchTerm.toLowerCase()}');
+    final response = await _get('items/search/${searchTerm.toLowerCase()}')
+      ..cast<Map<String, dynamic>>();
 
     return response.map((i) {
-      if (i['category'] == 'Warframe') return Warframe.fromJson(i);
+      if (i['category'] == 'Warframe' ||
+          i['category'] == 'Archwing' && !i.containsKey('damage')) {
+        return Warframe.fromJson(i);
+      }
 
       if (i['category'] == 'Primary' ||
           i['category'] == 'Secondry' ||

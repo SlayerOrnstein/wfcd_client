@@ -28,7 +28,7 @@ class WorldstateApiWrapper {
     final response = await _get('items/search/${searchTerm.toLowerCase()}')
       ..cast<Map<String, dynamic>>();
 
-    return response.map((i) {
+    return response.map<ItemObject>((i) {
       if (i['category'] == 'Warframe' ||
           i['category'] == 'Archwing' && !i.containsKey('damage')) {
         return Warframe.fromJson(i);

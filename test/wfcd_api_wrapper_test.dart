@@ -1,15 +1,27 @@
+import 'dart:io';
+
 import 'package:http/http.dart' as http;
+import 'package:mockito/mockito.dart';
 import 'package:test/test.dart';
 import 'package:wfcd_api_wrapper/worldstate_wrapper.dart';
 import 'package:worldstate_model/models/worldstate.dart';
 import 'package:worldstate_model/worldstate_models.dart';
 import 'package:worldstate_model/worldstate_objects.dart';
 
+class MockClient extends Mock implements http.Client {}
+
 void main() {
+  final client = MockClient();
+  final mockstate = File('test/mockstate.json');
+
   Worldstate worldstate;
-  group('A group of tests', () {
+
+  group('Matching Test', () {
     setUp(() async {
-      final api = WorldstateApiWrapper(http.Client());
+      final api = WorldstateApiWrapper(client);
+
+      when(client.get('https://api.warframestat.us/pc/')).thenAnswer(
+          (_) async => http.Response(mockstate.readAsStringSync(), 200));
 
       worldstate = await api.getWorldstate(Platforms.pc);
     });
@@ -20,7 +32,7 @@ void main() {
       });
 
       test('Timestamp', () {
-        expect(worldstate.timestamp, TypeMatcher<String>());
+        expect(worldstate.timestamp, TypeMatcher<DateTime>());
       });
 
       test('News', () {
@@ -69,7 +81,7 @@ void main() {
       });
 
       test('Cycles', () {
-        expect(worldstate.cetusCycle, TypeMatcher<Earth>());
+        expect(worldstate.cetusCycle, TypeMatcher<Cetus>());
         expect(worldstate.earthCycle, TypeMatcher<Earth>());
         expect(worldstate.vallisCycle, TypeMatcher<Vallis>());
       });

@@ -30,11 +30,15 @@ class WorldstateApiWrapper {
     final response = await _get('items/search/${searchTerm.toLowerCase()}')
       ..cast<Map<String, dynamic>>();
 
-    await Isolate.spawn(_parseSearchItems, recievePort.sendPort);
+    final isolate =
+        await Isolate.spawn(_parseSearchItems, recievePort.sendPort);
 
     final sendPort = await recievePort.first;
+    final items = await sendRecieve(sendPort, response);
 
-    return await sendRecieve(sendPort, response);
+    isolate.kill();
+
+    return items;
   }
 
   Future sendRecieve(SendPort port, dynamic data) async {

@@ -36,6 +36,7 @@ class WorldstateApiWrapper {
     final sendPort = await recievePort.first;
     final items = await sendRecieve(sendPort, response);
 
+    recievePort.close();
     isolate.kill();
 
     return items;
@@ -44,7 +45,9 @@ class WorldstateApiWrapper {
   Future sendRecieve(SendPort port, dynamic data) async {
     final ReceivePort response = ReceivePort();
     port.send([data, response.sendPort]);
-    return await response.first;
+    final items = await response.first;
+    response.close();
+    return items;
   }
 
   Future<dynamic> _get(String path, {String lang}) async {
@@ -90,4 +93,6 @@ Future<void> _parseSearchItems(SendPort sendPort) async {
 
     (data[1] as SendPort).send(searchItems);
   }
+
+  port.close();
 }

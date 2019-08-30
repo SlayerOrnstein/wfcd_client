@@ -1,7 +1,6 @@
 library worldstate_wrapper;
 
 import 'dart:convert';
-import 'dart:isolate';
 
 import 'package:http/http.dart' as http;
 import 'package:warframe_items_model/warframe_items_model.dart';

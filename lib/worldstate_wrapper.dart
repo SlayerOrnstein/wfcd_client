@@ -29,13 +29,13 @@ class WorldstateApiWrapper {
       ..cast<Map<String, dynamic>>();
 
     return response.map<ItemObject>((i) {
-      if (i['category'] == 'Warframe' ||
+      if (i['category'] == 'Warframes' ||
           i['category'] == 'Archwing' && !i.containsKey('damage')) {
         return Warframe.fromJson(i);
       }
 
       if (i['category'] == 'Primary' ||
-          i['category'] == 'Secondry' ||
+          i['category'] == 'Secondary' ||
           i['category'] == 'Melee') {
         return Weapon.fromJson(i);
       }

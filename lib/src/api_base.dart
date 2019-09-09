@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:http/http.dart' as http;
 import 'exceptions.dart';
@@ -17,12 +18,19 @@ class ApiBase {
       headers = {'Accept-Language': lang};
     }
 
-    final response = await http.get('$_baseUrl/$path', headers: headers);
+    try {
+      final response = await http.get('$_baseUrl/$path', headers: headers);
 
-    if (response.statusCode != 200) {
-      throw FetchDataException(errorCode: response.statusCode);
+      if (response.statusCode != 200) {
+        throw FetchDataException(errorCode: response.statusCode);
+      }
+
+      return json.decode(await response.body);
+    } on SocketException {
+      throw FetchDataException(
+        message: 'Device seems offline try again in a bit',
+        errorCode: 1,
+      );
     }
-
-    return json.decode(await response.body);
   }
 }

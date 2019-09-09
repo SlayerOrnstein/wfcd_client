@@ -6,7 +6,7 @@ class NetworkException implements Exception {
 
   @override
   String toString() {
-    return '$_message: $_errorCode';
+    return '$_message\nError code: $_errorCode';
   }
 }
 

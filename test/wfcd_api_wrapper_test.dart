@@ -28,68 +28,69 @@ void main() {
 
     group('TypeMatching', () {
       test('Worldstate', () {
-        expect(worldstate, TypeMatcher<Worldstate>());
+        expect(worldstate, const TypeMatcher<Worldstate>());
       });
 
       test('Timestamp', () {
-        expect(worldstate.timestamp, TypeMatcher<DateTime>());
+        expect(worldstate.timestamp, const TypeMatcher<DateTime>());
       });
 
       test('News', () {
-        expect(worldstate.news, TypeMatcher<List<OrbiterNews>>());
+        expect(worldstate.news, const TypeMatcher<List<OrbiterNews>>());
       });
 
       test('Alerts', () {
-        expect(worldstate.alerts, TypeMatcher<List<Alert>>());
+        expect(worldstate.alerts, const TypeMatcher<List<Alert>>());
       });
 
       test('Events', () {
-        expect(worldstate.events, TypeMatcher<List<Event>>());
+        expect(worldstate.events, const TypeMatcher<List<Event>>());
       });
 
       test('Sortie', () {
-        expect(worldstate.sortie, TypeMatcher<Sortie>());
+        expect(worldstate.sortie, const TypeMatcher<Sortie>());
       });
 
       test('Syndicates', () {
-        expect(worldstate.syndicateMissions, TypeMatcher<List<Syndicate>>());
+        expect(
+            worldstate.syndicateMissions, const TypeMatcher<List<Syndicate>>());
 
         for (Syndicate s in worldstate.syndicateMissions) {
-          expect(s.jobs, TypeMatcher<List<Job>>());
+          expect(s.jobs, const TypeMatcher<List<Job>>());
         }
       });
 
       test('Fissures', () {
-        expect(worldstate.fissures, TypeMatcher<List<VoidFissure>>());
+        expect(worldstate.fissures, const TypeMatcher<List<VoidFissure>>());
       });
 
       test('Invasions', () {
-        expect(worldstate.invasions, TypeMatcher<List<Invasion>>());
+        expect(worldstate.invasions, const TypeMatcher<List<Invasion>>());
       });
 
       test('Baro', () {
-        expect(worldstate.voidTrader, TypeMatcher<VoidTrader>());
+        expect(worldstate.voidTrader, const TypeMatcher<VoidTrader>());
       });
 
       test('Daily Deals', () {
-        expect(worldstate.dailyDeals, TypeMatcher<List<DarvoDeal>>());
+        expect(worldstate.dailyDeals, const TypeMatcher<List<DarvoDeal>>());
       });
 
       test('Acolytes', () {
         expect(worldstate.persistentEnemies,
-            TypeMatcher<List<PersistentEnemies>>());
+            const TypeMatcher<List<PersistentEnemies>>());
       });
 
       test('Cycles', () {
-        expect(worldstate.cetusCycle, TypeMatcher<Cetus>());
-        expect(worldstate.earthCycle, TypeMatcher<Earth>());
-        expect(worldstate.vallisCycle, TypeMatcher<Vallis>());
+        expect(worldstate.cetusCycle, const TypeMatcher<Cetus>());
+        expect(worldstate.earthCycle, const TypeMatcher<Earth>());
+        expect(worldstate.vallisCycle, const TypeMatcher<Vallis>());
       });
 
       test('Cycles extend CycleObject', () {
-        expect(worldstate.cetusCycle, TypeMatcher<CycleObject>());
-        expect(worldstate.earthCycle, TypeMatcher<CycleObject>());
-        expect(worldstate.vallisCycle, TypeMatcher<CycleObject>());
+        expect(worldstate.cetusCycle, const TypeMatcher<CycleObject>());
+        expect(worldstate.earthCycle, const TypeMatcher<CycleObject>());
+        expect(worldstate.vallisCycle, const TypeMatcher<CycleObject>());
       });
     });
   });

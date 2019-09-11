@@ -11,11 +11,9 @@ export 'src/exceptions.dart';
 enum Platforms { pc, ps4, xb1, swi }
 
 class WorldstateApiWrapper {
-  WorldstateApiWrapper(this.client);
+  WorldstateApiWrapper(http.Client client) : _baseApi = ApiBase(client);
 
-  final http.Client client;
-
-  static const _baseApi = ApiBase();
+  final _baseApi;
 
   Future<Worldstate> getWorldstate(Platforms platform,
       {String lang = 'en'}) async {

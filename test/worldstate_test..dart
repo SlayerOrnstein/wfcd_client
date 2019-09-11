@@ -12,7 +12,7 @@ class MockClient extends Mock implements http.Client {}
 
 void main() {
   final client = MockClient();
-  final mockstate = File('test/mockstate.json');
+  final mockstate = File('test/worldstatestate.json');
 
   Worldstate worldstate;
 

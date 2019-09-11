@@ -5,7 +5,9 @@ import 'package:http/http.dart' as http;
 import 'exceptions.dart';
 
 class ApiBase {
-  const ApiBase();
+  const ApiBase(this.client);
+
+  final http.Client client;
 
   static const String _baseUrl = 'https://api.warframestat.us';
 
@@ -19,10 +21,10 @@ class ApiBase {
     }
 
     try {
-      final response = await http.get('$_baseUrl/$path', headers: headers);
+      final response = await client.get('$_baseUrl/$path', headers: headers);
 
-      if (response.statusCode != 200) {
-        throw FetchDataException(errorCode: response.statusCode);
+      if (response?.statusCode != 200) {
+        throw FetchDataException(errorCode: response?.statusCode);
       }
 
       return json.decode(await response.body);

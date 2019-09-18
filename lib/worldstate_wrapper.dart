@@ -43,4 +43,10 @@ class WorldstateApiWrapper {
       return BasicItem.fromJson(i);
     }).toList();
   }
+
+  Future<ItemObject> getItem(String itemName) async {
+    final search = await searchItems(itemName);
+
+    return search.firstWhere((i) => i.name == itemName);
+  }
 }

@@ -47,6 +47,9 @@ class WorldstateApiWrapper {
   Future<ItemObject> getItem(String itemName) async {
     final search = await searchItems(itemName);
 
-    return search.firstWhere((i) => i.name == itemName);
+    return search.firstWhere(
+      (i) => i.name == itemName,
+      orElse: () => BasicItem(name: itemName, description: ''),
+    );
   }
 }

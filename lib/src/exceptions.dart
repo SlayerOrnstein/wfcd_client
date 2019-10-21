@@ -1,23 +1,21 @@
 class NetworkException implements Exception {
-  NetworkException([this._message, this._errorCode]);
+  NetworkException([this._message]);
 
   final String _message;
-  final int _errorCode;
 
   @override
   String toString() {
-    return '$_message\nError code: $_errorCode';
+    return '$_message';
   }
 }
 
 class FetchDataException extends NetworkException {
-  FetchDataException({String message, int errorCode})
-      : super(message ?? 'Error connecting to api.warframestat.us', errorCode);
+  FetchDataException({String message})
+      : super(message ?? 'Error connecting to api.warframestat.us');
 }
 
 class UnknownException extends NetworkException {
-  UnknownException([int errorCode])
-      : super('Unknown error returned', errorCode);
+  UnknownException([int errorCode]) : super('Unknown error returned');
 }
 
 class InvalidException implements Exception {

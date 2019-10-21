@@ -24,14 +24,15 @@ class ApiBase {
       final response = await client.get('$_baseUrl/$path', headers: headers);
 
       if (response?.statusCode != 200) {
-        throw FetchDataException(errorCode: response?.statusCode);
+        throw FetchDataException(
+          message: 'Unknown error occured contacting server',
+        );
       }
 
       return json.decode(await response.body);
     } on SocketException {
       throw FetchDataException(
         message: 'Device seems offline try again in a bit',
-        errorCode: 1,
       );
     }
   }

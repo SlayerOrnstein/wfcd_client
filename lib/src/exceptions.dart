@@ -3,7 +3,7 @@ class NetworkException implements Exception {
 
   final String message;
 
-  String toString() => message;
+  String errorMessage() => message;
 }
 
 class FetchDataException extends NetworkException {

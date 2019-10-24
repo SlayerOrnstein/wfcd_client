@@ -14,19 +14,20 @@ void main() {
   final client = MockClient();
   final mockstate = File('test/worldstatestate.json');
 
+  WorldstateApiWrapper api;
   Worldstate worldstate;
 
   group('Matching Test', () {
     setUp(() async {
-      final api = WorldstateApiWrapper(client);
+      api = WorldstateApiWrapper(client);
+    });
 
+    group('TypeMatching', () async {
       when(client.get('https://api.warframestat.us/pc/')).thenAnswer(
           (_) async => http.Response(mockstate.readAsStringSync(), 200));
 
       worldstate = await api.getWorldstate(Platforms.pc);
-    });
 
-    group('TypeMatching', () {
       test('Worldstate', () {
         expect(worldstate, const TypeMatcher<Worldstate>());
       });
@@ -91,6 +92,15 @@ void main() {
         expect(worldstate.cetusCycle, const TypeMatcher<CycleObject>());
         expect(worldstate.earthCycle, const TypeMatcher<CycleObject>());
         expect(worldstate.vallisCycle, const TypeMatcher<CycleObject>());
+      });
+    });
+
+    group('Run test on  exceptions', () {
+      test('Check CloudFlare exception', () async {
+        when(client.get('https://api.warframestat.us/pc/'))
+            .thenAnswer((_) async => http.Response(null, 525));
+
+        expect(await api.getWorldstate(Platforms.pc), CloudflareException());
       });
     });
   });

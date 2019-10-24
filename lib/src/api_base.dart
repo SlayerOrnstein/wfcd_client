@@ -23,17 +23,21 @@ class ApiBase {
     try {
       final response = await client.get('$_baseUrl/$path', headers: headers);
 
-      if (response?.statusCode != 200) {
-        throw FetchDataException(
-          message: 'Unknown error occured contacting server',
-        );
-      }
-
-      return json.decode(await response.body);
+      return _returnResponse(response);
     } on SocketException {
-      throw FetchDataException(
-        message: 'Device seems offline try again in a bit',
-      );
+      throw FetchDataException('Device seems offline try again in a bit');
+    }
+  }
+
+  dynamic _returnResponse(http.Response response) {
+    switch (response.statusCode) {
+      case 200:
+        final responseJson = json.decode(response.body);
+        return responseJson;
+      case 525:
+        throw CloudflareException();
+      default:
+        throw FetchDataException('Unknown error occured contacting server');
     }
   }
 }

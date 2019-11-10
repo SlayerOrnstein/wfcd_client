@@ -15,7 +15,7 @@ class ApiBase {
     Map<String, String> headers;
 
     if (lang != null) {
-      if (lang.length < 2) throw InvalidException('Not a valid lang id');
+      if (lang.length < 2) throw InvalidLanguageCode(lang);
 
       headers = {'Accept-Language': lang};
     }
@@ -25,7 +25,7 @@ class ApiBase {
 
       return _returnResponse(response);
     } on SocketException {
-      throw FetchDataException('Device seems offline try again in a bit');
+      throw DeviceOffline();
     }
   }
 

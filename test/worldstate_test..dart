@@ -4,7 +4,6 @@ import 'package:http/http.dart' as http;
 import 'package:mockito/mockito.dart';
 import 'package:test/test.dart';
 import 'package:wfcd_api_wrapper/worldstate_client.dart';
-import 'package:worldstate_model/models/worldstate.dart';
 import 'package:worldstate_model/worldstate_models.dart';
 import 'package:worldstate_model/worldstate_objects.dart';
 

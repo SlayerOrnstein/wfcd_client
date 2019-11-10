@@ -5,7 +5,7 @@ import 'package:test/test.dart';
 import 'package:http/http.dart' as http;
 import 'package:mockito/mockito.dart';
 import 'package:warframe_items_model/warframe_items_model.dart';
-import 'package:wfcd_api_wrapper/worldstate_wrapper.dart';
+import 'package:wfcd_api_wrapper/worldstate_client.dart';
 
 import 'worldstate_test..dart';
 
@@ -17,11 +17,11 @@ void main() {
 
   const searchTerm = 'chroma';
 
-  WorldstateApiWrapper api;
+  WorldstateClient api;
 
   group('Test search function and json decoding', () {
     setUp(() {
-      api = WorldstateApiWrapper(client);
+      api = WorldstateClient(client);
     });
 
     test('Test item searching', () async {

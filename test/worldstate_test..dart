@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:http/http.dart' as http;
 import 'package:mockito/mockito.dart';
 import 'package:test/test.dart';
-import 'package:wfcd_api_wrapper/worldstate_wrapper.dart';
+import 'package:wfcd_api_wrapper/worldstate_client.dart';
 import 'package:worldstate_model/models/worldstate.dart';
 import 'package:worldstate_model/worldstate_models.dart';
 import 'package:worldstate_model/worldstate_objects.dart';
@@ -14,12 +14,12 @@ void main() {
   final client = MockClient();
   final mockstate = File('test/worldstatestate.json');
 
-  WorldstateApiWrapper api;
+  WorldstateClient api;
   Worldstate worldstate;
 
   group('Matching Test', () {
     setUp(() async {
-      api = WorldstateApiWrapper(client);
+      api = WorldstateClient(client);
     });
 
     group('TypeMatching', () async {

@@ -3,6 +3,7 @@ library worldstate_wrapper;
 import 'package:http/http.dart' as http;
 import 'package:warframe_items_model/warframe_items_model.dart';
 import 'package:wfcd_api_wrapper/src/api_base.dart';
+import 'package:wfcd_api_wrapper/src/models/synth_target.dart';
 import 'package:wfcd_api_wrapper/src/utils.dart';
 import 'package:worldstate_model/worldstate_models.dart';
 
@@ -10,10 +11,10 @@ export 'src/exceptions.dart';
 
 enum Platforms { pc, ps4, xb1, swi }
 
-class WorldstateApiWrapper {
-  WorldstateApiWrapper(http.Client client) : _baseApi = ApiBase(client);
+class WorldstateClient {
+  WorldstateClient(http.Client client) : _baseApi = ApiBase(client);
 
-  final _baseApi;
+  final ApiBase _baseApi;
 
   Future<Worldstate> getWorldstate(Platforms platform,
       {String lang = 'en'}) async {
@@ -24,24 +25,11 @@ class WorldstateApiWrapper {
   }
 
   Future<List<ItemObject>> searchItems(String searchTerm) async {
-    final response =
-        await _baseApi.getResponse('items/search/${searchTerm.toLowerCase()}')
-          ..cast<Map<String, dynamic>>();
+    final request = 'items/search/${searchTerm.toLowerCase()}';
+    final response = await _baseApi.getResponse(request)
+      ..cast<Map<String, dynamic>>();
 
-    return response.map<ItemObject>((i) {
-      if (i['category'] == 'Warframes' ||
-          i['category'] == 'Archwing' && !i.containsKey('damage')) {
-        return Warframe.fromJson(i);
-      }
-
-      if (i['category'] == 'Primary' ||
-          i['category'] == 'Secondary' ||
-          i['category'] == 'Melee') {
-        return Weapon.fromJson(i);
-      }
-
-      return BasicItem.fromJson(i);
-    }).toList();
+    return response.map<ItemObject>(jsonToItemObject).toList();
   }
 
   Future<ItemObject> getItem(String itemName) async {
@@ -51,5 +39,12 @@ class WorldstateApiWrapper {
       (i) => i.name == itemName,
       orElse: () => BasicItem(name: itemName, description: ''),
     );
+  }
+
+  Future<dynamic> getSynthTargets() async {
+    final List targets = await _baseApi.getResponse('/synthTargets')
+      ..cast<Map<String, dynamic>>();
+
+    return targets.map<SynthTarget>((t) => SynthTarget.fromJson(t)).toList();
   }
 }

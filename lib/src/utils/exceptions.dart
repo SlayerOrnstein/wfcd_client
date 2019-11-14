@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
 
 class NetworkException extends Equatable implements Exception {
-  NetworkException([this.message]);
+  const NetworkException([this.message]);
 
   final String message;
 
@@ -13,19 +13,19 @@ class NetworkException extends Equatable implements Exception {
 }
 
 class FetchDataException extends NetworkException {
-  FetchDataException(String message) : super(message);
+  const FetchDataException(String message) : super(message);
 }
 
 class DeviceOffline extends NetworkException {
-  DeviceOffline() : super('Device is Offline');
+  const DeviceOffline() : super('Device is Offline');
 }
 
 class CloudflareException extends NetworkException {
-  CloudflareException() : super('Server returned an Error');
+  const CloudflareException() : super('Server returned an Error');
 }
 
 class InvalidLanguageCode extends Equatable implements Exception {
-  InvalidLanguageCode(this.languageCode);
+  const InvalidLanguageCode(this.languageCode);
 
   final String languageCode;
 

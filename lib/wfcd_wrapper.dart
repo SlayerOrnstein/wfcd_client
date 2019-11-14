@@ -54,7 +54,7 @@ class WfcdWrapper {
 
   Future<String> _warframestat(String path) async {
     try {
-      final response = await http.get('api.warframestat.us/$path');
+      final response = await http.get('https://api.warframestat.us/$path');
 
       return response.body;
     } on SocketException {

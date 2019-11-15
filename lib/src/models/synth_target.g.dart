@@ -9,7 +9,11 @@ part of 'synth_target.dart';
 SynthTarget _$SynthTargetFromJson(Map<String, dynamic> json) {
   return SynthTarget(
     name: json['name'] as String,
-    locations: json['locations'] as List,
+    locations: (json['locations'] as List)
+        ?.map((e) => e == null
+            ? null
+            : SynthLocation.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
   );
 }
 

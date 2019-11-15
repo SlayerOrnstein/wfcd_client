@@ -27,7 +27,8 @@ class WfcdWrapper {
 
   /// Searchs warframe items
   Future<List<ItemObject>> searchItems(String searchTerm) async {
-    final response = await _warframestat('items/search/$searchTerm');
+    final term = searchTerm.toLowerCase();
+    final response = await _warframestat('items/search/$term');
 
     return jsonToItemObjects(response);
   }

@@ -8,7 +8,7 @@ import 'package:warframe_items_model/warframe_items_model.dart';
 
 import 'package:wfcd_api_wrapper/src/models/synth_target.dart';
 import 'package:wfcd_api_wrapper/src/utils/converter_utils.dart';
-import 'package:worldstate_model/worldstate_models.dart';
+import 'package:worldstate_api_model/worldstate_models.dart';
 
 import 'src/utils/enums.dart';
 import 'src/utils/exceptions.dart';

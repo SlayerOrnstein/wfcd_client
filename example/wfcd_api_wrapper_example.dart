@@ -1,7 +1,8 @@
-import 'package:wfcd_api_wrapper/wfcd_wrapper.dart';
+import 'package:wfcd_client/enums.dart';
+import 'package:wfcd_client/clients.dart';
 
 Future<void> main() async {
-  final api = WfcdWrapper();
+  const api = WorldstateClient();
   final worldstate = await api.getWorldstate(Platforms.pc);
 
   //prints worldstate generated timestamp

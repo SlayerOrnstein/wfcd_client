@@ -1,9 +1,8 @@
 import 'dart:convert';
 
 import 'package:warframe_items_model/warframe_items_model.dart';
-import 'package:wfcd_api_wrapper/src/models/synth_target.dart';
-
-import 'enums.dart';
+import 'package:wfcd_client/enums.dart';
+import 'package:worldstate_api_model/misc.dart';
 
 String platformToString(Platforms platform) =>
     platform.toString().split('.').last;
@@ -12,12 +11,12 @@ String fullPath(Platforms platform, String subject) =>
     '/${platformToString(platform)}/$subject';
 
 List<ItemObject> jsonToItemObjects(String data) {
-  final searchs = json.decode(data).cast<Map<String, dynamic>>();
+  final searchs = json.decode(data) as List<Map<String, dynamic>>;
 
   return searchs.map<ItemObject>((i) => _jsonToItemObject(i)).toList();
 }
 
-ItemObject _jsonToItemObject(dynamic item) {
+ItemObject _jsonToItemObject(Map<String, dynamic> item) {
   if (item['category'] == 'Warframes' ||
       item['category'] == 'Archwing' && !item.containsKey('damage')) {
     return Warframe.fromJson(item);
@@ -33,7 +32,7 @@ ItemObject _jsonToItemObject(dynamic item) {
 }
 
 List<SynthTarget> jsonToTargets(String data) {
-  final targets = json.decode(data).cast<Map<String, dynamic>>();
+  final targets = json.decode(data) as List<Map<String, dynamic>>;
 
   return targets.map<SynthTarget>((t) => SynthTarget.fromJson(t)).toList();
 }

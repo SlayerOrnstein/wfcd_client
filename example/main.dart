@@ -7,4 +7,10 @@ Future<void> main() async {
 
   //prints worldstate generated timestamp
   print(worldstate.timestamp);
+
+  final synthTargets = await api.synthTargets();
+
+  for (final t in synthTargets) {
+    print(t.name);
+  }
 }

@@ -32,7 +32,10 @@ ItemObject _jsonToItemObject(Map<String, dynamic> item) {
 }
 
 List<SynthTarget> jsonToTargets(String data) {
-  final targets = json.decode(data) as List<Map<String, dynamic>>;
+  final targets = json.decode(data) as List<dynamic>;
 
-  return targets.map<SynthTarget>((t) => SynthTarget.fromJson(t)).toList();
+  return targets
+      .map<SynthTarget>(
+          (dynamic t) => SynthTarget.fromJson(t as Map<String, dynamic>))
+      .toList();
 }

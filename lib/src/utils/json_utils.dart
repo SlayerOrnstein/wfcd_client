@@ -16,19 +16,36 @@ List<ItemObject> toItemObjects(List<dynamic> data) {
   }).toList();
 }
 
+// Only reason this is being ignored is becasue the switch statement works fine
+// but it's being flagged as not returning ItemObject anyways
+// ignore: missing_return
 ItemObject _toItemObject(Map<String, dynamic> item) {
-  if (item['category'] == 'Warframes' ||
-      item['category'] == 'Archwing' && !item.containsKey('damage')) {
-    return Warframe.fromJson(item);
-  }
+  switch (item['category'] as String) {
+    case 'Archwings':
+      continue warframe;
+    case 'Pets':
+      continue warframe;
+    case 'Sentinels':
+      continue warframe;
 
-  if (item['category'] == 'Primary' ||
-      item['category'] == 'Secondary' ||
-      item['category'] == 'Melee') {
-    return Weapon.fromJson(item);
-  }
+    case 'Secondry':
+      continue weapon;
+    case 'Melee':
+      continue weapon;
+    case 'Arch-Gun':
+      continue weapon;
+    case 'Arch-Melee':
+      continue weapon;
 
-  return BasicItem.fromJson(item);
+    warframe:
+    case 'Warframes':
+      return Warframe.fromJson(item);
+    weapon:
+    case 'Primart':
+      return Weapon.fromJson(item);
+    default:
+      return ItemObject.fromJson(item);
+  }
 }
 
 List<SynthTarget> toSynthTargets(List<dynamic> data) {

@@ -41,8 +41,9 @@ ItemObject _toItemObject(Map<String, dynamic> item) {
     case 'Warframes':
       return Warframe.fromJson(item);
     weapon:
-    case 'Primart':
+    case 'Primary':
       return Weapon.fromJson(item);
+
     default:
       return ItemObject.fromJson(item);
   }

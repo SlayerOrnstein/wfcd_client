@@ -1,4 +1,4 @@
-Simple wrapper for worldstate api and maybe other WFCD APIs.
+Simple client for worldstate api and maybe other WFCD APIs. Used in Cephalon Navis.
 
 ## Usage
 

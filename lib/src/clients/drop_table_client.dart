@@ -2,9 +2,9 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:http/http.dart' as http;
-import 'package:warframe_items_model/warframe_items_model.dart';
 import 'package:wfcd_client/src/utils/exception_handler.dart';
 import 'package:wfcd_client/src/utils/exceptions.dart';
+import 'package:worldstate_api_model/misc.dart';
 
 class DropTableClient {
   const DropTableClient(this.dropTable);

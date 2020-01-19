@@ -3,6 +3,8 @@ import 'dart:io';
 
 import 'package:http/http.dart' as http;
 import 'package:warframe_items_model/warframe_items_model.dart';
+import 'package:wfcd_client/src/utils/exception_handler.dart';
+import 'package:wfcd_client/src/utils/exceptions.dart';
 
 class DropTableClient {
   const DropTableClient(this.dropTable);
@@ -12,14 +14,14 @@ class DropTableClient {
   static const _baseUrl = 'https://drops.warframestat.us/data';
 
   Future<DateTime> dropsTimestamp() async {
-    final info = json.decode(await _warframestatDrops('info.json'))
-        as Map<String, dynamic>;
+    final info = await _warframestatDrops('info.json') as Map<String, dynamic>;
 
     return DateTime.fromMillisecondsSinceEpoch(info['timestamp'] as int);
   }
 
   Future<void> downloadDropTable() async {
-    final response = await _warframestatDrops('all.slim.json');
+    final response =
+        await _warframestatDrops('all.slim.json', isString: true) as String;
 
     await dropTable.writeAsString(response);
   }
@@ -33,9 +35,14 @@ class DropTableClient {
         .toList();
   }
 
-  Future<String> _warframestatDrops(String path) async {
-    final response = await http.get('$_baseUrl/$path');
+  Future<dynamic> _warframestatDrops(String path,
+      {bool isString = false}) async {
+    try {
+      final response = await http.get('$_baseUrl/$path');
 
-    return response.body;
+      return excpetionHandler(response, returnString: isString);
+    } on SocketException {
+      throw const DeviceOffline();
+    }
   }
 }

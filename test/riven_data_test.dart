@@ -6,19 +6,47 @@ import 'package:path/path.dart' as path;
 import 'package:wfcd_client/enums.dart';
 
 void main() {
+  final directory = Directory.systemTemp;
+
   File rivenData;
   RivenDataClient client;
 
-  setUpAll(() {
-    final directory = Directory.systemTemp;
-
+  setUp(() {
     rivenData = File(path.join(directory.path, 'riven_data.json'));
     client = RivenDataClient(rivenData);
   });
 
-  group('Test Riven data download', () {
-    test('check downloaded file exist', () async {
-      await client.downloadRivenData(Platforms.pc);
+  tearDown(() async {
+    await rivenData.delete();
+  });
+
+  group('Test Riven data download per platform', () {
+    test('PC download check', () async {
+      await client.downloadRivenData();
+
+      expect(rivenData.existsSync(), true);
+    });
+
+    test('PS4 download check', () async {
+      client = client.copyWith(rivenData, Platforms.ps4);
+
+      await client.downloadRivenData();
+
+      expect(rivenData.existsSync(), true);
+    });
+
+    test('Xbox One download check', () async {
+      client = client.copyWith(rivenData, Platforms.xb1);
+
+      await client.downloadRivenData();
+
+      expect(rivenData.existsSync(), true);
+    });
+
+    test('Nintendo Switch download check', () async {
+      client = client.copyWith(rivenData, Platforms.swi);
+
+      await client.downloadRivenData();
 
       expect(rivenData.existsSync(), true);
     });

@@ -17,7 +17,7 @@ void main() {
 
   setUpAll(() async {
     dropTable = File(path.join(directory.path, 'drop_table.json'));
-    client = DropTableClient(dropTable);
+    client = DropTableClient(directory.path);
 
     final response =
         json.decode((await http.get(_baseUrl)).body) as Map<String, dynamic>;

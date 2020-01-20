@@ -21,11 +21,11 @@ class WorldstateClient {
     return Worldstate.fromJson(response);
   }
 
-  Future<List<ItemObject>> searchItems(String searchTerm) async {
+  Future<List<BaseItem>> searchItems(String searchTerm) async {
     final term = searchTerm.toLowerCase();
     final response = await _warframestat('items/search/$term') as List<dynamic>;
 
-    return toItemObjects(response);
+    return toBaseItem(response);
   }
 
   Future<List<SynthTarget>> synthTargets() async {

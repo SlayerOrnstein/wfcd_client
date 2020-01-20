@@ -18,7 +18,7 @@ void main() {
     test('Warframe Items search checks', () async {
       final searchs = await client.searchItems('chroma');
 
-      expect(searchs, const TypeMatcher<List<ItemObject>>());
+      expect(searchs, const TypeMatcher<List<BaseItem>>());
     });
 
     test('SynthTargets checks', () async {

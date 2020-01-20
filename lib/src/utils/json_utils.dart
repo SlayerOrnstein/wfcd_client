@@ -10,16 +10,16 @@ String fullPath(Platforms platform, String subject) {
   return '/${platformToString(platform)}/$subject';
 }
 
-List<ItemObject> toItemObjects(List<dynamic> data) {
-  return data.map<ItemObject>((dynamic i) {
-    return _toItemObject(i as Map<String, dynamic>);
+List<BaseItem> toBaseItem(List<dynamic> data) {
+  return data.map<BaseItem>((dynamic i) {
+    return _toBaseItem(i as Map<String, dynamic>);
   }).toList();
 }
 
 // Only reason this is being ignored is becasue the switch statement works fine
 // but it's being flagged as not returning ItemObject anyways
 // ignore: missing_return
-ItemObject _toItemObject(Map<String, dynamic> item) {
+BaseItem _toBaseItem(Map<String, dynamic> item) {
   switch (item['category'] as String) {
     case 'Archwings':
       continue warframe;
@@ -39,13 +39,13 @@ ItemObject _toItemObject(Map<String, dynamic> item) {
 
     warframe:
     case 'Warframes':
-      return Warframe.fromJson(item);
+      return BioWeapon.fromJson(item);
     weapon:
     case 'Primary':
       return Weapon.fromJson(item);
 
     default:
-      return ItemObject.fromJson(item);
+      return BaseItem.fromJson(item);
   }
 }
 

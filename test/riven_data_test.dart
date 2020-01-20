@@ -2,97 +2,88 @@ import 'dart:io';
 
 import 'package:test/test.dart';
 import 'package:wfcd_client/clients.dart';
-import 'package:path/path.dart' as path;
 import 'package:wfcd_client/enums.dart';
 
 void main() {
   final directory = Directory.systemTemp;
-
-  File rivenData;
-  RivenDataClient client;
-
-  setUp(() {
-    rivenData = File(path.join(directory.path, 'riven_data.json'));
-    client = RivenDataClient(rivenData);
-  });
-
-  tearDown(() async {
-    await rivenData.delete();
-  });
+  RivenDataClient client = RivenDataClient(directory.path);
 
   group('Test Riven data download per platform', () {
     test('PC download check', () async {
       await client.downloadRivenData();
 
-      expect(rivenData.existsSync(), true);
+      expect(client.rivenData.existsSync(), true);
     });
 
     test('PS4 download check', () async {
-      client = client.copyWith(rivenData, Platforms.ps4);
+      client = client.copyWith(platform: Platforms.ps4);
 
       await client.downloadRivenData();
 
-      expect(rivenData.existsSync(), true);
+      expect(client.rivenData.existsSync(), true);
     });
 
     test('Xbox One download check', () async {
-      client = client.copyWith(rivenData, Platforms.xb1);
+      client = client.copyWith(platform: Platforms.xb1);
 
       await client.downloadRivenData();
 
-      expect(rivenData.existsSync(), true);
+      expect(client.rivenData.existsSync(), true);
     });
 
     test('Nintendo Switch download check', () async {
-      client = client.copyWith(rivenData, Platforms.swi);
+      client = client.copyWith(platform: Platforms.swi);
 
       await client.downloadRivenData();
 
-      expect(rivenData.existsSync(), true);
+      expect(client.rivenData.existsSync(), true);
     });
   });
 
   group('Test Riven data category retrivers', () {
     test('Retrive Archgun rivens', () async {
-      final corvas = await client.getArchgunRivenData('Corvas');
+      final corvas =
+          await client.getArchgunRivenData('Veiled Archgun Riven Mod');
 
-      expect(corvas.rerolled.compatibility, 'Corvas');
+      expect(corvas.unrolled.itemType, 'Archgun Riven Mod');
     });
 
     test('Retrive Kitgun rivens', () async {
-      final catchmoon = await client.getKitgunRivenData('Catchmoon');
+      final catchmoon =
+          await client.getKitgunRivenData('Veiled Kitgun Riven Mod');
 
-      expect(catchmoon.rerolled.compatibility, 'Catchmoon');
+      expect(catchmoon.unrolled.itemType, 'Kitgun Riven Mod');
     });
 
     test('Retrive Melee rivens', () async {
-      final melee = await client.getMeleeRivenData('Ack & Brunt');
+      final melee = await client.getMeleeRivenData('Veiled Melee Riven Mod');
 
-      expect(melee.rerolled.compatibility, 'Ack & Brunt');
+      expect(melee.unrolled.itemType, 'Melee Riven Mod');
     });
 
     test('Retrive Pistol Riven', () async {
-      final pistol = await client.getPistolRivenData('Afuris');
+      final pistol = await client.getPistolRivenData('Veiled Pistol Riven Mod');
 
-      expect(pistol.rerolled.compatibility, 'Afuris');
+      expect(pistol.unrolled.itemType, 'Pistol Riven Mod');
     });
 
     test('Retrive Rifle rivens', () async {
-      final rifle = await client.getRifleRivenData('Soma');
+      final rifle = await client.getRifleRivenData('Veiled Rifle Riven Mod');
 
-      expect(rifle.rerolled.compatibility, 'Soma');
+      expect(rifle.unrolled.itemType, 'Rifle Riven Mod');
     });
 
     test('Retrive Shotgun rivens', () async {
-      final shotgun = await client.getShotgunRivenData('Arca Plasmor');
+      final shotgun =
+          await client.getShotgunRivenData('Veiled Shotgun Riven Mod');
 
-      expect(shotgun.rerolled.compatibility, 'Arca Plasmor');
+      expect(shotgun.unrolled.itemType, 'Shotgun Riven Mod');
     });
 
     test('Retrive Zaw rivens', () async {
-      final zaw = await client.getZawRivenData('Balla');
+      final zaw = await client.getZawRivenData('Veiled Zaw Riven Mod');
 
-      expect(zaw.rerolled.compatibility, 'Balla');
+      expect(zaw.unrolled.itemType, 'Zaw Riven Mod');
     });
   });
 }

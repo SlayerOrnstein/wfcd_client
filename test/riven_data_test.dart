@@ -91,6 +91,6 @@ void main() {
   test('Decode json data', () async {
     final data = await client.getAllRivens();
 
-    expect(data, const TypeMatcher<Map<String, Map<String, RivenData>>>());
+    expect(data, const TypeMatcher<Map<RivenType, Map<String, RivenData>>>());
   });
 }

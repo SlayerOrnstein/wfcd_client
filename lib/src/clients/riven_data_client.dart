@@ -75,23 +75,24 @@ class RivenDataClient extends Equatable {
   }
 
   Future<Map<String, RivenData>> getCategoryRivenData(RivenType type) async {
-    final rivenType = type.toString().split('.').last.capitalize();
     final data = await getAllRivens();
 
-    return data['$rivenType Riven Mod'];
+    return data[type];
   }
 
-  Future<Map<String, Map<String, RivenData>>> getAllRivens() async {
+  Future<Map<RivenType, Map<String, RivenData>>> getAllRivens() async {
     if (!rivenData.existsSync()) await downloadRivenData();
 
     final file = await rivenData.readAsString();
     final data = json.decode(file) as Map<String, dynamic>;
 
     return data.map((String key, dynamic data) {
+      final type = RivenType.values.firstOrNullWhere(
+          (t) => t.toString().contains(key.split(' ').first.toLowerCase()));
       final category = data as Map<String, dynamic>;
 
       return MapEntry(
-        key,
+        type,
         category.map((String key, dynamic data) {
           return MapEntry(
               key, RivenData.fromJson(data as Map<String, dynamic>));

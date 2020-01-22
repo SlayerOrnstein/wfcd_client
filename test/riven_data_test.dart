@@ -7,41 +7,29 @@ import 'package:worldstate_api_model/misc.dart';
 
 void main() {
   final directory = Directory.systemTemp;
-  RivenDataClient client = RivenDataClient(directory.path);
+  RivenDataClient client;
+
+  Future<void> runCheck(Platforms platform) async {
+    final client = RivenDataClient(directory.path, platform: platform);
+
+    await client.downloadRivenData();
+
+    expect(client.rivenData.existsSync(), true);
+  }
 
   group('Test Riven data download per platform', () {
-    test('PC download check', () async {
-      await client.downloadRivenData();
+    test('PC download check', () => runCheck(Platforms.pc));
 
-      expect(client.rivenData.existsSync(), true);
-    });
+    test('PS4 download check', () => runCheck(Platforms.ps4));
 
-    test('PS4 download check', () async {
-      client = client.copyWith(platform: Platforms.ps4);
+    test('Xbox One download check', () => runCheck(Platforms.xb1));
 
-      await client.downloadRivenData();
-
-      expect(client.rivenData.existsSync(), true);
-    });
-
-    test('Xbox One download check', () async {
-      client = client.copyWith(platform: Platforms.xb1);
-
-      await client.downloadRivenData();
-
-      expect(client.rivenData.existsSync(), true);
-    });
-
-    test('Nintendo Switch download check', () async {
-      client = client.copyWith(platform: Platforms.swi);
-
-      await client.downloadRivenData();
-
-      expect(client.rivenData.existsSync(), true);
-    });
+    test('Nintendo Switch download check', () => runCheck(Platforms.swi));
   });
 
   group('Test Riven data category retrivers', () {
+    client = RivenDataClient(directory.path);
+
     test('Retrive Archgun rivens', () async {
       final corvas =
           await client.getArchgunRivenData('Veiled Archgun Riven Mod');

@@ -101,13 +101,6 @@ class RivenDataClient extends Equatable {
     });
   }
 
-  RivenDataClient copyWith({String path, Platforms platform}) {
-    return RivenDataClient(
-      path ?? this.path,
-      platform: platform ?? this.platform,
-    );
-  }
-
   @override
   List<Object> get props => [path, platform];
 }

@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:test/test.dart';
 import 'package:wfcd_client/clients.dart';
 import 'package:wfcd_client/enums.dart';
+import 'package:worldstate_api_model/misc.dart';
 
 void main() {
   final directory = Directory.systemTemp;
@@ -85,5 +86,11 @@ void main() {
 
       expect(zaw.unrolled.itemType, 'Zaw Riven Mod');
     });
+  });
+
+  test('Decode json data', () async {
+    final data = await client.getAllRivens();
+
+    expect(data, const TypeMatcher<Map<String, Map<String, RivenData>>>());
   });
 }

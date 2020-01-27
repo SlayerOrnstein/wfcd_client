@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:http/http.dart' as http;
 import 'package:warframe_items_model/warframe_items_model.dart';
 import 'package:wfcd_client/enums.dart';
@@ -33,6 +35,6 @@ class WorldstateClient {
   Future<dynamic> _warframestat(String path) async {
     final response = await http.get('$_baseUrl/$path');
 
-    return response.body;
+    return json.decode(response.body);
   }
 }

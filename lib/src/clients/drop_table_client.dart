@@ -17,13 +17,14 @@ class DropTableClient {
   }
 
   Future<DateTime> dropsTimestamp() async {
-    final info = await _warframestatDrops('info.json') as Map<String, dynamic>;
+    final info = json.decode(await _warframestatDrops('info.json'))
+        as Map<String, dynamic>;
 
     return DateTime.fromMillisecondsSinceEpoch(info['timestamp'] as int);
   }
 
   Future<void> downloadDropTable() async {
-    final response = await _warframestatDrops('all.slim.json') as String;
+    final response = await _warframestatDrops('all.slim.json');
 
     await dropTable.writeAsString(response);
   }
@@ -37,7 +38,7 @@ class DropTableClient {
         .toList();
   }
 
-  Future<dynamic> _warframestatDrops(String path) async {
+  Future<String> _warframestatDrops(String path) async {
     final response = await http.get('$_baseUrl/$path');
 
     return response.body;

@@ -5,7 +5,6 @@ import 'package:equatable/equatable.dart';
 import 'package:http/http.dart' as http;
 import 'package:wfcd_client/enums.dart';
 import 'package:wfcd_client/src/utils/json_utils.dart';
-import 'package:wfcd_client/src/utils/exception_handler.dart';
 import 'package:worldstate_api_model/misc.dart';
 import 'package:dartx/dartx.dart';
 
@@ -27,7 +26,7 @@ class RivenDataClient extends Equatable {
     final _platform = platformToString(platform);
 
     final response = await http.get('$_baseUrl/$_platform/rivens');
-    final body = excpetionHandler(response, returnString: true) as String;
+    final body = response.body;
 
     await rivenData.writeAsString(body);
   }

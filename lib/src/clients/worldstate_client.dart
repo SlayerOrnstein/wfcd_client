@@ -1,11 +1,7 @@
-import 'dart:io';
-
 import 'package:http/http.dart' as http;
 import 'package:warframe_items_model/warframe_items_model.dart';
 import 'package:wfcd_client/enums.dart';
 import 'package:wfcd_client/src/utils/json_utils.dart';
-import 'package:wfcd_client/src/utils/exception_handler.dart';
-import 'package:wfcd_client/src/utils/exceptions.dart';
 import 'package:worldstate_api_model/misc.dart';
 import 'package:worldstate_api_model/worldstate_models.dart';
 
@@ -35,12 +31,8 @@ class WorldstateClient {
   }
 
   Future<dynamic> _warframestat(String path) async {
-    try {
-      final response = await http.get('$_baseUrl/$path');
+    final response = await http.get('$_baseUrl/$path');
 
-      return excpetionHandler(response);
-    } on SocketException {
-      throw const DeviceOffline();
-    }
+    return response.body;
   }
 }

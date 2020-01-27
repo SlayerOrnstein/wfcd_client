@@ -2,10 +2,8 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:http/http.dart' as http;
-import 'package:wfcd_client/src/utils/exception_handler.dart';
-import 'package:wfcd_client/src/utils/exceptions.dart';
-import 'package:worldstate_api_model/misc.dart';
 import 'package:path/path.dart' as p;
+import 'package:worldstate_api_model/misc.dart';
 
 class DropTableClient {
   const DropTableClient(this.path);
@@ -25,8 +23,7 @@ class DropTableClient {
   }
 
   Future<void> downloadDropTable() async {
-    final response =
-        await _warframestatDrops('all.slim.json', isString: true) as String;
+    final response = await _warframestatDrops('all.slim.json') as String;
 
     await dropTable.writeAsString(response);
   }
@@ -40,14 +37,9 @@ class DropTableClient {
         .toList();
   }
 
-  Future<dynamic> _warframestatDrops(String path,
-      {bool isString = false}) async {
-    try {
-      final response = await http.get('$_baseUrl/$path');
+  Future<dynamic> _warframestatDrops(String path) async {
+    final response = await http.get('$_baseUrl/$path');
 
-      return excpetionHandler(response, returnString: isString);
-    } on SocketException {
-      throw const DeviceOffline();
-    }
+    return response.body;
   }
 }

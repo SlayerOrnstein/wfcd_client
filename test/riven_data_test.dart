@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:test/test.dart';
 import 'package:wfcd_client/clients.dart';
 import 'package:wfcd_client/enums.dart';
-import 'package:worldstate_api_model/misc.dart';
+import 'package:worldstate_api_model/entities.dart';
 
 void main() {
   final directory = Directory.systemTemp;

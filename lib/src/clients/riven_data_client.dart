@@ -5,8 +5,9 @@ import 'package:equatable/equatable.dart';
 import 'package:http/http.dart' as http;
 import 'package:wfcd_client/enums.dart';
 import 'package:wfcd_client/src/utils/json_utils.dart';
-import 'package:worldstate_api_model/misc.dart';
 import 'package:dartx/dartx.dart';
+import 'package:worldstate_api_model/entities.dart';
+import 'package:worldstate_api_model/models.dart';
 
 enum RivenType { archgun, kitgun, melee, pistol, rifle, shotgun, zaw }
 
@@ -94,7 +95,7 @@ class RivenDataClient extends Equatable {
         type,
         category.map((String key, dynamic data) {
           return MapEntry(
-              key, RivenData.fromJson(data as Map<String, dynamic>));
+              key, RivenDataModel.fromJson(data as Map<String, dynamic>));
         }),
       );
     });

@@ -3,7 +3,8 @@ import 'dart:io';
 
 import 'package:http/http.dart' as http;
 import 'package:path/path.dart' as p;
-import 'package:worldstate_api_model/misc.dart';
+import 'package:worldstate_api_model/entities.dart';
+import 'package:worldstate_api_model/models.dart';
 
 class DropTableClient {
   const DropTableClient(this.path);
@@ -34,7 +35,7 @@ class DropTableClient {
 
     return table
         .map<SlimDrop>(
-            (dynamic d) => SlimDrop.fromJson(d as Map<String, dynamic>))
+            (dynamic d) => SlimDropModel.fromJson(d as Map<String, dynamic>))
         .toList();
   }
 

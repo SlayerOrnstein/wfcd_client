@@ -4,8 +4,8 @@ import 'package:http/http.dart' as http;
 import 'package:warframe_items_model/warframe_items_model.dart';
 import 'package:wfcd_client/enums.dart';
 import 'package:wfcd_client/src/utils/json_utils.dart';
-import 'package:worldstate_api_model/misc.dart';
-import 'package:worldstate_api_model/worldstate_models.dart';
+import 'package:worldstate_api_model/entities.dart';
+import 'package:worldstate_api_model/models.dart';
 
 class WorldstateClient {
   const WorldstateClient();
@@ -16,7 +16,7 @@ class WorldstateClient {
     final path = platformToString(platform);
     final response = await _warframestat(path) as Map<String, dynamic>;
 
-    return Worldstate.fromJson(response);
+    return WorldstateModel.fromJson(response);
   }
 
   Future<List<BaseItem>> searchItems(String searchTerm) async {

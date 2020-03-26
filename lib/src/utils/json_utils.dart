@@ -1,6 +1,7 @@
 import 'package:warframe_items_model/warframe_items_model.dart';
 import 'package:wfcd_client/enums.dart';
-import 'package:worldstate_api_model/misc.dart';
+import 'package:worldstate_api_model/entities.dart';
+import 'package:worldstate_api_model/models.dart';
 
 String platformToString(Platforms platform) {
   return platform.toString().split('.').last;
@@ -51,6 +52,6 @@ BaseItem _toBaseItem(Map<String, dynamic> item) {
 
 List<SynthTarget> toSynthTargets(List<dynamic> data) {
   return data.map<SynthTarget>((dynamic t) {
-    return SynthTarget.fromJson(t as Map<String, dynamic>);
+    return SynthTargetModel.fromJson(t as Map<String, dynamic>);
   }).toList();
 }

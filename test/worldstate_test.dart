@@ -2,8 +2,7 @@ import 'package:test/test.dart';
 import 'package:warframe_items_model/warframe_items_model.dart';
 import 'package:wfcd_client/clients.dart';
 import 'package:wfcd_client/enums.dart';
-import 'package:worldstate_api_model/misc.dart';
-import 'package:worldstate_api_model/worldstate_models.dart';
+import 'package:worldstate_api_model/entities.dart';
 
 void main() {
   const client = WorldstateClient();

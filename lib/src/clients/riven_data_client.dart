@@ -6,6 +6,7 @@ import 'package:http/http.dart' as http;
 import 'package:wfcd_client/enums.dart';
 import 'package:wfcd_client/src/utils/json_utils.dart';
 import 'package:dartx/dartx.dart';
+import 'package:wfcd_client/src/utils/supported_locales.dart';
 import 'package:worldstate_api_model/entities.dart';
 import 'package:worldstate_api_model/models.dart';
 
@@ -23,13 +24,15 @@ class RivenDataClient extends Equatable {
     return File('$path/riven_data_${platformToString(platform)}');
   }
 
-  Future<void> downloadRivenData() async {
+  Future<void> downloadRivenData({String language = 'en'}) async {
+    assert(supportedLocale.contains(language));
     final _platform = platformToString(platform);
 
-    final response = await http.get('$_baseUrl/$_platform/rivens');
-    final body = response.body;
+    final headers = <String, String>{'Accept-Language': language};
+    final response =
+        await http.get('$_baseUrl/$_platform/rivens', headers: headers);
 
-    await rivenData.writeAsString(body);
+    await rivenData.writeAsString(response.body);
   }
 
   Future<RivenData> getArchgunRivenData(String key) async {

@@ -1,15 +1,4 @@
-import 'package:warframe_items_model/warframe_items_model.dart';
-import 'package:wfcd_client/enums.dart';
-import 'package:worldstate_api_model/entities.dart';
-import 'package:worldstate_api_model/models.dart';
-
-String platformToString(Platforms platform) {
-  return platform.toString().split('.').last;
-}
-
-String fullPath(Platforms platform, String subject) {
-  return '/${platformToString(platform)}/$subject';
-}
+import 'package:warframestat_api_models/warframestat_api_models.dart';
 
 List<BaseItem> toBaseItem(List<dynamic> data) {
   return data.map<BaseItem>((dynamic i) {
@@ -40,13 +29,13 @@ BaseItem _toBaseItem(Map<String, dynamic> item) {
 
     warframe:
     case 'Warframes':
-      return BioWeapon.fromJson(item);
+      return BioWeaponModel.fromJson(item);
     weapon:
     case 'Primary':
-      return Weapon.fromJson(item);
+      return WeaponModel.fromJson(item);
 
     default:
-      return BaseItem.fromJson(item);
+      return BaseItemModel.fromJson(item);
   }
 }
 

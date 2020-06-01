@@ -49,9 +49,9 @@ class DropTableLocal extends DropTableLocalBase {
   }
 
   @override
-  Future<void> saveDropTable(String table) async {
+  Future<void> saveDropTable(List<Map<String, dynamic>> table) async {
     final dropTable = _getDropTablePath;
 
-    await dropTable.writeAsString(table);
+    await dropTable.writeAsString(json.encode(table));
   }
 }

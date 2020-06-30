@@ -19,6 +19,15 @@ extension GamePlatformsX on GamePlatforms {
   String get asString {
     return toString().split('.').last;
   }
+
+  /// Parses the string into a possible [GamePlatforms] value,
+  /// otherwise returns null.
+  static GamePlatforms fromString(String value) {
+    return GamePlatforms.values.firstWhere(
+      (element) => element.asString.contains(value),
+      orElse: () => null,
+    );
+  }
 }
 
 /// Supported language codes

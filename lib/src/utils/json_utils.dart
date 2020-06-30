@@ -1,8 +1,36 @@
 import 'package:warframestat_api_models/warframestat_api_models.dart';
 
-List<BaseItem> toBaseItem(List<dynamic> data) {
+/// Converts a json decoded list into [BaseItem] objects
+List<BaseItem> toBaseItems(List<dynamic> data) {
   return data.map<BaseItem>((dynamic i) {
     return _toBaseItem(i as Map<String, dynamic>);
+  }).toList();
+}
+
+/// Converts json list to [SlimDrop] objects
+List<SlimDrop> toDrops(List<dynamic> data) {
+  return data
+      .map((dynamic e) => SlimDropModel.fromJson(e as Map<String, dynamic>))
+      .toList();
+}
+
+/// Converts Riven rolls of riven weapon type to [RivenRoll]
+List<RivenRoll> toRivens(String weaponType, Map<String, dynamic> data) {
+  final rolls = <RivenRoll>[];
+
+  for (final key in (data[weaponType] as Map<String, dynamic>).keys) {
+    final roll = data[weaponType][key] as Map<String, dynamic>;
+
+    rolls.add(RivenRollModel.fromJson(roll));
+  }
+
+  return rolls;
+}
+
+/// Converts a json decoded list into [SynthTarget] objects
+List<SynthTarget> toSynthTargets(List<dynamic> data) {
+  return data.map<SynthTarget>((dynamic t) {
+    return SynthTargetModel.fromJson(t as Map<String, dynamic>);
   }).toList();
 }
 
@@ -37,10 +65,4 @@ BaseItem _toBaseItem(Map<String, dynamic> item) {
     default:
       return BaseItemModel.fromJson(item);
   }
-}
-
-List<SynthTarget> toSynthTargets(List<dynamic> data) {
-  return data.map<SynthTarget>((dynamic t) {
-    return SynthTargetModel.fromJson(t as Map<String, dynamic>);
-  }).toList();
 }

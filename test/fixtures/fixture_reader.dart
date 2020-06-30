@@ -5,7 +5,7 @@ import 'package:path/path.dart' as p;
 String fixture(String name) {
   try {
     return _file(p.join('test', 'fixtures', name));
-  } catch (err) {
+  } on FileSystemException {
     return _file(p.join('fixtures', name));
   }
 }

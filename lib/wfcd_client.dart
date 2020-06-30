@@ -28,7 +28,7 @@ class WarframestatClient {
     final response =
         await _warframestat(path, language: language) as Map<String, dynamic>;
 
-    return WorldstateModel.fromJson(response);
+    return toWorldstate(response);
   }
 
   /// Retrive a list of all available synthtargets

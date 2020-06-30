@@ -66,3 +66,19 @@ BaseItem _toBaseItem(Map<String, dynamic> item) {
       return BaseItemModel.fromJson(item);
   }
 }
+
+/// Converts the appropriate [BaseItem] into a [Map<String, dynamic>]
+Map<String, dynamic> fromBaseItem(BaseItem item) {
+  switch (item.runtimeType) {
+    case BioWeapon:
+      return (item as BioWeaponModel).toJson();
+    case Weapon:
+      return (item as WeaponModel).toJson();
+    default:
+      return (item as BaseItemModel).toJson();
+  }
+}
+
+Worldstate toWorldstate(Map<String, dynamic> state) {
+  return WorldstateModel.fromJson(state);
+}

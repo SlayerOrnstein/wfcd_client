@@ -21,11 +21,11 @@ extension GamePlatformsX on GamePlatforms {
   }
 
   /// Parses the string into a possible [GamePlatforms] value,
-  /// otherwise returns null.
+  /// otherwise returns [GamePlatforms.pc].
   static GamePlatforms fromString(String value) {
     return GamePlatforms.values.firstWhere(
       (element) => element.asString.contains(value),
-      orElse: () => null,
+      orElse: () => GamePlatforms.pc,
     );
   }
 }
@@ -68,5 +68,14 @@ extension SupportedLocaleX on SupportedLocale {
   /// Returns Platform value in an human readable string
   String get asString {
     return toString().split('.').last;
+  }
+
+  /// Parses the string into a possible [SupportedLocale] value,
+  /// otherwise returns [SupportedLocale.en].
+  static SupportedLocale fromString(String value) {
+    return SupportedLocale.values.firstWhere(
+      (element) => element.asString.contains(value),
+      orElse: () => SupportedLocale.en,
+    );
   }
 }

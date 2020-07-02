@@ -72,7 +72,7 @@ extension SupportedLocaleX on SupportedLocale {
 
   /// Parses the string into a possible [SupportedLocale] value,
   /// otherwise returns [SupportedLocale.en].
-  static SupportedLocale fromString(String value) {
+  static SupportedLocale fromLocaleCode(String value) {
     return SupportedLocale.values.firstWhere(
       (element) => element.asString.contains(value),
       orElse: () => SupportedLocale.en,

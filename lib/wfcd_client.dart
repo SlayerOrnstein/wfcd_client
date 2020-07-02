@@ -18,7 +18,7 @@ class WarframestatClient {
 
   final Client _client;
 
-  static const _endpoint = 'https://api.warframestat.us/';
+  static const _endpoint = 'https://api.warframestat.us';
 
   /// Retrive the latest worldstate base on [GamePlatforms] with the optional
   /// language, the language defaults to [SupportedLocale.en] (English).

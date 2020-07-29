@@ -70,9 +70,9 @@ BaseItem _toBaseItem(Map<String, dynamic> item) {
 /// Converts the appropriate [BaseItem] into a [Map<String, dynamic>]
 Map<String, dynamic> fromBaseItem(BaseItem item) {
   switch (item.runtimeType) {
-    case BioWeapon:
+    case BioWeaponModel:
       return (item as BioWeaponModel).toJson();
-    case Weapon:
+    case WeaponModel:
       return (item as WeaponModel).toJson();
     default:
       return (item as BaseItemModel).toJson();

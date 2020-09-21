@@ -68,14 +68,34 @@ BaseItem _toBaseItem(Map<String, dynamic> item) {
 }
 
 /// Converts the appropriate [BaseItem] into a [Map<String, dynamic>]
-Map<String, dynamic> fromBaseItem(BaseItem item) {
-  switch (item.runtimeType) {
-    case BioWeaponModel:
-      return (item as BioWeaponModel).toJson();
-    case WeaponModel:
-      return (item as WeaponModel).toJson();
+// ignore: missing_return
+BaseItem fromBaseItem(BaseItem item) {
+  switch (item.type) {
+    case 'Archwings':
+      continue warframe;
+    case 'Pets':
+      continue warframe;
+    case 'Sentinels':
+      continue warframe;
+
+    case 'Secondry':
+      continue weapon;
+    case 'Melee':
+      continue weapon;
+    case 'Arch-Gun':
+      continue weapon;
+    case 'Arch-Melee':
+      continue weapon;
+
+    warframe:
+    case 'Warframes':
+      return item as BioWeaponModel;
+    weapon:
+    case 'Primary':
+      return item as WeaponModel;
+
     default:
-      return (item as BaseItemModel).toJson();
+      return item as BaseItemModel;
   }
 }
 

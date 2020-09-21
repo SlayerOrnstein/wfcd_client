@@ -4,7 +4,7 @@ version: 2.2.0
 author: Ludwig <blacklightinglr@gmail.com>
 
 environment:
-  sdk: ">=2.9.3 <3.0.0"
+  sdk: ">=2.9.0 <3.0.0"
 
 dependencies:
   warframestat_api_models:

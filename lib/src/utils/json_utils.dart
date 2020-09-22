@@ -70,7 +70,7 @@ BaseItem toBaseItem(Map<String, dynamic> item) {
 /// Converts the appropriate [BaseItem] into a [Map<String, dynamic>]
 // ignore: missing_return
 BaseItem fromBaseItem(BaseItem item) {
-  switch (item.type) {
+  switch (item.category) {
     case 'Archwings':
       continue warframe;
     case 'Pets':

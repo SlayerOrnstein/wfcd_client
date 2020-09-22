@@ -3,7 +3,7 @@ import 'package:warframestat_api_models/warframestat_api_models.dart';
 /// Converts a json decoded list into [BaseItem] objects
 List<BaseItem> toBaseItems(List<dynamic> data) {
   return data.map<BaseItem>((dynamic i) {
-    return _toBaseItem(i as Map<String, dynamic>);
+    return toBaseItem(i as Map<String, dynamic>);
   }).toList();
 }
 
@@ -37,7 +37,7 @@ List<SynthTarget> toSynthTargets(List<dynamic> data) {
 // Only reason this is being ignored is becasue the switch statement works fine
 // but it's being flagged as not returning ItemObject anyways
 // ignore: missing_return
-BaseItem _toBaseItem(Map<String, dynamic> item) {
+BaseItem toBaseItem(Map<String, dynamic> item) {
   switch (item['category'] as String) {
     case 'Archwings':
       continue warframe;

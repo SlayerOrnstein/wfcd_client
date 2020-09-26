@@ -61,7 +61,8 @@ BaseItem toBaseItem(Map<String, dynamic> item) {
     weapon:
     case 'Primary':
       return WeaponModel.fromJson(item);
-
+    case 'Mods':
+      return ModModel.fromJson(item);
     default:
       return BaseItemModel.fromJson(item);
   }
@@ -93,7 +94,8 @@ BaseItem fromBaseItem(BaseItem item) {
     weapon:
     case 'Primary':
       return item as WeaponModel;
-
+    case 'Mods':
+      return item as ModModel;
     default:
       return item as BaseItemModel;
   }

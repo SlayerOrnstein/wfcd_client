@@ -9,11 +9,10 @@ environment:
 dependencies:
   warframestat_api_models:
     git: https://github.com/SlayerOrnstein/warframestat_api_models.git
-  dartx: ^0.5.0
-  dio: ^3.0.10
   equatable: ^1.2.5
+  dartx: ^0.5.0
 
 dev_dependencies:
+  test: ^1.6.0
   effective_dart: ^1.2.0
   mockito: ^4.1.1
-  test: ^1.6.0

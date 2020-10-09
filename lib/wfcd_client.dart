@@ -1,6 +1,8 @@
 library wfcd_client;
 
-import 'package:dio/dio.dart';
+import 'dart:convert';
+
+import 'package:http/http.dart';
 import 'package:warframestat_api_models/warframestat_api_models.dart';
 
 import 'src/utils/enums.dart';
@@ -9,85 +11,75 @@ import 'src/utils/json_utils.dart';
 export 'src/utils/enums.dart';
 export 'src/utils/json_utils.dart';
 
-const _endpoint = 'https://api.warframestat.us';
-
 /// Dart client for Warframestat API
 class WarframestatClient {
   /// Main entry for Warframestat API Dart wrapper
-  WarframestatClient() : _client = Dio() {
-    _client.options = BaseOptions(
-      baseUrl: _endpoint,
-      headers: <String, String>{'Accept-Language': SupportedLocale.en.asString},
-    );
-  }
+  const WarframestatClient(Client client) : _client = client;
 
-  final Dio _client;
+  final Client _client;
 
-  /// Expose Dio's interceptors to allow better control over warframestat data
-  List<Interceptor> get interceptors => _client.interceptors;
-
-  /// Change the language from default [SuppoertedLocale.en]
-  void setLanguage(SupportedLocale language) {
-    _client.options.headers = <String, String>{
-      'Accept-Language': language.asString
-    };
-  }
+  static const _endpoint = 'https://api.warframestat.us';
 
   /// Retrive the latest worldstate base on [GamePlatforms] with the optional
   /// language, the language defaults to [SupportedLocale.en] (English).
-  Future<Worldstate> getWorldstate(GamePlatforms platform,
-      {Options options}) async {
+  Future<Worldstate> getWorldstate(
+    GamePlatforms platform,
+  ) async {
     final path = platform.asString;
-    final response =
-        await _warframestat<Map<String, dynamic>>(path, options: options);
+    final response = await _warframestat(path) as Map<String, dynamic>;
 
     return toWorldstate(response);
   }
 
   /// Retrive a list of all available synthtargets
-  Future<List<SynthTarget>> getSynthTargets({Options options}) async {
-    final response =
-        await _warframestat<List<dynamic>>('synthTargets', options: options);
+  Future<List<SynthTarget>> getSynthTargets() async {
+    final response = await _warframestat('synthTargets') as List<dynamic>;
 
     return toSynthTargets(response);
   }
 
   /// Search using warframestat's warframe-items endpoint
-  Future<List<BaseItem>> searchItems(String searchTerm,
-      {Options options}) async {
-    return _search<BaseItem>(searchTerm, 'items/search', toBaseItems,
-        options: options);
+  Future<List<BaseItem>> searchItems(
+    String searchTerm,
+  ) async {
+    return _search<BaseItem>(searchTerm, 'items/search', toBaseItems);
   }
 
   /// Search using warframestat's drop table endpoint
-  Future<List<SlimDrop>> searchDrops(String name, {Options options}) async {
-    return _search(name, 'drops/search', toDrops, options: options);
+  Future<List<SlimDrop>> searchDrops(
+    String name,
+  ) async {
+    return _search(name, 'drops/search', toDrops);
   }
 
   /// Search using warframestat's riven information endpoint.
   /// Platform defaults to [GamePlatforms.pc]
   Future<List<RivenRoll>> searchRivens(String name,
-      {GamePlatforms platform = GamePlatforms.pc, Options options}) async {
+      {GamePlatforms platform = GamePlatforms.pc}) async {
     final term = name.toLowerCase();
-    final response = await _warframestat<Map<String, dynamic>>(
-        '${platform.asString}/rivens/search/$term');
+    final response =
+        await _warframestat('${platform.asString}/rivens/search/$term')
+            as Map<String, dynamic>;
 
     return toRivens(name, response);
   }
 
   Future<List<T>> _search<T>(
-      String term, String path, List<T> Function(List<dynamic>) toObject,
-      {Options options}) async {
+    String term,
+    String path,
+    List<T> Function(List<dynamic>) toObject,
+  ) async {
     final toSearch = term.toLowerCase();
-    final response =
-        await _warframestat<List<dynamic>>('$path/$toSearch', options: options);
+    final response = await _warframestat('$path/$toSearch') as List<dynamic>;
 
     return toObject(response);
   }
 
-  Future<T> _warframestat<T>(String path, {Options options}) async {
-    final response = await _client.get<T>('$_endpoint/$path', options: options);
+  Future<dynamic> _warframestat(String path,
+      {SupportedLocale language = SupportedLocale.en}) async {
+    final headers = <String, String>{'Accept-Language': language.asString};
+    final response = await _client.get('$_endpoint/$path', headers: headers);
 
-    return response.data;
+    return json.decode(response.body);
   }
 }

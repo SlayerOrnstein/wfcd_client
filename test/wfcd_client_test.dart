@@ -8,21 +8,18 @@ import 'package:wfcd_client/wfcd_client.dart';
 import 'fixtures/fixture_reader.dart';
 
 void main() {
-  const headers = {'content-type': 'application/json; charset=utf-8'};
   final stateFixture = fixture('worldstate.json');
   final testState = WorldstateModel.fromJson(
       json.decode(stateFixture) as Map<String, dynamic>);
 
   WarframestatClient clientApi;
-  Dio mockClient;
 
   setUp(() {
-    mockClient = Dio()
-      ..interceptors.add(InterceptorsWrapper(onResponse: (e) {
-        return json.decode(stateFixture) as Map<String, dynamic>;
-      }));
+    clientApi = WarframestatClient();
 
-    clientApi = WarframestatClient(dio: mockClient);
+    clientApi.interceptors.add(InterceptorsWrapper(onResponse: (e) {
+      return json.decode(stateFixture) as Map<String, dynamic>;
+    }));
   });
 
   test('Retrive and decode Worldstate', () async {

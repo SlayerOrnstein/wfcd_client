@@ -15,16 +15,14 @@ List<SlimDrop> toDrops(List<dynamic> data) {
 }
 
 /// Converts Riven rolls of riven weapon type to [RivenRoll]
-List<RivenRoll> toRivens(String weaponType, Map<String, dynamic> data) {
-  final rolls = <RivenRoll>[];
+List<Riven> toRivens(Map<String, dynamic> data) {
+  final rivens = <Riven>[];
 
-  for (final key in (data[weaponType] as Map<String, dynamic>).keys) {
-    final roll = data[weaponType][key] as Map<String, dynamic>;
-
-    rolls.add(RivenRollModel.fromJson(roll));
+  for (final riven in data.keys) {
+    rivens.add(RivenDataModel.fromJson(data[riven] as Map<String, dynamic>));
   }
 
-  return rolls;
+  return rivens;
 }
 
 /// Converts a json decoded list into [SynthTarget] objects
@@ -33,6 +31,8 @@ List<SynthTarget> toSynthTargets(List<dynamic> data) {
     return SynthTargetModel.fromJson(t as Map<String, dynamic>);
   }).toList();
 }
+
+/// Serializes giving json values into their proper [BaseItem] type
 
 // Only reason this is being ignored is becasue the switch statement works fine
 // but it's being flagged as not returning ItemObject anyways
@@ -68,7 +68,7 @@ BaseItem toBaseItem(Map<String, dynamic> item) {
   }
 }
 
-/// Converts the appropriate [BaseItem] into a [Map<String, dynamic>]
+/// Serializes the appropriate [BaseItem] into a [Map<String, dynamic>]
 // ignore: missing_return
 BaseItem fromBaseItem(BaseItem item) {
   switch (item.category) {
@@ -101,6 +101,7 @@ BaseItem fromBaseItem(BaseItem item) {
   }
 }
 
+/// Serializes worldstate json into a [Worldstate] object
 Worldstate toWorldstate(Map<String, dynamic> state) {
   return WorldstateModel.fromJson(state);
 }

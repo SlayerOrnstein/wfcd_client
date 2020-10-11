@@ -1,35 +1,50 @@
-import 'dart:convert';
-
-import 'package:http/http.dart';
-import 'package:mockito/mockito.dart';
 import 'package:test/test.dart';
-import 'package:warframestat_api_models/models.dart';
 import 'package:wfcd_client/wfcd_client.dart';
 
-import 'fixtures/fixture_reader.dart';
-
-class MockClient extends Mock implements Client {}
+import 'fixtures.dart';
+import 'mock_client.dart';
 
 void main() {
-  const headers = {'content-type': 'application/json; charset=utf-8'};
-  final stateFixture = fixture('worldstate.json');
-  final testState = WorldstateModel.fromJson(
-      json.decode(stateFixture) as Map<String, dynamic>);
-
   WarframestatClient clientApi;
   MockClient mockClient;
 
   setUp(() {
     mockClient = MockClient();
-    clientApi = WarframestatClient(mockClient);
+    clientApi = WarframestatClient(client: mockClient);
   });
 
-  test('Retrive and decode Worldstate', () async {
-    when(mockClient.get(any, headers: anyNamed('headers')))
-        .thenAnswer((_) async => Response(stateFixture, 200, headers: headers));
+  group('Ensure proper serialization', () {
+    test('Worldstate', () async {
+      final state = await clientApi.getWorldstate(GamePlatforms.pc);
 
-    final state = await clientApi.getWorldstate(GamePlatforms.pc);
+      expect(state, equals(worldstateTestModel));
+    });
 
-    expect(state, equals(testState));
+    test('SynthTargets', () async {
+      final targets = await clientApi.getSynthTargets();
+
+      expect(targets, equals(synthTargetsTestModels));
+    });
+
+    test('Item search results', () async {
+      final results = await clientApi.searchItems('Cestra');
+
+      expect(results, equals(searchResultsTestModels));
+    });
+
+    test('Drops', () async {
+      final resultsForComparing =
+          dropTableTestModels.where((e) => e.item.contains('Chroma')).toList();
+
+      final drops = await clientApi.searchDrops('Chroma');
+
+      expect(drops, equals(resultsForComparing));
+    });
+
+    test('Rivens', () async {
+      final rivens = await clientApi.searchRivens('Arca Plasmor');
+
+      expect(rivens, equals(rivenSearchTestModel()));
+    });
   });
 }

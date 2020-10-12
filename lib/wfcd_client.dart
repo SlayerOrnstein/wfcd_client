@@ -32,9 +32,8 @@ class WarframestatClient {
   }
 
   /// Retrive the latest worldstate using [GamePlatforms]
-  Future<Worldstate> getWorldstate(
-    GamePlatforms platform,
-  ) async {
+  Future<Worldstate> getWorldstate(GamePlatforms platform,
+      {SupportedLocale language = SupportedLocale.en}) async {
     final path = platform.asString;
     final response = await _warframestat<Map<String, dynamic>>(path);
 
@@ -60,8 +59,11 @@ class WarframestatClient {
 
   /// Search using warframestat's riven information endpoint.
   /// Platform defaults to [GamePlatforms.pc]
-  Future<List<Riven>> searchRivens(String name,
-      {GamePlatforms platform = GamePlatforms.pc}) async {
+  Future<List<Riven>> searchRivens(
+    String name, {
+    GamePlatforms platform = GamePlatforms.pc,
+    SupportedLocale language = SupportedLocale.en,
+  }) async {
     final term = name.toLowerCase();
     final response = await _warframestat<Map<String, dynamic>>(
         '${platform.asString}/rivens/search/$term');

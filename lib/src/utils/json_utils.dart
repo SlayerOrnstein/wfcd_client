@@ -46,7 +46,7 @@ BaseItem toBaseItem(Map<String, dynamic> item) {
     case 'Sentinels':
       continue warframe;
 
-    case 'Secondry':
+    case 'Secondary':
       continue weapon;
     case 'Melee':
       continue weapon;

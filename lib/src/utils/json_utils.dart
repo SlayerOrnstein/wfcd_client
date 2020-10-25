@@ -2,7 +2,7 @@ import 'package:warframestat_api_models/warframestat_api_models.dart';
 
 final _gunReg = RegExp(r'(Primary)|(Secondary)|(Arch-Gun)');
 final _meleeReg = RegExp(r'(Melee)|(Arch-Melee)');
-final _frameReg = RegExp(r'(Warframes)|(Archwings)|(Sentinels)|(Pets)');
+final _frameReg = RegExp(r'(Warframe)|(Archwing)|(Sentinel)|(Pet)');
 const _mods = 'Mods';
 
 /// Converts a json decoded list into [BaseItem] objects

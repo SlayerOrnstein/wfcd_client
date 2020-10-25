@@ -79,7 +79,7 @@ BaseItem fromBaseItem(BaseItem item) {
     case 'Sentinels':
       continue warframe;
 
-    case 'Secondry':
+    case 'Secondary':
       continue weapon;
     case 'Melee':
       continue weapon;

@@ -60,7 +60,7 @@ Item _productCategoryItem(Map<String, dynamic> item) {
   } else if (category.contains(_frameReg)) {
     return WarframeModel.fromJson(item);
   } else if (category.contains(_exSuits)) {
-    return ArchwingModel.fromJson(item);
+    return HeavyPowerSuitModel.fromJson(item);
   } else if (category.contains(_companion)) {
     return CompanionModel.fromJson(item);
   } else {
@@ -79,7 +79,7 @@ Item fromBaseItem(Item item) {
   } else if (category.contains(_frameReg)) {
     return item as Warframe;
   } else if (category.contains(_exSuits)) {
-    return item as Archwing;
+    return item as HeavyPowerSuit;
   } else if (category.contains(_mods)) {
     return item as Mod;
   } else {

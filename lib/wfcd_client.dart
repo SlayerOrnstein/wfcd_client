@@ -48,8 +48,8 @@ class WarframestatClient {
   }
 
   /// Search using warframestat's warframe-items endpoint
-  Future<List<BaseItem>> searchItems(String searchTerm) async {
-    return _search<BaseItem>(searchTerm, 'items/search', toBaseItems);
+  Future<List<Item>> searchItems(String searchTerm) async {
+    return _search<Item>(searchTerm, 'items/search', toBaseItems);
   }
 
   /// Search using warframestat's drop table endpoint

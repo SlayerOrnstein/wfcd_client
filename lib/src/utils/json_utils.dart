@@ -1,13 +1,15 @@
 import 'package:warframestat_api_models/warframestat_api_models.dart';
 
-final _gunReg = RegExp(r'(Primary)|(Secondary)|(Arch-Gun)');
-final _meleeReg = RegExp(r'(Melee)|(Arch-Melee)');
-final _frameReg = RegExp(r'(Warframe)|(Archwing)|(Sentinel)|(Pet)');
-const _mods = 'Mods';
+final _gunReg = RegExp(r'(LongGuns)|(Pistols)|(SpaceGuns)|(SentinelWeapons)');
+final _meleeReg = RegExp(r'(Melee)|(SpaceMelee)');
+final _frameReg = RegExp(r'(Suits)');
+final _exSuits = RegExp(r'(SpaceSuits)|(MechSuits)');
+final _companion = RegExp(r'(Sentinels)|(KubrowPets)');
+final _mods = RegExp(r'Mods');
 
 /// Converts a json decoded list into [BaseItem] objects
-List<BaseItem> toBaseItems(List<dynamic> data) {
-  return data.map<BaseItem>((dynamic i) {
+List<Item> toBaseItems(List<dynamic> data) {
+  return data.map<Item>((dynamic i) {
     return toBaseItem(i as Map<String, dynamic>);
   }).toList();
 }
@@ -38,32 +40,46 @@ List<SynthTarget> toSynthTargets(List<dynamic> data) {
 }
 
 /// Serializes giving json values into their proper [BaseItem] type
-BaseItem toBaseItem(Map<String, dynamic> item) {
-  final category = item['category'] as String;
-
-  if (category.contains(_gunReg)) {
-    return GunModel.fromJson(item);
-  } else if (category.contains(_meleeReg)) {
-    return MeleeModel.fromjson(item);
-  } else if (category.contains(_frameReg)) {
-    return BioWeaponModel.fromJson(item);
-  } else if (category.contains(_mods)) {
+Item toBaseItem(Map<String, dynamic> item) {
+  if (item.containsKey('productCategory')) {
+    return _productCategoryItem(item);
+  } else if ((item['category'] as String).contains('Mods')) {
     return ModModel.fromJson(item);
   } else {
-    return BaseItemModel.fromJson(item);
+    return BasicItemModel.fromJson(item);
+  }
+}
+
+Item _productCategoryItem(Map<String, dynamic> item) {
+  final category = item['productCategory'] as String;
+
+  if (category.contains(_gunReg)) {
+    return ProjectileWeaponModel.fromJson(item);
+  } else if (category.contains(_meleeReg)) {
+    return MeleeWeaponModel.fromJson(item);
+  } else if (category.contains(_frameReg)) {
+    return WarframeModel.fromJson(item);
+  } else if (category.contains(_exSuits)) {
+    return ArchwingModel.fromJson(item);
+  } else if (category.contains(_companion)) {
+    return CompanionModel.fromJson(item);
+  } else {
+    return BasicItemModel.fromJson(item);
   }
 }
 
 /// Serializes the appropriate [BaseItem] into a [Map<String, dynamic>]
-BaseItem fromBaseItem(BaseItem item) {
-  final category = item.category;
+Item fromBaseItem(Item item) {
+  final category = item.productCategory ?? item.category;
 
   if (category.contains(_gunReg)) {
-    return item as Gun;
+    return item as ProjectileWeapon;
   } else if (category.contains(_meleeReg)) {
-    return item as Melee;
+    return item as MeleeWeapon;
   } else if (category.contains(_frameReg)) {
-    return item as BioWeapon;
+    return item as Warframe;
+  } else if (category.contains(_exSuits)) {
+    return item as Archwing;
   } else if (category.contains(_mods)) {
     return item as Mod;
   } else {

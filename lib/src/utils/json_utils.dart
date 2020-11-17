@@ -2,7 +2,7 @@ import 'package:warframestat_api_models/warframestat_api_models.dart';
 
 final _gunReg = RegExp(r'(LongGuns)|(Pistols)|(SpaceGuns)|(SentinelWeapons)');
 final _meleeReg = RegExp(r'(Melee)|(SpaceMelee)');
-final _frameReg = RegExp(r'(\ASuits)');
+final _frameReg = RegExp(r'/^Suits/');
 final _exSuits = RegExp(r'(SpaceSuits)|(MechSuits)');
 final _companion = RegExp(r'(Sentinels)|(KubrowPets)');
 final _mods = RegExp(r'Mods');

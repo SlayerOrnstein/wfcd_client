@@ -29,11 +29,12 @@ class WarframestatClient {
     if (_language != lang) {
       _language = lang;
     }
+
+    print(_language);
   }
 
   /// Retrive the latest worldstate using [GamePlatforms]
-  Future<Worldstate> getWorldstate(GamePlatforms platform,
-      {SupportedLocale language = SupportedLocale.en}) async {
+  Future<Worldstate> getWorldstate(GamePlatforms platform) async {
     final path = platform.asString;
     final response = await _warframestat<Map<String, dynamic>>(path);
 
@@ -62,7 +63,6 @@ class WarframestatClient {
   Future<List<Riven>> searchRivens(
     String name, {
     GamePlatforms platform = GamePlatforms.pc,
-    SupportedLocale language = SupportedLocale.en,
   }) async {
     final term = name.toLowerCase();
     final response = await _warframestat<Map<String, dynamic>>(
@@ -82,9 +82,8 @@ class WarframestatClient {
     return toObject(response);
   }
 
-  Future<T> _warframestat<T>(String path,
-      {SupportedLocale language = SupportedLocale.en}) async {
-    final headers = <String, String>{'Accept-Language': language.asString};
+  Future<T> _warframestat<T>(String path) async {
+    final headers = <String, String>{'Accept-Language': _language.asString};
     final response = await _client.get('$_endpoint/$path', headers: headers);
 
     return json.decode(response.body) as T;

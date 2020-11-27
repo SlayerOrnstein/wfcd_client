@@ -22,20 +22,12 @@ class WarframestatClient {
 
   final http.Client _client;
 
-  SupportedLocale _language = SupportedLocale.en;
-
-  /// Sets the language for all [WarframestatClient] requests
-  void setLang(SupportedLocale lang) {
-    if (_language != lang) {
-      _language = lang;
-    }
-  }
-
   /// Retrive the latest worldstate using [GamePlatforms]
   Future<Worldstate> getWorldstate(GamePlatforms platform,
       {SupportedLocale language = SupportedLocale.en}) async {
     final path = platform.asString;
-    final response = await _warframestat<Map<String, dynamic>>(path);
+    final response =
+        await _warframestat<Map<String, dynamic>>(path, language: language);
 
     return toWorldstate(response);
   }
@@ -66,7 +58,9 @@ class WarframestatClient {
   }) async {
     final term = name.toLowerCase();
     final response = await _warframestat<Map<String, dynamic>>(
-        '${platform.asString}/rivens/search/$term');
+      '${platform.asString}/rivens/search/$term',
+      language: language,
+    );
 
     return toRivens(response);
   }

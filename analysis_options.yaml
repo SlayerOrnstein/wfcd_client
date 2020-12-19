@@ -4,10 +4,13 @@ analyzer:
   strong-mode:
     implicit-casts: false
     implicit-dynamic: false
+  exclude:
+    - lib/src/models/**/*.g.dart
   errors:
     missing_required_param: warning
 
 linter:
   rules:
-    - prefer_typing_uninitialized_variables
-    - use_function_type_syntax_for_parameters
+    public_member_api_docs: false
+    prefer_typing_uninitialized_variables: true
+    use_function_type_syntax_for_parameters: true

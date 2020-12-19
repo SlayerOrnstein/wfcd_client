@@ -1,14 +1,14 @@
-library wfcd_client;
-
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
-import 'package:warframestat_api_models/warframestat_api_models.dart';
 
+import 'entities.dart';
 import 'src/utils/enums.dart';
+import 'src/utils/extensions.dart';
 import 'src/utils/json_utils.dart';
 
 export 'src/utils/enums.dart';
+export 'src/utils/extensions.dart';
 export 'src/utils/json_utils.dart';
 
 const _endpoint = 'https://api.warframestat.us';

@@ -1,4 +1,5 @@
-import 'package:warframestat_api_models/warframestat_api_models.dart';
+import '../../entities.dart';
+import '../../models.dart';
 
 final _gunReg = RegExp(r'(LongGuns)|(Pistols)|(SpaceGuns)|(SentinelWeapons)');
 final _meleeReg = RegExp(r'(Melee)|(SpaceMelee)');

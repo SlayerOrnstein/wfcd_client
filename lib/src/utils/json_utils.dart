@@ -44,7 +44,7 @@ List<SynthTarget> toSynthTargets(List<dynamic> data) {
 Item toBaseItem(Map<String, dynamic> item) {
   if (item.containsKey('productCategory')) {
     return _productCategoryItem(item);
-  } else if ((item['category'] as String).contains('Mods')) {
+  } else if ((item['category'] as String).contains(_mods)) {
     return ModModel.fromJson(item);
   } else {
     return BasicItemModel.fromJson(item);
@@ -70,21 +70,19 @@ Item _productCategoryItem(Map<String, dynamic> item) {
 }
 
 /// Serializes the appropriate [BaseItem] into a [Map<String, dynamic>]
-Item fromBaseItem(Item item) {
-  final category = item.productCategory ?? item.category;
-
-  if (category.contains(_gunReg)) {
-    return item as ProjectileWeapon;
-  } else if (category.contains(_meleeReg)) {
-    return item as MeleeWeapon;
-  } else if (category.contains(_frameReg)) {
-    return item as Warframe;
-  } else if (category.contains(_exSuits)) {
-    return item as HeavyPowerSuit;
-  } else if (category.contains(_mods)) {
-    return item as Mod;
+Map<String, dynamic> fromBaseItem(Item item) {
+  if (item is ProjectileWeapon) {
+    return (item as ProjectileWeaponModel).toJson();
+  } else if (item is MeleeWeapon) {
+    return (item as MeleeWeaponModel).toJson();
+  } else if (item is Warframe) {
+    return (item as WarframeModel).toJson();
+  } else if (item is HeavyPowerSuit) {
+    return (item as HeavyPowerSuitModel).toJson();
+  } else if (item is Mod) {
+    return (item as ModModel).toJson();
   } else {
-    return item;
+    return (item as BasicItemModel).toJson();
   }
 }
 

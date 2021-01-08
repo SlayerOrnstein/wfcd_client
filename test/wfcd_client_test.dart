@@ -1,4 +1,6 @@
 import 'package:test/test.dart';
+import 'package:wfcd_client/entities.dart';
+import 'package:wfcd_client/models.dart';
 import 'package:wfcd_client/wfcd_client.dart';
 
 import 'fixtures.dart';
@@ -45,6 +47,33 @@ void main() {
       final rivens = await clientApi.searchRivens('Arca Plasmor');
 
       expect(rivens, equals(rivenSearchTestModel()));
+    });
+  });
+
+  group('Test json utils', () {
+    test('Test item deserelization', () {
+      final item = searchResultsTestModels.firstWhere((e) => e is BasicItem);
+      final frame = searchResultsTestModels.firstWhere((e) => e is Warframe);
+      final mod = searchResultsTestModels.firstWhere((e) => e is Mod);
+      final weapon =
+          searchResultsTestModels.firstWhere((e) => e is ProjectileWeapon);
+      final archwing =
+          searchResultsTestModels.firstWhere((e) => e is HeavyPowerSuit);
+      final melee = searchResultsTestModels.firstWhere((e) => e is MeleeWeapon);
+
+      final itemJson = fromBaseItem(item);
+      final frameJson = fromBaseItem(frame);
+      final modJson = fromBaseItem(mod);
+      final weaponJson = fromBaseItem(weapon);
+      final archwingJson = fromBaseItem(archwing);
+      final meleeJson = fromBaseItem(melee);
+
+      expect(itemJson, (item as BasicItemModel).toJson());
+      expect(frameJson, (frame as WarframeModel).toJson());
+      expect(modJson, (mod as ModModel).toJson());
+      expect(weaponJson, (weapon as ProjectileWeaponModel).toJson());
+      expect(archwingJson, (archwing as HeavyPowerSuitModel).toJson());
+      expect(meleeJson, (melee as MeleeWeaponModel).toJson());
     });
   });
 }

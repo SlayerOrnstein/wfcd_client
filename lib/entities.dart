@@ -15,6 +15,7 @@ export 'src/entities/warframe_items/misc.dart';
 export 'src/entities/warframe_items/mod.dart';
 export 'src/entities/warframe_items/patch_log.dart';
 export 'src/entities/warframe_items/power_suits.dart';
+export 'src/entities/warframe_items/sol_node.dart';
 export 'src/entities/warframe_items/weapons.dart';
 export 'src/entities/worldstate/alert.dart';
 export 'src/entities/worldstate/arbitration.dart';

@@ -6,18 +6,21 @@ part of 'riven_roll_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-RivenRollModel _$RivenRollModelFromJson(Map<String, dynamic> json) {
-  return RivenRollModel(
-    itemType: json['itemType'] as String,
-    compatibility: json['compatibility'] as String,
-    rerolled: json['rerolled'] as bool,
-    avg: (json['avg'] as num)?.toDouble(),
-    stddev: (json['stddev'] as num)?.toDouble(),
-    median: (json['median'] as num)?.toDouble(),
-    min: json['min'] as int,
-    max: json['max'] as int,
-    pop: json['pop'] as int,
-  );
+RivenRollModel _$RivenRollModelFromJson(Map json) {
+  return $checkedNew('RivenRollModel', json, () {
+    final val = RivenRollModel(
+      itemType: $checkedConvert(json, 'itemType', (v) => v as String),
+      compatibility: $checkedConvert(json, 'compatibility', (v) => v as String),
+      rerolled: $checkedConvert(json, 'rerolled', (v) => v as bool),
+      avg: $checkedConvert(json, 'avg', (v) => (v as num).toDouble()),
+      stddev: $checkedConvert(json, 'stddev', (v) => (v as num).toDouble()),
+      median: $checkedConvert(json, 'median', (v) => (v as num).toDouble()),
+      min: $checkedConvert(json, 'min', (v) => v as int),
+      max: $checkedConvert(json, 'max', (v) => v as int),
+      pop: $checkedConvert(json, 'pop', (v) => v as int),
+    );
+    return val;
+  });
 }
 
 Map<String, dynamic> _$RivenRollModelToJson(RivenRollModel instance) =>

@@ -24,26 +24,46 @@ part 'worldstate_model.g.dart';
 @JsonSerializable()
 class WorldstateModel extends Worldstate {
   const WorldstateModel({
-    DateTime timestamp,
-    this.news,
-    this.events,
-    this.alerts,
-    this.sortie,
-    this.syndicateMissions,
-    this.fissures,
-    this.invasions,
-    this.voidTrader,
-    this.dailyDeals,
+    required DateTime timestamp,
+    required this.news,
+    required this.events,
+    required this.alerts,
+    required this.sortie,
+    required this.syndicateMissions,
+    required this.fissures,
+    required this.invasions,
+    required this.voidTrader,
+    required this.dailyDeals,
     this.persistentEnemies,
-    this.earthCycle,
-    this.cetusCycle,
-    this.constructionProgress,
-    this.vallisCycle,
-    this.nightwave,
+    required this.earthCycle,
+    required this.cetusCycle,
+    required this.constructionProgress,
+    required this.vallisCycle,
+    required this.nightwave,
+    required this.sentientOutposts,
     this.kuva,
-    this.sentientOutposts,
     this.arbitration,
-  }) : super(timestamp: timestamp);
+  }) : super(
+          timestamp: timestamp,
+          news: news,
+          events: events,
+          alerts: alerts,
+          sortie: sortie,
+          syndicateMissions: syndicateMissions,
+          fissures: fissures,
+          invasions: invasions,
+          voidTrader: voidTrader,
+          dailyDeals: dailyDeals,
+          persistentEnemies: persistentEnemies,
+          earthCycle: earthCycle,
+          cetusCycle: cetusCycle,
+          constructionProgress: constructionProgress,
+          vallisCycle: vallisCycle,
+          nightwave: nightwave,
+          sentientOutposts: sentientOutposts,
+          kuva: kuva,
+          arbitration: arbitration,
+        );
 
   factory WorldstateModel.fromJson(Map<String, dynamic> json) {
     return _$WorldstateModelFromJson(json);
@@ -77,7 +97,7 @@ class WorldstateModel extends Worldstate {
   final List<DarvoDealModel> dailyDeals;
 
   @override
-  final List<PersistentEnemyModel> persistentEnemies;
+  final List<PersistentEnemyModel>? persistentEnemies;
 
   @override
   final EarthModel earthCycle;
@@ -98,10 +118,10 @@ class WorldstateModel extends Worldstate {
   final SentientOutpostModel sentientOutposts;
 
   @override
-  final List<KuvaModel> kuva;
+  final List<KuvaModel>? kuva;
 
   @override
-  final ArbitrationModel arbitration;
+  final ArbitrationModel? arbitration;
 
   Map<String, dynamic> toJson() => _$WorldstateModelToJson(this);
 }

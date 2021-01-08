@@ -8,8 +8,8 @@ part 'synth_target_model.g.dart';
 @JsonSerializable()
 class SynthTargetModel extends SynthTarget {
   const SynthTargetModel({
-    String name,
-    this.locationModels,
+    required String name,
+    required this.locationModels,
   }) : super(name: name, locations: locationModels);
 
   factory SynthTargetModel.fromJson(Map<String, dynamic> json) {

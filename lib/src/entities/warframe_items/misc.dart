@@ -2,27 +2,55 @@ import 'abstract_item.dart';
 import 'component.dart';
 import 'patch_log.dart';
 
-class BasicItem extends FoundryItem {
-  const BasicItem({
-    String uniqueName,
-    String name,
-    String description,
-    String type,
-    String imageName,
-    String productCategory,
-    String category,
-    bool tradable,
-    int masteryReq,
-    List<Component> components,
-    this.drops,
-    int buildPrice,
-    int buildTime,
-    int skipBuildTimePrice,
-    int buildQuantity,
-    bool consumeOnBuild,
-    List<Patchlog> patchlogs,
-    String wikiaUrl,
-    String wikiaThumbnail,
+class MiscItem extends Item {
+  const MiscItem({
+    required String uniqueName,
+    required String name,
+    required String description,
+    required String type,
+    String? imageName,
+    String? productCategory,
+    required String category,
+    required bool tradable,
+    List<Patchlog>? patchlogs,
+    String? wikiaUrl,
+    String? wikiaThumbnail,
+  }) : super(
+          uniqueName: uniqueName,
+          name: name,
+          description: description,
+          type: type,
+          imageName: imageName,
+          productCategory: productCategory,
+          category: category,
+          tradable: tradable,
+          patchlogs: patchlogs,
+          wikiaUrl: wikiaUrl,
+          wikiaThumbnail: wikiaThumbnail,
+        );
+}
+
+class MiscFoundryItem extends FoundryItem {
+  const MiscFoundryItem({
+    required String uniqueName,
+    required String name,
+    required String description,
+    required String type,
+    required String imageName,
+    String? productCategory,
+    required String category,
+    required bool tradable,
+    int? masteryReq,
+    List<Component>? components,
+    List<Drop>? drops,
+    required int buildPrice,
+    required int buildTime,
+    required int skipBuildTimePrice,
+    required int buildQuantity,
+    required bool consumeOnBuild,
+    List<Patchlog>? patchlogs,
+    String? wikiaUrl,
+    String? wikiaThumbnail,
   }) : super(
           uniqueName: uniqueName,
           name: name,
@@ -33,67 +61,14 @@ class BasicItem extends FoundryItem {
           category: category,
           tradable: tradable,
           masteryReq: masteryReq,
-          components: components,
+          components: components ?? const <Component>[],
           buildPrice: buildPrice,
           buildTime: buildTime,
           skipBuildTimePrice: skipBuildTimePrice,
           buildQuantity: buildQuantity,
           consumeOnBuild: consumeOnBuild,
-          patchlogs: patchlogs,
+          patchlogs: patchlogs ?? const <Patchlog>[],
           wikiaUrl: wikiaUrl,
           wikiaThumbnail: wikiaThumbnail,
         );
-
-  final List<Drop> drops;
-
-  @override
-  List<Object> get props => super.props..add(drops);
-}
-
-class SolNode extends Item {
-  const SolNode({
-    String uniqueName,
-    String name,
-    String description,
-    String type,
-    String imageName,
-    String category,
-    bool tradable,
-    this.systemIndex,
-    this.systemName,
-    this.masterReq,
-    this.missionIndex,
-    this.factionIndex,
-    this.minEnemyLevel,
-    this.maxEnemyLevel,
-    List<Patchlog> patchlogs,
-  }) : super(
-          uniqueName: uniqueName,
-          name: name,
-          description: description,
-          imageName: imageName,
-          type: type,
-          category: category,
-          tradable: tradable,
-          patchlogs: patchlogs,
-        );
-
-  final int systemIndex;
-  final String systemName;
-  final int masterReq, missionIndex, factionIndex;
-  final int minEnemyLevel, maxEnemyLevel;
-
-  @override
-  List<Object> get props {
-    return super.props
-      ..addAll([
-        systemIndex,
-        systemName,
-        masterReq,
-        missionIndex,
-        factionIndex,
-        minEnemyLevel,
-        maxEnemyLevel,
-      ]);
-  }
 }

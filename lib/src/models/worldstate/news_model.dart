@@ -7,16 +7,16 @@ part 'news_model.g.dart';
 @JsonSerializable()
 class OrbiterNewsModel extends OrbiterNews {
   const OrbiterNewsModel({
-    String id,
-    String message,
-    String link,
-    String imageLink,
-    bool priority,
-    DateTime date,
-    bool update,
-    bool primeAccess,
-    bool stream,
-    Map<String, String> translations,
+    required String id,
+    required String message,
+    required String link,
+    required String imageLink,
+    required bool priority,
+    required DateTime date,
+    required bool update,
+    required bool primeAccess,
+    required bool stream,
+    required Map<String, String> translations,
   }) : super(
           id: id,
           message: message,

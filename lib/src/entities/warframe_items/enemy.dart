@@ -6,20 +6,20 @@ import 'patch_log.dart';
 
 class Enemy extends Item {
   const Enemy({
-    String uniqueName,
-    String name,
-    String description,
-    String type,
-    String imageName,
-    String category,
-    bool tradable,
-    this.health,
-    this.shield,
-    this.armor,
-    this.regionBits,
-    this.resistances,
-    List<Patchlog> patchlogs,
-    this.drops,
+    required String uniqueName,
+    required String name,
+    required String description,
+    required String type,
+    required String imageName,
+    required String category,
+    required bool tradable,
+    required this.health,
+    required this.shield,
+    required this.armor,
+    required this.regionBits,
+    required this.resistances,
+    List<Patchlog>? patchlogs,
+    List<Drop>? drops,
   }) : super(
           uniqueName: uniqueName,
           name: name,
@@ -33,11 +33,10 @@ class Enemy extends Item {
 
   final int health, shield, armor;
   final int regionBits;
-  final List<Drop> drops;
   final List<Resistances> resistances;
 
   @override
-  List<Object> get props {
+  List<Object?> get props {
     return super.props
       ..addAll([
         health,
@@ -52,9 +51,9 @@ class Enemy extends Item {
 
 class Resistances extends Equatable {
   const Resistances({
-    this.amount,
-    this.type,
-    this.affectors,
+    required this.amount,
+    required this.type,
+    required this.affectors,
   });
 
   final int amount;
@@ -62,15 +61,15 @@ class Resistances extends Equatable {
   final List<Affectors> affectors;
 
   @override
-  List<Object> get props => [amount, type, affectors];
+  List<Object?> get props => [amount, type, affectors];
 }
 
 class Affectors extends Equatable {
-  const Affectors({this.element, this.modifier});
+  const Affectors({required this.element, required this.modifier});
 
   final String element;
   final double modifier;
 
   @override
-  List<Object> get props => [element, modifier];
+  List<Object?> get props => [element, modifier];
 }

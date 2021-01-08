@@ -1,16 +1,64 @@
 import '../../entities.dart';
 import '../../models.dart';
 
+final _companion = RegExp(r'(Sentinels)|(KubrowPets)');
+final _exSuits = RegExp(r'(SpaceSuits)|(MechSuits)');
+final _frameReg = RegExp(r'\bSuits\b');
 final _gunReg = RegExp(r'(LongGuns)|(Pistols)|(SpaceGuns)|(SentinelWeapons)');
 final _meleeReg = RegExp(r'(Melee)|(SpaceMelee)');
-final _frameReg = RegExp(r'\bSuits\b');
-final _exSuits = RegExp(r'(SpaceSuits)|(MechSuits)');
-final _companion = RegExp(r'(Sentinels)|(KubrowPets)');
 final _mods = RegExp(r'Mods');
+
+/// Serializes the appropriate [BaseItem] into a [Map<String, dynamic>]
+Map<String, dynamic> fromBaseItem(Item item) {
+  if (item is ProjectileWeapon) {
+    return (item as ProjectileWeaponModel).toJson();
+  } else if (item is MeleeWeapon) {
+    return (item as MeleeWeaponModel).toJson();
+  } else if (item is Warframe) {
+    return (item as WarframeModel).toJson();
+  } else if (item is HeavyPowerSuit) {
+    return (item as HeavyPowerSuitModel).toJson();
+  } else if (item is Mod) {
+    return (item as ModModel).toJson();
+  } else {
+    if (item is MiscFoundryItem) {
+      return (item as MiscFoundryItemModel).toJson();
+    } else {
+      return (item as MiscItemModel).toJson();
+    }
+  }
+}
+
+List<Map<String, dynamic>> fromBaseItems(List<Item> items) {
+  return items.map(fromBaseItem).toList();
+}
+
+List<Map<String, dynamic>> fromDrops(List<SlimDrop> drops) {
+  return drops.map((e) => (e as SlimDropModel).toJson()).toList();
+}
+
+List<Map<String, dynamic>> fromSynthTargets(List<SynthTarget> targets) {
+  return targets.map((e) => (e as SynthTargetModel).toJson()).toList();
+}
+
+/// Serializes giving json values into their proper [BaseItem] type
+Item toBaseItem(Map<String, dynamic> item) {
+  if (item.containsKey('productCategory')) {
+    return _productCategoryItem(item);
+  } else if ((item['category'] as String).contains(_mods)) {
+    return ModModel.fromJson(item);
+  } else {
+    if (item.containsKey('consumeOnBuild')) {
+      return MiscFoundryItemModel.fromJson(item);
+    } else {
+      return MiscItemModel.fromJson(item);
+    }
+  }
+}
 
 /// Converts a json decoded list into [BaseItem] objects
 List<Item> toBaseItems(List<dynamic> data) {
-  return data.map<Item>((dynamic i) {
+  return data.map((dynamic i) {
     return toBaseItem(i as Map<String, dynamic>);
   }).toList();
 }
@@ -20,6 +68,16 @@ List<SlimDrop> toDrops(List<dynamic> data) {
   return data
       .map((dynamic e) => SlimDropModel.fromJson(e as Map<String, dynamic>))
       .toList();
+}
+
+Map<String, dynamic> fromRivens(List<Riven> rivens) {
+  final data = <String, dynamic>{};
+
+  for (final riven in rivens) {
+    data[riven.unrolled.compatibility] = (riven as RivenDataModel).toJson();
+  }
+
+  return data;
 }
 
 /// Converts Riven rolls of riven weapon type to [RivenRoll]
@@ -40,15 +98,9 @@ List<SynthTarget> toSynthTargets(List<dynamic> data) {
   }).toList();
 }
 
-/// Serializes giving json values into their proper [BaseItem] type
-Item toBaseItem(Map<String, dynamic> item) {
-  if (item.containsKey('productCategory')) {
-    return _productCategoryItem(item);
-  } else if ((item['category'] as String).contains(_mods)) {
-    return ModModel.fromJson(item);
-  } else {
-    return BasicItemModel.fromJson(item);
-  }
+/// Serializes worldstate json into a [Worldstate] object
+Worldstate toWorldstate(Map<String, dynamic> state) {
+  return WorldstateModel.fromJson(state);
 }
 
 Item _productCategoryItem(Map<String, dynamic> item) {
@@ -65,28 +117,10 @@ Item _productCategoryItem(Map<String, dynamic> item) {
   } else if (category.contains(_companion)) {
     return CompanionModel.fromJson(item);
   } else {
-    return BasicItemModel.fromJson(item);
+    if (item.containsKey('consumeOnBuild')) {
+      return MiscFoundryItemModel.fromJson(item);
+    } else {
+      return MiscItemModel.fromJson(item);
+    }
   }
-}
-
-/// Serializes the appropriate [BaseItem] into a [Map<String, dynamic>]
-Map<String, dynamic> fromBaseItem(Item item) {
-  if (item is ProjectileWeapon) {
-    return (item as ProjectileWeaponModel).toJson();
-  } else if (item is MeleeWeapon) {
-    return (item as MeleeWeaponModel).toJson();
-  } else if (item is Warframe) {
-    return (item as WarframeModel).toJson();
-  } else if (item is HeavyPowerSuit) {
-    return (item as HeavyPowerSuitModel).toJson();
-  } else if (item is Mod) {
-    return (item as ModModel).toJson();
-  } else {
-    return (item as BasicItemModel).toJson();
-  }
-}
-
-/// Serializes worldstate json into a [Worldstate] object
-Worldstate toWorldstate(Map<String, dynamic> state) {
-  return WorldstateModel.fromJson(state);
 }

@@ -8,16 +8,16 @@ part 'mission_model.g.dart';
 @JsonSerializable()
 class MissionModel extends Mission {
   const MissionModel({
-    String node,
-    String type,
-    String faction,
-    int minEnemyLevel,
-    int maxEnemyLevel,
-    int maxWaveNum,
-    bool nightmare,
-    bool archwingRequired,
+    required String node,
+    required String type,
+    required String faction,
+    int? minEnemyLevel,
+    int? maxEnemyLevel,
+    int? maxWaveNum,
+    bool? nightmare,
+    bool? archwingRequired,
     this.reward,
-    String exclusiveWeapon,
+    String? exclusiveWeapon,
   }) : super(
           node: node,
           type: type,
@@ -28,6 +28,7 @@ class MissionModel extends Mission {
           nightmare: nightmare,
           archwingRequired: archwingRequired,
           exclusiveWeapon: exclusiveWeapon,
+          reward: reward,
         );
 
   factory MissionModel.fromJson(Map<String, dynamic> json) {
@@ -35,7 +36,7 @@ class MissionModel extends Mission {
   }
 
   @override
-  final RewardModel reward;
+  final RewardModel? reward;
 
   Map<String, dynamic> toJson() => _$MissionModelToJson(this);
 }

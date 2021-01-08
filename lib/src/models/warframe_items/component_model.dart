@@ -7,12 +7,14 @@ part 'component_model.g.dart';
 @JsonSerializable()
 class ComponentModel extends Component {
   const ComponentModel({
-    String uniqueName,
-    String name,
-    String description,
-    num itemCount,
-    String imageName,
-    bool tradable,
+    required String uniqueName,
+    required String name,
+    required String description,
+    required int itemCount,
+    required String imageName,
+    required bool tradable,
+    String? type,
+    String? category,
     this.drops,
   }) : super(
           uniqueName: uniqueName,
@@ -21,6 +23,8 @@ class ComponentModel extends Component {
           itemCount: itemCount,
           imageName: imageName,
           tradable: tradable,
+          type: type,
+          category: category,
           drops: drops,
         );
 
@@ -28,7 +32,7 @@ class ComponentModel extends Component {
       _$ComponentModelFromJson(json);
 
   @override
-  final List<DropModel> drops;
+  final List<DropModel>? drops;
 
   Map<String, dynamic> toJson() => _$ComponentModelToJson(this);
 }
@@ -36,11 +40,11 @@ class ComponentModel extends Component {
 @JsonSerializable()
 class DropModel extends Drop {
   const DropModel({
-    String location,
-    String type,
-    String rarity,
-    String rotation,
-    double chance,
+    required String location,
+    required String type,
+    required String rarity,
+     String? rotation,
+    required double chance,
   }) : super(
           location: location,
           type: type,

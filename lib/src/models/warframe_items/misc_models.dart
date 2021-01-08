@@ -7,27 +7,64 @@ import 'patch_log_model.dart';
 part 'misc_models.g.dart';
 
 @JsonSerializable()
-class BasicItemModel extends BasicItem {
-  const BasicItemModel({
-    String uniqueName,
-    String name,
-    String description,
-    String type,
-    String imageName,
-    String productCategory,
-    String category,
-    bool tradable,
-    int masteryReq,
-    this.components,
-    this.drops,
-    int buildPrice,
-    int buildTime,
-    int skipBuildTimePrice,
-    int buildQuantity,
-    bool consumeOnBuild,
+class MiscItemModel extends MiscItem {
+  MiscItemModel({
+    required String uniqueName,
+    required String name,
+    required String description,
+    required String type,
+    String? imageName,
+    String? productCategory,
+    required String category,
+    required bool tradable,
     this.patchlogs,
-    String wikiaUrl,
-    String wikiaThumbnail,
+    String? wikiaUrl,
+    String? wikiaThumbnail,
+  }) : super(
+          uniqueName: uniqueName,
+          name: name,
+          description: description,
+          type: type,
+          imageName: imageName,
+          productCategory: productCategory,
+          category: category,
+          tradable: tradable,
+          patchlogs: patchlogs,
+          wikiaUrl: wikiaUrl,
+          wikiaThumbnail: wikiaThumbnail,
+        );
+
+  factory MiscItemModel.fromJson(Map<String, dynamic> json) {
+    return _$MiscItemModelFromJson(json);
+  }
+
+  @override
+  final List<PatchlogModel>? patchlogs;
+
+  Map<String, dynamic> toJson() => _$MiscItemModelToJson(this);
+}
+
+@JsonSerializable()
+class MiscFoundryItemModel extends MiscFoundryItem {
+  const MiscFoundryItemModel({
+    required String uniqueName,
+    required String name,
+    required String description,
+    required String type,
+    required String imageName,
+    String? productCategory,
+    required String category,
+    required bool tradable,
+    int? masteryReq,
+    this.drops,
+    required int buildPrice,
+    required int buildTime,
+    required int skipBuildTimePrice,
+    required int buildQuantity,
+    required bool consumeOnBuild,
+    this.patchlogs,
+    String? wikiaUrl,
+    String? wikiaThumbnail,
   }) : super(
           uniqueName: uniqueName,
           name: name,
@@ -47,64 +84,15 @@ class BasicItemModel extends BasicItem {
           wikiaThumbnail: wikiaThumbnail,
         );
 
-  factory BasicItemModel.fromJson(Map<String, dynamic> json) {
-    return _$BasicItemModelFromJson(json);
+  factory MiscFoundryItemModel.fromJson(Map<String, dynamic> json) {
+    return _$MiscFoundryItemModelFromJson(json);
   }
 
   @override
-  final List<ComponentModel> components;
+  final List<PatchlogModel>? patchlogs;
 
   @override
-  final List<PatchlogModel> patchlogs;
+  final List<DropModel>? drops;
 
-  @override
-  final List<DropModel> drops;
-
-  Map<String, dynamic> toJson() => _$BasicItemModelToJson(this);
-}
-
-@JsonSerializable()
-class SolNodeModel extends SolNode {
-  const SolNodeModel({
-    String uniqueName,
-    String name,
-    String description,
-    String type,
-    String imageName,
-    String category,
-    bool tradable,
-    int systemIndex,
-    String systemName,
-    int masterReq,
-    int missionIndex,
-    int factionIndex,
-    int minEnemyLevel,
-    int maxEnemyLevel,
-    this.patchlogs,
-  }) : super(
-          uniqueName: uniqueName,
-          name: name,
-          description: description,
-          imageName: imageName,
-          type: type,
-          category: category,
-          tradable: tradable,
-          patchlogs: patchlogs,
-          systemIndex: systemIndex,
-          systemName: systemName,
-          masterReq: masterReq,
-          missionIndex: missionIndex,
-          factionIndex: factionIndex,
-          minEnemyLevel: minEnemyLevel,
-          maxEnemyLevel: maxEnemyLevel,
-        );
-
-  factory SolNodeModel.fromJson(Map<String, dynamic> json) {
-    return _$SolNodeModelFromJson(json);
-  }
-
-  @override
-  final List<PatchlogModel> patchlogs;
-
-  Map<String, dynamic> toJson() => _$SolNodeModelToJson(this);
+  Map<String, dynamic> toJson() => _$MiscFoundryItemModelToJson(this);
 }

@@ -6,20 +6,24 @@ part of 'sentient_outpost_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-SentientOutpostModel _$SentientOutpostModelFromJson(Map<String, dynamic> json) {
-  return SentientOutpostModel(
-    id: json['id'] as String,
-    activation: json['activation'] == null
-        ? null
-        : DateTime.parse(json['activation'] as String),
-    expiry: json['expiry'] == null
-        ? null
-        : DateTime.parse(json['expiry'] as String),
-    active: json['active'] as bool,
-    mission: json['mission'] == null
-        ? null
-        : MissionModel.fromJson(json['mission'] as Map<String, dynamic>),
-  );
+SentientOutpostModel _$SentientOutpostModelFromJson(Map json) {
+  return $checkedNew('SentientOutpostModel', json, () {
+    final val = SentientOutpostModel(
+      id: $checkedConvert(json, 'id', (v) => v as String),
+      activation: $checkedConvert(
+          json, 'activation', (v) => DateTime.parse(v as String)),
+      expiry:
+          $checkedConvert(json, 'expiry', (v) => DateTime.parse(v as String)),
+      active: $checkedConvert(json, 'active', (v) => v as bool),
+      mission: $checkedConvert(
+          json,
+          'mission',
+          (v) => v == null
+              ? null
+              : MissionModel.fromJson(Map<String, dynamic>.from(v as Map))),
+    );
+    return val;
+  });
 }
 
 Map<String, dynamic> _$SentientOutpostModelToJson(
@@ -29,5 +33,5 @@ Map<String, dynamic> _$SentientOutpostModelToJson(
       'activation': instance.activation?.toIso8601String(),
       'expiry': instance.expiry?.toIso8601String(),
       'active': instance.active,
-      'mission': instance.mission,
+      'mission': instance.mission?.toJson(),
     };

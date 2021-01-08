@@ -7,13 +7,13 @@ part 'patch_log_model.g.dart';
 @JsonSerializable()
 class PatchlogModel extends Patchlog {
   const PatchlogModel({
-    String name,
-    DateTime date,
-    String url,
-    String imgUrl,
-    String additions,
-    String changes,
-    String fixes,
+    required String name,
+    required DateTime date,
+    required String url,
+    String? imgUrl,
+    required String additions,
+    required String changes,
+    required String fixes,
   }) : super(
           name: name,
           date: date,

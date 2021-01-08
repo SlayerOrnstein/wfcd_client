@@ -4,11 +4,11 @@ class Job extends Equatable {
   const Job(
     this._rewardPool, {
     this.type,
-    this.enemyLevels,
-    this.standingStages,
+    required this.enemyLevels,
+    required this.standingStages,
   });
 
-  final String type;
+  final String? type;
   final dynamic _rewardPool;
   final List<int> enemyLevels, standingStages;
 
@@ -22,5 +22,5 @@ class Job extends Equatable {
   int get totalStanding => standingStages.fold(0, (a, b) => a + b);
 
   @override
-  List<Object> get props => [type, rewardPool, enemyLevels, standingStages];
+  List<Object?> get props => [type, rewardPool, enemyLevels, standingStages];
 }

@@ -12,7 +12,7 @@ const _headers = {
 
 class MockClient extends Mock implements http.Client {
   @override
-  Future<http.Response> get(dynamic url, {Map<String, String> headers}) async {
+  Future<http.Response> get(dynamic url, {Map<String, String>? headers}) async {
     final uri = Uri.parse(url as String);
     final path = uri.path;
 

@@ -18,7 +18,7 @@ class WarframestatClient {
   /// Main entry for Warframestat API Dart wrapper
   /// the language defaults to [SupportedLocale.en] (English).
   /// language can be set by calling [WarframestateClient.setLang]
-  WarframestatClient({http.Client client}) : _client = client ?? http.Client();
+  WarframestatClient({http.Client? client}) : _client = client ?? http.Client();
 
   final http.Client _client;
 

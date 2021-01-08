@@ -9,18 +9,18 @@ part 'enemy_model.g.dart';
 @JsonSerializable()
 class EnemyModel extends Enemy {
   const EnemyModel({
-    String uniqueName,
-    String name,
-    String description,
-    String type,
-    String imageName,
-    String category,
-    bool tradable,
-    int health,
-    int shield,
-    int armor,
-    int regionBits,
-    this.resistances,
+    required String uniqueName,
+    required String name,
+    required String description,
+    required String type,
+    required String imageName,
+    required String category,
+    required bool tradable,
+    required int health,
+    required int shield,
+    required int armor,
+    required int regionBits,
+    required this.resistances,
     this.patchlogs,
     this.drops,
   }) : super(
@@ -47,10 +47,10 @@ class EnemyModel extends Enemy {
   final List<ResistancesModel> resistances;
 
   @override
-  final List<DropModel> drops;
+  final List<DropModel>? drops;
 
   @override
-  final List<PatchlogModel> patchlogs;
+  final List<PatchlogModel>? patchlogs;
 
   Map<String, dynamic> toJson() => _$EnemyModelToJson(this);
 }
@@ -58,9 +58,9 @@ class EnemyModel extends Enemy {
 @JsonSerializable()
 class ResistancesModel extends Resistances {
   const ResistancesModel({
-    int amount,
-    String type,
-    this.affectors,
+    required int amount,
+    required String type,
+    required this.affectors,
   }) : super(amount: amount, type: type, affectors: affectors);
 
   factory ResistancesModel.fromJson(Map<String, dynamic> json) {
@@ -75,7 +75,7 @@ class ResistancesModel extends Resistances {
 
 @JsonSerializable()
 class AffectorsModel extends Affectors {
-  const AffectorsModel({String element, double modifier})
+  const AffectorsModel({required String element, required double modifier})
       : super(element: element, modifier: modifier);
 
   factory AffectorsModel.fromJson(Map<String, dynamic> json) {

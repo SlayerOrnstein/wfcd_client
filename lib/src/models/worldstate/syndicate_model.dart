@@ -8,18 +8,19 @@ part 'syndicate_model.g.dart';
 @JsonSerializable()
 class SyndicateModel extends Syndicate {
   const SyndicateModel({
-    String id,
-    DateTime activation,
-    DateTime expiry,
-    this.syndicate,
-    bool active,
-    this.jobs,
+    required String id,
+    required DateTime activation,
+    required DateTime expiry,
+    required this.syndicate,
+    required bool active,
+    required this.jobs,
   }) : super(
           id: id,
           activation: activation,
           expiry: expiry,
           name: syndicate,
           active: active,
+          jobs: jobs,
         );
 
   factory SyndicateModel.fromJson(Map<String, dynamic> json) {

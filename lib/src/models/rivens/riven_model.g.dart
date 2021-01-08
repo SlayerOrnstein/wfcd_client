@@ -6,19 +6,23 @@ part of 'riven_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-RivenDataModel _$RivenDataModelFromJson(Map<String, dynamic> json) {
-  return RivenDataModel(
-    rerolledModel: json['rerolled'] == null
-        ? null
-        : RivenRollModel.fromJson(json['rerolled'] as Map<String, dynamic>),
-    unrolledModel: json['unrolled'] == null
-        ? null
-        : RivenRollModel.fromJson(json['unrolled'] as Map<String, dynamic>),
-  );
+RivenDataModel _$RivenDataModelFromJson(Map json) {
+  return $checkedNew('RivenDataModel', json, () {
+    final val = RivenDataModel(
+      rerolledModel: $checkedConvert(json, 'rerolled',
+          (v) => RivenRollModel.fromJson(Map<String, dynamic>.from(v as Map))),
+      unrolledModel: $checkedConvert(json, 'unrolled',
+          (v) => RivenRollModel.fromJson(Map<String, dynamic>.from(v as Map))),
+    );
+    return val;
+  }, fieldKeyMap: const {
+    'rerolledModel': 'rerolled',
+    'unrolledModel': 'unrolled'
+  });
 }
 
 Map<String, dynamic> _$RivenDataModelToJson(RivenDataModel instance) =>
     <String, dynamic>{
-      'rerolled': instance.rerolledModel,
-      'unrolled': instance.unrolledModel,
+      'rerolled': instance.rerolledModel.toJson(),
+      'unrolled': instance.unrolledModel.toJson(),
     };

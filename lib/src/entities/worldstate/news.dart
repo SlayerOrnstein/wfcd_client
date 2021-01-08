@@ -2,16 +2,16 @@ import '../../../objects.dart';
 
 class OrbiterNews extends WorldstateObject {
   const OrbiterNews({
-    String id,
-    this.message,
-    this.link,
-    this.imageLink,
-    this.priority,
-    this.date,
-    this.update,
-    this.primeAccess,
-    this.stream,
-    this.translations,
+    required String id,
+    required this.message,
+    required this.link,
+    required this.imageLink,
+    required this.priority,
+    required this.date,
+    required this.update,
+    required this.primeAccess,
+    required this.stream,
+    required this.translations,
   }) : super(id: id);
 
   final String message, link, imageLink;
@@ -44,7 +44,7 @@ class OrbiterNews extends WorldstateObject {
   }
 
   @override
-  List<Object> get props {
+  List<Object?> get props {
     return super.props
       ..addAll([
         message,

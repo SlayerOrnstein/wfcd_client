@@ -8,16 +8,17 @@ part 'alert_model.g.dart';
 @JsonSerializable()
 class AlertModel extends Alert {
   const AlertModel({
-    String id,
-    DateTime activation,
-    DateTime expiry,
-    bool active,
-    this.mission,
+    required String id,
+    required DateTime activation,
+    required DateTime expiry,
+    required bool active,
+    required this.mission,
   }) : super(
           id: id,
           activation: activation,
           expiry: expiry,
           active: active,
+          mission: mission,
         );
 
   factory AlertModel.fromJson(Map<String, dynamic> json) {

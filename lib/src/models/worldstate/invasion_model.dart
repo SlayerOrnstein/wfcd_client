@@ -8,25 +8,25 @@ part 'invasion_model.g.dart';
 @JsonSerializable()
 class InvasionModel extends Invasion {
   const InvasionModel({
-    String id,
-    DateTime activation,
-    DateTime expiry,
-    String node,
-    String desc,
-    String attackingFaction,
-    String defendingFaction,
-    this.attacker,
-    this.defender,
-    String eta,
-    bool vsInfestation,
-    bool completed,
-    double completion,
-    int count,
+    required String id,
+    required DateTime activation,
+    required String node,
+    required String nodeKey,
+    required String desc,
+    required String attackingFaction,
+    required String defendingFaction,
+    required this.attacker,
+    required this.defender,
+    required String eta,
+    required bool vsInfestation,
+    required bool completed,
+    required double completion,
+    required int count,
   }) : super(
           id: id,
           activation: activation,
-          expiry: expiry,
           node: node,
+          nodeKey: nodeKey,
           desc: desc,
           attackingFaction: attackingFaction,
           defendingFaction: defendingFaction,
@@ -51,8 +51,11 @@ class InvasionModel extends Invasion {
 
 @JsonSerializable()
 class FactionModel extends Faction {
-  const FactionModel({this.reward, String faction, String factionKey})
-      : super(reward: reward, faction: faction, factionKey: factionKey);
+  const FactionModel({
+    required this.reward,
+    required String faction,
+    required String factionKey,
+  }) : super(reward: reward, faction: faction, factionKey: factionKey);
 
   factory FactionModel.fromJson(Map<String, dynamic> json) {
     return _$FactionModelFromJson(json);

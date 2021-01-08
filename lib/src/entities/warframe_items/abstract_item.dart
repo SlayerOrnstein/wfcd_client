@@ -7,15 +7,16 @@ import 'patch_log.dart';
 @immutable
 abstract class Item extends Equatable {
   const Item({
-    this.uniqueName,
-    this.name,
-    this.description,
+    required this.uniqueName,
+    required this.name,
+    required this.description,
     this.imageName,
-    this.tradable,
-    this.excludeFromCodex = false,
-    this.type,
+    required this.tradable,
+    this.drops,
+    this.excludeFromCodex,
+    required this.type,
     this.productCategory,
-    this.category,
+    required this.category,
     this.patchlogs,
     this.wikiaUrl,
     this.wikiaThumbnail,
@@ -24,14 +25,15 @@ abstract class Item extends Equatable {
   final String uniqueName;
   final String name;
   final String description;
-  final bool excludeFromCodex;
+  final bool? excludeFromCodex;
   final String type;
-  final String imageName;
-  final String productCategory;
+  final String? imageName;
+  final String? productCategory;
   final String category;
   final bool tradable;
-  final List<Patchlog> patchlogs;
-  final String wikiaUrl, wikiaThumbnail;
+  final List<Drop>? drops;
+  final List<Patchlog>? patchlogs;
+  final String? wikiaUrl, wikiaThumbnail;
 
   String get imageUrl {
     const baseUrl = 'https://cdn.warframestat.us';
@@ -42,14 +44,16 @@ abstract class Item extends Equatable {
   }
 
   @override
-  List<Object> get props {
+  List<Object?> get props {
     return [
       uniqueName,
       name,
       description,
+      excludeFromCodex,
       type,
       imageName,
       productCategory,
+      drops,
       category,
       tradable,
       patchlogs,
@@ -62,24 +66,24 @@ abstract class Item extends Equatable {
 @immutable
 abstract class FoundryItem extends Item {
   const FoundryItem({
-    String uniqueName,
-    String name,
-    String description,
-    String type,
-    String imageName,
-    String productCategory,
-    String category,
-    bool tradable,
+    required String uniqueName,
+    required String name,
+    required String description,
+    required String type,
+    required String imageName,
+    String? productCategory,
+    required String category,
+    required bool tradable,
     this.masteryReq,
-    this.components,
-    this.buildPrice,
-    this.buildTime,
-    this.skipBuildTimePrice,
-    this.buildQuantity,
-    this.consumeOnBuild,
-    List<Patchlog> patchlogs,
-    String wikiaUrl,
-    String wikiaThumbnail,
+    required this.components,
+    required this.buildPrice,
+    required this.buildTime,
+    required this.skipBuildTimePrice,
+    required this.buildQuantity,
+    required this.consumeOnBuild,
+    List<Patchlog>? patchlogs,
+    String? wikiaUrl,
+    String? wikiaThumbnail,
   }) : super(
           uniqueName: uniqueName,
           name: name,
@@ -94,13 +98,13 @@ abstract class FoundryItem extends Item {
           wikiaThumbnail: wikiaThumbnail,
         );
 
-  final int masteryReq;
+  final int? masteryReq;
   final List<Component> components;
   final int buildPrice, buildTime, skipBuildTimePrice, buildQuantity;
   final bool consumeOnBuild;
 
   @override
-  List<Object> get props {
+  List<Object?> get props {
     return super.props
       ..addAll([
         masteryReq,

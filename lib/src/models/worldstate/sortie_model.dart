@@ -7,18 +7,19 @@ part 'sortie_model.g.dart';
 @JsonSerializable()
 class SortieModel extends Sortie {
   const SortieModel({
-    String id,
-    DateTime activation,
-    DateTime expiry,
-    String boss,
-    String faction,
-    this.variants,
+    required String id,
+    required DateTime activation,
+    required DateTime expiry,
+    required String boss,
+    required String faction,
+    required this.variants,
   }) : super(
           id: id,
           activation: activation,
           expiry: expiry,
           boss: boss,
           faction: faction,
+          variants: variants,
         );
 
   factory SortieModel.fromJson(Map<String, dynamic> json) {
@@ -34,10 +35,10 @@ class SortieModel extends Sortie {
 @JsonSerializable()
 class VariantModel extends Variant {
   const VariantModel({
-    String missionType,
-    String modifier,
-    String modifierDescription,
-    String node,
+    required String missionType,
+    required String modifier,
+    required String modifierDescription,
+    required String node,
   }) : super(
           missionType: missionType,
           modifier: modifier,

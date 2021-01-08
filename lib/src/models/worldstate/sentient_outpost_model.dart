@@ -8,16 +8,17 @@ part 'sentient_outpost_model.g.dart';
 @JsonSerializable()
 class SentientOutpostModel extends SentientOutpost {
   const SentientOutpostModel({
-    String id,
-    DateTime activation,
-    DateTime expiry,
-    bool active,
+    required String id,
+    required DateTime activation,
+    required DateTime expiry,
+    required bool active,
     this.mission,
   }) : super(
           id: id,
           activation: activation,
           expiry: expiry,
           active: active,
+          mission: mission,
         );
 
   factory SentientOutpostModel.fromJson(Map<String, dynamic> json) {
@@ -25,7 +26,7 @@ class SentientOutpostModel extends SentientOutpost {
   }
 
   @override
-  final MissionModel mission;
+  final MissionModel? mission;
 
   Map<String, dynamic> toJson() => _$SentientOutpostModelToJson(this);
 }

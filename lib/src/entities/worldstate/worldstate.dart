@@ -20,23 +20,23 @@ import 'void_trader.dart';
 
 class Worldstate extends Equatable {
   const Worldstate({
-    this.timestamp,
-    this.news,
-    this.events,
-    this.alerts,
-    this.sortie,
-    this.syndicateMissions,
-    this.fissures,
-    this.invasions,
-    this.voidTrader,
-    this.dailyDeals,
+    required this.timestamp,
+    required this.news,
+    required this.events,
+    required this.alerts,
+    required this.sortie,
+    required this.syndicateMissions,
+    required this.fissures,
+    required this.invasions,
+    required this.voidTrader,
+    required this.dailyDeals,
     this.persistentEnemies,
-    this.earthCycle,
-    this.cetusCycle,
-    this.constructionProgress,
-    this.vallisCycle,
-    this.nightwave,
-    this.sentientOutposts,
+    required this.earthCycle,
+    required this.cetusCycle,
+    required this.constructionProgress,
+    required this.vallisCycle,
+    required this.nightwave,
+    required this.sentientOutposts,
     this.kuva,
     this.arbitration,
   });
@@ -52,25 +52,25 @@ class Worldstate extends Equatable {
   final List<Invasion> invasions;
   final VoidTrader voidTrader;
   final List<DarvoDeal> dailyDeals;
-  final List<PersistentEnemy> persistentEnemies;
+  final List<PersistentEnemy>? persistentEnemies;
   final Earth earthCycle, cetusCycle;
   final ConstructionProgress constructionProgress;
   final Vallis vallisCycle;
   final Nightwave nightwave;
   final SentientOutpost sentientOutposts;
-  final List<Kuva> kuva;
-  final Arbitration arbitration;
+  final List<Kuva>? kuva;
+  final Arbitration? arbitration;
 
-  bool get activeAlerts => alerts?.isNotEmpty ?? false;
-  bool get activeArbitration => arbitration.node != null;
-  bool get activeEvents => events?.isNotEmpty ?? false;
+  bool get activeAlerts => alerts.isNotEmpty;
+  bool get activeArbitration => arbitration?.node != null;
+  bool get activeEvents => events.isNotEmpty;
   bool get activeKuva => kuva?.isNotEmpty ?? false;
-  bool get anomalyDetected => sentientOutposts.active ?? false;
-  bool get isSaleActive => dailyDeals?.isNotEmpty ?? false;
+  bool get anomalyDetected => sentientOutposts.active;
+  bool get isSaleActive => dailyDeals.isNotEmpty;
   bool get enemyActive => persistentEnemies?.isNotEmpty ?? false;
 
   @override
-  List<Object> get props {
+  List<Object?> get props {
     return [
       timestamp,
       news,

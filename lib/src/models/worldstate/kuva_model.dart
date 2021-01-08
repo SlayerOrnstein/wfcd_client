@@ -7,11 +7,11 @@ part 'kuva_model.g.dart';
 @JsonSerializable()
 class KuvaModel extends Kuva {
   const KuvaModel({
-    DateTime activation,
-    DateTime expiry,
-    String node,
-    String enemy,
-    String type,
+    required DateTime activation,
+    required DateTime expiry,
+    required String node,
+    required String enemy,
+    required String type,
     this.archwing,
     this.sharkwing,
   }) : super(
@@ -27,7 +27,7 @@ class KuvaModel extends Kuva {
     return _$KuvaModelFromJson(json);
   }
 
-  final bool archwing, sharkwing;
+  final bool? archwing, sharkwing;
 
   Map<String, dynamic> toJson() => _$KuvaModelToJson(this);
 }

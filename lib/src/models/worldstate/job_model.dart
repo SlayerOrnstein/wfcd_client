@@ -7,10 +7,10 @@ part 'job_model.g.dart';
 @JsonSerializable()
 class JobModel extends Job {
   const JobModel({
-    String type,
-    this.rewardpool,
-    List<int> enemyLevels,
-    List<int> standingStages,
+    String? type,
+    required this.rewardpool,
+    required List<int> enemyLevels,
+    required List<int> standingStages,
   }) : super(
           rewardpool,
           type: type,

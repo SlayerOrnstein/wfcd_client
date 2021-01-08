@@ -2,17 +2,17 @@ import '../../../objects.dart';
 
 class Nightwave extends WorldstateObject {
   const Nightwave({
-    String id,
-    DateTime activation,
-    DateTime expiry,
-    this.startString,
-    this.tag,
-    this.active,
-    this.season,
-    this.phase,
-    this.possibleChallenges,
-    this.activeChallenges,
-    this.rewardTypes,
+    required String id,
+    required DateTime activation,
+    required DateTime expiry,
+    required this.startString,
+    required this.tag,
+    required this.active,
+    required this.season,
+    required this.phase,
+    required this.possibleChallenges,
+    required this.activeChallenges,
+    required this.rewardTypes,
   }) : super(id: id, activation: activation, expiry: expiry);
 
   final String startString, tag;
@@ -25,14 +25,14 @@ class Nightwave extends WorldstateObject {
   /// Filters [activeChallenges] and exports only daily challenges
   List<Challenge> get daily {
     return activeChallenges.where((c) => c.isDaily ?? false).toList()
-      ..sort((a, b) => a.expiry.compareTo(b.expiry));
+      ..sort((a, b) => a.expiry!.compareTo(b.expiry!));
   }
 
   /// Filters [activeChallenges] and exports only weekly challenges
   List<Challenge> get weekly {
     return activeChallenges.where((c) => c.isDaily == null).toList()
       ..sort((a, b) {
-        if (a.isElite ?? false) {
+        if (a.isElite) {
           return 0;
         } else {
           return 1;
@@ -41,7 +41,7 @@ class Nightwave extends WorldstateObject {
   }
 
   @override
-  List<Object> get props {
+  List<Object?> get props {
     return super.props
       ..addAll([
         startString,
@@ -58,23 +58,24 @@ class Nightwave extends WorldstateObject {
 
 class Challenge extends WorldstateObject {
   const Challenge({
-    String id,
-    DateTime activation,
-    DateTime expiry,
-    this.title,
-    this.desc,
-    this.active,
+    required String id,
+    required DateTime activation,
+    required DateTime expiry,
+    required this.title,
+    required this.desc,
+    required this.active,
     this.isDaily,
-    this.isElite,
-    this.reputation,
+    required this.isElite,
+    required this.reputation,
   }) : super(id: id, activation: activation, expiry: expiry);
 
   final String title, desc;
-  final bool active, isDaily, isElite;
+  final bool active, isElite;
+  final bool? isDaily;
   final int reputation;
 
   @override
-  List<Object> get props {
+  List<Object?> get props {
     return super.props
       ..addAll([title, desc, active, isDaily, isElite, reputation]);
   }

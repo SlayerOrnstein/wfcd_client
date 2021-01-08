@@ -2,13 +2,13 @@ import 'package:equatable/equatable.dart';
 
 class SynthLocation extends Equatable {
   const SynthLocation({
-    this.lastVerified,
-    this.level,
-    this.faction,
-    this.spawnRate,
-    this.mission,
-    this.planet,
-    this.type,
+    required this.lastVerified,
+    required this.level,
+    required this.faction,
+    required this.spawnRate,
+    required this.mission,
+    required this.planet,
+    required this.type,
   });
 
   final String lastVerified;
@@ -17,7 +17,7 @@ class SynthLocation extends Equatable {
   final String mission, planet, type;
 
   @override
-  List<Object> get props {
+  List<Object?> get props {
     return [lastVerified, level, faction, spawnRate, mission, planet, type];
   }
 }

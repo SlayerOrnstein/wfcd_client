@@ -6,20 +6,20 @@ part of 'alert_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-AlertModel _$AlertModelFromJson(Map<String, dynamic> json) {
-  return AlertModel(
-    id: json['id'] as String,
-    activation: json['activation'] == null
-        ? null
-        : DateTime.parse(json['activation'] as String),
-    expiry: json['expiry'] == null
-        ? null
-        : DateTime.parse(json['expiry'] as String),
-    active: json['active'] as bool,
-    mission: json['mission'] == null
-        ? null
-        : MissionModel.fromJson(json['mission'] as Map<String, dynamic>),
-  );
+AlertModel _$AlertModelFromJson(Map json) {
+  return $checkedNew('AlertModel', json, () {
+    final val = AlertModel(
+      id: $checkedConvert(json, 'id', (v) => v as String),
+      activation: $checkedConvert(
+          json, 'activation', (v) => DateTime.parse(v as String)),
+      expiry:
+          $checkedConvert(json, 'expiry', (v) => DateTime.parse(v as String)),
+      active: $checkedConvert(json, 'active', (v) => v as bool),
+      mission: $checkedConvert(json, 'mission',
+          (v) => MissionModel.fromJson(Map<String, dynamic>.from(v as Map))),
+    );
+    return val;
+  });
 }
 
 Map<String, dynamic> _$AlertModelToJson(AlertModel instance) =>
@@ -28,5 +28,5 @@ Map<String, dynamic> _$AlertModelToJson(AlertModel instance) =>
       'activation': instance.activation?.toIso8601String(),
       'expiry': instance.expiry?.toIso8601String(),
       'active': instance.active,
-      'mission': instance.mission,
+      'mission': instance.mission.toJson(),
     };

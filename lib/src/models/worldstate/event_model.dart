@@ -9,19 +9,19 @@ part 'event_model.g.dart';
 @JsonSerializable()
 class EventModel extends Event {
   const EventModel({
-    String id,
-    DateTime activation,
-    DateTime expiry,
-    String faction,
-    String affiliatedWith,
-    String description,
-    String victimNode,
-    String node,
-    String tooltip,
-    num maximumScore,
-    num currentScore,
-    num health,
-    this.rewards,
+    required String id,
+    required DateTime activation,
+    required DateTime expiry,
+    required String faction,
+    String? affiliatedWith,
+    required String description,
+    String? victimNode,
+    required String node,
+    String? tooltip,
+    required int maximumScore,
+    required int currentScore,
+    num? health,
+    required this.rewards,
     this.interimSteps,
     this.jobs,
   }) : super(
@@ -37,6 +37,7 @@ class EventModel extends Event {
           maximumScore: maximumScore,
           currentScore: currentScore,
           health: health,
+          rewards: rewards,
         );
 
   factory EventModel.fromJson(Map<String, dynamic> json) {
@@ -47,17 +48,18 @@ class EventModel extends Event {
   final List<RewardModel> rewards;
 
   @override
-  final List<InterimStepModel> interimSteps;
+  final List<InterimStepModel>? interimSteps;
 
   @override
-  final List<JobModel> jobs;
+  final List<JobModel>? jobs;
 
   Map<String, dynamic> toJson() => _$EventModelToJson(this);
 }
 
 @JsonSerializable()
 class InterimStepModel extends InterimStep {
-  const InterimStepModel({int goal, this.reward}) : super(goal: goal);
+  const InterimStepModel({required int goal, required this.reward})
+      : super(goal: goal, reward: reward);
 
   factory InterimStepModel.fromJson(Map<String, dynamic> json) {
     return _$InterimStepModelFromJson(json);

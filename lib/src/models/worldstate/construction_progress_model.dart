@@ -7,10 +7,10 @@ part 'construction_progress_model.g.dart';
 @JsonSerializable()
 class ConstructionProgressModel extends ConstructionProgress {
   const ConstructionProgressModel({
-    String id,
-    String fomorianProgress,
-    String razorbackProgress,
-    String unknownProgress,
+    required String id,
+    required String fomorianProgress,
+    required String razorbackProgress,
+    required String unknownProgress,
   }) : super(
           id: id,
           fomorianProgress: fomorianProgress,

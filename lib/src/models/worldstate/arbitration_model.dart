@@ -7,11 +7,11 @@ part 'arbitration_model.g.dart';
 @JsonSerializable()
 class ArbitrationModel extends Arbitration {
   const ArbitrationModel({
-    DateTime activation,
-    DateTime expiry,
-    String node,
-    String enemy,
-    String type,
+    required DateTime activation,
+    required DateTime expiry,
+    required String node,
+    required String enemy,
+    required String type,
     this.archwing,
     this.sharkwing,
   }) : super(
@@ -27,7 +27,7 @@ class ArbitrationModel extends Arbitration {
     return _$ArbitrationModelFromJson(json);
   }
 
-  final bool archwing, sharkwing;
+  final bool? archwing, sharkwing;
 
   Map<String, dynamic> toJson() => _$ArbitrationModelToJson(this);
 }

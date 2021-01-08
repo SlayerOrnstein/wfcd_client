@@ -2,18 +2,18 @@ import '../../../objects.dart';
 
 class PersistentEnemy extends WorldstateObject {
   const PersistentEnemy({
-    String id,
-    DateTime activation,
-    DateTime expiry,
-    this.agentType,
-    this.locationTag,
-    this.lastDiscoveredAt,
-    this.lastDiscoveredTime,
-    this.fleeDamage,
-    this.rank,
-    this.healthPercent,
-    this.isDiscovered,
-    this.isUsingTicketing,
+    required String id,
+    required DateTime activation,
+    required DateTime expiry,
+    required this.agentType,
+    required this.locationTag,
+    required this.lastDiscoveredAt,
+    required this.lastDiscoveredTime,
+    required this.fleeDamage,
+    required this.rank,
+    required this.healthPercent,
+    required this.isDiscovered,
+    required this.isUsingTicketing,
   }) : super(id: id, activation: activation, expiry: expiry);
 
   final String agentType, locationTag, lastDiscoveredAt;
@@ -23,7 +23,7 @@ class PersistentEnemy extends WorldstateObject {
   final bool isDiscovered, isUsingTicketing;
 
   @override
-  List<Object> get props {
+  List<Object?> get props {
     return super.props
       ..addAll([
         agentType,

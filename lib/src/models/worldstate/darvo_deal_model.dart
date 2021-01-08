@@ -7,15 +7,15 @@ part 'darvo_deal_model.g.dart';
 @JsonSerializable()
 class DarvoDealModel extends DarvoDeal {
   const DarvoDealModel({
-    String id,
-    DateTime activation,
-    DateTime expiry,
-    String item,
-    int originalPrice,
-    int salePrice,
-    int total,
-    int sold,
-    int discount,
+    required String id,
+    required DateTime activation,
+    required DateTime expiry,
+    required String item,
+    required int originalPrice,
+    required int salePrice,
+    required int total,
+    required int sold,
+    required int discount,
   }) : super(
           id: id,
           activation: activation,

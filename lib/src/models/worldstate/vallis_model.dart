@@ -7,11 +7,11 @@ part 'vallis_model.g.dart';
 @JsonSerializable()
 class VallisModel extends Vallis {
   const VallisModel({
-    String id,
-    DateTime activation,
-    DateTime expiry,
-    String state,
-    bool isWarm,
+    required String id,
+    required DateTime activation,
+    required DateTime expiry,
+    required String state,
+    required bool isWarm,
   }) : super(
           id: id,
           activation: activation,

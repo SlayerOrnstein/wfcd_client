@@ -42,7 +42,13 @@ List<SynthTarget> toSynthTargets(List<dynamic> data) {
 
 /// Serializes giving json values into their proper [BaseItem] type
 Item toBaseItem(Map<String, dynamic> item) {
-  if (item.containsKey('productCategory')) {
+  // Pet parts are catogoriezed as Pistols so we want to filter them
+  // out into normal barebone FoundryItems since any weapon attribute is either
+  // null or 0.
+  final isCompanionPart =
+      item['type'] == 'Pet Parts' || item['type'] == 'Moa Gyro';
+
+  if (item.containsKey('productCategory') && !isCompanionPart) {
     return _productCategoryItem(item);
   } else if ((item['category'] as String).contains(_mods)) {
     return ModModel.fromJson(item);

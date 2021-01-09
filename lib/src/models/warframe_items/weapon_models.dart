@@ -30,7 +30,7 @@ class ProjectileWeaponModel extends ProjectileWeapon {
     double fireRate,
     int slot,
     int ammo,
-    int flight,
+    dynamic flight,
     String noise,
     bool sentinel,
     int masteryReq,
@@ -49,6 +49,7 @@ class ProjectileWeaponModel extends ProjectileWeapon {
     double multishot,
     this.patchlogs,
   }) : super(
+          flight,
           uniqueName: uniqueName,
           name: name,
           description: description,
@@ -85,7 +86,6 @@ class ProjectileWeaponModel extends ProjectileWeapon {
           disposition: disposition,
           multishot: multishot,
           ammo: ammo,
-          flight: flight,
         );
 
   factory ProjectileWeaponModel.fromJson(Map<String, dynamic> json) =>

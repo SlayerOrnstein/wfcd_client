@@ -101,7 +101,8 @@ class WeaponItem extends FoundryItem {
 }
 
 class ProjectileWeapon extends WeaponItem {
-  const ProjectileWeapon({
+  const ProjectileWeapon(
+    this._flight, {
     String uniqueName,
     String name,
     String description,
@@ -141,7 +142,6 @@ class ProjectileWeapon extends WeaponItem {
     this.reloadTime,
     this.noise,
     this.trigger,
-    this.flight,
     List<Patchlog> patchlogs,
     String wikiaThumbnail,
     String wikiaUrl,
@@ -189,7 +189,9 @@ class ProjectileWeapon extends WeaponItem {
   final double accuracy;
   final String noise;
   final double multishot;
-  final int flight;
+  final dynamic _flight;
+
+  int get flight => _flight is int ? _flight as int : -1;
 
   @override
   List<Object> get props {
@@ -202,7 +204,7 @@ class ProjectileWeapon extends WeaponItem {
         accuracy,
         noise,
         multishot,
-        flight,
+        _flight,
       ]);
   }
 }

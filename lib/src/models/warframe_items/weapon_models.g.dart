@@ -32,7 +32,7 @@ ProjectileWeaponModel _$ProjectileWeaponModelFromJson(
     fireRate: (json['fireRate'] as num)?.toDouble(),
     slot: json['slot'] as int,
     ammo: json['ammo'] as int,
-    flight: json['flight'] as int,
+    flight: json['flight'],
     noise: json['noise'] as String,
     sentinel: json['sentinel'] as bool,
     masteryReq: json['masteryReq'] as int,

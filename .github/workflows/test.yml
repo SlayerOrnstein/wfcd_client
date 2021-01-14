@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: cedex/setup-dart@v2.5.0
+      - uses: cedx/setup-dart@v2.5.0
         with:
           release-channel: beta
       - name: Install dependencies

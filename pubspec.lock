@@ -70,7 +70,7 @@ packages:
       name: build_runner
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.10.11"
+    version: "1.10.13"
   build_runner_core:
     dependency: transitive
     description:
@@ -168,7 +168,7 @@ packages:
       name: equatable
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.0.0-nullsafety.0"
+    version: "2.0.0-nullsafety.1"
   file:
     dependency: transitive
     description:
@@ -289,7 +289,7 @@ packages:
       name: mockito
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "5.0.0-nullsafety.1"
+    version: "5.0.0-nullsafety.3"
   node_interop:
     dependency: transitive
     description:

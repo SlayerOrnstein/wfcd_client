@@ -11,7 +11,7 @@ class MiscItemModel extends MiscItem {
   MiscItemModel({
     required String uniqueName,
     required String name,
-    required String description,
+    String? description,
     required String type,
     String? imageName,
     String? productCategory,

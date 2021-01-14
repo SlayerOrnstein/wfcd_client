@@ -184,18 +184,18 @@ class CompanionModel extends Companion {
     required String category,
     required String productCategory,
     required bool tradable,
-    required int masteryReq,
-    required int buildPrice,
-    required int buildTime,
-    required int skipBuildTimePrice,
-    required int buildQuantity,
-    required bool consumeOnBuild,
-    required this.components,
+    int? masteryReq,
+    int? buildPrice,
+    int? buildTime,
+    int? skipBuildTimePrice,
+    int? buildQuantity,
+    bool? consumeOnBuild,
+    this.components,
     required int health,
     required int shield,
     required int armor,
     required int power,
-    required List<String> polarities,
+    List<String>? polarities,
     this.patchlogs,
     String? wikiaThumbnail,
     String? wikiaUrl,
@@ -230,7 +230,7 @@ class CompanionModel extends Companion {
   }
 
   @override
-  final List<ComponentModel> components;
+  final List<ComponentModel>? components;
 
   @override
   final List<PatchlogModel>? patchlogs;

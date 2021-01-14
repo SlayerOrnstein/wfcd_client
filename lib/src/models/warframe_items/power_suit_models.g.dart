@@ -218,18 +218,19 @@ CompanionModel _$CompanionModelFromJson(Map json) {
       productCategory:
           $checkedConvert(json, 'productCategory', (v) => v as String),
       tradable: $checkedConvert(json, 'tradable', (v) => v as bool),
-      masteryReq: $checkedConvert(json, 'masteryReq', (v) => v as int),
-      buildPrice: $checkedConvert(json, 'buildPrice', (v) => v as int),
-      buildTime: $checkedConvert(json, 'buildTime', (v) => v as int),
+      masteryReq: $checkedConvert(json, 'masteryReq', (v) => v as int?),
+      buildPrice: $checkedConvert(json, 'buildPrice', (v) => v as int?),
+      buildTime: $checkedConvert(json, 'buildTime', (v) => v as int?),
       skipBuildTimePrice:
-          $checkedConvert(json, 'skipBuildTimePrice', (v) => v as int),
-      buildQuantity: $checkedConvert(json, 'buildQuantity', (v) => v as int),
-      consumeOnBuild: $checkedConvert(json, 'consumeOnBuild', (v) => v as bool),
+          $checkedConvert(json, 'skipBuildTimePrice', (v) => v as int?),
+      buildQuantity: $checkedConvert(json, 'buildQuantity', (v) => v as int?),
+      consumeOnBuild:
+          $checkedConvert(json, 'consumeOnBuild', (v) => v as bool?),
       components: $checkedConvert(
           json,
           'components',
-          (v) => (v as List<dynamic>)
-              .map((e) =>
+          (v) => (v as List<dynamic>?)
+              ?.map((e) =>
                   ComponentModel.fromJson(Map<String, dynamic>.from(e as Map)))
               .toList()),
       health: $checkedConvert(json, 'health', (v) => v as int),
@@ -237,7 +238,7 @@ CompanionModel _$CompanionModelFromJson(Map json) {
       armor: $checkedConvert(json, 'armor', (v) => v as int),
       power: $checkedConvert(json, 'power', (v) => v as int),
       polarities: $checkedConvert(json, 'polarities',
-          (v) => (v as List<dynamic>).map((e) => e as String).toList()),
+          (v) => (v as List<dynamic>?)?.map((e) => e as String).toList()),
       patchlogs: $checkedConvert(
           json,
           'patchlogs',
@@ -276,6 +277,6 @@ Map<String, dynamic> _$CompanionModelToJson(CompanionModel instance) =>
       'armor': instance.armor,
       'power': instance.power,
       'polarities': instance.polarities,
-      'components': instance.components.map((e) => e.toJson()).toList(),
+      'components': instance.components?.map((e) => e.toJson()).toList(),
       'patchlogs': instance.patchlogs?.map((e) => e.toJson()).toList(),
     };

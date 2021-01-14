@@ -6,7 +6,7 @@ class MiscItem extends Item {
   const MiscItem({
     required String uniqueName,
     required String name,
-    required String description,
+    String? description,
     required String type,
     String? imageName,
     String? productCategory,

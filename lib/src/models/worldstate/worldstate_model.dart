@@ -34,15 +34,15 @@ class WorldstateModel extends Worldstate {
     required this.invasions,
     required this.voidTrader,
     required this.dailyDeals,
-    this.persistentEnemies,
+    required this.persistentEnemies,
     required this.earthCycle,
     required this.cetusCycle,
     required this.constructionProgress,
     required this.vallisCycle,
     required this.nightwave,
     required this.sentientOutposts,
-    this.kuva,
-    this.arbitration,
+    required this.kuva,
+    required this.arbitration,
   }) : super(
           timestamp: timestamp,
           news: news,
@@ -97,7 +97,7 @@ class WorldstateModel extends Worldstate {
   final List<DarvoDealModel> dailyDeals;
 
   @override
-  final List<PersistentEnemyModel>? persistentEnemies;
+  final List<PersistentEnemyModel> persistentEnemies;
 
   @override
   final EarthModel earthCycle;
@@ -118,10 +118,10 @@ class WorldstateModel extends Worldstate {
   final SentientOutpostModel sentientOutposts;
 
   @override
-  final List<KuvaModel>? kuva;
+  final List<KuvaModel> kuva;
 
   @override
-  final ArbitrationModel? arbitration;
+  final ArbitrationModel arbitration;
 
   Map<String, dynamic> toJson() => _$WorldstateModelToJson(this);
 }

@@ -67,8 +67,8 @@ WorldstateModel _$WorldstateModelFromJson(Map json) {
       persistentEnemies: $checkedConvert(
           json,
           'persistentEnemies',
-          (v) => (v as List<dynamic>?)
-              ?.map((e) => PersistentEnemyModel.fromJson(
+          (v) => (v as List<dynamic>)
+              .map((e) => PersistentEnemyModel.fromJson(
                   Map<String, dynamic>.from(e as Map)))
               .toList()),
       earthCycle: $checkedConvert(json, 'earthCycle',
@@ -92,16 +92,15 @@ WorldstateModel _$WorldstateModelFromJson(Map json) {
       kuva: $checkedConvert(
           json,
           'kuva',
-          (v) => (v as List<dynamic>?)
-              ?.map((e) =>
+          (v) => (v as List<dynamic>)
+              .map((e) =>
                   KuvaModel.fromJson(Map<String, dynamic>.from(e as Map)))
               .toList()),
       arbitration: $checkedConvert(
           json,
           'arbitration',
-          (v) => v == null
-              ? null
-              : ArbitrationModel.fromJson(Map<String, dynamic>.from(v as Map))),
+          (v) =>
+              ArbitrationModel.fromJson(Map<String, dynamic>.from(v as Map))),
     );
     return val;
   });
@@ -121,13 +120,13 @@ Map<String, dynamic> _$WorldstateModelToJson(WorldstateModel instance) =>
       'voidTrader': instance.voidTrader.toJson(),
       'dailyDeals': instance.dailyDeals.map((e) => e.toJson()).toList(),
       'persistentEnemies':
-          instance.persistentEnemies?.map((e) => e.toJson()).toList(),
+          instance.persistentEnemies.map((e) => e.toJson()).toList(),
       'earthCycle': instance.earthCycle.toJson(),
       'cetusCycle': instance.cetusCycle.toJson(),
       'constructionProgress': instance.constructionProgress.toJson(),
       'vallisCycle': instance.vallisCycle.toJson(),
       'nightwave': instance.nightwave.toJson(),
       'sentientOutposts': instance.sentientOutposts.toJson(),
-      'kuva': instance.kuva?.map((e) => e.toJson()).toList(),
-      'arbitration': instance.arbitration?.toJson(),
+      'kuva': instance.kuva.map((e) => e.toJson()).toList(),
+      'arbitration': instance.arbitration.toJson(),
     };

@@ -30,8 +30,8 @@ class WeaponItem extends FoundryItem {
     required this.totalDamage,
     required this.damagePerShot,
     required this.damageTypes,
-    required this.marketCost,
     required this.disposition,
+    this.marketCost,
     this.sentinel,
     this.releaseDate,
     this.vaulted,
@@ -72,7 +72,8 @@ class WeaponItem extends FoundryItem {
   final List<double> damagePerShot;
   final Map<String, num> damageTypes;
   final List<String> polarities;
-  final int marketCost, disposition;
+  final int? marketCost;
+  final int disposition;
   final bool? sentinel, vaulted;
   final String? releaseDate, estimatedVaultDate;
 
@@ -101,7 +102,8 @@ class WeaponItem extends FoundryItem {
 }
 
 class ProjectileWeapon extends WeaponItem {
-  const ProjectileWeapon({
+  const ProjectileWeapon(
+    this._flight, {
     required String uniqueName,
     required String name,
     required String description,
@@ -128,8 +130,8 @@ class ProjectileWeapon extends WeaponItem {
     required List<double> damagePerShot,
     required Map<String, num> damageTypes,
     required List<String> polarities,
-    required int marketCost,
     required int disposition,
+    int? marketCost,
     bool? sentinel,
     String? releaseDate,
     bool? vaulted,
@@ -141,7 +143,6 @@ class ProjectileWeapon extends WeaponItem {
     required this.reloadTime,
     required this.noise,
     required this.trigger,
-    this.flight,
     List<Patchlog>? patchlogs,
     String? wikiaThumbnail,
     String? wikiaUrl,
@@ -190,7 +191,9 @@ class ProjectileWeapon extends WeaponItem {
   final double accuracy;
   final String noise;
   final double multishot;
-  final int? flight;
+  final dynamic _flight;
+
+  int? get flight => _flight != '???' ? _flight as int? : -1;
 
   @override
   List<Object?> get props {
@@ -236,8 +239,8 @@ class MeleeWeapon extends WeaponItem {
     required List<double> damagePerShot,
     required Map<String, num> damageTypes,
     required List<String> polarities,
-    required int marketCost,
     required int disposition,
+    int? marketCost,
     bool? sentinel,
     String? releaseDate,
     bool? vaulted,
@@ -252,10 +255,10 @@ class MeleeWeapon extends WeaponItem {
     required this.slideAttack,
     required this.heavyAttackDamage,
     required this.heavySlamAttack,
-    required this.heavySlamRadius,
-    required this.heavySlamRadialDamage,
-    required this.windUp,
-    required this.stancePolarity,
+    this.heavySlamRadius,
+    this.heavySlamRadialDamage,
+    this.windUp,
+    this.stancePolarity,
     List<Patchlog>? patchlogs,
     String? wikiaThumbnail,
     String? wikiaUrl,
@@ -302,10 +305,10 @@ class MeleeWeapon extends WeaponItem {
   final double followThrough, range;
   final int slamAttack, slamRadialDamage, slamRadius;
   final int slideAttack;
-  final int heavyAttackDamage, heavySlamAttack, heavySlamRadius;
-  final int heavySlamRadialDamage;
-  final double windUp;
-  final String stancePolarity;
+  final int heavyAttackDamage, heavySlamAttack;
+  final int? heavySlamRadius, heavySlamRadialDamage;
+  final double? windUp;
+  final String? stancePolarity;
 
   // Becasue fireRate and attackSpeed are the same in melee
   // there is no need to pass it down since it will be done in super

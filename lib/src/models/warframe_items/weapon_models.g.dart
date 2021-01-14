@@ -37,7 +37,7 @@ ProjectileWeaponModel _$ProjectileWeaponModelFromJson(Map json) {
       fireRate: $checkedConvert(json, 'fireRate', (v) => (v as num).toDouble()),
       slot: $checkedConvert(json, 'slot', (v) => v as int),
       ammo: $checkedConvert(json, 'ammo', (v) => v as int?),
-      flight: $checkedConvert(json, 'flight', (v) => v as int?),
+      flight: $checkedConvert(json, 'flight', (v) => v),
       noise: $checkedConvert(json, 'noise', (v) => v as String),
       sentinel: $checkedConvert(json, 'sentinel', (v) => v as bool?),
       masteryReq: $checkedConvert(json, 'masteryReq', (v) => v as int),
@@ -60,7 +60,7 @@ ProjectileWeaponModel _$ProjectileWeaponModelFromJson(Map json) {
           json, 'damageTypes', (v) => Map<String, num>.from(v as Map)),
       polarities: $checkedConvert(json, 'polarities',
           (v) => (v as List<dynamic>).map((e) => e as String).toList()),
-      marketCost: $checkedConvert(json, 'marketCost', (v) => v as int),
+      marketCost: $checkedConvert(json, 'marketCost', (v) => v as int?),
       vaulted: $checkedConvert(json, 'vaulted', (v) => v as bool?),
       disposition: $checkedConvert(json, 'disposition', (v) => v as int),
       multishot:
@@ -182,7 +182,7 @@ MeleeWeaponModel _$MeleeWeaponModelFromJson(Map json) {
           json, 'damageTypes', (v) => Map<String, num>.from(v as Map)),
       polarities: $checkedConvert(json, 'polarities',
           (v) => (v as List<dynamic>).map((e) => e as String).toList()),
-      marketCost: $checkedConvert(json, 'marketCost', (v) => v as int),
+      marketCost: $checkedConvert(json, 'marketCost', (v) => v as int?),
       disposition: $checkedConvert(json, 'disposition', (v) => v as int),
       sentinel: $checkedConvert(json, 'sentinel', (v) => v as bool?),
       releaseDate: $checkedConvert(json, 'releaseDate', (v) => v as String?),
@@ -204,12 +204,12 @@ MeleeWeaponModel _$MeleeWeaponModelFromJson(Map json) {
       heavySlamAttack:
           $checkedConvert(json, 'heavySlamAttack', (v) => v as int),
       heavySlamRadius:
-          $checkedConvert(json, 'heavySlamRadius', (v) => v as int),
+          $checkedConvert(json, 'heavySlamRadius', (v) => v as int?),
       heavySlamRadialDamage:
-          $checkedConvert(json, 'heavySlamRadialDamage', (v) => v as int),
-      windUp: $checkedConvert(json, 'windUp', (v) => (v as num).toDouble()),
+          $checkedConvert(json, 'heavySlamRadialDamage', (v) => v as int?),
+      windUp: $checkedConvert(json, 'windUp', (v) => (v as num?)?.toDouble()),
       stancePolarity:
-          $checkedConvert(json, 'stancePolarity', (v) => v as String),
+          $checkedConvert(json, 'stancePolarity', (v) => v as String?),
       patchlogs: $checkedConvert(
           json,
           'patchlogs',

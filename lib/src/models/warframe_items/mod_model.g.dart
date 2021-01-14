@@ -30,7 +30,7 @@ ModModel _$ModModelFromJson(Map json) {
                   ))
               .toList()),
       category: $checkedConvert(json, 'category', (v) => v as String),
-      isAugment: $checkedConvert(json, 'isAugment', (v) => v as bool),
+      isAugment: $checkedConvert(json, 'isAugment', (v) => v as bool?),
       tradable: $checkedConvert(json, 'tradable', (v) => v as bool),
       patchlogs: $checkedConvert(
           json,

@@ -9,7 +9,7 @@ abstract class Item extends Equatable {
   const Item({
     required this.uniqueName,
     required this.name,
-    required this.description,
+    this.description,
     this.imageName,
     required this.tradable,
     this.drops,
@@ -24,7 +24,7 @@ abstract class Item extends Equatable {
 
   final String uniqueName;
   final String name;
-  final String description;
+  final String? description;
   final bool? excludeFromCodex;
   final String type;
   final String? imageName;
@@ -76,11 +76,11 @@ abstract class FoundryItem extends Item {
     required bool tradable,
     this.masteryReq,
     required this.components,
-    required this.buildPrice,
-    required this.buildTime,
-    required this.skipBuildTimePrice,
-    required this.buildQuantity,
-    required this.consumeOnBuild,
+    this.buildPrice,
+    this.buildTime,
+    this.skipBuildTimePrice,
+    this.buildQuantity,
+    this.consumeOnBuild,
     List<Patchlog>? patchlogs,
     String? wikiaUrl,
     String? wikiaThumbnail,
@@ -99,9 +99,9 @@ abstract class FoundryItem extends Item {
         );
 
   final int? masteryReq;
-  final List<Component> components;
-  final int buildPrice, buildTime, skipBuildTimePrice, buildQuantity;
-  final bool consumeOnBuild;
+  final List<Component>? components;
+  final int? buildPrice, buildTime, skipBuildTimePrice, buildQuantity;
+  final bool? consumeOnBuild;
 
   @override
   List<Object?> get props {

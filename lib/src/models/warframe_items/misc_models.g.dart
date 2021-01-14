@@ -11,7 +11,7 @@ MiscItemModel _$MiscItemModelFromJson(Map json) {
     final val = MiscItemModel(
       uniqueName: $checkedConvert(json, 'uniqueName', (v) => v as String),
       name: $checkedConvert(json, 'name', (v) => v as String),
-      description: $checkedConvert(json, 'description', (v) => v as String),
+      description: $checkedConvert(json, 'description', (v) => v as String?),
       type: $checkedConvert(json, 'type', (v) => v as String),
       imageName: $checkedConvert(json, 'imageName', (v) => v as String?),
       productCategory:

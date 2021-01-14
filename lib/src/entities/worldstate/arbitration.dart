@@ -2,11 +2,11 @@ import '../../../objects.dart';
 
 class Arbitration extends ExternalMission {
   const Arbitration({
-    required DateTime activation,
-    required DateTime expiry,
-    required String node,
-    required String enemy,
-    required String type,
+    DateTime? activation,
+    DateTime? expiry,
+    String? node,
+    String? enemy,
+    String? type,
     required bool archwingRequired,
   }) : super(
           activation: activation,

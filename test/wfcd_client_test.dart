@@ -54,9 +54,15 @@ void main() {
     });
 
     test('Item search results', () async {
-      final results = await clientApi.searchItems('Cestra');
+      const term = 'Cestra';
+      final results = await clientApi.searchItems(term);
 
-      expect(results, equals(searchResultsTestModels));
+      expect(
+        results,
+        equals(searchResultsTestModels
+            .where((e) => e.name.contains(term))
+            .toList()),
+      );
     });
 
     test('Drops', () async {

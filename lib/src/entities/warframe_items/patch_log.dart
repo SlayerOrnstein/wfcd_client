@@ -2,21 +2,22 @@ import 'package:equatable/equatable.dart';
 
 class Patchlog extends Equatable {
   const Patchlog({
-    this.name,
-    this.date,
-    this.url,
+    required this.name,
+    required this.date,
+    required this.url,
     this.imgUrl,
-    this.additions,
-    this.changes,
-    this.fixes,
+    required this.additions,
+    required this.changes,
+    required this.fixes,
   });
 
-  final String name, url, imgUrl;
+  final String name, url;
+  final String? imgUrl;
   final String additions, changes, fixes;
   final DateTime date;
 
   @override
-  List<Object> get props {
+  List<Object?> get props {
     return [name, date, url, imgUrl, additions, changes, fixes];
   }
 }

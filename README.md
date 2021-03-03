@@ -3,9 +3,6 @@
 A simple usage example:
 
 ```dart
-import 'dart:convert';
-
-import 'package:http/http.dart' as http;
 import 'package:warframestat_api_models/warframestat_api_models.dart';
 
 Future<void> main() async {

@@ -4,11 +4,11 @@ import 'package:wfcd_client/wfcd_client.dart';
 
 import 'fixtures/fixture_reader.dart';
 
-final worldstate = Fixture('worldstate.json');
-final searchResults = Fixture('search_results.json');
-final dropTable = Fixture('drop_table.json');
-final synthTargets = Fixture('synthTargets.json');
-final rivenSearch = Fixture('riven_search.json');
+const worldstate = Fixture('worldstate.json');
+const searchResults = Fixture('search_results.json');
+const dropTable = Fixture('drop_table.json');
+const synthTargets = Fixture('synthTargets.json');
+const rivenSearch = Fixture('riven_search.json');
 
 final worldstateTestModel =
     WorldstateModel.fromJson(worldstate.json<Map<String, dynamic>>());

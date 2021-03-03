@@ -1,1 +1,26 @@
-{"Arca Plasmor":{"rerolled":{"itemType":"Shotgun Riven Mod","compatibility":"Arca Plasmor","rerolled":true,"avg":279.65,"stddev":583.93,"min":15,"max":3900,"pop":2,"median":100},"unrolled":{"itemType":"Shotgun Riven Mod","compatibility":"Arca Plasmor","rerolled":false,"avg":52.67,"stddev":43.2,"min":10,"max":250,"pop":1,"median":40}}}
+{
+    "Arca Plasmor": {
+        "rerolled": {
+            "itemType": "Shotgun Riven Mod",
+            "compatibility": "Arca Plasmor",
+            "rerolled": true,
+            "avg": 279.65,
+            "stddev": 583.93,
+            "min": 15,
+            "max": 3900,
+            "pop": 2,
+            "median": 100
+        },
+        "unrolled": {
+            "itemType": "Shotgun Riven Mod",
+            "compatibility": "Arca Plasmor",
+            "rerolled": false,
+            "avg": 52.67,
+            "stddev": 43.2,
+            "min": 10,
+            "max": 250,
+            "pop": 1,
+            "median": 40
+        }
+    }
+}

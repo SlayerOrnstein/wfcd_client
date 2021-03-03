@@ -2,11 +2,11 @@ import '../../../objects.dart';
 
 class Vallis extends CycleObject {
   const Vallis({
-    String id,
-    DateTime activation,
-    DateTime expiry,
-    String state,
-    this.isWarm,
+    required String id,
+    required DateTime activation,
+    required DateTime expiry,
+    required String state,
+    required this.isWarm,
   }) : super(id: id, activation: activation, expiry: expiry, state: state);
 
   final bool isWarm;
@@ -18,5 +18,5 @@ class Vallis extends CycleObject {
   String get nextState => !isWarm ? 'warm' : 'cold';
 
   @override
-  List<Object> get props => super.props..add(isWarm);
+  List<Object?> get props => super.props..add(isWarm);
 }

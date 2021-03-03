@@ -6,64 +6,67 @@ part of 'invasion_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-InvasionModel _$InvasionModelFromJson(Map<String, dynamic> json) {
-  return InvasionModel(
-    id: json['id'] as String,
-    activation: json['activation'] == null
-        ? null
-        : DateTime.parse(json['activation'] as String),
-    expiry: json['expiry'] == null
-        ? null
-        : DateTime.parse(json['expiry'] as String),
-    node: json['node'] as String,
-    desc: json['desc'] as String,
-    attackingFaction: json['attackingFaction'] as String,
-    defendingFaction: json['defendingFaction'] as String,
-    attacker: json['attacker'] == null
-        ? null
-        : FactionModel.fromJson(json['attacker'] as Map<String, dynamic>),
-    defender: json['defender'] == null
-        ? null
-        : FactionModel.fromJson(json['defender'] as Map<String, dynamic>),
-    eta: json['eta'] as String,
-    vsInfestation: json['vsInfestation'] as bool,
-    completed: json['completed'] as bool,
-    completion: (json['completion'] as num)?.toDouble(),
-    count: json['count'] as int,
-  );
+InvasionModel _$InvasionModelFromJson(Map json) {
+  return $checkedNew('InvasionModel', json, () {
+    final val = InvasionModel(
+      id: $checkedConvert(json, 'id', (v) => v as String),
+      activation: $checkedConvert(
+          json, 'activation', (v) => DateTime.parse(v as String)),
+      node: $checkedConvert(json, 'node', (v) => v as String),
+      nodeKey: $checkedConvert(json, 'nodeKey', (v) => v as String),
+      desc: $checkedConvert(json, 'desc', (v) => v as String),
+      attackingFaction:
+          $checkedConvert(json, 'attackingFaction', (v) => v as String),
+      defendingFaction:
+          $checkedConvert(json, 'defendingFaction', (v) => v as String),
+      attacker: $checkedConvert(json, 'attacker',
+          (v) => FactionModel.fromJson(Map<String, dynamic>.from(v as Map))),
+      defender: $checkedConvert(json, 'defender',
+          (v) => FactionModel.fromJson(Map<String, dynamic>.from(v as Map))),
+      eta: $checkedConvert(json, 'eta', (v) => v as String),
+      vsInfestation: $checkedConvert(json, 'vsInfestation', (v) => v as bool),
+      completed: $checkedConvert(json, 'completed', (v) => v as bool),
+      completion:
+          $checkedConvert(json, 'completion', (v) => (v as num).toDouble()),
+      count: $checkedConvert(json, 'count', (v) => v as int),
+    );
+    return val;
+  });
 }
 
 Map<String, dynamic> _$InvasionModelToJson(InvasionModel instance) =>
     <String, dynamic>{
       'id': instance.id,
       'activation': instance.activation?.toIso8601String(),
-      'expiry': instance.expiry?.toIso8601String(),
       'node': instance.node,
       'desc': instance.desc,
       'attackingFaction': instance.attackingFaction,
       'defendingFaction': instance.defendingFaction,
       'eta': instance.eta,
+      'nodeKey': instance.nodeKey,
       'vsInfestation': instance.vsInfestation,
       'completed': instance.completed,
       'completion': instance.completion,
       'count': instance.count,
-      'attacker': instance.attacker,
-      'defender': instance.defender,
+      'attacker': instance.attacker.toJson(),
+      'defender': instance.defender.toJson(),
     };
 
-FactionModel _$FactionModelFromJson(Map<String, dynamic> json) {
-  return FactionModel(
-    reward: json['reward'] == null
-        ? null
-        : RewardModel.fromJson(json['reward'] as Map<String, dynamic>),
-    faction: json['faction'] as String,
-    factionKey: json['factionKey'] as String,
-  );
+FactionModel _$FactionModelFromJson(Map json) {
+  return $checkedNew('FactionModel', json, () {
+    final val = FactionModel(
+      reward: $checkedConvert(json, 'reward',
+          (v) => RewardModel.fromJson(Map<String, dynamic>.from(v as Map))),
+      faction: $checkedConvert(json, 'faction', (v) => v as String),
+      factionKey: $checkedConvert(json, 'factionKey', (v) => v as String),
+    );
+    return val;
+  });
 }
 
 Map<String, dynamic> _$FactionModelToJson(FactionModel instance) =>
     <String, dynamic>{
       'faction': instance.faction,
       'factionKey': instance.factionKey,
-      'reward': instance.reward,
+      'reward': instance.reward.toJson(),
     };

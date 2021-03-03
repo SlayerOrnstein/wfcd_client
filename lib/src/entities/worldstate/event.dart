@@ -6,32 +6,33 @@ import 'reward.dart';
 
 class Event extends WorldstateObject {
   const Event({
-    String id,
-    DateTime activation,
-    DateTime expiry,
-    this.faction,
+    required String id,
+    required DateTime activation,
+    required DateTime expiry,
+    required this.faction,
     this.affiliatedWith,
-    this.description,
+    required this.description,
     this.victimNode,
-    this.node,
+    required this.node,
     this.tooltip,
-    this.maximumScore,
-    this.currentScore,
+    required this.maximumScore,
+    required this.currentScore,
     this.health,
-    this.rewards,
+    required this.rewards,
     this.interimSteps,
     this.jobs,
   }) : super(id: id, activation: activation, expiry: expiry);
 
-  final String faction, description, victimNode, node, tooltip, affiliatedWith;
-  final num health, currentScore, maximumScore;
+  final String faction, description, node;
+  final String? affiliatedWith, victimNode, tooltip;
+  final num? health;
+  final int currentScore, maximumScore;
   final List<Reward> rewards;
-  final List<InterimStep> interimSteps;
-  final List<Job> jobs;
+  final List<InterimStep>? interimSteps;
+  final List<Job>? jobs;
 
   double get eventHealth {
-    return (health ??
-            (100 - ((currentScore ?? 0.0) / (maximumScore ?? 0.0)) * 100))
+    return (health ?? (100 - ((currentScore) / (maximumScore)) * 100))
         .toDouble();
   }
 
@@ -44,7 +45,7 @@ class Event extends WorldstateObject {
   }
 
   @override
-  List<Object> get props {
+  List<Object?> get props {
     return super.props
       ..addAll([
         faction,
@@ -64,11 +65,11 @@ class Event extends WorldstateObject {
 }
 
 class InterimStep extends Equatable {
-  const InterimStep({this.goal, this.reward});
+  const InterimStep({required this.goal, required this.reward});
 
   final int goal;
   final Reward reward;
 
   @override
-  List<Object> get props => [goal, reward];
+  List<Object?> get props => [goal, reward];
 }

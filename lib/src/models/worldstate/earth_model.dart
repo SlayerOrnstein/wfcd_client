@@ -7,12 +7,12 @@ part 'earth_model.g.dart';
 @JsonSerializable()
 class EarthModel extends Earth {
   const EarthModel({
-    String id,
-    DateTime activation,
-    DateTime expiry,
-    String state,
-    bool isDay,
-    bool isCetus,
+    required String id,
+    required DateTime activation,
+    required DateTime expiry,
+    required String state,
+    required bool isDay,
+    bool? isCetus,
   }) : super(
           id: id,
           activation: activation,

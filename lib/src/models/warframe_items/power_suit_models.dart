@@ -8,7 +8,7 @@ part 'power_suit_models.g.dart';
 
 @JsonSerializable()
 class AbilityModel extends Ability {
-  const AbilityModel({String name, String description})
+  const AbilityModel({required String name, required String description})
       : super(name: name, description: description);
 
   factory AbilityModel.fromJson(Map<String, dynamic> json) =>
@@ -20,36 +20,37 @@ class AbilityModel extends Ability {
 @JsonSerializable()
 class WarframeModel extends Warframe {
   const WarframeModel({
-    String uniqueName,
-    String name,
-    String description,
-    String aura,
-    int health,
-    int shield,
-    int armor,
-    int power,
-    int masteryReq,
-    double sprintSpeed,
-    String passiveDescription,
-    this.abilities,
-    int buildPrice,
-    int buildTime,
-    int skipBuildTimePrice,
-    int buildQuantity,
-    bool consumeOnBuild,
-    this.components,
-    String type,
-    String imageName,
-    String category,
-    String productCategory,
-    bool tradable,
+    required String uniqueName,
+    required String name,
+    required String description,
+    required String aura,
+    required int health,
+    required int shield,
+    required int armor,
+    required int power,
+    required int masteryReq,
+    required double sprintSpeed,
+    required String passiveDescription,
+    required this.abilities,
+    required int buildPrice,
+    required int buildTime,
+    required int skipBuildTimePrice,
+    required int buildQuantity,
+    required bool consumeOnBuild,
+    required this.components,
+    required String type,
+    required String imageName,
+    required String category,
+    required String productCategory,
+    required bool tradable,
+    required int stamina,
     this.patchlogs,
-    String wikiaThumbnail,
-    String wikiaUrl,
-    String sex,
-    String introduced,
-    List<String> polarities,
-    int color,
+    String? wikiaThumbnail,
+    String? wikiaUrl,
+    required String sex,
+    required String introduced,
+    required List<String> polarities,
+    required int color,
   }) : super(
           uniqueName: uniqueName,
           name: name,
@@ -59,6 +60,7 @@ class WarframeModel extends Warframe {
           shield: shield,
           armor: armor,
           power: power,
+          stamina: stamina,
           masteryReq: masteryReq,
           sprintSpeed: sprintSpeed,
           passiveDescription: passiveDescription,
@@ -94,7 +96,7 @@ class WarframeModel extends Warframe {
   final List<AbilityModel> abilities;
 
   @override
-  final List<PatchlogModel> patchlogs;
+  final List<PatchlogModel>? patchlogs;
 
   Map<String, dynamic> toJson() => _$WarframeModelToJson(this);
 }
@@ -102,31 +104,31 @@ class WarframeModel extends Warframe {
 @JsonSerializable()
 class HeavyPowerSuitModel extends HeavyPowerSuit {
   const HeavyPowerSuitModel({
-    String uniqueName,
-    String name,
-    String description,
-    String type,
-    String imageName,
-    String category,
-    String productCategory,
-    List<String> polarities,
-    bool tradable,
-    int masteryReq,
-    int buildPrice,
-    int buildTime,
-    int skipBuildTimePrice,
-    int buildQuantity,
-    bool consumeOnBuild,
-    this.components,
-    int health,
-    int shield,
-    int armor,
-    int power,
-    this.abilities,
-    double sprintSpeed,
+    required String uniqueName,
+    required String name,
+    required String description,
+    required String type,
+    required String imageName,
+    required String category,
+    required String productCategory,
+    List<String>? polarities,
+    required bool tradable,
+    required int masteryReq,
+    required int buildPrice,
+    required int buildTime,
+    required int skipBuildTimePrice,
+    required int buildQuantity,
+    required bool consumeOnBuild,
+    required this.components,
+    required int health,
+    required int shield,
+    required int armor,
+    required int power,
+    required this.abilities,
+    required double sprintSpeed,
     this.patchlogs,
-    String wikiaThumbnail,
-    String wikiaUrl,
+    String? wikiaThumbnail,
+    String? wikiaUrl,
   }) : super(
           uniqueName: uniqueName,
           name: name,
@@ -139,6 +141,7 @@ class HeavyPowerSuitModel extends HeavyPowerSuit {
           shield: shield,
           power: power,
           polarities: polarities,
+          abilities: abilities,
           productCategory: productCategory,
           tradable: tradable,
           components: components,
@@ -165,7 +168,7 @@ class HeavyPowerSuitModel extends HeavyPowerSuit {
   final List<AbilityModel> abilities;
 
   @override
-  final List<PatchlogModel> patchlogs;
+  final List<PatchlogModel>? patchlogs;
 
   Map<String, dynamic> toJson() => _$HeavyPowerSuitModelToJson(this);
 }
@@ -173,29 +176,29 @@ class HeavyPowerSuitModel extends HeavyPowerSuit {
 @JsonSerializable()
 class CompanionModel extends Companion {
   const CompanionModel({
-    String uniqueName,
-    String name,
-    String description,
-    String type,
-    String imageName,
-    String category,
-    String productCategory,
-    bool tradable,
-    int masteryReq,
-    int buildPrice,
-    int buildTime,
-    int skipBuildTimePrice,
-    int buildQuantity,
-    bool consumeOnBuild,
+    required String uniqueName,
+    required String name,
+    required String description,
+    required String type,
+    required String imageName,
+    required String category,
+    required String productCategory,
+    required bool tradable,
+    int? masteryReq,
+    int? buildPrice,
+    int? buildTime,
+    int? skipBuildTimePrice,
+    int? buildQuantity,
+    bool? consumeOnBuild,
     this.components,
-    int health,
-    int shield,
-    int armor,
-    int power,
-    List<String> polarities,
+    required int health,
+    required int shield,
+    required int armor,
+    required int power,
+    List<String>? polarities,
     this.patchlogs,
-    String wikiaThumbnail,
-    String wikiaUrl,
+    String? wikiaThumbnail,
+    String? wikiaUrl,
   }) : super(
           uniqueName: uniqueName,
           name: name,
@@ -227,10 +230,10 @@ class CompanionModel extends Companion {
   }
 
   @override
-  final List<ComponentModel> components;
+  final List<ComponentModel>? components;
 
   @override
-  final List<PatchlogModel> patchlogs;
+  final List<PatchlogModel>? patchlogs;
 
   Map<String, dynamic> toJson() => _$CompanionModelToJson(this);
 }

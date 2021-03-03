@@ -7,15 +7,15 @@ part 'riven_roll_model.g.dart';
 @JsonSerializable()
 class RivenRollModel extends RivenRoll {
   const RivenRollModel({
-    String itemType,
-    String compatibility,
-    bool rerolled,
-    double avg,
-    double stddev,
-    double median,
-    int min,
-    int max,
-    int pop,
+    required String itemType,
+    required String compatibility,
+    required bool rerolled,
+    required double avg,
+    required double stddev,
+    required double median,
+    required int min,
+    required int max,
+    required int pop,
   }) : super(
           itemType: itemType,
           compatibility: compatibility,

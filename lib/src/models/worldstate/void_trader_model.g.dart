@@ -6,24 +6,27 @@ part of 'void_trader_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-VoidTraderModel _$VoidTraderModelFromJson(Map<String, dynamic> json) {
-  return VoidTraderModel(
-    id: json['id'] as String,
-    activation: json['activation'] == null
-        ? null
-        : DateTime.parse(json['activation'] as String),
-    expiry: json['expiry'] == null
-        ? null
-        : DateTime.parse(json['expiry'] as String),
-    character: json['character'] as String,
-    location: json['location'] as String,
-    active: json['active'] as bool,
-    inventory: (json['inventory'] as List)
-        ?.map((e) => e == null
-            ? null
-            : InventoryItemModel.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
-  );
+VoidTraderModel _$VoidTraderModelFromJson(Map json) {
+  return $checkedNew('VoidTraderModel', json, () {
+    final val = VoidTraderModel(
+      id: $checkedConvert(json, 'id', (v) => v as String),
+      activation: $checkedConvert(
+          json, 'activation', (v) => DateTime.parse(v as String)),
+      expiry:
+          $checkedConvert(json, 'expiry', (v) => DateTime.parse(v as String)),
+      character: $checkedConvert(json, 'character', (v) => v as String),
+      location: $checkedConvert(json, 'location', (v) => v as String),
+      active: $checkedConvert(json, 'active', (v) => v as bool),
+      inventory: $checkedConvert(
+          json,
+          'inventory',
+          (v) => (v as List<dynamic>)
+              .map((e) => InventoryItemModel.fromJson(
+                  Map<String, dynamic>.from(e as Map)))
+              .toList()),
+    );
+    return val;
+  });
 }
 
 Map<String, dynamic> _$VoidTraderModelToJson(VoidTraderModel instance) =>
@@ -34,15 +37,18 @@ Map<String, dynamic> _$VoidTraderModelToJson(VoidTraderModel instance) =>
       'character': instance.character,
       'location': instance.location,
       'active': instance.active,
-      'inventory': instance.inventory,
+      'inventory': instance.inventory.map((e) => e.toJson()).toList(),
     };
 
-InventoryItemModel _$InventoryItemModelFromJson(Map<String, dynamic> json) {
-  return InventoryItemModel(
-    item: json['item'] as String,
-    ducats: json['ducats'] as int,
-    credits: json['credits'] as int,
-  );
+InventoryItemModel _$InventoryItemModelFromJson(Map json) {
+  return $checkedNew('InventoryItemModel', json, () {
+    final val = InventoryItemModel(
+      item: $checkedConvert(json, 'item', (v) => v as String),
+      ducats: $checkedConvert(json, 'ducats', (v) => v as int),
+      credits: $checkedConvert(json, 'credits', (v) => v as int),
+    );
+    return val;
+  });
 }
 
 Map<String, dynamic> _$InventoryItemModelToJson(InventoryItemModel instance) =>

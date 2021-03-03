@@ -3,11 +3,11 @@ import 'mission.dart';
 
 class Alert extends WorldstateObject {
   const Alert({
-    String id,
-    DateTime activation,
-    DateTime expiry,
-    this.active,
-    this.mission,
+    required String id,
+    required DateTime activation,
+    required DateTime expiry,
+    required this.active,
+    required this.mission,
   }) : super(id: id, activation: activation, expiry: expiry);
 
   final bool active;
@@ -23,14 +23,14 @@ class Alert extends WorldstateObject {
   String get faction => mission.faction;
 
   /// shorthand for [Mission.nightmare]
-  bool get isNightmare => mission.nightmare;
+  bool? get isNightmare => mission.nightmare;
 
   /// shorthand for [Mission.archwingRequired]
-  bool get archwingRequired => mission.archwingRequired;
+  bool? get archwingRequired => mission.archwingRequired;
 
   /// shorthand for [Mission.reward.itemString]
-  String get missionReward => mission.reward.itemString;
+  String? get missionReward => mission.reward?.itemString;
 
   @override
-  List<Object> get props => super.props..addAll([active, mission]);
+  List<Object?> get props => super.props..addAll([active, mission]);
 }

@@ -6,16 +6,22 @@ part of 'synth_location_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-SynthLocationModel _$SynthLocationModelFromJson(Map<String, dynamic> json) {
-  return SynthLocationModel(
-    faction: json['faction'] as String,
-    mission: json['mission'] as String,
-    planet: json['planet'] as String,
-    level: json['level'] as String,
-    type: json['type'] as String,
-    lastVerified: json['last_verified'] as String,
-    spawnRate: json['spawn_rate'] as String,
-  );
+SynthLocationModel _$SynthLocationModelFromJson(Map json) {
+  return $checkedNew('SynthLocationModel', json, () {
+    final val = SynthLocationModel(
+      faction: $checkedConvert(json, 'faction', (v) => v as String),
+      mission: $checkedConvert(json, 'mission', (v) => v as String),
+      planet: $checkedConvert(json, 'planet', (v) => v as String),
+      level: $checkedConvert(json, 'level', (v) => v as String),
+      type: $checkedConvert(json, 'type', (v) => v as String),
+      lastVerified: $checkedConvert(json, 'last_verified', (v) => v as String),
+      spawnRate: $checkedConvert(json, 'spawn_rate', (v) => v as String),
+    );
+    return val;
+  }, fieldKeyMap: const {
+    'lastVerified': 'last_verified',
+    'spawnRate': 'spawn_rate'
+  });
 }
 
 Map<String, dynamic> _$SynthLocationModelToJson(SynthLocationModel instance) =>

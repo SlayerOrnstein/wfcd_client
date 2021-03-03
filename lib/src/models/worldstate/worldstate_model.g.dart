@@ -6,105 +6,127 @@ part of 'worldstate_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-WorldstateModel _$WorldstateModelFromJson(Map<String, dynamic> json) {
-  return WorldstateModel(
-    timestamp: json['timestamp'] == null
-        ? null
-        : DateTime.parse(json['timestamp'] as String),
-    news: (json['news'] as List)
-        ?.map((e) => e == null
-            ? null
-            : OrbiterNewsModel.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
-    events: (json['events'] as List)
-        ?.map((e) =>
-            e == null ? null : EventModel.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
-    alerts: (json['alerts'] as List)
-        ?.map((e) =>
-            e == null ? null : AlertModel.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
-    sortie: json['sortie'] == null
-        ? null
-        : SortieModel.fromJson(json['sortie'] as Map<String, dynamic>),
-    syndicateMissions: (json['syndicateMissions'] as List)
-        ?.map((e) => e == null
-            ? null
-            : SyndicateModel.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
-    fissures: (json['fissures'] as List)
-        ?.map((e) => e == null
-            ? null
-            : VoidFissureModel.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
-    invasions: (json['invasions'] as List)
-        ?.map((e) => e == null
-            ? null
-            : InvasionModel.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
-    voidTrader: json['voidTrader'] == null
-        ? null
-        : VoidTraderModel.fromJson(json['voidTrader'] as Map<String, dynamic>),
-    dailyDeals: (json['dailyDeals'] as List)
-        ?.map((e) => e == null
-            ? null
-            : DarvoDealModel.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
-    persistentEnemies: (json['persistentEnemies'] as List)
-        ?.map((e) => e == null
-            ? null
-            : PersistentEnemyModel.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
-    earthCycle: json['earthCycle'] == null
-        ? null
-        : EarthModel.fromJson(json['earthCycle'] as Map<String, dynamic>),
-    cetusCycle: json['cetusCycle'] == null
-        ? null
-        : EarthModel.fromJson(json['cetusCycle'] as Map<String, dynamic>),
-    constructionProgress: json['constructionProgress'] == null
-        ? null
-        : ConstructionProgressModel.fromJson(
-            json['constructionProgress'] as Map<String, dynamic>),
-    vallisCycle: json['vallisCycle'] == null
-        ? null
-        : VallisModel.fromJson(json['vallisCycle'] as Map<String, dynamic>),
-    nightwave: json['nightwave'] == null
-        ? null
-        : NightwaveModel.fromJson(json['nightwave'] as Map<String, dynamic>),
-    kuva: (json['kuva'] as List)
-        ?.map((e) =>
-            e == null ? null : KuvaModel.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
-    sentientOutposts: json['sentientOutposts'] == null
-        ? null
-        : SentientOutpostModel.fromJson(
-            json['sentientOutposts'] as Map<String, dynamic>),
-    arbitration: json['arbitration'] == null
-        ? null
-        : ArbitrationModel.fromJson(
-            json['arbitration'] as Map<String, dynamic>),
-  );
+WorldstateModel _$WorldstateModelFromJson(Map json) {
+  return $checkedNew('WorldstateModel', json, () {
+    final val = WorldstateModel(
+      timestamp: $checkedConvert(
+          json, 'timestamp', (v) => DateTime.parse(v as String)),
+      news: $checkedConvert(
+          json,
+          'news',
+          (v) => (v as List<dynamic>)
+              .map((e) => OrbiterNewsModel.fromJson(
+                  Map<String, dynamic>.from(e as Map)))
+              .toList()),
+      events: $checkedConvert(
+          json,
+          'events',
+          (v) => (v as List<dynamic>)
+              .map((e) =>
+                  EventModel.fromJson(Map<String, dynamic>.from(e as Map)))
+              .toList()),
+      alerts: $checkedConvert(
+          json,
+          'alerts',
+          (v) => (v as List<dynamic>)
+              .map((e) =>
+                  AlertModel.fromJson(Map<String, dynamic>.from(e as Map)))
+              .toList()),
+      sortie: $checkedConvert(json, 'sortie',
+          (v) => SortieModel.fromJson(Map<String, dynamic>.from(v as Map))),
+      syndicateMissions: $checkedConvert(
+          json,
+          'syndicateMissions',
+          (v) => (v as List<dynamic>)
+              .map((e) =>
+                  SyndicateModel.fromJson(Map<String, dynamic>.from(e as Map)))
+              .toList()),
+      fissures: $checkedConvert(
+          json,
+          'fissures',
+          (v) => (v as List<dynamic>)
+              .map((e) => VoidFissureModel.fromJson(
+                  Map<String, dynamic>.from(e as Map)))
+              .toList()),
+      invasions: $checkedConvert(
+          json,
+          'invasions',
+          (v) => (v as List<dynamic>)
+              .map((e) =>
+                  InvasionModel.fromJson(Map<String, dynamic>.from(e as Map)))
+              .toList()),
+      voidTrader: $checkedConvert(json, 'voidTrader',
+          (v) => VoidTraderModel.fromJson(Map<String, dynamic>.from(v as Map))),
+      dailyDeals: $checkedConvert(
+          json,
+          'dailyDeals',
+          (v) => (v as List<dynamic>)
+              .map((e) =>
+                  DarvoDealModel.fromJson(Map<String, dynamic>.from(e as Map)))
+              .toList()),
+      persistentEnemies: $checkedConvert(
+          json,
+          'persistentEnemies',
+          (v) => (v as List<dynamic>)
+              .map((e) => PersistentEnemyModel.fromJson(
+                  Map<String, dynamic>.from(e as Map)))
+              .toList()),
+      earthCycle: $checkedConvert(json, 'earthCycle',
+          (v) => EarthModel.fromJson(Map<String, dynamic>.from(v as Map))),
+      cetusCycle: $checkedConvert(json, 'cetusCycle',
+          (v) => EarthModel.fromJson(Map<String, dynamic>.from(v as Map))),
+      constructionProgress: $checkedConvert(
+          json,
+          'constructionProgress',
+          (v) => ConstructionProgressModel.fromJson(
+              Map<String, dynamic>.from(v as Map))),
+      vallisCycle: $checkedConvert(json, 'vallisCycle',
+          (v) => VallisModel.fromJson(Map<String, dynamic>.from(v as Map))),
+      nightwave: $checkedConvert(json, 'nightwave',
+          (v) => NightwaveModel.fromJson(Map<String, dynamic>.from(v as Map))),
+      sentientOutposts: $checkedConvert(
+          json,
+          'sentientOutposts',
+          (v) => SentientOutpostModel.fromJson(
+              Map<String, dynamic>.from(v as Map))),
+      kuva: $checkedConvert(
+          json,
+          'kuva',
+          (v) => (v as List<dynamic>)
+              .map((e) =>
+                  KuvaModel.fromJson(Map<String, dynamic>.from(e as Map)))
+              .toList()),
+      arbitration: $checkedConvert(
+          json,
+          'arbitration',
+          (v) =>
+              ArbitrationModel.fromJson(Map<String, dynamic>.from(v as Map))),
+    );
+    return val;
+  });
 }
 
 Map<String, dynamic> _$WorldstateModelToJson(WorldstateModel instance) =>
     <String, dynamic>{
-      'timestamp': instance.timestamp?.toIso8601String(),
-      'news': instance.news,
-      'events': instance.events,
-      'alerts': instance.alerts,
-      'sortie': instance.sortie,
-      'syndicateMissions': instance.syndicateMissions,
-      'fissures': instance.fissures,
-      'invasions': instance.invasions,
-      'voidTrader': instance.voidTrader,
-      'dailyDeals': instance.dailyDeals,
-      'persistentEnemies': instance.persistentEnemies,
-      'earthCycle': instance.earthCycle,
-      'cetusCycle': instance.cetusCycle,
-      'constructionProgress': instance.constructionProgress,
-      'vallisCycle': instance.vallisCycle,
-      'nightwave': instance.nightwave,
-      'sentientOutposts': instance.sentientOutposts,
-      'kuva': instance.kuva,
-      'arbitration': instance.arbitration,
+      'timestamp': instance.timestamp.toIso8601String(),
+      'news': instance.news.map((e) => e.toJson()).toList(),
+      'events': instance.events.map((e) => e.toJson()).toList(),
+      'alerts': instance.alerts.map((e) => e.toJson()).toList(),
+      'sortie': instance.sortie.toJson(),
+      'syndicateMissions':
+          instance.syndicateMissions.map((e) => e.toJson()).toList(),
+      'fissures': instance.fissures.map((e) => e.toJson()).toList(),
+      'invasions': instance.invasions.map((e) => e.toJson()).toList(),
+      'voidTrader': instance.voidTrader.toJson(),
+      'dailyDeals': instance.dailyDeals.map((e) => e.toJson()).toList(),
+      'persistentEnemies':
+          instance.persistentEnemies.map((e) => e.toJson()).toList(),
+      'earthCycle': instance.earthCycle.toJson(),
+      'cetusCycle': instance.cetusCycle.toJson(),
+      'constructionProgress': instance.constructionProgress.toJson(),
+      'vallisCycle': instance.vallisCycle.toJson(),
+      'nightwave': instance.nightwave.toJson(),
+      'sentientOutposts': instance.sentientOutposts.toJson(),
+      'kuva': instance.kuva.map((e) => e.toJson()).toList(),
+      'arbitration': instance.arbitration.toJson(),
     };

@@ -3,28 +3,28 @@ import 'patch_log.dart';
 
 class Mod extends Item {
   const Mod({
-    String uniqueName,
-    String name,
-    String description,
-    String type,
-    String imageName,
-    String category,
-    this.polarity,
-    this.rarity,
-    this.baseDrain,
-    this.fusionLimit,
+    required String uniqueName,
+    required String name,
+    String? description,
+    required String type,
+    required String imageName,
+    required String category,
+    required this.polarity,
+    required this.rarity,
+    required this.baseDrain,
+    required this.fusionLimit,
     this.compatName,
     this.levelStats,
-    this.isAugment,
-    bool tradable,
+    required this.isAugment,
+    required bool tradable,
     this.transmutable,
-    List<Patchlog> patchlogs,
-    String wikiaThumbnail,
-    String wikiaUrl,
+    List<Patchlog>? patchlogs,
+    String? wikiaThumbnail,
+    String? wikiaUrl,
   }) : super(
           uniqueName: uniqueName,
           name: name,
-          description: description,
+          description: description ?? '',
           imageName: imageName,
           type: type,
           category: category,
@@ -34,13 +34,15 @@ class Mod extends Item {
           wikiaUrl: wikiaUrl,
         );
 
-  final String polarity, rarity, compatName;
+  final String polarity, rarity;
+  final String? compatName;
   final int baseDrain, fusionLimit;
-  final List<Map<String, List<String>>> levelStats;
-  final bool isAugment, transmutable;
+  final List<Map<String, List<String>>>? levelStats;
+  final bool isAugment;
+  final bool? transmutable;
 
   @override
-  List<Object> get props {
+  List<Object?> get props {
     return super.props
       ..addAll([
         polarity,

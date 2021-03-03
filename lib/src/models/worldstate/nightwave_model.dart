@@ -7,16 +7,17 @@ part 'nightwave_model.g.dart';
 @JsonSerializable()
 class NightwaveModel extends Nightwave {
   const NightwaveModel({
-    String id,
-    DateTime activation,
-    DateTime expiry,
-    String tag,
-    bool active,
-    int season,
-    int phase,
-    this.possibleChallenges,
-    this.activeChallenges,
-    List<String> rewardTypes,
+    required String id,
+    required DateTime activation,
+    required DateTime expiry,
+    required String tag,
+    required bool active,
+    required int season,
+    required int phase,
+    required this.possibleChallenges,
+    required this.activeChallenges,
+    required List<String> rewardTypes,
+    required String startString,
   }) : super(
           id: id,
           activation: activation,
@@ -26,6 +27,9 @@ class NightwaveModel extends Nightwave {
           season: season,
           phase: phase,
           rewardTypes: rewardTypes,
+          possibleChallenges: possibleChallenges,
+          activeChallenges: activeChallenges,
+          startString: startString,
         );
 
   factory NightwaveModel.fromJson(Map<String, dynamic> json) {
@@ -44,15 +48,15 @@ class NightwaveModel extends Nightwave {
 @JsonSerializable()
 class ChallengeModel extends Challenge {
   const ChallengeModel({
-    String id,
-    DateTime activation,
-    DateTime expiry,
-    String title,
-    String desc,
-    bool active,
-    bool isDaily,
-    bool isElite,
-    int reputation,
+    required String id,
+    required DateTime activation,
+    required DateTime expiry,
+    required String title,
+    required String desc,
+    required bool active,
+    bool? isDaily,
+    required bool isElite,
+    required int reputation,
   }) : super(
           id: id,
           activation: activation,

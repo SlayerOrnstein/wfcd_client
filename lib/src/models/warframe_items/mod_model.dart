@@ -8,24 +8,24 @@ part 'mod_model.g.dart';
 @JsonSerializable()
 class ModModel extends Mod {
   const ModModel({
-    String uniqueName,
-    String name,
-    String description,
-    String imageName,
-    String polarity,
-    String rarity,
-    int baseDrain,
-    int fusionLimit,
-    String compatName,
-    String type,
-    List<Map<String, List<String>>> levelStats,
-    String category,
-    bool isAugment,
-    bool tradable,
+    required String uniqueName,
+    required String name,
+    String? description,
+    required String imageName,
+    required String polarity,
+    required String rarity,
+    required int baseDrain,
+    required int fusionLimit,
+    bool? transmutable,
+    String? compatName,
+    required String type,
+    List<Map<String, List<String>>>? levelStats,
+    required String category,
+    bool? isAugment,
+    required bool tradable,
     this.patchlogs,
-    String wikiaThumbnail,
-    String wikiaUrl,
-    bool transmutable,
+    String? wikiaThumbnail,
+    String? wikiaUrl,
   }) : super(
           uniqueName: uniqueName,
           name: name,
@@ -39,7 +39,7 @@ class ModModel extends Mod {
           type: type,
           levelStats: levelStats,
           category: category,
-          isAugment: isAugment,
+          isAugment: isAugment ?? false,
           tradable: tradable,
           patchlogs: patchlogs,
           wikiaThumbnail: wikiaThumbnail,
@@ -52,7 +52,7 @@ class ModModel extends Mod {
   }
 
   @override
-  final List<PatchlogModel> patchlogs;
+  final List<PatchlogModel>? patchlogs;
 
   Map<String, dynamic> toJson() => _$ModModelToJson(this);
 }

@@ -6,27 +6,30 @@ part of 'persistent_enemy_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-PersistentEnemyModel _$PersistentEnemyModelFromJson(Map<String, dynamic> json) {
-  return PersistentEnemyModel(
-    id: json['id'] as String,
-    activation: json['activation'] == null
-        ? null
-        : DateTime.parse(json['activation'] as String),
-    expiry: json['expiry'] == null
-        ? null
-        : DateTime.parse(json['expiry'] as String),
-    agentType: json['agentType'] as String,
-    locationTag: json['locationTag'] as String,
-    lastDiscoveredAt: json['lastDiscoveredAt'] as String,
-    lastDiscoveredTime: json['lastDiscoveredTime'] == null
-        ? null
-        : DateTime.parse(json['lastDiscoveredTime'] as String),
-    fleeDamage: json['fleeDamage'] as int,
-    rank: json['rank'] as int,
-    healthPercent: (json['healthPercent'] as num)?.toDouble(),
-    isDiscovered: json['isDiscovered'] as bool,
-    isUsingTicketing: json['isUsingTicketing'] as bool,
-  );
+PersistentEnemyModel _$PersistentEnemyModelFromJson(Map json) {
+  return $checkedNew('PersistentEnemyModel', json, () {
+    final val = PersistentEnemyModel(
+      id: $checkedConvert(json, 'id', (v) => v as String),
+      activation: $checkedConvert(
+          json, 'activation', (v) => DateTime.parse(v as String)),
+      expiry:
+          $checkedConvert(json, 'expiry', (v) => DateTime.parse(v as String)),
+      agentType: $checkedConvert(json, 'agentType', (v) => v as String),
+      locationTag: $checkedConvert(json, 'locationTag', (v) => v as String),
+      lastDiscoveredAt:
+          $checkedConvert(json, 'lastDiscoveredAt', (v) => v as String),
+      lastDiscoveredTime: $checkedConvert(
+          json, 'lastDiscoveredTime', (v) => DateTime.parse(v as String)),
+      fleeDamage: $checkedConvert(json, 'fleeDamage', (v) => v as int),
+      rank: $checkedConvert(json, 'rank', (v) => v as int),
+      healthPercent:
+          $checkedConvert(json, 'healthPercent', (v) => (v as num).toDouble()),
+      isDiscovered: $checkedConvert(json, 'isDiscovered', (v) => v as bool),
+      isUsingTicketing:
+          $checkedConvert(json, 'isUsingTicketing', (v) => v as bool),
+    );
+    return val;
+  });
 }
 
 Map<String, dynamic> _$PersistentEnemyModelToJson(
@@ -38,7 +41,7 @@ Map<String, dynamic> _$PersistentEnemyModelToJson(
       'agentType': instance.agentType,
       'locationTag': instance.locationTag,
       'lastDiscoveredAt': instance.lastDiscoveredAt,
-      'lastDiscoveredTime': instance.lastDiscoveredTime?.toIso8601String(),
+      'lastDiscoveredTime': instance.lastDiscoveredTime.toIso8601String(),
       'fleeDamage': instance.fleeDamage,
       'rank': instance.rank,
       'healthPercent': instance.healthPercent,

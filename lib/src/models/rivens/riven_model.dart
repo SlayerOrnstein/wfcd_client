@@ -7,8 +7,10 @@ part 'riven_model.g.dart';
 
 @JsonSerializable()
 class RivenDataModel extends Riven {
-  const RivenDataModel({this.rerolledModel, this.unrolledModel})
-      : super(rerolled: rerolledModel, unrolled: unrolledModel);
+  const RivenDataModel({
+    required this.rerolledModel,
+    required this.unrolledModel,
+  }) : super(rerolled: rerolledModel, unrolled: unrolledModel);
 
   factory RivenDataModel.fromJson(Map<String, dynamic> json) {
     return _$RivenDataModelFromJson(json);

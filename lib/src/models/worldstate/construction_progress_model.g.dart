@@ -6,14 +6,19 @@ part of 'construction_progress_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-ConstructionProgressModel _$ConstructionProgressModelFromJson(
-    Map<String, dynamic> json) {
-  return ConstructionProgressModel(
-    id: json['id'] as String,
-    fomorianProgress: json['fomorianProgress'] as String,
-    razorbackProgress: json['razorbackProgress'] as String,
-    unknownProgress: json['unknownProgress'] as String,
-  );
+ConstructionProgressModel _$ConstructionProgressModelFromJson(Map json) {
+  return $checkedNew('ConstructionProgressModel', json, () {
+    final val = ConstructionProgressModel(
+      id: $checkedConvert(json, 'id', (v) => v as String),
+      fomorianProgress:
+          $checkedConvert(json, 'fomorianProgress', (v) => v as String),
+      razorbackProgress:
+          $checkedConvert(json, 'razorbackProgress', (v) => v as String),
+      unknownProgress:
+          $checkedConvert(json, 'unknownProgress', (v) => v as String),
+    );
+    return val;
+  });
 }
 
 Map<String, dynamic> _$ConstructionProgressModelToJson(

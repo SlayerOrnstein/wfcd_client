@@ -4,41 +4,45 @@ import 'abstract_item.dart';
 
 class Component extends Item {
   const Component({
-    String uniqueName,
-    String name,
-    String description,
-    this.itemCount,
-    String imageName,
-    bool tradable,
-    this.drops,
+    required String uniqueName,
+    required String name,
+    required String description,
+    required this.itemCount,
+    required String imageName,
+    required bool tradable,
+    String? type,
+    String? category,
+    List<Drop>? drops,
   }) : super(
           uniqueName: uniqueName,
           name: name,
           description: description,
           imageName: imageName,
           tradable: tradable,
+          drops: drops,
+          type: type ?? '',
+          category: category ?? '',
         );
 
-  final num itemCount;
-  final List<Drop> drops;
+  final int itemCount;
 
   @override
-  List<Object> get props => super.props..addAll([itemCount, drops]);
+  List<Object?> get props => super.props..addAll([itemCount, drops]);
 }
 
 class Drop extends Equatable {
   const Drop({
-    this.location,
-    this.type,
-    this.rarity,
-    this.chance,
+    required this.location,
+    required this.type,
+    required this.rarity,
+    required this.chance,
     this.rotation,
   });
 
   final String location, type, rarity;
-  final String rotation;
+  final String? rotation;
   final double chance;
 
   @override
-  List<Object> get props => [location, type, rarity, chance, rotation];
+  List<Object?> get props => [location, type, rarity, chance, rotation];
 }

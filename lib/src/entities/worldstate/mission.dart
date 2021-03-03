@@ -4,9 +4,9 @@ import 'reward.dart';
 
 class Mission extends Equatable {
   const Mission({
-    this.node,
-    this.type,
-    this.faction,
+    required this.node,
+    required this.type,
+    required this.faction,
     this.minEnemyLevel,
     this.maxEnemyLevel,
     this.maxWaveNum,
@@ -16,14 +16,15 @@ class Mission extends Equatable {
     this.exclusiveWeapon,
   });
 
-  final String node, type, faction, exclusiveWeapon;
-  final int minEnemyLevel, maxEnemyLevel, maxWaveNum;
-  final bool nightmare, archwingRequired;
+  final String node, type, faction;
+  final String? exclusiveWeapon;
+  final int? minEnemyLevel, maxEnemyLevel, maxWaveNum;
+  final bool? nightmare, archwingRequired;
 
-  final Reward reward;
+  final Reward? reward;
 
   @override
-  List<Object> get props {
+  List<Object?> get props {
     return [
       node,
       type,

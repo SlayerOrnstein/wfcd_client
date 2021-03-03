@@ -6,13 +6,16 @@ part of 'slim_drop_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-SlimDropModel _$SlimDropModelFromJson(Map<String, dynamic> json) {
-  return SlimDropModel(
-    place: json['place'] as String,
-    item: json['item'] as String,
-    rarity: json['rarity'] as String,
-    dropchance: json['chance'],
-  );
+SlimDropModel _$SlimDropModelFromJson(Map json) {
+  return $checkedNew('SlimDropModel', json, () {
+    final val = SlimDropModel(
+      place: $checkedConvert(json, 'place', (v) => v as String),
+      item: $checkedConvert(json, 'item', (v) => v as String),
+      rarity: $checkedConvert(json, 'rarity', (v) => v as String),
+      dropchance: $checkedConvert(json, 'chance', (v) => v),
+    );
+    return val;
+  }, fieldKeyMap: const {'dropchance': 'chance'});
 }
 
 Map<String, dynamic> _$SlimDropModelToJson(SlimDropModel instance) =>

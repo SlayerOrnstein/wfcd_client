@@ -6,35 +6,35 @@ import 'reward.dart';
 
 class Invasion extends WorldstateObject {
   const Invasion({
-    String id,
-    DateTime activation,
-    DateTime expiry,
-    this.node,
-    this.desc,
-    this.attackingFaction,
-    this.defendingFaction,
-    this.attacker,
-    this.defender,
-    this.eta,
-    this.vsInfestation,
-    this.completed,
-    this.completion,
-    this.count,
-  }) : super(id: id, activation: activation, expiry: expiry);
+    required String id,
+    required DateTime activation,
+    required this.node,
+    required this.nodeKey,
+    required this.desc,
+    required this.attackingFaction,
+    required this.defendingFaction,
+    required this.attacker,
+    required this.defender,
+    required this.eta,
+    required this.vsInfestation,
+    required this.completed,
+    required this.completion,
+    required this.count,
+  }) : super(id: id, activation: activation);
 
-  final String node, desc, attackingFaction, defendingFaction, eta;
+  final String node, desc, attackingFaction, defendingFaction, eta, nodeKey;
   final bool vsInfestation, completed;
   final num completion, count;
   final Faction attacker, defender;
 
-  /// shorthand for [attacker.reward]
+  /// shorthand for [Faction.reward]
   Reward get attackerReward => attacker.reward;
 
-  /// shorthand for [defender.reward]
+  /// shorthand for [Faction.reward]
   Reward get defenderReward => defender.reward;
 
   @override
-  List<Object> get props {
+  List<Object?> get props {
     return super.props
       ..addAll([
         node,
@@ -51,7 +51,11 @@ class Invasion extends WorldstateObject {
 }
 
 class Faction extends Equatable {
-  const Faction({this.reward, this.faction, this.factionKey});
+  const Faction({
+    required this.reward,
+    required this.faction,
+    required this.factionKey,
+  });
 
   final Reward reward;
   final String faction, factionKey;

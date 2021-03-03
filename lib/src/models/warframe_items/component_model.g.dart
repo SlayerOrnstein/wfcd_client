@@ -6,19 +6,27 @@ part of 'component_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-ComponentModel _$ComponentModelFromJson(Map<String, dynamic> json) {
-  return ComponentModel(
-    uniqueName: json['uniqueName'] as String,
-    name: json['name'] as String,
-    description: json['description'] as String,
-    itemCount: json['itemCount'] as num,
-    imageName: json['imageName'] as String,
-    tradable: json['tradable'] as bool,
-    drops: (json['drops'] as List)
-        ?.map((e) =>
-            e == null ? null : DropModel.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
-  );
+ComponentModel _$ComponentModelFromJson(Map json) {
+  return $checkedNew('ComponentModel', json, () {
+    final val = ComponentModel(
+      uniqueName: $checkedConvert(json, 'uniqueName', (v) => v as String),
+      name: $checkedConvert(json, 'name', (v) => v as String),
+      description: $checkedConvert(json, 'description', (v) => v as String),
+      itemCount: $checkedConvert(json, 'itemCount', (v) => v as int),
+      imageName: $checkedConvert(json, 'imageName', (v) => v as String),
+      tradable: $checkedConvert(json, 'tradable', (v) => v as bool),
+      type: $checkedConvert(json, 'type', (v) => v as String?),
+      category: $checkedConvert(json, 'category', (v) => v as String?),
+      drops: $checkedConvert(
+          json,
+          'drops',
+          (v) => (v as List<dynamic>?)
+              ?.map((e) =>
+                  DropModel.fromJson(Map<String, dynamic>.from(e as Map)))
+              .toList()),
+    );
+    return val;
+  });
 }
 
 Map<String, dynamic> _$ComponentModelToJson(ComponentModel instance) =>
@@ -26,20 +34,25 @@ Map<String, dynamic> _$ComponentModelToJson(ComponentModel instance) =>
       'uniqueName': instance.uniqueName,
       'name': instance.name,
       'description': instance.description,
+      'type': instance.type,
       'imageName': instance.imageName,
+      'category': instance.category,
       'tradable': instance.tradable,
       'itemCount': instance.itemCount,
-      'drops': instance.drops,
+      'drops': instance.drops?.map((e) => e.toJson()).toList(),
     };
 
-DropModel _$DropModelFromJson(Map<String, dynamic> json) {
-  return DropModel(
-    location: json['location'] as String,
-    type: json['type'] as String,
-    rarity: json['rarity'] as String,
-    rotation: json['rotation'] as String,
-    chance: (json['chance'] as num)?.toDouble(),
-  );
+DropModel _$DropModelFromJson(Map json) {
+  return $checkedNew('DropModel', json, () {
+    final val = DropModel(
+      location: $checkedConvert(json, 'location', (v) => v as String),
+      type: $checkedConvert(json, 'type', (v) => v as String),
+      rarity: $checkedConvert(json, 'rarity', (v) => v as String),
+      rotation: $checkedConvert(json, 'rotation', (v) => v as String?),
+      chance: $checkedConvert(json, 'chance', (v) => (v as num).toDouble()),
+    );
+    return val;
+  });
 }
 
 Map<String, dynamic> _$DropModelToJson(DropModel instance) => <String, dynamic>{

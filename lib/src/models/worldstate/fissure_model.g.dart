@@ -6,23 +6,24 @@ part of 'fissure_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-VoidFissureModel _$VoidFissureModelFromJson(Map<String, dynamic> json) {
-  return VoidFissureModel(
-    id: json['id'] as String,
-    activation: json['activation'] == null
-        ? null
-        : DateTime.parse(json['activation'] as String),
-    expiry: json['expiry'] == null
-        ? null
-        : DateTime.parse(json['expiry'] as String),
-    node: json['node'] as String,
-    missionType: json['missionType'] as String,
-    enemy: json['enemy'] as String,
-    tier: json['tier'] as String,
-    tierNum: json['tierNum'] as int,
-    active: json['active'] as bool,
-    expired: json['expired'] as bool,
-  );
+VoidFissureModel _$VoidFissureModelFromJson(Map json) {
+  return $checkedNew('VoidFissureModel', json, () {
+    final val = VoidFissureModel(
+      id: $checkedConvert(json, 'id', (v) => v as String),
+      activation: $checkedConvert(
+          json, 'activation', (v) => DateTime.parse(v as String)),
+      expiry:
+          $checkedConvert(json, 'expiry', (v) => DateTime.parse(v as String)),
+      node: $checkedConvert(json, 'node', (v) => v as String),
+      missionType: $checkedConvert(json, 'missionType', (v) => v as String),
+      enemy: $checkedConvert(json, 'enemy', (v) => v as String),
+      tier: $checkedConvert(json, 'tier', (v) => v as String),
+      tierNum: $checkedConvert(json, 'tierNum', (v) => v as int),
+      active: $checkedConvert(json, 'active', (v) => v as bool),
+      expired: $checkedConvert(json, 'expired', (v) => v as bool),
+    );
+    return val;
+  });
 }
 
 Map<String, dynamic> _$VoidFissureModelToJson(VoidFissureModel instance) =>

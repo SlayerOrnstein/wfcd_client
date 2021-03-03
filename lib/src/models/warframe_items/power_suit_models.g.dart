@@ -6,11 +6,14 @@ part of 'power_suit_models.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-AbilityModel _$AbilityModelFromJson(Map<String, dynamic> json) {
-  return AbilityModel(
-    name: json['name'] as String,
-    description: json['description'] as String,
-  );
+AbilityModel _$AbilityModelFromJson(Map json) {
+  return $checkedNew('AbilityModel', json, () {
+    final val = AbilityModel(
+      name: $checkedConvert(json, 'name', (v) => v as String),
+      description: $checkedConvert(json, 'description', (v) => v as String),
+    );
+    return val;
+  });
 }
 
 Map<String, dynamic> _$AbilityModelToJson(AbilityModel instance) =>
@@ -19,50 +22,67 @@ Map<String, dynamic> _$AbilityModelToJson(AbilityModel instance) =>
       'description': instance.description,
     };
 
-WarframeModel _$WarframeModelFromJson(Map<String, dynamic> json) {
-  return WarframeModel(
-    uniqueName: json['uniqueName'] as String,
-    name: json['name'] as String,
-    description: json['description'] as String,
-    aura: json['aura'] as String,
-    health: json['health'] as int,
-    shield: json['shield'] as int,
-    armor: json['armor'] as int,
-    power: json['power'] as int,
-    masteryReq: json['masteryReq'] as int,
-    sprintSpeed: (json['sprintSpeed'] as num)?.toDouble(),
-    passiveDescription: json['passiveDescription'] as String,
-    abilities: (json['abilities'] as List)
-        ?.map((e) =>
-            e == null ? null : AbilityModel.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
-    buildPrice: json['buildPrice'] as int,
-    buildTime: json['buildTime'] as int,
-    skipBuildTimePrice: json['skipBuildTimePrice'] as int,
-    buildQuantity: json['buildQuantity'] as int,
-    consumeOnBuild: json['consumeOnBuild'] as bool,
-    components: (json['components'] as List)
-        ?.map((e) => e == null
-            ? null
-            : ComponentModel.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
-    type: json['type'] as String,
-    imageName: json['imageName'] as String,
-    category: json['category'] as String,
-    productCategory: json['productCategory'] as String,
-    tradable: json['tradable'] as bool,
-    patchlogs: (json['patchlogs'] as List)
-        ?.map((e) => e == null
-            ? null
-            : PatchlogModel.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
-    wikiaThumbnail: json['wikiaThumbnail'] as String,
-    wikiaUrl: json['wikiaUrl'] as String,
-    sex: json['sex'] as String,
-    introduced: json['introduced'] as String,
-    polarities: (json['polarities'] as List)?.map((e) => e as String)?.toList(),
-    color: json['color'] as int,
-  );
+WarframeModel _$WarframeModelFromJson(Map json) {
+  return $checkedNew('WarframeModel', json, () {
+    final val = WarframeModel(
+      uniqueName: $checkedConvert(json, 'uniqueName', (v) => v as String),
+      name: $checkedConvert(json, 'name', (v) => v as String),
+      description: $checkedConvert(json, 'description', (v) => v as String),
+      aura: $checkedConvert(json, 'aura', (v) => v as String),
+      health: $checkedConvert(json, 'health', (v) => v as int),
+      shield: $checkedConvert(json, 'shield', (v) => v as int),
+      armor: $checkedConvert(json, 'armor', (v) => v as int),
+      power: $checkedConvert(json, 'power', (v) => v as int),
+      masteryReq: $checkedConvert(json, 'masteryReq', (v) => v as int),
+      sprintSpeed:
+          $checkedConvert(json, 'sprintSpeed', (v) => (v as num).toDouble()),
+      passiveDescription:
+          $checkedConvert(json, 'passiveDescription', (v) => v as String),
+      abilities: $checkedConvert(
+          json,
+          'abilities',
+          (v) => (v as List<dynamic>)
+              .map((e) =>
+                  AbilityModel.fromJson(Map<String, dynamic>.from(e as Map)))
+              .toList()),
+      buildPrice: $checkedConvert(json, 'buildPrice', (v) => v as int),
+      buildTime: $checkedConvert(json, 'buildTime', (v) => v as int),
+      skipBuildTimePrice:
+          $checkedConvert(json, 'skipBuildTimePrice', (v) => v as int),
+      buildQuantity: $checkedConvert(json, 'buildQuantity', (v) => v as int),
+      consumeOnBuild: $checkedConvert(json, 'consumeOnBuild', (v) => v as bool),
+      components: $checkedConvert(
+          json,
+          'components',
+          (v) => (v as List<dynamic>)
+              .map((e) =>
+                  ComponentModel.fromJson(Map<String, dynamic>.from(e as Map)))
+              .toList()),
+      type: $checkedConvert(json, 'type', (v) => v as String),
+      imageName: $checkedConvert(json, 'imageName', (v) => v as String),
+      category: $checkedConvert(json, 'category', (v) => v as String),
+      productCategory:
+          $checkedConvert(json, 'productCategory', (v) => v as String),
+      tradable: $checkedConvert(json, 'tradable', (v) => v as bool),
+      stamina: $checkedConvert(json, 'stamina', (v) => v as int),
+      patchlogs: $checkedConvert(
+          json,
+          'patchlogs',
+          (v) => (v as List<dynamic>?)
+              ?.map((e) =>
+                  PatchlogModel.fromJson(Map<String, dynamic>.from(e as Map)))
+              .toList()),
+      wikiaThumbnail:
+          $checkedConvert(json, 'wikiaThumbnail', (v) => v as String?),
+      wikiaUrl: $checkedConvert(json, 'wikiaUrl', (v) => v as String?),
+      sex: $checkedConvert(json, 'sex', (v) => v as String),
+      introduced: $checkedConvert(json, 'introduced', (v) => v as String),
+      polarities: $checkedConvert(json, 'polarities',
+          (v) => (v as List<dynamic>).map((e) => e as String).toList()),
+      color: $checkedConvert(json, 'color', (v) => v as int),
+    );
+    return val;
+  });
 }
 
 Map<String, dynamic> _$WarframeModelToJson(WarframeModel instance) =>
@@ -90,54 +110,70 @@ Map<String, dynamic> _$WarframeModelToJson(WarframeModel instance) =>
       'polarities': instance.polarities,
       'sprintSpeed': instance.sprintSpeed,
       'aura': instance.aura,
+      'stamina': instance.stamina,
       'passiveDescription': instance.passiveDescription,
       'introduced': instance.introduced,
       'sex': instance.sex,
       'color': instance.color,
-      'components': instance.components,
-      'abilities': instance.abilities,
-      'patchlogs': instance.patchlogs,
+      'components': instance.components.map((e) => e.toJson()).toList(),
+      'abilities': instance.abilities.map((e) => e.toJson()).toList(),
+      'patchlogs': instance.patchlogs?.map((e) => e.toJson()).toList(),
     };
 
-HeavyPowerSuitModel _$HeavyPowerSuitModelFromJson(Map<String, dynamic> json) {
-  return HeavyPowerSuitModel(
-    uniqueName: json['uniqueName'] as String,
-    name: json['name'] as String,
-    description: json['description'] as String,
-    type: json['type'] as String,
-    imageName: json['imageName'] as String,
-    category: json['category'] as String,
-    productCategory: json['productCategory'] as String,
-    polarities: (json['polarities'] as List)?.map((e) => e as String)?.toList(),
-    tradable: json['tradable'] as bool,
-    masteryReq: json['masteryReq'] as int,
-    buildPrice: json['buildPrice'] as int,
-    buildTime: json['buildTime'] as int,
-    skipBuildTimePrice: json['skipBuildTimePrice'] as int,
-    buildQuantity: json['buildQuantity'] as int,
-    consumeOnBuild: json['consumeOnBuild'] as bool,
-    components: (json['components'] as List)
-        ?.map((e) => e == null
-            ? null
-            : ComponentModel.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
-    health: json['health'] as int,
-    shield: json['shield'] as int,
-    armor: json['armor'] as int,
-    power: json['power'] as int,
-    abilities: (json['abilities'] as List)
-        ?.map((e) =>
-            e == null ? null : AbilityModel.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
-    sprintSpeed: (json['sprintSpeed'] as num)?.toDouble(),
-    patchlogs: (json['patchlogs'] as List)
-        ?.map((e) => e == null
-            ? null
-            : PatchlogModel.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
-    wikiaThumbnail: json['wikiaThumbnail'] as String,
-    wikiaUrl: json['wikiaUrl'] as String,
-  );
+HeavyPowerSuitModel _$HeavyPowerSuitModelFromJson(Map json) {
+  return $checkedNew('HeavyPowerSuitModel', json, () {
+    final val = HeavyPowerSuitModel(
+      uniqueName: $checkedConvert(json, 'uniqueName', (v) => v as String),
+      name: $checkedConvert(json, 'name', (v) => v as String),
+      description: $checkedConvert(json, 'description', (v) => v as String),
+      type: $checkedConvert(json, 'type', (v) => v as String),
+      imageName: $checkedConvert(json, 'imageName', (v) => v as String),
+      category: $checkedConvert(json, 'category', (v) => v as String),
+      productCategory:
+          $checkedConvert(json, 'productCategory', (v) => v as String),
+      polarities: $checkedConvert(json, 'polarities',
+          (v) => (v as List<dynamic>?)?.map((e) => e as String).toList()),
+      tradable: $checkedConvert(json, 'tradable', (v) => v as bool),
+      masteryReq: $checkedConvert(json, 'masteryReq', (v) => v as int),
+      buildPrice: $checkedConvert(json, 'buildPrice', (v) => v as int),
+      buildTime: $checkedConvert(json, 'buildTime', (v) => v as int),
+      skipBuildTimePrice:
+          $checkedConvert(json, 'skipBuildTimePrice', (v) => v as int),
+      buildQuantity: $checkedConvert(json, 'buildQuantity', (v) => v as int),
+      consumeOnBuild: $checkedConvert(json, 'consumeOnBuild', (v) => v as bool),
+      components: $checkedConvert(
+          json,
+          'components',
+          (v) => (v as List<dynamic>)
+              .map((e) =>
+                  ComponentModel.fromJson(Map<String, dynamic>.from(e as Map)))
+              .toList()),
+      health: $checkedConvert(json, 'health', (v) => v as int),
+      shield: $checkedConvert(json, 'shield', (v) => v as int),
+      armor: $checkedConvert(json, 'armor', (v) => v as int),
+      power: $checkedConvert(json, 'power', (v) => v as int),
+      abilities: $checkedConvert(
+          json,
+          'abilities',
+          (v) => (v as List<dynamic>)
+              .map((e) =>
+                  AbilityModel.fromJson(Map<String, dynamic>.from(e as Map)))
+              .toList()),
+      sprintSpeed:
+          $checkedConvert(json, 'sprintSpeed', (v) => (v as num).toDouble()),
+      patchlogs: $checkedConvert(
+          json,
+          'patchlogs',
+          (v) => (v as List<dynamic>?)
+              ?.map((e) =>
+                  PatchlogModel.fromJson(Map<String, dynamic>.from(e as Map)))
+              .toList()),
+      wikiaThumbnail:
+          $checkedConvert(json, 'wikiaThumbnail', (v) => v as String?),
+      wikiaUrl: $checkedConvert(json, 'wikiaUrl', (v) => v as String?),
+    );
+    return val;
+  });
 }
 
 Map<String, dynamic> _$HeavyPowerSuitModelToJson(
@@ -165,45 +201,57 @@ Map<String, dynamic> _$HeavyPowerSuitModelToJson(
       'power': instance.power,
       'polarities': instance.polarities,
       'sprintSpeed': instance.sprintSpeed,
-      'components': instance.components,
-      'abilities': instance.abilities,
-      'patchlogs': instance.patchlogs,
+      'components': instance.components.map((e) => e.toJson()).toList(),
+      'abilities': instance.abilities.map((e) => e.toJson()).toList(),
+      'patchlogs': instance.patchlogs?.map((e) => e.toJson()).toList(),
     };
 
-CompanionModel _$CompanionModelFromJson(Map<String, dynamic> json) {
-  return CompanionModel(
-    uniqueName: json['uniqueName'] as String,
-    name: json['name'] as String,
-    description: json['description'] as String,
-    type: json['type'] as String,
-    imageName: json['imageName'] as String,
-    category: json['category'] as String,
-    productCategory: json['productCategory'] as String,
-    tradable: json['tradable'] as bool,
-    masteryReq: json['masteryReq'] as int,
-    buildPrice: json['buildPrice'] as int,
-    buildTime: json['buildTime'] as int,
-    skipBuildTimePrice: json['skipBuildTimePrice'] as int,
-    buildQuantity: json['buildQuantity'] as int,
-    consumeOnBuild: json['consumeOnBuild'] as bool,
-    components: (json['components'] as List)
-        ?.map((e) => e == null
-            ? null
-            : ComponentModel.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
-    health: json['health'] as int,
-    shield: json['shield'] as int,
-    armor: json['armor'] as int,
-    power: json['power'] as int,
-    polarities: (json['polarities'] as List)?.map((e) => e as String)?.toList(),
-    patchlogs: (json['patchlogs'] as List)
-        ?.map((e) => e == null
-            ? null
-            : PatchlogModel.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
-    wikiaThumbnail: json['wikiaThumbnail'] as String,
-    wikiaUrl: json['wikiaUrl'] as String,
-  );
+CompanionModel _$CompanionModelFromJson(Map json) {
+  return $checkedNew('CompanionModel', json, () {
+    final val = CompanionModel(
+      uniqueName: $checkedConvert(json, 'uniqueName', (v) => v as String),
+      name: $checkedConvert(json, 'name', (v) => v as String),
+      description: $checkedConvert(json, 'description', (v) => v as String),
+      type: $checkedConvert(json, 'type', (v) => v as String),
+      imageName: $checkedConvert(json, 'imageName', (v) => v as String),
+      category: $checkedConvert(json, 'category', (v) => v as String),
+      productCategory:
+          $checkedConvert(json, 'productCategory', (v) => v as String),
+      tradable: $checkedConvert(json, 'tradable', (v) => v as bool),
+      masteryReq: $checkedConvert(json, 'masteryReq', (v) => v as int?),
+      buildPrice: $checkedConvert(json, 'buildPrice', (v) => v as int?),
+      buildTime: $checkedConvert(json, 'buildTime', (v) => v as int?),
+      skipBuildTimePrice:
+          $checkedConvert(json, 'skipBuildTimePrice', (v) => v as int?),
+      buildQuantity: $checkedConvert(json, 'buildQuantity', (v) => v as int?),
+      consumeOnBuild:
+          $checkedConvert(json, 'consumeOnBuild', (v) => v as bool?),
+      components: $checkedConvert(
+          json,
+          'components',
+          (v) => (v as List<dynamic>?)
+              ?.map((e) =>
+                  ComponentModel.fromJson(Map<String, dynamic>.from(e as Map)))
+              .toList()),
+      health: $checkedConvert(json, 'health', (v) => v as int),
+      shield: $checkedConvert(json, 'shield', (v) => v as int),
+      armor: $checkedConvert(json, 'armor', (v) => v as int),
+      power: $checkedConvert(json, 'power', (v) => v as int),
+      polarities: $checkedConvert(json, 'polarities',
+          (v) => (v as List<dynamic>?)?.map((e) => e as String).toList()),
+      patchlogs: $checkedConvert(
+          json,
+          'patchlogs',
+          (v) => (v as List<dynamic>?)
+              ?.map((e) =>
+                  PatchlogModel.fromJson(Map<String, dynamic>.from(e as Map)))
+              .toList()),
+      wikiaThumbnail:
+          $checkedConvert(json, 'wikiaThumbnail', (v) => v as String?),
+      wikiaUrl: $checkedConvert(json, 'wikiaUrl', (v) => v as String?),
+    );
+    return val;
+  });
 }
 
 Map<String, dynamic> _$CompanionModelToJson(CompanionModel instance) =>
@@ -229,6 +277,6 @@ Map<String, dynamic> _$CompanionModelToJson(CompanionModel instance) =>
       'armor': instance.armor,
       'power': instance.power,
       'polarities': instance.polarities,
-      'components': instance.components,
-      'patchlogs': instance.patchlogs,
+      'components': instance.components?.map((e) => e.toJson()).toList(),
+      'patchlogs': instance.patchlogs?.map((e) => e.toJson()).toList(),
     };

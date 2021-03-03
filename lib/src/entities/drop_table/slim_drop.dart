@@ -1,7 +1,12 @@
 import 'package:equatable/equatable.dart';
 
 class SlimDrop extends Equatable {
-  const SlimDrop({this.place, this.item, this.rarity, this.dropChance});
+  const SlimDrop({
+    required this.place,
+    required this.item,
+    required this.rarity,
+    required this.dropChance,
+  });
 
   final String place;
   final String item;
@@ -15,5 +20,5 @@ class SlimDrop extends Equatable {
   }
 
   @override
-  List<Object> get props => [place, item, rarity, dropChance];
+  List<Object?> get props => [place, item, rarity, dropChance];
 }

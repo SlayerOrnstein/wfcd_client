@@ -1,17 +1,19 @@
 import '../../../objects.dart';
 
-class Kuva extends WorldstateObject {
+class Kuva extends ExternalMission {
   const Kuva({
-    DateTime activation,
-    DateTime expiry,
-    this.node,
-    this.enemy,
-    this.type,
-    this.archwingRequired,
-  }) : super(activation: activation, expiry: expiry);
-
-  final String node;
-  final String enemy;
-  final String type;
-  final bool archwingRequired;
+    required DateTime activation,
+    required DateTime expiry,
+    required String node,
+    required String enemy,
+    required String type,
+    required bool archwingRequired,
+  }) : super(
+          activation: activation,
+          expiry: expiry,
+          node: node,
+          enemy: enemy,
+          type: type,
+          archwingRequired: archwingRequired,
+        );
 }

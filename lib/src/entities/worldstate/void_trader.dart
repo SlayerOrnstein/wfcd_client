@@ -3,13 +3,13 @@ import '../../../objects.dart';
 
 class VoidTrader extends WorldstateObject {
   const VoidTrader({
-    String id,
-    DateTime activation,
-    DateTime expiry,
-    this.character,
-    this.location,
-    this.active,
-    this.inventory,
+    required String id,
+    required DateTime activation,
+    required DateTime expiry,
+    required this.character,
+    required this.location,
+    required this.active,
+    required this.inventory,
   }) : super(id: id, activation: activation, expiry: expiry);
 
   final String character, location;
@@ -17,13 +17,17 @@ class VoidTrader extends WorldstateObject {
   final List<InventoryItem> inventory;
 
   @override
-  List<Object> get props {
+  List<Object?> get props {
     return super.props..addAll([character, location, active, inventory]);
   }
 }
 
 class InventoryItem extends Equatable {
-  const InventoryItem({this.item, this.ducats, this.credits});
+  const InventoryItem({
+    required this.item,
+    required this.ducats,
+    required this.credits,
+  });
 
   final String item;
   final int ducats, credits;

@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:http/http.dart' as http;
@@ -12,8 +13,7 @@ const _headers = {
 
 class MockClient extends Mock implements http.Client {
   @override
-  Future<http.Response> get(dynamic url, {Map<String, String> headers}) async {
-    final uri = Uri.parse(url as String);
+  Future<http.Response> get(Uri uri, {Map<String, String>? headers}) async {
     final path = uri.path;
 
     if (path.contains(RegExp(r'(pc$)|(xb1$)|(ps4$)'))) {
@@ -26,8 +26,12 @@ class MockClient extends Mock implements http.Client {
       return http.Response(synthTargets.fixture(), statusCode,
           headers: _headers);
     } else if (path.contains('items/search')) {
+      final term = path.split('/').last;
+      final data =
+          synthTargetsTestModels.where((e) => e.name.contains(term)).toList();
+
       return http.Response(
-        searchResults.fixture(),
+        json.encode(data),
         statusCode,
         headers: _headers,
       );

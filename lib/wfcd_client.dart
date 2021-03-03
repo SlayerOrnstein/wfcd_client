@@ -16,8 +16,6 @@ const _endpoint = 'https://api.warframestat.us';
 /// Dart client for Warframestat API
 class WarframestatClient {
   /// Main entry for Warframestat API Dart wrapper
-  /// the language defaults to [SupportedLocale.en] (English).
-  /// language can be set by calling [WarframestateClient.setLang]
   WarframestatClient({http.Client? client}) : _client = client ?? http.Client();
 
   final http.Client _client;
@@ -79,7 +77,8 @@ class WarframestatClient {
   Future<T> _warframestat<T>(String path,
       {SupportedLocale language = SupportedLocale.en}) async {
     final headers = <String, String>{'Accept-Language': language.asString};
-    final response = await _client.get('$_endpoint/$path', headers: headers);
+    final response =
+        await _client.get(Uri.parse('$_endpoint/$path'), headers: headers);
 
     return json.decode(response.body) as T;
   }

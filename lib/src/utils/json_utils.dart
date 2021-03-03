@@ -8,7 +8,7 @@ final _gunReg = RegExp(r'(LongGuns)|(Pistols)|(SpaceGuns)|(SentinelWeapons)');
 final _meleeReg = RegExp(r'(Melee)|(SpaceMelee)');
 final _mods = RegExp(r'Mods');
 
-/// Serializes the appropriate [BaseItem] into a [Map<String, dynamic>]
+/// Serializes the appropriate [Item] into a [Map<String, dynamic>]
 Map<String, dynamic> fromBaseItem(Item item) {
   if (item is ProjectileWeapon) {
     return (item as ProjectileWeaponModel).toJson();
@@ -41,7 +41,7 @@ List<Map<String, dynamic>> fromSynthTargets(List<SynthTarget> targets) {
   return targets.map((e) => (e as SynthTargetModel).toJson()).toList();
 }
 
-/// Serializes giving json values into their proper [BaseItem] type
+/// Serializes giving json values into their proper [Item] type
 Item toBaseItem(Map<String, dynamic> item) {
   // Pet parts are catogoriezed as Pistols so we want to filter them
   // out into normal barebone FoundryItems since any weapon attribute is either
@@ -62,7 +62,7 @@ Item toBaseItem(Map<String, dynamic> item) {
   }
 }
 
-/// Converts a json decoded list into [BaseItem] objects
+/// Converts a json decoded list into [Item] objects
 List<Item> toBaseItems(List<dynamic> data) {
   return data.map((dynamic i) {
     return toBaseItem(i as Map<String, dynamic>);

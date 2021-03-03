@@ -5,5 +5,6 @@ Future<void> main() async {
   final worldstate = await client.getWorldstate(GamePlatforms.pc);
 
   // Will print the timestamp generated bt Warframestat api
+  // ignore: avoid_print
   print(worldstate.timestamp);
 }

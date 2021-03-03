@@ -28,9 +28,11 @@ class SynthLocationModel extends SynthLocation {
     return _$SynthLocationModelFromJson(json);
   }
 
+  @override
   @JsonKey(name: 'last_verified')
   final String lastVerified;
 
+  @override
   @JsonKey(name: 'spawn_rate')
   final String spawnRate;
 

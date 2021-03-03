@@ -29,6 +29,7 @@ class Enemy extends Item {
           category: category,
           tradable: tradable,
           patchlogs: patchlogs,
+          drops: drops,
         );
 
   final int health, shield, armor;

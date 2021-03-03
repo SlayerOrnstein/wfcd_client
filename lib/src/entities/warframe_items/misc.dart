@@ -42,7 +42,7 @@ class MiscFoundryItem extends FoundryItem {
     required bool tradable,
     int? masteryReq,
     List<Component>? components,
-    List<Drop>? drops,
+    // List<Drop>? drops,
     required int buildPrice,
     required int buildTime,
     required int skipBuildTimePrice,

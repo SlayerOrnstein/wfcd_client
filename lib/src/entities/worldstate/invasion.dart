@@ -27,10 +27,10 @@ class Invasion extends WorldstateObject {
   final num completion, count;
   final Faction attacker, defender;
 
-  /// shorthand for [attacker.reward]
+  /// shorthand for [Faction.reward]
   Reward get attackerReward => attacker.reward;
 
-  /// shorthand for [defender.reward]
+  /// shorthand for [Faction.reward]
   Reward get defenderReward => defender.reward;
 
   @override

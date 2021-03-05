@@ -25,7 +25,6 @@ export 'src/models/worldstate/event_model.dart';
 export 'src/models/worldstate/fissure_model.dart';
 export 'src/models/worldstate/invasion_model.dart';
 export 'src/models/worldstate/job_model.dart';
-export 'src/models/worldstate/kuva_model.dart';
 export 'src/models/worldstate/mission_model.dart';
 export 'src/models/worldstate/news_model.dart';
 export 'src/models/worldstate/nightwave_model.dart';

@@ -9,7 +9,6 @@ import 'earth_model.dart';
 import 'event_model.dart';
 import 'fissure_model.dart';
 import 'invasion_model.dart';
-import 'kuva_model.dart';
 import 'news_model.dart';
 import 'nightwave_model.dart';
 import 'persistent_enemy_model.dart';
@@ -41,7 +40,6 @@ class WorldstateModel extends Worldstate {
     required this.vallisCycle,
     required this.nightwave,
     required this.sentientOutposts,
-    required this.kuva,
     required this.arbitration,
   }) : super(
           timestamp: timestamp,
@@ -61,7 +59,6 @@ class WorldstateModel extends Worldstate {
           vallisCycle: vallisCycle,
           nightwave: nightwave,
           sentientOutposts: sentientOutposts,
-          kuva: kuva,
           arbitration: arbitration,
         );
 
@@ -116,9 +113,6 @@ class WorldstateModel extends Worldstate {
 
   @override
   final SentientOutpostModel sentientOutposts;
-
-  @override
-  final List<KuvaModel> kuva;
 
   @override
   final ArbitrationModel arbitration;

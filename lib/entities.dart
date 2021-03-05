@@ -26,7 +26,6 @@ export 'src/entities/worldstate/event.dart';
 export 'src/entities/worldstate/fissure.dart';
 export 'src/entities/worldstate/invasion.dart';
 export 'src/entities/worldstate/job.dart';
-export 'src/entities/worldstate/kuva.dart';
 export 'src/entities/worldstate/mission.dart';
 export 'src/entities/worldstate/news.dart';
 export 'src/entities/worldstate/nigthwave.dart';

@@ -8,7 +8,6 @@ import 'earth.dart';
 import 'event.dart';
 import 'fissure.dart';
 import 'invasion.dart';
-import 'kuva.dart';
 import 'news.dart';
 import 'nigthwave.dart';
 import 'persistent_enemy.dart';
@@ -37,7 +36,6 @@ class Worldstate extends Equatable {
     required this.vallisCycle,
     required this.nightwave,
     required this.sentientOutposts,
-    this.kuva,
     this.arbitration,
   });
 
@@ -58,13 +56,11 @@ class Worldstate extends Equatable {
   final Vallis vallisCycle;
   final Nightwave nightwave;
   final SentientOutpost sentientOutposts;
-  final List<Kuva>? kuva;
   final Arbitration? arbitration;
 
   bool get activeAlerts => alerts.isNotEmpty;
   bool get activeArbitration => arbitration?.node != null;
   bool get activeEvents => events.isNotEmpty;
-  bool get activeKuva => kuva?.isNotEmpty ?? false;
   bool get anomalyDetected => sentientOutposts.active;
   bool get isSaleActive => dailyDeals.isNotEmpty;
   bool get enemyActive => persistentEnemies?.isNotEmpty ?? false;
@@ -89,7 +85,6 @@ class Worldstate extends Equatable {
       vallisCycle,
       nightwave,
       sentientOutposts,
-      kuva,
       arbitration
     ];
   }

@@ -32,6 +32,7 @@ export 'src/models/worldstate/persistent_enemy_model.dart';
 export 'src/models/worldstate/reward_model.dart';
 export 'src/models/worldstate/sentient_outpost_model.dart';
 export 'src/models/worldstate/sortie_model.dart';
+export 'src/models/worldstate/steel_path_model.dart';
 export 'src/models/worldstate/syndicate_model.dart';
 export 'src/models/worldstate/vallis_model.dart';
 export 'src/models/worldstate/void_trader_model.dart';

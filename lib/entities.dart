@@ -33,6 +33,7 @@ export 'src/entities/worldstate/persistent_enemy.dart';
 export 'src/entities/worldstate/reward.dart';
 export 'src/entities/worldstate/sentient_outpost.dart';
 export 'src/entities/worldstate/sortie.dart';
+export 'src/entities/worldstate/steel_path.dart';
 export 'src/entities/worldstate/syndicate.dart';
 export 'src/entities/worldstate/vallis.dart';
 export 'src/entities/worldstate/void_trader.dart';

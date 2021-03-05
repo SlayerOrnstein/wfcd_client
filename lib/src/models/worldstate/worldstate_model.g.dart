@@ -89,18 +89,17 @@ WorldstateModel _$WorldstateModelFromJson(Map json) {
           'sentientOutposts',
           (v) => SentientOutpostModel.fromJson(
               Map<String, dynamic>.from(v as Map))),
-      kuva: $checkedConvert(
-          json,
-          'kuva',
-          (v) => (v as List<dynamic>)
-              .map((e) =>
-                  KuvaModel.fromJson(Map<String, dynamic>.from(e as Map)))
-              .toList()),
       arbitration: $checkedConvert(
           json,
           'arbitration',
           (v) =>
               ArbitrationModel.fromJson(Map<String, dynamic>.from(v as Map))),
+      steelPath: $checkedConvert(
+          json,
+          'steelPath',
+          (v) => v == null
+              ? null
+              : SteelPathMdoel.fromJson(Map<String, dynamic>.from(v as Map))),
     );
     return val;
   });
@@ -127,6 +126,6 @@ Map<String, dynamic> _$WorldstateModelToJson(WorldstateModel instance) =>
       'vallisCycle': instance.vallisCycle.toJson(),
       'nightwave': instance.nightwave.toJson(),
       'sentientOutposts': instance.sentientOutposts.toJson(),
-      'kuva': instance.kuva.map((e) => e.toJson()).toList(),
       'arbitration': instance.arbitration.toJson(),
+      'steelPath': instance.steelPath?.toJson(),
     };

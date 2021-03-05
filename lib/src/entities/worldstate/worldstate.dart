@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+import 'package:wfcd_client/src/entities/worldstate/steel_path.dart';
 
 import 'alert.dart';
 import 'arbitration.dart';
@@ -37,6 +38,7 @@ class Worldstate extends Equatable {
     required this.nightwave,
     required this.sentientOutposts,
     this.arbitration,
+    this.steelPath,
   });
 
   final DateTime timestamp;
@@ -57,6 +59,7 @@ class Worldstate extends Equatable {
   final Nightwave nightwave;
   final SentientOutpost sentientOutposts;
   final Arbitration? arbitration;
+  final SteelPath? steelPath;
 
   bool get activeAlerts => alerts.isNotEmpty;
   bool get activeArbitration => arbitration?.node != null;
@@ -85,7 +88,8 @@ class Worldstate extends Equatable {
       vallisCycle,
       nightwave,
       sentientOutposts,
-      arbitration
+      arbitration,
+      steelPath
     ];
   }
 }

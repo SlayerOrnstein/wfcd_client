@@ -13,8 +13,8 @@ const _headers = {
 
 class MockClient extends Mock implements http.Client {
   @override
-  Future<http.Response> get(Uri uri, {Map<String, String>? headers}) async {
-    final path = uri.path;
+  Future<http.Response> get(dynamic uri, {Map<String, String>? headers}) async {
+    final path = Uri.parse(uri as String).path;
 
     if (path.contains(RegExp(r'(pc$)|(xb1$)|(ps4$)'))) {
       return http.Response(

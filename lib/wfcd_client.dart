@@ -77,8 +77,7 @@ class WarframestatClient {
   Future<T> _warframestat<T>(String path,
       {SupportedLocale language = SupportedLocale.en}) async {
     final headers = <String, String>{'Accept-Language': language.asString};
-    final response =
-        await _client.get(Uri.parse('$_endpoint/$path'), headers: headers);
+    final response = await _client.get('$_endpoint/$path', headers: headers);
 
     return json.decode(response.body) as T;
   }

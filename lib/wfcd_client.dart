@@ -1,6 +1,8 @@
 import 'dart:convert';
 
+// ignore: import_of_legacy_library_into_null_safe
 import 'package:http/http.dart' as http;
+import 'package:wfcd_client/src/exceptions.dart';
 
 import 'entities.dart';
 import 'src/utils/enums.dart';
@@ -78,6 +80,10 @@ class WarframestatClient {
       {SupportedLocale language = SupportedLocale.en}) async {
     final headers = <String, String>{'Accept-Language': language.asString};
     final response = await _client.get('$_endpoint/$path', headers: headers);
+
+    if (response.statusCode != 200) {
+      throw ServerException(response.statusCode, response.body);
+    }
 
     return json.decode(response.body) as T;
   }

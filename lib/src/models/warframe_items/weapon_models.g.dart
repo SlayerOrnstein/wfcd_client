@@ -64,7 +64,7 @@ ProjectileWeaponModel _$ProjectileWeaponModelFromJson(Map json) {
       vaulted: $checkedConvert(json, 'vaulted', (v) => v as bool?),
       disposition: $checkedConvert(json, 'disposition', (v) => v as int),
       multishot:
-          $checkedConvert(json, 'multishot', (v) => (v as num).toDouble()),
+          $checkedConvert(json, 'multishot', (v) => (v as num?)?.toDouble()),
       damage: $checkedConvert(json, 'damage', (v) => v as String),
       totalDamage:
           $checkedConvert(json, 'totalDamage', (v) => (v as num).toDouble()),

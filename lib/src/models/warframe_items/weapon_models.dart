@@ -44,7 +44,7 @@ class ProjectileWeaponModel extends ProjectileWeapon {
     int? marketCost,
     bool? vaulted,
     required int disposition,
-    required double multishot,
+    double? multishot,
     required String damage,
     required double totalDamage,
     String? estimatedVaultDate,

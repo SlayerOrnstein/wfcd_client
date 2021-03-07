@@ -139,7 +139,7 @@ class ProjectileWeapon extends WeaponItem {
     required this.accuracy,
     this.ammo,
     required this.magazineSize,
-    required this.multishot,
+    this.multishot,
     required this.reloadTime,
     required this.noise,
     required this.trigger,
@@ -190,7 +190,7 @@ class ProjectileWeapon extends WeaponItem {
   final String trigger;
   final double accuracy;
   final String noise;
-  final double multishot;
+  final double? multishot;
   final dynamic _flight;
 
   int? get flight => _flight != '???' ? _flight as int? : -1;

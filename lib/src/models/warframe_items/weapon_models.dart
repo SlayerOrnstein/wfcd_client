@@ -38,7 +38,7 @@ class ProjectileWeaponModel extends ProjectileWeapon {
     required int skipBuildTimePrice,
     required int buildQuantity,
     required bool consumeOnBuild,
-    required this.components,
+    this.components,
     required Map<String, num> damageTypes,
     required List<String> polarities,
     int? marketCost,
@@ -103,7 +103,7 @@ class ProjectileWeaponModel extends ProjectileWeapon {
   final double procChance;
 
   @override
-  final List<ComponentModel> components;
+  final List<ComponentModel>? components;
 
   @override
   final List<PatchlogModel>? patchlogs;
@@ -129,7 +129,7 @@ class MeleeWeaponModel extends MeleeWeapon {
     required int buildQuantity,
     required bool consumeOnBuild,
     required int slot,
-    required this.components,
+    this.components,
     required double criticalChance,
     required double criticalMultiplier,
     required this.procChance,
@@ -222,7 +222,7 @@ class MeleeWeaponModel extends MeleeWeapon {
   final double procChance;
 
   @override
-  final List<ComponentModel> components;
+  final List<ComponentModel>? components;
 
   @override
   final List<PatchlogModel>? patchlogs;

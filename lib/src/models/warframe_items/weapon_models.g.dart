@@ -52,8 +52,8 @@ ProjectileWeaponModel _$ProjectileWeaponModelFromJson(Map json) {
       components: $checkedConvert(
           json,
           'components',
-          (v) => (v as List<dynamic>)
-              .map((e) =>
+          (v) => (v as List<dynamic>?)
+              ?.map((e) =>
                   ComponentModel.fromJson(Map<String, dynamic>.from(e as Map)))
               .toList()),
       damageTypes: $checkedConvert(
@@ -130,7 +130,7 @@ Map<String, dynamic> _$ProjectileWeaponModelToJson(
       'multishot': instance.multishot,
       'flight': instance.flight,
       'procChance': instance.procChance,
-      'components': instance.components.map((e) => e.toJson()).toList(),
+      'components': instance.components?.map((e) => e.toJson()).toList(),
       'patchlogs': instance.patchlogs?.map((e) => e.toJson()).toList(),
     };
 
@@ -157,8 +157,8 @@ MeleeWeaponModel _$MeleeWeaponModelFromJson(Map json) {
       components: $checkedConvert(
           json,
           'components',
-          (v) => (v as List<dynamic>)
-              .map((e) =>
+          (v) => (v as List<dynamic>?)
+              ?.map((e) =>
                   ComponentModel.fromJson(Map<String, dynamic>.from(e as Map)))
               .toList()),
       criticalChance:
@@ -274,6 +274,6 @@ Map<String, dynamic> _$MeleeWeaponModelToJson(MeleeWeaponModel instance) =>
       'windUp': instance.windUp,
       'stancePolarity': instance.stancePolarity,
       'procChance': instance.procChance,
-      'components': instance.components.map((e) => e.toJson()).toList(),
+      'components': instance.components?.map((e) => e.toJson()).toList(),
       'patchlogs': instance.patchlogs?.map((e) => e.toJson()).toList(),
     };

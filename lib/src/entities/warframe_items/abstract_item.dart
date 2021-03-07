@@ -75,7 +75,7 @@ abstract class FoundryItem extends Item {
     required String category,
     required bool tradable,
     this.masteryReq,
-    required this.components,
+    this.components,
     this.buildPrice,
     this.buildTime,
     this.skipBuildTimePrice,

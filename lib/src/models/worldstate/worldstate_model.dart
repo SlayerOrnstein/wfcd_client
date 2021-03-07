@@ -42,7 +42,7 @@ class WorldstateModel extends Worldstate {
     required this.nightwave,
     required this.sentientOutposts,
     required this.arbitration,
-    this.steelPath,
+    required this.steelPath,
   }) : super(
           timestamp: timestamp,
           news: news,
@@ -121,7 +121,7 @@ class WorldstateModel extends Worldstate {
   final ArbitrationModel arbitration;
 
   @override
-  final SteelPathMdoel? steelPath;
+  final SteelPathMdoel steelPath;
 
   Map<String, dynamic> toJson() => _$WorldstateModelToJson(this);
 }

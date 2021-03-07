@@ -38,7 +38,7 @@ class Worldstate extends Equatable {
     required this.nightwave,
     required this.sentientOutposts,
     this.arbitration,
-    this.steelPath,
+    required this.steelPath,
   });
 
   final DateTime timestamp;
@@ -59,7 +59,7 @@ class Worldstate extends Equatable {
   final Nightwave nightwave;
   final SentientOutpost sentientOutposts;
   final Arbitration? arbitration;
-  final SteelPath? steelPath;
+  final SteelPath steelPath;
 
   bool get activeAlerts => alerts.isNotEmpty;
   bool get activeArbitration => arbitration?.node != null;

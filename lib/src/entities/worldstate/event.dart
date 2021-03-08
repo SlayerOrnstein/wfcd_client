@@ -23,8 +23,8 @@ class Event extends WorldstateObject {
     this.jobs,
   }) : super(id: id, activation: activation, expiry: expiry);
 
-  final String? faction;
-  final String description, node;
+  final String? faction, node;
+  final String description;
   final String? affiliatedWith, victimNode, tooltip;
   final num? health;
   final int? currentScore, maximumScore;

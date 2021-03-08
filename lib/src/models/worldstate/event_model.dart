@@ -16,7 +16,7 @@ class EventModel extends Event {
     String? affiliatedWith,
     required String description,
     String? victimNode,
-    required String node,
+    String? node,
     String? tooltip,
     required int maximumScore,
     required int currentScore,

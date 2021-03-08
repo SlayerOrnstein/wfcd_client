@@ -21,8 +21,8 @@ EventModel _$EventModelFromJson(Map json) {
       victimNode: $checkedConvert(json, 'victimNode', (v) => v as String?),
       node: $checkedConvert(json, 'node', (v) => v as String?),
       tooltip: $checkedConvert(json, 'tooltip', (v) => v as String?),
-      maximumScore: $checkedConvert(json, 'maximumScore', (v) => v as int),
-      currentScore: $checkedConvert(json, 'currentScore', (v) => v as int),
+      maximumScore: $checkedConvert(json, 'maximumScore', (v) => v as int?),
+      currentScore: $checkedConvert(json, 'currentScore', (v) => v as int?),
       health: $checkedConvert(json, 'health', (v) => v as num?),
       rewards: $checkedConvert(
           json,

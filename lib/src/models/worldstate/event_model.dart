@@ -12,7 +12,7 @@ class EventModel extends Event {
     required String id,
     required DateTime activation,
     required DateTime expiry,
-    required String faction,
+    String? faction,
     String? affiliatedWith,
     required String description,
     String? victimNode,

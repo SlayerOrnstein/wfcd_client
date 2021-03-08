@@ -14,7 +14,7 @@ EventModel _$EventModelFromJson(Map json) {
           json, 'activation', (v) => DateTime.parse(v as String)),
       expiry:
           $checkedConvert(json, 'expiry', (v) => DateTime.parse(v as String)),
-      faction: $checkedConvert(json, 'faction', (v) => v as String),
+      faction: $checkedConvert(json, 'faction', (v) => v as String?),
       affiliatedWith:
           $checkedConvert(json, 'affiliatedWith', (v) => v as String?),
       description: $checkedConvert(json, 'description', (v) => v as String),

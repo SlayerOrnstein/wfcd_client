@@ -23,11 +23,13 @@ class WarframestatClient {
   final http.Client _client;
 
   /// Retrive the latest worldstate using [GamePlatforms]
-  Future<Worldstate> getWorldstate(GamePlatforms platform,
+  Future<Worldstate?> getWorldstate(GamePlatforms platform,
       {SupportedLocale language = SupportedLocale.en}) async {
     final path = platform.asString;
-    final response =
+    var response =
         await _warframestat<Map<String, dynamic>>(path, language: language);
+
+    if (response['timestamp'] == null) return null;
 
     return toWorldstate(response);
   }

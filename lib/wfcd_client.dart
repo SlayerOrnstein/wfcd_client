@@ -23,13 +23,21 @@ class WarframestatClient {
   final http.Client _client;
 
   /// Retrive the latest worldstate using [GamePlatforms]
-  Future<Worldstate> getWorldstate(GamePlatforms platform,
+  Future<Worldstate?> getWorldstate(GamePlatforms platform,
       {SupportedLocale language = SupportedLocale.en}) async {
     final path = platform.asString;
-    final response =
-        await _warframestat<Map<String, dynamic>>(path, language: language);
 
-    return toWorldstate(response);
+    try {
+      final response =
+          await _warframestat<Map<String, dynamic>>(path, language: language);
+
+      if (response['timestamp'] == null)
+        throw ServerException(0, 'Worldstate empty');
+
+      return toWorldstate(response);
+    } on ServerException {
+      return null;
+    }
   }
 
   /// Retrive a list of all available synthtargets
@@ -79,12 +87,17 @@ class WarframestatClient {
   Future<T> _warframestat<T>(String path,
       {SupportedLocale language = SupportedLocale.en}) async {
     final headers = <String, String>{'Accept-Language': language.asString};
-    final response = await _client.get('$_endpoint/$path', headers: headers);
 
-    if (response.statusCode != 200) {
-      throw ServerException(response.statusCode, response.body);
+    try {
+      final response = await _client.get('$_endpoint/$path', headers: headers);
+
+      if (response.statusCode != 200) {
+        throw ServerException(response.statusCode, response.body);
+      }
+
+      return json.decode(response.body) as T;
+    } on FormatException {
+      return json.decode(T is List ? '[]' : '{}') as T;
     }
-
-    return json.decode(response.body) as T;
   }
 }

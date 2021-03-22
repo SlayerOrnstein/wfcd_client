@@ -6,5 +6,5 @@ Future<void> main() async {
 
   // Will print the timestamp generated bt Warframestat api
   // ignore: avoid_print
-  print(worldstate.timestamp);
+  print(worldstate?.timestamp);
 }

@@ -5,8 +5,8 @@ import '../../../entities.dart';
 part 'steel_path_model.g.dart';
 
 @JsonSerializable()
-class SteelPathMdoel extends SteelPath {
-  const SteelPathMdoel({
+class SteelPathModel extends SteelPath {
+  const SteelPathModel({
     required DateTime activation,
     required DateTime expiry,
     required this.currentReward,
@@ -18,8 +18,8 @@ class SteelPathMdoel extends SteelPath {
           rotation: rotation,
         );
 
-  factory SteelPathMdoel.fromJson(Map<String, dynamic> json) {
-    return _$SteelPathMdoelFromJson(json);
+  factory SteelPathModel.fromJson(Map<String, dynamic> json) {
+    return _$SteelPathModelFromJson(json);
   }
 
   @override
@@ -28,7 +28,7 @@ class SteelPathMdoel extends SteelPath {
   @override
   final List<SteelPathRewardModel> rotation;
 
-  Map<String, dynamic> toJson() => _$SteelPathMdoelToJson(this);
+  Map<String, dynamic> toJson() => _$SteelPathModelToJson(this);
 }
 
 @JsonSerializable()

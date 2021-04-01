@@ -16,4 +16,4 @@ jobs:
       - name: Install dependencies
         run: dart pub get
       - name: Run tests
-        run: dart pub run --no-sound-null-safety test
+        run: pub run test

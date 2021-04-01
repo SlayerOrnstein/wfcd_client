@@ -25,12 +25,12 @@ class WeaponItem extends FoundryItem {
     required this.statusChance,
     required this.fireRate,
     required this.omegaAttenuation,
-    required this.polarities,
-    required this.damage,
+    this.polarities,
+    required dynamic damage,
     required this.totalDamage,
     required this.damagePerShot,
-    required this.damageTypes,
-    required this.disposition,
+    this.damageTypes,
+    this.disposition,
     this.marketCost,
     this.sentinel,
     this.releaseDate,
@@ -39,7 +39,8 @@ class WeaponItem extends FoundryItem {
     List<Patchlog>? patchlogs,
     String? wikiaThumbnail,
     String? wikiaUrl,
-  }) : super(
+  })  : _damage = damage,
+        super(
           uniqueName: uniqueName,
           name: name,
           description: description,
@@ -67,15 +68,26 @@ class WeaponItem extends FoundryItem {
   final double fireRate;
 
   final double omegaAttenuation;
-  final String damage;
+  final dynamic _damage;
   final double totalDamage;
   final List<double> damagePerShot;
-  final Map<String, num> damageTypes;
-  final List<String> polarities;
+  final Map<String, num>? damageTypes;
+  final List<String>? polarities;
   final int? marketCost;
-  final int disposition;
+  final int? disposition;
   final bool? sentinel, vaulted;
   final String? releaseDate, estimatedVaultDate;
+
+  double? get damage {
+    if (_damage is String) {
+      return double.parse(
+          (_damage as String).replaceAll(RegExp(r'[a-zA-Z]'), ''));
+    } else if (_damage is int) {
+      return (_damage as int).toDouble();
+    } else {
+      return _damage as double?;
+    }
+  }
 
   @override
   List<Object?> get props {
@@ -87,6 +99,7 @@ class WeaponItem extends FoundryItem {
         fireRate,
         omegaAttenuation,
         slot,
+        _damage,
         damage,
         damagePerShot,
         damageTypes,
@@ -113,11 +126,6 @@ class ProjectileWeapon extends WeaponItem {
     required String productCategory,
     required bool tradable,
     required int masteryReq,
-    required int buildPrice,
-    required int buildTime,
-    required int skipBuildTimePrice,
-    required int buildQuantity,
-    required bool consumeOnBuild,
     required int slot,
     List<Component>? components,
     required double criticalChance,
@@ -125,28 +133,34 @@ class ProjectileWeapon extends WeaponItem {
     required double statusChance,
     required double fireRate,
     required double omegaAttenuation,
-    required String damage,
+    required dynamic damage,
     required double totalDamage,
     required List<double> damagePerShot,
-    required Map<String, num> damageTypes,
-    required List<String> polarities,
-    required int disposition,
+    Map<String, num>? damageTypes,
+    List<String>? polarities,
+    int? disposition,
     int? marketCost,
     bool? sentinel,
     String? releaseDate,
     bool? vaulted,
     String? estimatedVaultDate,
     required this.accuracy,
-    this.ammo,
+    dynamic ammo,
     required this.magazineSize,
     this.multishot,
     required this.reloadTime,
     required this.noise,
     required this.trigger,
+    int? buildPrice,
+    int? buildTime,
+    int? skipBuildTimePrice,
+    int? buildQuantity,
+    bool? consumeOnBuild,
     List<Patchlog>? patchlogs,
     String? wikiaThumbnail,
     String? wikiaUrl,
-  }) : super(
+  })  : _ammo = ammo,
+        super(
           uniqueName: uniqueName,
           name: name,
           description: description,
@@ -174,18 +188,18 @@ class ProjectileWeapon extends WeaponItem {
           tradable: tradable,
           components: components,
           masteryReq: masteryReq,
-          buildPrice: buildPrice,
-          buildTime: buildTime,
-          skipBuildTimePrice: skipBuildTimePrice,
-          buildQuantity: buildQuantity,
-          consumeOnBuild: consumeOnBuild,
+          buildPrice: buildPrice ?? 0,
+          buildTime: buildTime ?? 0,
+          skipBuildTimePrice: skipBuildTimePrice ?? 0,
+          buildQuantity: buildQuantity ?? 0,
+          consumeOnBuild: consumeOnBuild ?? false,
           patchlogs: patchlogs,
           wikiaThumbnail: wikiaThumbnail,
           wikiaUrl: wikiaUrl,
         );
 
-  final int? ammo;
-  final int magazineSize;
+  final dynamic _ammo;
+  final int? magazineSize;
   final double reloadTime;
   final String trigger;
   final double accuracy;
@@ -193,13 +207,16 @@ class ProjectileWeapon extends WeaponItem {
   final double? multishot;
   final dynamic _flight;
 
-  int? get flight => _flight != '???' ? _flight as int? : -1;
+  int? get ammo => _ammo is String ? null : _ammo as int?;
+  int? get flight => _flight is String ? null : _flight as int?;
 
   @override
   List<Object?> get props {
     return super.props
       ..addAll([
+        _ammo,
         ammo,
+        flight,
         magazineSize,
         reloadTime,
         trigger,
@@ -222,11 +239,11 @@ class MeleeWeapon extends WeaponItem {
     required String productCategory,
     required bool tradable,
     required int masteryReq,
-    required int buildPrice,
-    required int buildTime,
-    required int skipBuildTimePrice,
-    required int buildQuantity,
-    required bool consumeOnBuild,
+    int? buildPrice,
+    int? buildTime,
+    int? skipBuildTimePrice,
+    int? buildQuantity,
+    bool? consumeOnBuild,
     required int slot,
     List<Component>? components,
     required double criticalChance,
@@ -234,12 +251,12 @@ class MeleeWeapon extends WeaponItem {
     required double statusChance,
     required this.attackSpeed,
     required double omegaAttenuation,
-    required String damage,
+    required dynamic damage,
     required double totalDamage,
     required List<double> damagePerShot,
-    required Map<String, num> damageTypes,
-    required List<String> polarities,
-    required int disposition,
+    Map<String, num>? damageTypes,
+    List<String>? polarities,
+    int? disposition,
     int? marketCost,
     bool? sentinel,
     String? releaseDate,
@@ -290,22 +307,22 @@ class MeleeWeapon extends WeaponItem {
           tradable: tradable,
           components: components,
           masteryReq: masteryReq,
-          buildPrice: buildPrice,
-          buildTime: buildTime,
-          skipBuildTimePrice: skipBuildTimePrice,
-          buildQuantity: buildQuantity,
-          consumeOnBuild: consumeOnBuild,
+          buildPrice: buildPrice ?? 0,
+          buildTime: buildTime ?? 0,
+          skipBuildTimePrice: skipBuildTimePrice ?? 0,
+          buildQuantity: buildQuantity ?? 0,
+          consumeOnBuild: consumeOnBuild ?? false,
           patchlogs: patchlogs,
           wikiaThumbnail: wikiaThumbnail,
           wikiaUrl: wikiaUrl,
         );
 
   final double attackSpeed;
-  final int blockingAngle, comboDuration;
-  final double followThrough, range;
-  final int slamAttack, slamRadialDamage, slamRadius;
-  final int slideAttack;
-  final int heavyAttackDamage, heavySlamAttack;
+  final int? blockingAngle, comboDuration;
+  final double? followThrough, range;
+  final int? slamAttack, slamRadialDamage, slamRadius;
+  final int? slideAttack;
+  final int? heavyAttackDamage, heavySlamAttack;
   final int? heavySlamRadius, heavySlamRadialDamage;
   final double? windUp;
   final String? stancePolarity;

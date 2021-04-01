@@ -1,13 +1,6 @@
 import '../../entities.dart';
 import '../../models.dart';
 
-final _companion = RegExp(r'(Sentinels)|(KubrowPets)');
-final _exSuits = RegExp(r'(SpaceSuits)|(MechSuits)');
-final _frameReg = RegExp(r'\bSuits\b');
-final _gunReg = RegExp(r'(LongGuns)|(Pistols)|(SpaceGuns)|(SentinelWeapons)');
-final _meleeReg = RegExp(r'(Melee)|(SpaceMelee)');
-final _mods = RegExp(r'Mods');
-
 /// Serializes the appropriate [Item] into a [Map<String, dynamic>]
 Map<String, dynamic> fromBaseItem(Item item) {
   if (item is ProjectileWeapon) {
@@ -20,12 +13,12 @@ Map<String, dynamic> fromBaseItem(Item item) {
     return (item as HeavyPowerSuitModel).toJson();
   } else if (item is Mod) {
     return (item as ModModel).toJson();
+  } else if (item is MiscFoundryItem) {
+    return (item as MiscFoundryItemModel).toJson();
+  } else if (item is Companion) {
+    return (item as CompanionModel).toJson();
   } else {
-    if (item is MiscFoundryItem) {
-      return (item as MiscFoundryItemModel).toJson();
-    } else {
-      return (item as MiscItemModel).toJson();
-    }
+    return (item as MiscItemModel).toJson();
   }
 }
 
@@ -43,16 +36,46 @@ List<Map<String, dynamic>> fromSynthTargets(List<SynthTarget> targets) {
 
 /// Serializes giving json values into their proper [Item] type
 Item toBaseItem(Map<String, dynamic> item) {
-  // Pet parts are catogoriezed as Pistols so we want to filter them
-  // out into normal barebone FoundryItems since any weapon attribute is either
-  // null or 0.
-  final isCompanionPart =
-      item['type'] == 'Pet Parts' || item['type'] == 'Moa Gyro';
+  const _frameReg = 'Warframes';
+  const _mods = 'Mods';
 
-  if (item.containsKey('productCategory') && !isCompanionPart) {
-    return _productCategoryItem(item);
-  } else if ((item['category'] as String).contains(_mods)) {
-    return ModModel.fromJson(item);
+  final _companion = RegExp(r'(Sentinels)|(Pets)');
+  final _exSuits = RegExp(r'(SpaceSuits)|(MechSuits)');
+  final _gunReg = RegExp(r'(Primary)|(Secondary)|(Arch-Gun)');
+  final _meleeReg = RegExp(r'(Melee)|(Arch-Melee)');
+
+  // Pet parts have a pistol structure but are not actually pistols
+  // so we're filtering them out into Misc items.
+  final isCompanionPart = (item['uniqueName'] as String)
+      .contains(RegExp(r'(MoaPetParts)|(CreaturePetParts)'));
+
+  final isSentinalMelee =
+      (item['uniqueName'] as String).contains('SentinelWeapons');
+
+  final category = item['category'] as String;
+  final productCategory = item['productCategory'] as String?;
+
+  if (!isCompanionPart) {
+    if (category.contains(_gunReg) && !isSentinalMelee) {
+      return ProjectileWeaponModel.fromJson(item);
+    } else if (category.contains(_meleeReg) || isSentinalMelee) {
+      return MeleeWeaponModel.fromJson(item);
+    } else if (category.contains(_frameReg) &&
+        !(productCategory?.contains('MechSuits') ?? false)) {
+      return WarframeModel.fromJson(item);
+    } else if (productCategory?.contains(_exSuits) ?? false) {
+      return HeavyPowerSuitModel.fromJson(item);
+    } else if (category.contains(_companion)) {
+      return CompanionModel.fromJson(item);
+    } else if (category.contains(_mods)) {
+      return ModModel.fromJson(item);
+    } else {
+      if (item.containsKey('consumeOnBuild')) {
+        return MiscFoundryItemModel.fromJson(item);
+      } else {
+        return MiscItemModel.fromJson(item);
+      }
+    }
   } else {
     if (item.containsKey('consumeOnBuild')) {
       return MiscFoundryItemModel.fromJson(item);
@@ -107,26 +130,4 @@ List<SynthTarget> toSynthTargets(List<dynamic> data) {
 /// Serializes worldstate json into a [Worldstate] object
 Worldstate toWorldstate(Map<String, dynamic> state) {
   return WorldstateModel.fromJson(state);
-}
-
-Item _productCategoryItem(Map<String, dynamic> item) {
-  final category = item['productCategory'] as String;
-
-  if (category.contains(_gunReg)) {
-    return ProjectileWeaponModel.fromJson(item);
-  } else if (category.contains(_meleeReg)) {
-    return MeleeWeaponModel.fromJson(item);
-  } else if (category.contains(_frameReg)) {
-    return WarframeModel.fromJson(item);
-  } else if (category.contains(_exSuits)) {
-    return HeavyPowerSuitModel.fromJson(item);
-  } else if (category.contains(_companion)) {
-    return CompanionModel.fromJson(item);
-  } else {
-    if (item.containsKey('consumeOnBuild')) {
-      return MiscFoundryItemModel.fromJson(item);
-    } else {
-      return MiscItemModel.fromJson(item);
-    }
-  }
 }

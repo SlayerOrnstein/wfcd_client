@@ -68,7 +68,7 @@ abstract class FoundryItem extends Item {
   const FoundryItem({
     required String uniqueName,
     required String name,
-    required String description,
+    String? description,
     required String type,
     required String imageName,
     String? productCategory,

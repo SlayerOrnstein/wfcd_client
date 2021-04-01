@@ -34,7 +34,7 @@ class MiscFoundryItem extends FoundryItem {
   const MiscFoundryItem({
     required String uniqueName,
     required String name,
-    required String description,
+    String? description,
     required String type,
     required String imageName,
     String? productCategory,

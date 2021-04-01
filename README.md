@@ -9,7 +9,7 @@ Future<void> main() async {
   final client = WarframestatClient();
   final worldstate = await client.getWorldstate(GamePlatforms.pc);
 
-  print(worldstate.timestamp);
+  print(worldstate?.timestamp);
 }
 ```
 

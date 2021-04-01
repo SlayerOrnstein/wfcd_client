@@ -9,7 +9,7 @@ class Event extends WorldstateObject {
     required String id,
     required DateTime activation,
     required DateTime expiry,
-    required this.faction,
+    this.faction,
     this.affiliatedWith,
     required this.description,
     this.victimNode,
@@ -23,17 +23,23 @@ class Event extends WorldstateObject {
     this.jobs,
   }) : super(id: id, activation: activation, expiry: expiry);
 
-  final String faction, description, node;
+  final String? faction, node;
+  final String description;
   final String? affiliatedWith, victimNode, tooltip;
   final num? health;
-  final int currentScore, maximumScore;
+  final int? currentScore, maximumScore;
   final List<Reward> rewards;
   final List<InterimStep>? interimSteps;
   final List<Job>? jobs;
 
-  double get eventHealth {
-    return (health ?? (100 - ((currentScore) / (maximumScore)) * 100))
-        .toDouble();
+  double? get eventHealth {
+    if (currentScore != null && maximumScore != null) {
+      return (100 - currentScore! / maximumScore! * 100).toDouble();
+    } else if (health != null) {
+      return (health! * 100).toDouble();
+    } else {
+      return -1.0;
+    }
   }
 
   List<Reward> get eventRewards {

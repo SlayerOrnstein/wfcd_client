@@ -28,7 +28,7 @@ WarframeModel _$WarframeModelFromJson(Map json) {
       uniqueName: $checkedConvert(json, 'uniqueName', (v) => v as String),
       name: $checkedConvert(json, 'name', (v) => v as String),
       description: $checkedConvert(json, 'description', (v) => v as String),
-      aura: $checkedConvert(json, 'aura', (v) => v as String),
+      aura: $checkedConvert(json, 'aura', (v) => v as String?),
       health: $checkedConvert(json, 'health', (v) => v as int),
       shield: $checkedConvert(json, 'shield', (v) => v as int),
       armor: $checkedConvert(json, 'armor', (v) => v as int),
@@ -45,17 +45,18 @@ WarframeModel _$WarframeModelFromJson(Map json) {
               .map((e) =>
                   AbilityModel.fromJson(Map<String, dynamic>.from(e as Map)))
               .toList()),
-      buildPrice: $checkedConvert(json, 'buildPrice', (v) => v as int),
-      buildTime: $checkedConvert(json, 'buildTime', (v) => v as int),
+      buildPrice: $checkedConvert(json, 'buildPrice', (v) => v as int?),
+      buildTime: $checkedConvert(json, 'buildTime', (v) => v as int?),
       skipBuildTimePrice:
-          $checkedConvert(json, 'skipBuildTimePrice', (v) => v as int),
-      buildQuantity: $checkedConvert(json, 'buildQuantity', (v) => v as int),
-      consumeOnBuild: $checkedConvert(json, 'consumeOnBuild', (v) => v as bool),
+          $checkedConvert(json, 'skipBuildTimePrice', (v) => v as int?),
+      buildQuantity: $checkedConvert(json, 'buildQuantity', (v) => v as int?),
+      consumeOnBuild:
+          $checkedConvert(json, 'consumeOnBuild', (v) => v as bool?),
       components: $checkedConvert(
           json,
           'components',
-          (v) => (v as List<dynamic>)
-              .map((e) =>
+          (v) => (v as List<dynamic>?)
+              ?.map((e) =>
                   ComponentModel.fromJson(Map<String, dynamic>.from(e as Map)))
               .toList()),
       type: $checkedConvert(json, 'type', (v) => v as String),
@@ -115,7 +116,7 @@ Map<String, dynamic> _$WarframeModelToJson(WarframeModel instance) =>
       'introduced': instance.introduced,
       'sex': instance.sex,
       'color': instance.color,
-      'components': instance.components.map((e) => e.toJson()).toList(),
+      'components': instance.components?.map((e) => e.toJson()).toList(),
       'abilities': instance.abilities.map((e) => e.toJson()).toList(),
       'patchlogs': instance.patchlogs?.map((e) => e.toJson()).toList(),
     };
@@ -211,7 +212,7 @@ CompanionModel _$CompanionModelFromJson(Map json) {
     final val = CompanionModel(
       uniqueName: $checkedConvert(json, 'uniqueName', (v) => v as String),
       name: $checkedConvert(json, 'name', (v) => v as String),
-      description: $checkedConvert(json, 'description', (v) => v as String),
+      description: $checkedConvert(json, 'description', (v) => v as String?),
       type: $checkedConvert(json, 'type', (v) => v as String),
       imageName: $checkedConvert(json, 'imageName', (v) => v as String),
       category: $checkedConvert(json, 'category', (v) => v as String),

@@ -23,7 +23,7 @@ ProjectileWeaponModel _$ProjectileWeaponModelFromJson(Map json) {
           'damagePerShot',
           (v) =>
               (v as List<dynamic>).map((e) => (e as num).toDouble()).toList()),
-      magazineSize: $checkedConvert(json, 'magazineSize', (v) => v as int),
+      magazineSize: $checkedConvert(json, 'magazineSize', (v) => v as int?),
       reloadTime:
           $checkedConvert(json, 'reloadTime', (v) => (v as num).toDouble()),
       trigger: $checkedConvert(json, 'trigger', (v) => v as String),
@@ -36,19 +36,20 @@ ProjectileWeaponModel _$ProjectileWeaponModelFromJson(Map json) {
           $checkedConvert(json, 'procChance', (v) => (v as num).toDouble()),
       fireRate: $checkedConvert(json, 'fireRate', (v) => (v as num).toDouble()),
       slot: $checkedConvert(json, 'slot', (v) => v as int),
-      ammo: $checkedConvert(json, 'ammo', (v) => v as int?),
+      ammo: $checkedConvert(json, 'ammo', (v) => v),
       flight: $checkedConvert(json, 'flight', (v) => v),
       noise: $checkedConvert(json, 'noise', (v) => v as String),
       sentinel: $checkedConvert(json, 'sentinel', (v) => v as bool?),
       masteryReq: $checkedConvert(json, 'masteryReq', (v) => v as int),
       omegaAttenuation: $checkedConvert(
           json, 'omegaAttenuation', (v) => (v as num).toDouble()),
-      buildPrice: $checkedConvert(json, 'buildPrice', (v) => v as int),
-      buildTime: $checkedConvert(json, 'buildTime', (v) => v as int),
+      buildPrice: $checkedConvert(json, 'buildPrice', (v) => v as int?),
+      buildTime: $checkedConvert(json, 'buildTime', (v) => v as int?),
       skipBuildTimePrice:
-          $checkedConvert(json, 'skipBuildTimePrice', (v) => v as int),
-      buildQuantity: $checkedConvert(json, 'buildQuantity', (v) => v as int),
-      consumeOnBuild: $checkedConvert(json, 'consumeOnBuild', (v) => v as bool),
+          $checkedConvert(json, 'skipBuildTimePrice', (v) => v as int?),
+      buildQuantity: $checkedConvert(json, 'buildQuantity', (v) => v as int?),
+      consumeOnBuild:
+          $checkedConvert(json, 'consumeOnBuild', (v) => v as bool?),
       components: $checkedConvert(
           json,
           'components',
@@ -59,13 +60,13 @@ ProjectileWeaponModel _$ProjectileWeaponModelFromJson(Map json) {
       damageTypes: $checkedConvert(
           json, 'damageTypes', (v) => Map<String, num>.from(v as Map)),
       polarities: $checkedConvert(json, 'polarities',
-          (v) => (v as List<dynamic>).map((e) => e as String).toList()),
+          (v) => (v as List<dynamic>?)?.map((e) => e as String).toList()),
       marketCost: $checkedConvert(json, 'marketCost', (v) => v as int?),
       vaulted: $checkedConvert(json, 'vaulted', (v) => v as bool?),
-      disposition: $checkedConvert(json, 'disposition', (v) => v as int),
+      disposition: $checkedConvert(json, 'disposition', (v) => v as int?),
       multishot:
           $checkedConvert(json, 'multishot', (v) => (v as num?)?.toDouble()),
-      damage: $checkedConvert(json, 'damage', (v) => v as String),
+      damage: $checkedConvert(json, 'damage', (v) => v),
       totalDamage:
           $checkedConvert(json, 'totalDamage', (v) => (v as num).toDouble()),
       estimatedVaultDate:
@@ -110,7 +111,6 @@ Map<String, dynamic> _$ProjectileWeaponModelToJson(
       'criticalMultiplier': instance.criticalMultiplier,
       'fireRate': instance.fireRate,
       'omegaAttenuation': instance.omegaAttenuation,
-      'damage': instance.damage,
       'totalDamage': instance.totalDamage,
       'damagePerShot': instance.damagePerShot,
       'damageTypes': instance.damageTypes,
@@ -121,13 +121,14 @@ Map<String, dynamic> _$ProjectileWeaponModelToJson(
       'vaulted': instance.vaulted,
       'releaseDate': instance.releaseDate,
       'estimatedVaultDate': instance.estimatedVaultDate,
-      'ammo': instance.ammo,
+      'damage': instance.damage,
       'magazineSize': instance.magazineSize,
       'reloadTime': instance.reloadTime,
       'trigger': instance.trigger,
       'accuracy': instance.accuracy,
       'noise': instance.noise,
       'multishot': instance.multishot,
+      'ammo': instance.ammo,
       'flight': instance.flight,
       'procChance': instance.procChance,
       'components': instance.components?.map((e) => e.toJson()).toList(),
@@ -147,12 +148,13 @@ MeleeWeaponModel _$MeleeWeaponModelFromJson(Map json) {
           $checkedConvert(json, 'productCategory', (v) => v as String),
       tradable: $checkedConvert(json, 'tradable', (v) => v as bool),
       masteryReq: $checkedConvert(json, 'masteryReq', (v) => v as int),
-      buildPrice: $checkedConvert(json, 'buildPrice', (v) => v as int),
-      buildTime: $checkedConvert(json, 'buildTime', (v) => v as int),
+      buildPrice: $checkedConvert(json, 'buildPrice', (v) => v as int?),
+      buildTime: $checkedConvert(json, 'buildTime', (v) => v as int?),
       skipBuildTimePrice:
-          $checkedConvert(json, 'skipBuildTimePrice', (v) => v as int),
-      buildQuantity: $checkedConvert(json, 'buildQuantity', (v) => v as int),
-      consumeOnBuild: $checkedConvert(json, 'consumeOnBuild', (v) => v as bool),
+          $checkedConvert(json, 'skipBuildTimePrice', (v) => v as int?),
+      buildQuantity: $checkedConvert(json, 'buildQuantity', (v) => v as int?),
+      consumeOnBuild:
+          $checkedConvert(json, 'consumeOnBuild', (v) => v as bool?),
       slot: $checkedConvert(json, 'slot', (v) => v as int),
       components: $checkedConvert(
           json,
@@ -170,7 +172,7 @@ MeleeWeaponModel _$MeleeWeaponModelFromJson(Map json) {
       fireRate: $checkedConvert(json, 'fireRate', (v) => (v as num).toDouble()),
       omegaAttenuation: $checkedConvert(
           json, 'omegaAttenuation', (v) => (v as num).toDouble()),
-      damage: $checkedConvert(json, 'damage', (v) => v as String),
+      damage: $checkedConvert(json, 'damage', (v) => v),
       totalDamage:
           $checkedConvert(json, 'totalDamage', (v) => (v as num).toDouble()),
       damagePerShot: $checkedConvert(
@@ -179,30 +181,34 @@ MeleeWeaponModel _$MeleeWeaponModelFromJson(Map json) {
           (v) =>
               (v as List<dynamic>).map((e) => (e as num).toDouble()).toList()),
       damageTypes: $checkedConvert(
-          json, 'damageTypes', (v) => Map<String, num>.from(v as Map)),
+          json,
+          'damageTypes',
+          (v) => (v as Map?)?.map(
+                (k, e) => MapEntry(k as String, e as num),
+              )),
       polarities: $checkedConvert(json, 'polarities',
-          (v) => (v as List<dynamic>).map((e) => e as String).toList()),
-      marketCost: $checkedConvert(json, 'marketCost', (v) => v as int?),
-      disposition: $checkedConvert(json, 'disposition', (v) => v as int),
+          (v) => (v as List<dynamic>?)?.map((e) => e as String).toList()),
+      marketCost: $checkedConvert(json, 'marketCost', (v) => v),
+      disposition: $checkedConvert(json, 'disposition', (v) => v as int?),
       sentinel: $checkedConvert(json, 'sentinel', (v) => v as bool?),
       releaseDate: $checkedConvert(json, 'releaseDate', (v) => v as String?),
       vaulted: $checkedConvert(json, 'vaulted', (v) => v as bool?),
       estimatedVaultDate:
           $checkedConvert(json, 'estimatedVaultDate', (v) => v as String?),
-      blockingAngle: $checkedConvert(json, 'blockingAngle', (v) => v as int),
-      comboDuration: $checkedConvert(json, 'comboDuration', (v) => v as int),
-      followThrough:
-          $checkedConvert(json, 'followThrough', (v) => (v as num).toDouble()),
-      range: $checkedConvert(json, 'range', (v) => (v as num).toDouble()),
-      slamAttack: $checkedConvert(json, 'slamAttack', (v) => v as int),
+      blockingAngle: $checkedConvert(json, 'blockingAngle', (v) => v as int?),
+      comboDuration: $checkedConvert(json, 'comboDuration', (v) => v as int?),
+      followThrough: $checkedConvert(
+          json, 'followThrough', (v) => (v as num?)?.toDouble()),
+      range: $checkedConvert(json, 'range', (v) => (v as num?)?.toDouble()),
+      slamAttack: $checkedConvert(json, 'slamAttack', (v) => v as int?),
       slamRadialDamage:
-          $checkedConvert(json, 'slamRadialDamage', (v) => v as int),
-      slamRadius: $checkedConvert(json, 'slamRadius', (v) => v as int),
-      slideAttack: $checkedConvert(json, 'slideAttack', (v) => v as int),
+          $checkedConvert(json, 'slamRadialDamage', (v) => v as int?),
+      slamRadius: $checkedConvert(json, 'slamRadius', (v) => v as int?),
+      slideAttack: $checkedConvert(json, 'slideAttack', (v) => v as int?),
       heavyAttackDamage:
-          $checkedConvert(json, 'heavyAttackDamage', (v) => v as int),
+          $checkedConvert(json, 'heavyAttackDamage', (v) => v as int?),
       heavySlamAttack:
-          $checkedConvert(json, 'heavySlamAttack', (v) => v as int),
+          $checkedConvert(json, 'heavySlamAttack', (v) => v as int?),
       heavySlamRadius:
           $checkedConvert(json, 'heavySlamRadius', (v) => v as int?),
       heavySlamRadialDamage:
@@ -248,7 +254,6 @@ Map<String, dynamic> _$MeleeWeaponModelToJson(MeleeWeaponModel instance) =>
       'criticalMultiplier': instance.criticalMultiplier,
       'fireRate': instance.fireRate,
       'omegaAttenuation': instance.omegaAttenuation,
-      'damage': instance.damage,
       'totalDamage': instance.totalDamage,
       'damagePerShot': instance.damagePerShot,
       'damageTypes': instance.damageTypes,
@@ -259,6 +264,7 @@ Map<String, dynamic> _$MeleeWeaponModelToJson(MeleeWeaponModel instance) =>
       'vaulted': instance.vaulted,
       'releaseDate': instance.releaseDate,
       'estimatedVaultDate': instance.estimatedVaultDate,
+      'damage': instance.damage,
       'blockingAngle': instance.blockingAngle,
       'comboDuration': instance.comboDuration,
       'followThrough': instance.followThrough,

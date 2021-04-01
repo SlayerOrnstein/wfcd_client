@@ -1,84 +1,135 @@
+import 'dart:convert';
+
+import 'package:http/http.dart' as http;
+import 'package:mocktail/mocktail.dart';
 import 'package:test/test.dart';
-import 'package:wfcd_client/entities.dart';
 import 'package:wfcd_client/models.dart';
 import 'package:wfcd_client/wfcd_client.dart';
 
 import 'fixtures.dart';
-import 'mock_client.dart';
+
+class MockClient extends Mock implements http.Client {}
 
 void main() {
+  const testHeader = {'content-type': 'application/json; charset=utf-8'};
+
   late WarframestatClient clientApi;
   late MockClient mockClient;
 
-  setUp(() {
+  setUp(() async {
     mockClient = MockClient();
     clientApi = WarframestatClient(client: mockClient);
-  });
 
-  test('Search items', () {
-    final item = searchResultsTestModels.firstWhere((e) => e is MiscItem);
-    final frame = searchResultsTestModels.firstWhere((e) => e is Warframe);
-    final mod = searchResultsTestModels.firstWhere((e) => e is Mod);
-    final weapon =
-        searchResultsTestModels.firstWhere((e) => e is ProjectileWeapon);
-    final archwing =
-        searchResultsTestModels.firstWhere((e) => e is HeavyPowerSuit);
-    final melee = searchResultsTestModels.firstWhere((e) => e is MeleeWeapon);
-
-    final itemJson = fromBaseItem(item);
-    final frameJson = fromBaseItem(frame);
-    final modJson = fromBaseItem(mod);
-    final weaponJson = fromBaseItem(weapon);
-    final archwingJson = fromBaseItem(archwing);
-    final meleeJson = fromBaseItem(melee);
-
-    expect(itemJson, (item as MiscItemModel).toJson());
-    expect(frameJson, (frame as WarframeModel).toJson());
-    expect(modJson, (mod as ModModel).toJson());
-    expect(weaponJson, (weapon as ProjectileWeaponModel).toJson());
-    expect(archwingJson, (archwing as HeavyPowerSuitModel).toJson());
-    expect(meleeJson, (melee as MeleeWeaponModel).toJson());
+    await loadFixtures();
   });
 
   group('Test api functions', () {
     test('Worldstate', () async {
+      final worldstateUri = Uri.parse('https://api.warframestat.us/pc');
+
+      when(() => mockClient.get(worldstateUri, headers: any(named: 'headers')))
+          .thenAnswer((_) async => http.Response(
+                json.encode(worldstateTestModel as WorldstateModel),
+                200,
+                headers: testHeader,
+              ));
+
       final state = await clientApi.getWorldstate(GamePlatforms.pc);
 
       expect(state, equals(worldstateTestModel));
+      verify(
+          () => mockClient.get(worldstateUri, headers: any(named: 'headers')));
     });
 
     test('SynthTargets', () async {
+      final synthTargetsUri =
+          Uri.parse('https://api.warframestat.us/synthTargets');
+
+      when(() =>
+              mockClient.get(synthTargetsUri, headers: any(named: 'headers')))
+          .thenAnswer((_) async => http.Response(
+                json.encode(fromSynthTargets(synthTargetsTestModels)),
+                200,
+                headers: testHeader,
+              ));
+
       final targets = await clientApi.getSynthTargets();
 
       expect(targets, equals(synthTargetsTestModels));
+      verify(() =>
+          mockClient.get(synthTargetsUri, headers: any(named: 'headers')));
     });
 
     test('Item search results', () async {
-      const term = 'Cestra';
+      const term = 'Chroma';
+      final searchUri = Uri.parse(
+          'https://api.warframestat.us/items/search/${term.toLowerCase()}');
+
+      when(() => mockClient.get(searchUri, headers: any(named: 'headers')))
+          .thenAnswer((_) async => http.Response(
+                json.encode(fromBaseItems(warframeItemTestModels
+                    .where((e) => e.name.contains(term))
+                    .toList())),
+                200,
+                headers: testHeader,
+              ));
+
       final results = await clientApi.searchItems(term);
 
       expect(
         results,
-        equals(searchResultsTestModels
+        equals(warframeItemTestModels
             .where((e) => e.name.contains(term))
             .toList()),
       );
+      verify(() => mockClient.get(searchUri, headers: any(named: 'headers')));
     });
 
     test('Drops', () async {
-      final resultsForComparing =
-          dropTableTestModels.where((e) => e.item.contains('Chroma')).toList();
+      const term = 'Chroma';
+      final dropUri = Uri.parse(
+          'https://api.warframestat.us/drops/search/${term.toLowerCase()}');
 
-      final drops = await clientApi.searchDrops('Chroma');
+      when(() => mockClient.get(dropUri, headers: any(named: 'headers')))
+          .thenAnswer((_) async => http.Response(
+                json.encode(fromDrops(dropTableTestModels
+                    .where((e) => e.item.contains(term))
+                    .toList())),
+                200,
+                headers: testHeader,
+              ));
 
-      expect(drops, equals(resultsForComparing));
+      final drops = await clientApi.searchDrops(term);
+
+      expect(
+        drops,
+        equals(
+            dropTableTestModels.where((e) => e.item.contains(term)).toList()),
+      );
+      verify(() => mockClient.get(dropUri, headers: any(named: 'headers')));
     });
 
     test('Rivens', () async {
-      final rivens = await clientApi.searchRivens('Arca Plasmor');
+      const term = 'Arca Plasmor';
+      final rivenUri =
+          Uri.parse('https://api.warframestat.us/pc/rivens/search/$term');
+
+      when(() => mockClient.get(rivenUri, headers: any(named: 'headers')))
+          .thenAnswer((_) async => http.Response(
+                json.encode(fromRivens(rivenSearchTestModel)),
+                200,
+                headers: testHeader,
+              ));
+
+      final rivens = await clientApi.searchRivens(term);
 
       expect(
-          rivens, equals(toRivens(rivenSearch.json<Map<String, dynamic>>())));
+        rivens,
+        equals(rivenSearchTestModel
+            .where((e) => e.unrolled.compatibility == term)
+            .toList()),
+      );
+      verify(() => mockClient.get(rivenUri, headers: any(named: 'headers')));
     });
   });
 }

@@ -147,7 +147,7 @@ class Warframe extends PlayerUsuablePowerSuit {
     required int buildQuantity,
     required bool consumeOnBuild,
     required List<Component> components,
-    required this.aura,
+    this.aura,
     required int health,
     required int shield,
     required int armor,
@@ -191,7 +191,7 @@ class Warframe extends PlayerUsuablePowerSuit {
           wikiaUrl: wikiaUrl,
         );
 
-  final String aura;
+  final String? aura;
   final int stamina;
   final String passiveDescription, introduced, sex;
   final int color;

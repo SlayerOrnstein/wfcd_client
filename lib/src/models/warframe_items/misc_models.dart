@@ -49,7 +49,7 @@ class MiscFoundryItemModel extends MiscFoundryItem {
   const MiscFoundryItemModel({
     required String uniqueName,
     required String name,
-    required String description,
+    String? description,
     required String type,
     required String imageName,
     String? productCategory,

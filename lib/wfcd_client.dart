@@ -1,6 +1,5 @@
 import 'dart:convert';
 
-// ignore: import_of_legacy_library_into_null_safe
 import 'package:http/http.dart' as http;
 import 'package:wfcd_client/src/exceptions.dart';
 
@@ -29,16 +28,18 @@ class WarframestatClient {
     var response =
         await _warframestat<Map<String, dynamic>>(path, language: language);
 
-    if (response['timestamp'] == null) return null;
-
-    return toWorldstate(response);
+    if (response != null && response['timestamp'] != null) {
+      return toWorldstate(response);
+    }
   }
 
   /// Retrive a list of all available synthtargets
   Future<List<SynthTarget>> getSynthTargets() async {
     final response = await _warframestat<List<dynamic>>('synthTargets');
 
-    return toSynthTargets(response);
+    if (response != null) return toSynthTargets(response);
+
+    return <SynthTarget>[];
   }
 
   /// Search using warframestat's warframe-items endpoint
@@ -58,13 +59,18 @@ class WarframestatClient {
     GamePlatforms platform = GamePlatforms.pc,
     SupportedLocale language = SupportedLocale.en,
   }) async {
-    final term = name.toLowerCase();
     final response = await _warframestat<Map<String, dynamic>>(
-      '${platform.asString}/rivens/search/$term',
+      '${platform.asString}/rivens/search/$name',
       language: language,
     );
 
-    return toRivens(response);
+    if (response != null) {
+      return toRivens(response)
+          .where((e) => e.unrolled.compatibility == name)
+          .toList();
+    }
+
+    return <Riven>[];
   }
 
   Future<List<T>> _search<T>(
@@ -75,21 +81,27 @@ class WarframestatClient {
     final toSearch = term.toLowerCase();
     final response = await _warframestat<List<dynamic>>('$path/$toSearch');
 
-    return toObject(response);
+    if (response != null) return toObject(response);
+
+    return <T>[];
   }
 
-  Future<T> _warframestat<T>(String path,
+  Future<T?> _warframestat<T>(String path,
       {SupportedLocale language = SupportedLocale.en}) async {
     final headers = <String, String>{'Accept-Language': language.asString};
+
+    // try {
     final response = await _client.get(
       Uri.parse('$_endpoint/$path'),
       headers: headers,
     );
 
-    if (response.statusCode != 200) {
+    if (response.statusCode != 200)
       throw ServerException(response.statusCode, response.body);
-    }
 
     return json.decode(response.body) as T;
+    // } catch (e) {
+    //   return null;
+    // }
   }
 }

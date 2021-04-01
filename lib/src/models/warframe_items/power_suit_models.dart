@@ -1,4 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
+import 'package:wfcd_client/entities.dart';
 
 import '../../entities/warframe_items/power_suits.dart';
 import 'component_model.dart';
@@ -23,7 +24,7 @@ class WarframeModel extends Warframe {
     required String uniqueName,
     required String name,
     required String description,
-    required String aura,
+    String? aura,
     required int health,
     required int shield,
     required int armor,
@@ -32,11 +33,11 @@ class WarframeModel extends Warframe {
     required double sprintSpeed,
     required String passiveDescription,
     required this.abilities,
-    required int buildPrice,
-    required int buildTime,
-    required int skipBuildTimePrice,
-    required int buildQuantity,
-    required bool consumeOnBuild,
+    int? buildPrice,
+    int? buildTime,
+    int? skipBuildTimePrice,
+    int? buildQuantity,
+    bool? consumeOnBuild,
     required this.components,
     required String type,
     required String imageName,
@@ -65,12 +66,12 @@ class WarframeModel extends Warframe {
           sprintSpeed: sprintSpeed,
           passiveDescription: passiveDescription,
           abilities: abilities,
-          buildPrice: buildPrice,
-          buildTime: buildTime,
-          skipBuildTimePrice: skipBuildTimePrice,
-          buildQuantity: buildQuantity,
-          consumeOnBuild: consumeOnBuild,
-          components: components,
+          buildPrice: buildPrice ?? 0,
+          buildTime: buildTime ?? 0,
+          skipBuildTimePrice: skipBuildTimePrice ?? 0,
+          buildQuantity: buildQuantity ?? 0,
+          consumeOnBuild: consumeOnBuild ?? false,
+          components: components ?? const <Component>[],
           type: type,
           imageName: imageName,
           category: category,
@@ -90,7 +91,7 @@ class WarframeModel extends Warframe {
   }
 
   @override
-  final List<ComponentModel> components;
+  final List<ComponentModel>? components;
 
   @override
   final List<AbilityModel> abilities;
@@ -178,7 +179,7 @@ class CompanionModel extends Companion {
   const CompanionModel({
     required String uniqueName,
     required String name,
-    required String description,
+    String? description,
     required String type,
     required String imageName,
     required String category,
@@ -202,7 +203,7 @@ class CompanionModel extends Companion {
   }) : super(
           uniqueName: uniqueName,
           name: name,
-          description: description,
+          description: description ?? '',
           type: type,
           imageName: imageName,
           category: category,

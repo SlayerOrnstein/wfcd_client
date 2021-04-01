@@ -8,7 +8,7 @@ class Fixture {
 
   final String name;
 
-  String fixture() {
+  Future<String> fixture() {
     try {
       return _file(p.join('test', 'fixtures', name));
     } on FileSystemException {
@@ -16,7 +16,7 @@ class Fixture {
     }
   }
 
-  T json<T>() => convert.json.decode(fixture()) as T;
+  Future<T> json<T>() async => convert.json.decode(await fixture()) as T;
 
-  String _file(String path) => File(path).readAsStringSync();
+  Future<String> _file(String path) => File(path).readAsString();
 }

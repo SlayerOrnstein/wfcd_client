@@ -17,6 +17,7 @@ class VoidFissureModel extends VoidFissure {
     required int tierNum,
     required bool active,
     required bool expired,
+    required bool isStorm,
   }) : super(
           id: id,
           activation: activation,
@@ -28,6 +29,7 @@ class VoidFissureModel extends VoidFissure {
           tierNum: tierNum,
           active: active,
           expired: expired,
+          isStorm: isStorm,
         );
 
   factory VoidFissureModel.fromJson(Map<String, dynamic> json) {

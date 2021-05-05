@@ -21,6 +21,7 @@ VoidFissureModel _$VoidFissureModelFromJson(Map json) {
       tierNum: $checkedConvert(json, 'tierNum', (v) => v as int),
       active: $checkedConvert(json, 'active', (v) => v as bool),
       expired: $checkedConvert(json, 'expired', (v) => v as bool),
+      isStorm: $checkedConvert(json, 'isStorm', (v) => v as bool),
     );
     return val;
   });
@@ -38,4 +39,5 @@ Map<String, dynamic> _$VoidFissureModelToJson(VoidFissureModel instance) =>
       'tierNum': instance.tierNum,
       'active': instance.active,
       'expired': instance.expired,
+      'isStorm': instance.isStorm,
     };

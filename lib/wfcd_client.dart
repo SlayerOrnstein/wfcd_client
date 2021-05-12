@@ -1,6 +1,9 @@
+import 'dart:async';
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:http/http.dart' as http;
+import 'package:retry/retry.dart';
 import 'package:wfcd_client/src/exceptions.dart';
 
 import 'entities.dart';
@@ -91,15 +94,19 @@ class WarframestatClient {
     final headers = <String, String>{'Accept-Language': language.asString};
 
     try {
-      final response = await _client.get(
-        Uri.parse('$_endpoint/$path'),
-        headers: headers,
+      return retry(
+        () async {
+          final res = await _client
+              .get(Uri.parse('$_endpoint/$path'), headers: headers)
+              .timeout(const Duration(seconds: 5));
+
+          return json.decode(res.body) as T;
+        },
+        retryIf: (e) =>
+            e is SocketException ||
+            e is TimeoutException ||
+            e is FormatException,
       );
-
-      if (response.statusCode != 200)
-        throw ServerException(response.statusCode, response.body);
-
-      return json.decode(response.body) as T;
     } catch (e) {
       return null;
     }

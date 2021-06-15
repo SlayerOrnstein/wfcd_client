@@ -35,13 +35,13 @@ class Drop extends Equatable {
     required this.location,
     required this.type,
     required this.rarity,
-    required this.chance,
+    this.chance,
     this.rotation,
   });
 
   final String location, type, rarity;
   final String? rotation;
-  final double chance;
+  final double? chance;
 
   @override
   List<Object?> get props => [location, type, rarity, chance, rotation];

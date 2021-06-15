@@ -49,7 +49,7 @@ DropModel _$DropModelFromJson(Map json) {
       type: $checkedConvert(json, 'type', (v) => v as String),
       rarity: $checkedConvert(json, 'rarity', (v) => v as String),
       rotation: $checkedConvert(json, 'rotation', (v) => v as String?),
-      chance: $checkedConvert(json, 'chance', (v) => (v as num).toDouble()),
+      chance: $checkedConvert(json, 'chance', (v) => (v as num?)?.toDouble()),
     );
     return val;
   });

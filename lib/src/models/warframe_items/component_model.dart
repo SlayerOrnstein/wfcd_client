@@ -43,8 +43,8 @@ class DropModel extends Drop {
     required String location,
     required String type,
     required String rarity,
-     String? rotation,
-    required double chance,
+    String? rotation,
+    double? chance,
   }) : super(
           location: location,
           type: type,

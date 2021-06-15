@@ -8,7 +8,7 @@ part 'misc_models.g.dart';
 
 @JsonSerializable()
 class MiscItemModel extends MiscItem {
-  MiscItemModel({
+  const MiscItemModel({
     required String uniqueName,
     required String name,
     String? description,

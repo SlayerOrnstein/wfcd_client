@@ -33,7 +33,7 @@ class SteelPathMdoel extends SteelPath {
 
 @JsonSerializable()
 class SteelPathRewardModel extends SteelPathReward {
-  SteelPathRewardModel({required String name, required int cost})
+  const SteelPathRewardModel({required String name, required int cost})
       : super(name: name, cost: cost);
 
   factory SteelPathRewardModel.fromJson(Map<String, dynamic> json) {

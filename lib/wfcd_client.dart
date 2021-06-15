@@ -4,7 +4,6 @@ import 'dart:io';
 
 import 'package:http/http.dart' as http;
 import 'package:retry/retry.dart';
-import 'package:wfcd_client/src/exceptions.dart';
 
 import 'entities.dart';
 import 'src/utils/enums.dart';

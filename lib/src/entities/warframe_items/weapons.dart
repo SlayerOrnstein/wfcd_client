@@ -144,13 +144,13 @@ class ProjectileWeapon extends WeaponItem {
     String? releaseDate,
     bool? vaulted,
     String? estimatedVaultDate,
-    required this.accuracy,
+    this.accuracy,
     dynamic ammo,
     required this.magazineSize,
     this.multishot,
-    required this.reloadTime,
-    required this.noise,
-    required this.trigger,
+    this.reloadTime,
+    this.noise,
+    this.trigger,
     int? buildPrice,
     int? buildTime,
     int? skipBuildTimePrice,
@@ -200,10 +200,10 @@ class ProjectileWeapon extends WeaponItem {
 
   final dynamic _ammo;
   final int? magazineSize;
-  final double reloadTime;
-  final String trigger;
-  final double accuracy;
-  final String noise;
+  final double? reloadTime;
+  final String? trigger;
+  final double? accuracy;
+  final String? noise;
   final double? multishot;
   final dynamic _flight;
 

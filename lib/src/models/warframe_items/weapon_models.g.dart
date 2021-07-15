@@ -25,9 +25,10 @@ ProjectileWeaponModel _$ProjectileWeaponModelFromJson(Map json) {
               (v as List<dynamic>).map((e) => (e as num).toDouble()).toList()),
       magazineSize: $checkedConvert(json, 'magazineSize', (v) => v as int?),
       reloadTime:
-          $checkedConvert(json, 'reloadTime', (v) => (v as num).toDouble()),
-      trigger: $checkedConvert(json, 'trigger', (v) => v as String),
-      accuracy: $checkedConvert(json, 'accuracy', (v) => (v as num).toDouble()),
+          $checkedConvert(json, 'reloadTime', (v) => (v as num?)?.toDouble()),
+      trigger: $checkedConvert(json, 'trigger', (v) => v as String?),
+      accuracy:
+          $checkedConvert(json, 'accuracy', (v) => (v as num?)?.toDouble()),
       criticalChance:
           $checkedConvert(json, 'criticalChance', (v) => (v as num).toDouble()),
       criticalMultiplier: $checkedConvert(
@@ -38,7 +39,7 @@ ProjectileWeaponModel _$ProjectileWeaponModelFromJson(Map json) {
       slot: $checkedConvert(json, 'slot', (v) => v as int),
       ammo: $checkedConvert(json, 'ammo', (v) => v),
       flight: $checkedConvert(json, 'flight', (v) => v),
-      noise: $checkedConvert(json, 'noise', (v) => v as String),
+      noise: $checkedConvert(json, 'noise', (v) => v as String?),
       sentinel: $checkedConvert(json, 'sentinel', (v) => v as bool?),
       masteryReq: $checkedConvert(json, 'masteryReq', (v) => v as int),
       omegaAttenuation: $checkedConvert(

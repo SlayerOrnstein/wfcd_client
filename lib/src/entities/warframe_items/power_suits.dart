@@ -193,7 +193,8 @@ class Warframe extends PlayerUsuablePowerSuit {
 
   final String? aura;
   final int stamina;
-  final String passiveDescription, introduced, sex;
+  final String passiveDescription, sex;
+  final Introduced introduced;
   final int color;
 
   @override
@@ -201,6 +202,17 @@ class Warframe extends PlayerUsuablePowerSuit {
     return super.props
       ..addAll([aura, passiveDescription, introduced, sex, color]);
   }
+}
+
+class Introduced extends Equatable {
+  const Introduced({required this.name, required this.url, required this.date});
+
+  final String name;
+  final String url;
+  final String date;
+
+  @override
+  List<Object?> get props => [name, url, date];
 }
 
 class HeavyPowerSuit extends PlayerUsuablePowerSuit {

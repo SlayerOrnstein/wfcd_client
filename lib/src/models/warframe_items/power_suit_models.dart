@@ -49,7 +49,7 @@ class WarframeModel extends Warframe {
     String? wikiaThumbnail,
     String? wikiaUrl,
     required String sex,
-    required String introduced,
+    required this.introduced,
     required List<String> polarities,
     required int color,
   }) : super(
@@ -99,7 +99,25 @@ class WarframeModel extends Warframe {
   @override
   final List<PatchlogModel>? patchlogs;
 
+  @override
+  final IntroducedModel introduced;
+
   Map<String, dynamic> toJson() => _$WarframeModelToJson(this);
+}
+
+@JsonSerializable()
+class IntroducedModel extends Introduced {
+  const IntroducedModel({
+    required String name,
+    required String url,
+    required String date,
+  }) : super(name: name, url: url, date: date);
+
+  factory IntroducedModel.fromJson(Map<String, dynamic> json) {
+    return _$IntroducedModelFromJson(json);
+  }
+
+  Map<String, dynamic> toJson() => _$IntroducedModelToJson(this);
 }
 
 @JsonSerializable()

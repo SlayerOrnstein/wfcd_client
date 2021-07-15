@@ -77,7 +77,8 @@ WarframeModel _$WarframeModelFromJson(Map json) {
           $checkedConvert(json, 'wikiaThumbnail', (v) => v as String?),
       wikiaUrl: $checkedConvert(json, 'wikiaUrl', (v) => v as String?),
       sex: $checkedConvert(json, 'sex', (v) => v as String),
-      introduced: $checkedConvert(json, 'introduced', (v) => v as String),
+      introduced: $checkedConvert(json, 'introduced',
+          (v) => IntroducedModel.fromJson(Map<String, dynamic>.from(v as Map))),
       polarities: $checkedConvert(json, 'polarities',
           (v) => (v as List<dynamic>).map((e) => e as String).toList()),
       color: $checkedConvert(json, 'color', (v) => v as int),
@@ -113,12 +114,30 @@ Map<String, dynamic> _$WarframeModelToJson(WarframeModel instance) =>
       'aura': instance.aura,
       'stamina': instance.stamina,
       'passiveDescription': instance.passiveDescription,
-      'introduced': instance.introduced,
       'sex': instance.sex,
       'color': instance.color,
       'components': instance.components?.map((e) => e.toJson()).toList(),
       'abilities': instance.abilities.map((e) => e.toJson()).toList(),
       'patchlogs': instance.patchlogs?.map((e) => e.toJson()).toList(),
+      'introduced': instance.introduced.toJson(),
+    };
+
+IntroducedModel _$IntroducedModelFromJson(Map json) {
+  return $checkedNew('IntroducedModel', json, () {
+    final val = IntroducedModel(
+      name: $checkedConvert(json, 'name', (v) => v as String),
+      url: $checkedConvert(json, 'url', (v) => v as String),
+      date: $checkedConvert(json, 'date', (v) => v as String),
+    );
+    return val;
+  });
+}
+
+Map<String, dynamic> _$IntroducedModelToJson(IntroducedModel instance) =>
+    <String, dynamic>{
+      'name': instance.name,
+      'url': instance.url,
+      'date': instance.date,
     };
 
 HeavyPowerSuitModel _$HeavyPowerSuitModelFromJson(Map json) {

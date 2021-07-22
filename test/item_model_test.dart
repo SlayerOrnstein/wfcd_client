@@ -8,24 +8,21 @@ import 'fixtures/fixture_reader.dart';
 void main() {
   const searchResults = Fixture('warframe_items.json');
 
-  late List<Item> searchResultsTestModels;
+  late List<Item> testModels;
 
   setUp(() async {
-    searchResultsTestModels =
-        toBaseItems(await searchResults.json<List<dynamic>>());
+    testModels = toBaseItems(await searchResults.json<List<dynamic>>());
   });
 
   test(
     'Testing of Item models/entities for proper serelization',
     () {
-      final item = searchResultsTestModels.firstWhere((e) => e is MiscItem);
-      final frame = searchResultsTestModels.firstWhere((e) => e is Warframe);
-      final mod = searchResultsTestModels.firstWhere((e) => e is Mod);
-      final weapon =
-          searchResultsTestModels.firstWhere((e) => e is ProjectileWeapon);
-      final archwing =
-          searchResultsTestModels.firstWhere((e) => e is HeavyPowerSuit);
-      final melee = searchResultsTestModels.firstWhere((e) => e is MeleeWeapon);
+      final item = testModels.whereType<MiscItem>().first;
+      final frame = testModels.whereType<Warframe>().first;
+      final mod = testModels.whereType<Mod>().first;
+      final weapon = testModels.whereType<ProjectileWeapon>().first;
+      final archwing = testModels.whereType<HeavyPowerSuit>().first;
+      final melee = testModels.whereType<MeleeWeapon>().first;
 
       final itemJson = fromBaseItem(item);
       final frameJson = fromBaseItem(frame);

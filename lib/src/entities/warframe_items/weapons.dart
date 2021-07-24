@@ -29,7 +29,7 @@ class WeaponItem extends FoundryItem {
     required dynamic damage,
     required this.totalDamage,
     required this.damagePerShot,
-    this.damageTypes,
+    // this.damageTypes,
     this.disposition,
     this.marketCost,
     this.sentinel,
@@ -71,7 +71,7 @@ class WeaponItem extends FoundryItem {
   final dynamic _damage;
   final double totalDamage;
   final List<double> damagePerShot;
-  final Map<String, num>? damageTypes;
+  // final Map<String, num>? damageTypes;
   final List<String>? polarities;
   final int? marketCost;
   final int? disposition;
@@ -102,7 +102,6 @@ class WeaponItem extends FoundryItem {
         _damage,
         damage,
         damagePerShot,
-        damageTypes,
         polarities,
         marketCost,
         disposition,
@@ -136,7 +135,6 @@ class ProjectileWeapon extends WeaponItem {
     required dynamic damage,
     required double totalDamage,
     required List<double> damagePerShot,
-    Map<String, num>? damageTypes,
     List<String>? polarities,
     int? disposition,
     int? marketCost,
@@ -177,7 +175,6 @@ class ProjectileWeapon extends WeaponItem {
           damage: damage,
           totalDamage: totalDamage,
           damagePerShot: damagePerShot,
-          damageTypes: damageTypes,
           polarities: polarities,
           marketCost: marketCost,
           disposition: disposition,
@@ -254,7 +251,6 @@ class MeleeWeapon extends WeaponItem {
     required dynamic damage,
     required double totalDamage,
     required List<double> damagePerShot,
-    Map<String, num>? damageTypes,
     List<String>? polarities,
     int? disposition,
     int? marketCost,
@@ -296,7 +292,6 @@ class MeleeWeapon extends WeaponItem {
           damage: damage,
           totalDamage: totalDamage,
           damagePerShot: damagePerShot,
-          damageTypes: damageTypes,
           polarities: polarities,
           marketCost: marketCost,
           disposition: disposition,

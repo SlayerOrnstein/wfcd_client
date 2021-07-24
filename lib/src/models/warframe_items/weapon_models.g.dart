@@ -58,8 +58,6 @@ ProjectileWeaponModel _$ProjectileWeaponModelFromJson(Map json) {
               ?.map((e) =>
                   ComponentModel.fromJson(Map<String, dynamic>.from(e as Map)))
               .toList()),
-      damageTypes: $checkedConvert(
-          json, 'damageTypes', (v) => Map<String, num>.from(v as Map)),
       polarities: $checkedConvert(json, 'polarities',
           (v) => (v as List<dynamic>?)?.map((e) => e as String).toList()),
       marketCost: $checkedConvert(json, 'marketCost', (v) => v as int?),
@@ -114,7 +112,6 @@ Map<String, dynamic> _$ProjectileWeaponModelToJson(
       'omegaAttenuation': instance.omegaAttenuation,
       'totalDamage': instance.totalDamage,
       'damagePerShot': instance.damagePerShot,
-      'damageTypes': instance.damageTypes,
       'polarities': instance.polarities,
       'marketCost': instance.marketCost,
       'disposition': instance.disposition,
@@ -181,12 +178,6 @@ MeleeWeaponModel _$MeleeWeaponModelFromJson(Map json) {
           'damagePerShot',
           (v) =>
               (v as List<dynamic>).map((e) => (e as num).toDouble()).toList()),
-      damageTypes: $checkedConvert(
-          json,
-          'damageTypes',
-          (v) => (v as Map?)?.map(
-                (k, e) => MapEntry(k as String, e as num),
-              )),
       polarities: $checkedConvert(json, 'polarities',
           (v) => (v as List<dynamic>?)?.map((e) => e as String).toList()),
       marketCost: $checkedConvert(json, 'marketCost', (v) => v),
@@ -257,7 +248,6 @@ Map<String, dynamic> _$MeleeWeaponModelToJson(MeleeWeaponModel instance) =>
       'omegaAttenuation': instance.omegaAttenuation,
       'totalDamage': instance.totalDamage,
       'damagePerShot': instance.damagePerShot,
-      'damageTypes': instance.damageTypes,
       'polarities': instance.polarities,
       'marketCost': instance.marketCost,
       'disposition': instance.disposition,

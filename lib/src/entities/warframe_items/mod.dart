@@ -19,7 +19,7 @@ class Mod extends Item {
     required this.isAugment,
     required bool tradable,
     this.transmutable,
-    required List<Drop> drops,
+    required List<Drop>? drops,
     List<Patchlog>? patchlogs,
     String? wikiaThumbnail,
     String? wikiaUrl,

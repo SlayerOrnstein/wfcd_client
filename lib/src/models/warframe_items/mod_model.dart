@@ -55,7 +55,7 @@ class ModModel extends Mod {
   }
 
   @override
-  final List<DropModel> drops;
+  final List<DropModel>? drops;
 
   @override
   final List<PatchlogModel>? patchlogs;

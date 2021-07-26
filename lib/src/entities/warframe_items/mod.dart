@@ -15,6 +15,7 @@ class Mod extends Item {
     required this.baseDrain,
     required this.fusionLimit,
     this.compatName,
+    this.modSet,
     this.levelStats,
     required this.isAugment,
     required bool tradable,
@@ -38,7 +39,7 @@ class Mod extends Item {
         );
 
   final String polarity, rarity;
-  final String? compatName;
+  final String? compatName, modSet;
   final int baseDrain, fusionLimit;
   final List<Map<String, List<String>>>? levelStats;
   final bool isAugment;
@@ -51,6 +52,7 @@ class Mod extends Item {
         polarity,
         rarity,
         compatName,
+        modSet,
         baseDrain,
         fusionLimit,
         levelStats,

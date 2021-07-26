@@ -19,6 +19,7 @@ ModModel _$ModModelFromJson(Map json) {
       fusionLimit: $checkedConvert(json, 'fusionLimit', (v) => v as int),
       transmutable: $checkedConvert(json, 'transmutable', (v) => v as bool?),
       compatName: $checkedConvert(json, 'compatName', (v) => v as String?),
+      modSet: $checkedConvert(json, 'modSet', (v) => v as String?),
       type: $checkedConvert(json, 'type', (v) => v as String),
       levelStats: $checkedConvert(
           json,
@@ -67,6 +68,7 @@ Map<String, dynamic> _$ModModelToJson(ModModel instance) => <String, dynamic>{
       'polarity': instance.polarity,
       'rarity': instance.rarity,
       'compatName': instance.compatName,
+      'modSet': instance.modSet,
       'baseDrain': instance.baseDrain,
       'fusionLimit': instance.fusionLimit,
       'levelStats': instance.levelStats,

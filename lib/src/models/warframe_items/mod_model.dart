@@ -1,4 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
+import 'package:wfcd_client/models.dart';
 
 import '../../entities/warframe_items/mod.dart';
 import 'patch_log_model.dart';
@@ -21,6 +22,7 @@ class ModModel extends Mod {
     required String type,
     List<Map<String, List<String>>>? levelStats,
     required String category,
+    required this.drops,
     bool? isAugment,
     required bool tradable,
     this.patchlogs,
@@ -39,6 +41,7 @@ class ModModel extends Mod {
           type: type,
           levelStats: levelStats,
           category: category,
+          drops: drops,
           isAugment: isAugment ?? false,
           tradable: tradable,
           patchlogs: patchlogs,
@@ -50,6 +53,9 @@ class ModModel extends Mod {
   factory ModModel.fromJson(Map<String, dynamic> json) {
     return _$ModModelFromJson(json);
   }
+
+  @override
+  final List<DropModel> drops;
 
   @override
   final List<PatchlogModel>? patchlogs;

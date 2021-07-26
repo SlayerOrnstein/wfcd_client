@@ -1,4 +1,5 @@
 import 'abstract_item.dart';
+import 'component.dart';
 import 'patch_log.dart';
 
 class Mod extends Item {
@@ -18,6 +19,7 @@ class Mod extends Item {
     required this.isAugment,
     required bool tradable,
     this.transmutable,
+    required List<Drop> drops,
     List<Patchlog>? patchlogs,
     String? wikiaThumbnail,
     String? wikiaUrl,
@@ -30,6 +32,7 @@ class Mod extends Item {
           category: category,
           tradable: tradable,
           patchlogs: patchlogs,
+          drops: drops,
           wikiaThumbnail: wikiaThumbnail,
           wikiaUrl: wikiaUrl,
         );

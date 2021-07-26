@@ -30,6 +30,13 @@ ModModel _$ModModelFromJson(Map json) {
                   ))
               .toList()),
       category: $checkedConvert(json, 'category', (v) => v as String),
+      drops: $checkedConvert(
+          json,
+          'drops',
+          (v) => (v as List<dynamic>)
+              .map((e) =>
+                  DropModel.fromJson(Map<String, dynamic>.from(e as Map)))
+              .toList()),
       isAugment: $checkedConvert(json, 'isAugment', (v) => v as bool?),
       tradable: $checkedConvert(json, 'tradable', (v) => v as bool),
       patchlogs: $checkedConvert(
@@ -65,5 +72,6 @@ Map<String, dynamic> _$ModModelToJson(ModModel instance) => <String, dynamic>{
       'levelStats': instance.levelStats,
       'isAugment': instance.isAugment,
       'transmutable': instance.transmutable,
+      'drops': instance.drops.map((e) => e.toJson()).toList(),
       'patchlogs': instance.patchlogs?.map((e) => e.toJson()).toList(),
     };

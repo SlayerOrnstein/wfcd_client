@@ -112,7 +112,7 @@ class WorldstateModel extends Worldstate {
   final VallisModel vallisCycle;
 
   @override
-  final NightwaveModel nightwave;
+  final NightwaveModel? nightwave;
 
   @override
   final SentientOutpostModel sentientOutposts;

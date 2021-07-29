@@ -35,7 +35,7 @@ class Worldstate extends Equatable {
     required this.cetusCycle,
     required this.constructionProgress,
     required this.vallisCycle,
-    required this.nightwave,
+    this.nightwave,
     required this.sentientOutposts,
     this.arbitration,
     required this.steelPath,
@@ -56,7 +56,7 @@ class Worldstate extends Equatable {
   final Earth earthCycle, cetusCycle;
   final ConstructionProgress constructionProgress;
   final Vallis vallisCycle;
-  final Nightwave nightwave;
+  final Nightwave? nightwave;
   final SentientOutpost sentientOutposts;
   final Arbitration? arbitration;
   final SteelPath steelPath;

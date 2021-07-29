@@ -82,8 +82,12 @@ WorldstateModel _$WorldstateModelFromJson(Map json) {
               Map<String, dynamic>.from(v as Map))),
       vallisCycle: $checkedConvert(json, 'vallisCycle',
           (v) => VallisModel.fromJson(Map<String, dynamic>.from(v as Map))),
-      nightwave: $checkedConvert(json, 'nightwave',
-          (v) => NightwaveModel.fromJson(Map<String, dynamic>.from(v as Map))),
+      nightwave: $checkedConvert(
+          json,
+          'nightwave',
+          (v) => v == null
+              ? null
+              : NightwaveModel.fromJson(Map<String, dynamic>.from(v as Map))),
       sentientOutposts: $checkedConvert(
           json,
           'sentientOutposts',
@@ -120,7 +124,7 @@ Map<String, dynamic> _$WorldstateModelToJson(WorldstateModel instance) =>
       'cetusCycle': instance.cetusCycle.toJson(),
       'constructionProgress': instance.constructionProgress.toJson(),
       'vallisCycle': instance.vallisCycle.toJson(),
-      'nightwave': instance.nightwave.toJson(),
+      'nightwave': instance.nightwave?.toJson(),
       'sentientOutposts': instance.sentientOutposts.toJson(),
       'arbitration': instance.arbitration.toJson(),
       'steelPath': instance.steelPath.toJson(),

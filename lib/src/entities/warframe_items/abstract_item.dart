@@ -103,7 +103,7 @@ abstract class FoundryItem extends Item {
   final int? masteryReq;
   final List<Component>? components;
   final int? buildPrice, buildTime, skipBuildTimePrice, buildQuantity;
-  final DateTime? vaultDate;
+  final String? vaultDate;
   final bool? consumeOnBuild, vaulted;
 
   @override

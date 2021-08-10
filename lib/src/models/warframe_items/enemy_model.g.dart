@@ -6,45 +6,44 @@ part of 'enemy_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-EnemyModel _$EnemyModelFromJson(Map json) {
-  return $checkedNew('EnemyModel', json, () {
-    final val = EnemyModel(
-      uniqueName: $checkedConvert(json, 'uniqueName', (v) => v as String),
-      name: $checkedConvert(json, 'name', (v) => v as String),
-      description: $checkedConvert(json, 'description', (v) => v as String),
-      type: $checkedConvert(json, 'type', (v) => v as String),
-      imageName: $checkedConvert(json, 'imageName', (v) => v as String),
-      category: $checkedConvert(json, 'category', (v) => v as String),
-      tradable: $checkedConvert(json, 'tradable', (v) => v as bool),
-      health: $checkedConvert(json, 'health', (v) => v as int),
-      shield: $checkedConvert(json, 'shield', (v) => v as int),
-      armor: $checkedConvert(json, 'armor', (v) => v as int),
-      regionBits: $checkedConvert(json, 'regionBits', (v) => v as int),
-      resistances: $checkedConvert(
-          json,
-          'resistances',
-          (v) => (v as List<dynamic>)
-              .map((e) => ResistancesModel.fromJson(
-                  Map<String, dynamic>.from(e as Map)))
-              .toList()),
-      patchlogs: $checkedConvert(
-          json,
-          'patchlogs',
-          (v) => (v as List<dynamic>?)
-              ?.map((e) =>
-                  PatchlogModel.fromJson(Map<String, dynamic>.from(e as Map)))
-              .toList()),
-      drops: $checkedConvert(
-          json,
-          'drops',
-          (v) => (v as List<dynamic>?)
-              ?.map((e) =>
-                  DropModel.fromJson(Map<String, dynamic>.from(e as Map)))
-              .toList()),
+EnemyModel _$EnemyModelFromJson(Map json) => $checkedCreate(
+      'EnemyModel',
+      json,
+      ($checkedConvert) {
+        final val = EnemyModel(
+          uniqueName: $checkedConvert('uniqueName', (v) => v as String),
+          name: $checkedConvert('name', (v) => v as String),
+          description: $checkedConvert('description', (v) => v as String),
+          type: $checkedConvert('type', (v) => v as String),
+          imageName: $checkedConvert('imageName', (v) => v as String),
+          category: $checkedConvert('category', (v) => v as String),
+          tradable: $checkedConvert('tradable', (v) => v as bool),
+          health: $checkedConvert('health', (v) => v as int),
+          shield: $checkedConvert('shield', (v) => v as int),
+          armor: $checkedConvert('armor', (v) => v as int),
+          regionBits: $checkedConvert('regionBits', (v) => v as int),
+          resistances: $checkedConvert(
+              'resistances',
+              (v) => (v as List<dynamic>)
+                  .map((e) => ResistancesModel.fromJson(
+                      Map<String, dynamic>.from(e as Map)))
+                  .toList()),
+          patchlogs: $checkedConvert(
+              'patchlogs',
+              (v) => (v as List<dynamic>?)
+                  ?.map((e) => PatchlogModel.fromJson(
+                      Map<String, dynamic>.from(e as Map)))
+                  .toList()),
+          drops: $checkedConvert(
+              'drops',
+              (v) => (v as List<dynamic>?)
+                  ?.map((e) =>
+                      DropModel.fromJson(Map<String, dynamic>.from(e as Map)))
+                  .toList()),
+        );
+        return val;
+      },
     );
-    return val;
-  });
-}
 
 Map<String, dynamic> _$EnemyModelToJson(EnemyModel instance) =>
     <String, dynamic>{
@@ -64,22 +63,23 @@ Map<String, dynamic> _$EnemyModelToJson(EnemyModel instance) =>
       'patchlogs': instance.patchlogs?.map((e) => e.toJson()).toList(),
     };
 
-ResistancesModel _$ResistancesModelFromJson(Map json) {
-  return $checkedNew('ResistancesModel', json, () {
-    final val = ResistancesModel(
-      amount: $checkedConvert(json, 'amount', (v) => v as int),
-      type: $checkedConvert(json, 'type', (v) => v as String),
-      affectors: $checkedConvert(
-          json,
-          'affectors',
-          (v) => (v as List<dynamic>)
-              .map((e) =>
-                  AffectorsModel.fromJson(Map<String, dynamic>.from(e as Map)))
-              .toList()),
+ResistancesModel _$ResistancesModelFromJson(Map json) => $checkedCreate(
+      'ResistancesModel',
+      json,
+      ($checkedConvert) {
+        final val = ResistancesModel(
+          amount: $checkedConvert('amount', (v) => v as int),
+          type: $checkedConvert('type', (v) => v as String),
+          affectors: $checkedConvert(
+              'affectors',
+              (v) => (v as List<dynamic>)
+                  .map((e) => AffectorsModel.fromJson(
+                      Map<String, dynamic>.from(e as Map)))
+                  .toList()),
+        );
+        return val;
+      },
     );
-    return val;
-  });
-}
 
 Map<String, dynamic> _$ResistancesModelToJson(ResistancesModel instance) =>
     <String, dynamic>{
@@ -88,15 +88,17 @@ Map<String, dynamic> _$ResistancesModelToJson(ResistancesModel instance) =>
       'affectors': instance.affectors.map((e) => e.toJson()).toList(),
     };
 
-AffectorsModel _$AffectorsModelFromJson(Map json) {
-  return $checkedNew('AffectorsModel', json, () {
-    final val = AffectorsModel(
-      element: $checkedConvert(json, 'element', (v) => v as String),
-      modifier: $checkedConvert(json, 'modifier', (v) => (v as num).toDouble()),
+AffectorsModel _$AffectorsModelFromJson(Map json) => $checkedCreate(
+      'AffectorsModel',
+      json,
+      ($checkedConvert) {
+        final val = AffectorsModel(
+          element: $checkedConvert('element', (v) => v as String),
+          modifier: $checkedConvert('modifier', (v) => (v as num).toDouble()),
+        );
+        return val;
+      },
     );
-    return val;
-  });
-}
 
 Map<String, dynamic> _$AffectorsModelToJson(AffectorsModel instance) =>
     <String, dynamic>{

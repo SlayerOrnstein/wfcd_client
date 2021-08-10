@@ -6,29 +6,28 @@ part of 'steel_path_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-SteelPathMdoel _$SteelPathMdoelFromJson(Map json) {
-  return $checkedNew('SteelPathMdoel', json, () {
-    final val = SteelPathMdoel(
-      activation: $checkedConvert(
-          json, 'activation', (v) => DateTime.parse(v as String)),
-      expiry:
-          $checkedConvert(json, 'expiry', (v) => DateTime.parse(v as String)),
-      currentReward: $checkedConvert(
-          json,
-          'currentReward',
-          (v) => SteelPathRewardModel.fromJson(
-              Map<String, dynamic>.from(v as Map))),
-      rotation: $checkedConvert(
-          json,
-          'rotation',
-          (v) => (v as List<dynamic>)
-              .map((e) => SteelPathRewardModel.fromJson(
-                  Map<String, dynamic>.from(e as Map)))
-              .toList()),
+SteelPathMdoel _$SteelPathMdoelFromJson(Map json) => $checkedCreate(
+      'SteelPathMdoel',
+      json,
+      ($checkedConvert) {
+        final val = SteelPathMdoel(
+          activation:
+              $checkedConvert('activation', (v) => DateTime.parse(v as String)),
+          expiry: $checkedConvert('expiry', (v) => DateTime.parse(v as String)),
+          currentReward: $checkedConvert(
+              'currentReward',
+              (v) => SteelPathRewardModel.fromJson(
+                  Map<String, dynamic>.from(v as Map))),
+          rotation: $checkedConvert(
+              'rotation',
+              (v) => (v as List<dynamic>)
+                  .map((e) => SteelPathRewardModel.fromJson(
+                      Map<String, dynamic>.from(e as Map)))
+                  .toList()),
+        );
+        return val;
+      },
     );
-    return val;
-  });
-}
 
 Map<String, dynamic> _$SteelPathMdoelToJson(SteelPathMdoel instance) =>
     <String, dynamic>{
@@ -38,15 +37,17 @@ Map<String, dynamic> _$SteelPathMdoelToJson(SteelPathMdoel instance) =>
       'rotation': instance.rotation.map((e) => e.toJson()).toList(),
     };
 
-SteelPathRewardModel _$SteelPathRewardModelFromJson(Map json) {
-  return $checkedNew('SteelPathRewardModel', json, () {
-    final val = SteelPathRewardModel(
-      name: $checkedConvert(json, 'name', (v) => v as String),
-      cost: $checkedConvert(json, 'cost', (v) => v as int),
+SteelPathRewardModel _$SteelPathRewardModelFromJson(Map json) => $checkedCreate(
+      'SteelPathRewardModel',
+      json,
+      ($checkedConvert) {
+        final val = SteelPathRewardModel(
+          name: $checkedConvert('name', (v) => v as String),
+          cost: $checkedConvert('cost', (v) => v as int),
+        );
+        return val;
+      },
     );
-    return val;
-  });
-}
 
 Map<String, dynamic> _$SteelPathRewardModelToJson(
         SteelPathRewardModel instance) =>

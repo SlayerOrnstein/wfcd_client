@@ -42,7 +42,7 @@ class MiscFoundryItem extends FoundryItem {
     required bool tradable,
     int? masteryReq,
     List<Component>? components,
-    DateTime? vaultDate,
+    String? vaultDate,
     bool? vaulted,
     required int buildPrice,
     required int buildTime,

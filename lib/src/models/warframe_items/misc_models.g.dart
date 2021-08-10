@@ -6,32 +6,33 @@ part of 'misc_models.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-MiscItemModel _$MiscItemModelFromJson(Map json) {
-  return $checkedNew('MiscItemModel', json, () {
-    final val = MiscItemModel(
-      uniqueName: $checkedConvert(json, 'uniqueName', (v) => v as String),
-      name: $checkedConvert(json, 'name', (v) => v as String),
-      description: $checkedConvert(json, 'description', (v) => v as String?),
-      type: $checkedConvert(json, 'type', (v) => v as String),
-      imageName: $checkedConvert(json, 'imageName', (v) => v as String?),
-      productCategory:
-          $checkedConvert(json, 'productCategory', (v) => v as String?),
-      category: $checkedConvert(json, 'category', (v) => v as String),
-      tradable: $checkedConvert(json, 'tradable', (v) => v as bool),
-      patchlogs: $checkedConvert(
-          json,
-          'patchlogs',
-          (v) => (v as List<dynamic>?)
-              ?.map((e) =>
-                  PatchlogModel.fromJson(Map<String, dynamic>.from(e as Map)))
-              .toList()),
-      wikiaUrl: $checkedConvert(json, 'wikiaUrl', (v) => v as String?),
-      wikiaThumbnail:
-          $checkedConvert(json, 'wikiaThumbnail', (v) => v as String?),
+MiscItemModel _$MiscItemModelFromJson(Map json) => $checkedCreate(
+      'MiscItemModel',
+      json,
+      ($checkedConvert) {
+        final val = MiscItemModel(
+          uniqueName: $checkedConvert('uniqueName', (v) => v as String),
+          name: $checkedConvert('name', (v) => v as String),
+          description: $checkedConvert('description', (v) => v as String?),
+          type: $checkedConvert('type', (v) => v as String),
+          imageName: $checkedConvert('imageName', (v) => v as String?),
+          productCategory:
+              $checkedConvert('productCategory', (v) => v as String?),
+          category: $checkedConvert('category', (v) => v as String),
+          tradable: $checkedConvert('tradable', (v) => v as bool),
+          patchlogs: $checkedConvert(
+              'patchlogs',
+              (v) => (v as List<dynamic>?)
+                  ?.map((e) => PatchlogModel.fromJson(
+                      Map<String, dynamic>.from(e as Map)))
+                  .toList()),
+          wikiaUrl: $checkedConvert('wikiaUrl', (v) => v as String?),
+          wikiaThumbnail:
+              $checkedConvert('wikiaThumbnail', (v) => v as String?),
+        );
+        return val;
+      },
     );
-    return val;
-  });
-}
 
 Map<String, dynamic> _$MiscItemModelToJson(MiscItemModel instance) =>
     <String, dynamic>{
@@ -48,46 +49,46 @@ Map<String, dynamic> _$MiscItemModelToJson(MiscItemModel instance) =>
       'patchlogs': instance.patchlogs?.map((e) => e.toJson()).toList(),
     };
 
-MiscFoundryItemModel _$MiscFoundryItemModelFromJson(Map json) {
-  return $checkedNew('MiscFoundryItemModel', json, () {
-    final val = MiscFoundryItemModel(
-      uniqueName: $checkedConvert(json, 'uniqueName', (v) => v as String),
-      name: $checkedConvert(json, 'name', (v) => v as String),
-      description: $checkedConvert(json, 'description', (v) => v as String?),
-      type: $checkedConvert(json, 'type', (v) => v as String),
-      imageName: $checkedConvert(json, 'imageName', (v) => v as String),
-      productCategory:
-          $checkedConvert(json, 'productCategory', (v) => v as String?),
-      category: $checkedConvert(json, 'category', (v) => v as String),
-      tradable: $checkedConvert(json, 'tradable', (v) => v as bool),
-      masteryReq: $checkedConvert(json, 'masteryReq', (v) => v as int?),
-      drops: $checkedConvert(
-          json,
-          'drops',
-          (v) => (v as List<dynamic>?)
-              ?.map((e) =>
-                  DropModel.fromJson(Map<String, dynamic>.from(e as Map)))
-              .toList()),
-      buildPrice: $checkedConvert(json, 'buildPrice', (v) => v as int),
-      buildTime: $checkedConvert(json, 'buildTime', (v) => v as int),
-      skipBuildTimePrice:
-          $checkedConvert(json, 'skipBuildTimePrice', (v) => v as int),
-      buildQuantity: $checkedConvert(json, 'buildQuantity', (v) => v as int),
-      consumeOnBuild: $checkedConvert(json, 'consumeOnBuild', (v) => v as bool),
-      patchlogs: $checkedConvert(
-          json,
-          'patchlogs',
-          (v) => (v as List<dynamic>?)
-              ?.map((e) =>
-                  PatchlogModel.fromJson(Map<String, dynamic>.from(e as Map)))
-              .toList()),
-      wikiaUrl: $checkedConvert(json, 'wikiaUrl', (v) => v as String?),
-      wikiaThumbnail:
-          $checkedConvert(json, 'wikiaThumbnail', (v) => v as String?),
+MiscFoundryItemModel _$MiscFoundryItemModelFromJson(Map json) => $checkedCreate(
+      'MiscFoundryItemModel',
+      json,
+      ($checkedConvert) {
+        final val = MiscFoundryItemModel(
+          uniqueName: $checkedConvert('uniqueName', (v) => v as String),
+          name: $checkedConvert('name', (v) => v as String),
+          description: $checkedConvert('description', (v) => v as String?),
+          type: $checkedConvert('type', (v) => v as String),
+          imageName: $checkedConvert('imageName', (v) => v as String),
+          productCategory:
+              $checkedConvert('productCategory', (v) => v as String?),
+          category: $checkedConvert('category', (v) => v as String),
+          tradable: $checkedConvert('tradable', (v) => v as bool),
+          masteryReq: $checkedConvert('masteryReq', (v) => v as int?),
+          drops: $checkedConvert(
+              'drops',
+              (v) => (v as List<dynamic>?)
+                  ?.map((e) =>
+                      DropModel.fromJson(Map<String, dynamic>.from(e as Map)))
+                  .toList()),
+          buildPrice: $checkedConvert('buildPrice', (v) => v as int),
+          buildTime: $checkedConvert('buildTime', (v) => v as int),
+          skipBuildTimePrice:
+              $checkedConvert('skipBuildTimePrice', (v) => v as int),
+          buildQuantity: $checkedConvert('buildQuantity', (v) => v as int),
+          consumeOnBuild: $checkedConvert('consumeOnBuild', (v) => v as bool),
+          patchlogs: $checkedConvert(
+              'patchlogs',
+              (v) => (v as List<dynamic>?)
+                  ?.map((e) => PatchlogModel.fromJson(
+                      Map<String, dynamic>.from(e as Map)))
+                  .toList()),
+          wikiaUrl: $checkedConvert('wikiaUrl', (v) => v as String?),
+          wikiaThumbnail:
+              $checkedConvert('wikiaThumbnail', (v) => v as String?),
+        );
+        return val;
+      },
     );
-    return val;
-  });
-}
 
 Map<String, dynamic> _$MiscFoundryItemModelToJson(
         MiscFoundryItemModel instance) =>

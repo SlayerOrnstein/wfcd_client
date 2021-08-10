@@ -48,6 +48,8 @@ class WarframeModel extends Warframe {
     this.patchlogs,
     String? wikiaThumbnail,
     String? wikiaUrl,
+    String? vaultDate,
+    bool? vaulted,
     required String sex,
     required this.introduced,
     required List<String> polarities,
@@ -84,6 +86,8 @@ class WarframeModel extends Warframe {
           introduced: introduced,
           polarities: polarities,
           color: color,
+          vaultDate: vaultDate,
+          vaulted: vaulted,
         );
 
   factory WarframeModel.fromJson(Map<String, dynamic> json) {
@@ -148,6 +152,8 @@ class HeavyPowerSuitModel extends HeavyPowerSuit {
     this.patchlogs,
     String? wikiaThumbnail,
     String? wikiaUrl,
+    String? vaultDate,
+    bool? vaulted,
   }) : super(
           uniqueName: uniqueName,
           name: name,
@@ -174,6 +180,8 @@ class HeavyPowerSuitModel extends HeavyPowerSuit {
           patchlogs: patchlogs,
           wikiaThumbnail: wikiaThumbnail,
           wikiaUrl: wikiaUrl,
+          vaultDate: vaultDate,
+          vaulted: vaulted,
         );
 
   factory HeavyPowerSuitModel.fromJson(Map<String, dynamic> json) {
@@ -218,6 +226,8 @@ class CompanionModel extends Companion {
     this.patchlogs,
     String? wikiaThumbnail,
     String? wikiaUrl,
+    String? vaultDate,
+    bool? vaulted,
   }) : super(
           uniqueName: uniqueName,
           name: name,
@@ -242,6 +252,8 @@ class CompanionModel extends Companion {
           patchlogs: patchlogs,
           wikiaThumbnail: wikiaThumbnail,
           wikiaUrl: wikiaUrl,
+          vaultDate: vaultDate,
+          vaulted: vaulted,
         );
 
   factory CompanionModel.fromJson(Map<String, dynamic> json) {

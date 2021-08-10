@@ -6,28 +6,29 @@ part of 'component_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-ComponentModel _$ComponentModelFromJson(Map json) {
-  return $checkedNew('ComponentModel', json, () {
-    final val = ComponentModel(
-      uniqueName: $checkedConvert(json, 'uniqueName', (v) => v as String),
-      name: $checkedConvert(json, 'name', (v) => v as String),
-      description: $checkedConvert(json, 'description', (v) => v as String),
-      itemCount: $checkedConvert(json, 'itemCount', (v) => v as int),
-      imageName: $checkedConvert(json, 'imageName', (v) => v as String),
-      tradable: $checkedConvert(json, 'tradable', (v) => v as bool),
-      type: $checkedConvert(json, 'type', (v) => v as String?),
-      category: $checkedConvert(json, 'category', (v) => v as String?),
-      drops: $checkedConvert(
-          json,
-          'drops',
-          (v) => (v as List<dynamic>?)
-              ?.map((e) =>
-                  DropModel.fromJson(Map<String, dynamic>.from(e as Map)))
-              .toList()),
+ComponentModel _$ComponentModelFromJson(Map json) => $checkedCreate(
+      'ComponentModel',
+      json,
+      ($checkedConvert) {
+        final val = ComponentModel(
+          uniqueName: $checkedConvert('uniqueName', (v) => v as String),
+          name: $checkedConvert('name', (v) => v as String),
+          description: $checkedConvert('description', (v) => v as String),
+          itemCount: $checkedConvert('itemCount', (v) => v as int),
+          imageName: $checkedConvert('imageName', (v) => v as String),
+          tradable: $checkedConvert('tradable', (v) => v as bool),
+          type: $checkedConvert('type', (v) => v as String?),
+          category: $checkedConvert('category', (v) => v as String?),
+          drops: $checkedConvert(
+              'drops',
+              (v) => (v as List<dynamic>?)
+                  ?.map((e) =>
+                      DropModel.fromJson(Map<String, dynamic>.from(e as Map)))
+                  .toList()),
+        );
+        return val;
+      },
     );
-    return val;
-  });
-}
 
 Map<String, dynamic> _$ComponentModelToJson(ComponentModel instance) =>
     <String, dynamic>{
@@ -42,18 +43,20 @@ Map<String, dynamic> _$ComponentModelToJson(ComponentModel instance) =>
       'drops': instance.drops?.map((e) => e.toJson()).toList(),
     };
 
-DropModel _$DropModelFromJson(Map json) {
-  return $checkedNew('DropModel', json, () {
-    final val = DropModel(
-      location: $checkedConvert(json, 'location', (v) => v as String),
-      type: $checkedConvert(json, 'type', (v) => v as String),
-      rarity: $checkedConvert(json, 'rarity', (v) => v as String),
-      rotation: $checkedConvert(json, 'rotation', (v) => v as String?),
-      chance: $checkedConvert(json, 'chance', (v) => (v as num?)?.toDouble()),
+DropModel _$DropModelFromJson(Map json) => $checkedCreate(
+      'DropModel',
+      json,
+      ($checkedConvert) {
+        final val = DropModel(
+          location: $checkedConvert('location', (v) => v as String),
+          type: $checkedConvert('type', (v) => v as String),
+          rarity: $checkedConvert('rarity', (v) => v as String),
+          rotation: $checkedConvert('rotation', (v) => v as String?),
+          chance: $checkedConvert('chance', (v) => (v as num?)?.toDouble()),
+        );
+        return val;
+      },
     );
-    return val;
-  });
-}
 
 Map<String, dynamic> _$DropModelToJson(DropModel instance) => <String, dynamic>{
       'location': instance.location,

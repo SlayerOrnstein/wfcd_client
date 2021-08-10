@@ -20,6 +20,8 @@ abstract class PowerSuit extends FoundryItem {
     int? buildTime,
     int? skipBuildTimePrice,
     int? buildQuantity,
+    DateTime? vaultDate,
+    bool? vaulted,
     bool? consumeOnBuild,
     required this.health,
     required this.shield,
@@ -45,6 +47,8 @@ abstract class PowerSuit extends FoundryItem {
           buildTime: buildTime,
           skipBuildTimePrice: skipBuildTimePrice,
           consumeOnBuild: consumeOnBuild,
+          vaultDate: vaultDate,
+          vaulted: vaulted,
           patchlogs: patchlogs,
           wikiaThumbnail: wikiaThumbnail,
           wikiaUrl: wikiaUrl,
@@ -83,6 +87,8 @@ abstract class PlayerUsuablePowerSuit extends PowerSuit {
     List<String>? polarities,
     required this.sprintSpeed,
     required this.abilities,
+    DateTime? vaultDate,
+    bool? vaulted,
     List<Patchlog>? patchlogs,
     String? wikiaThumbnail,
     String? wikiaUrl,
@@ -110,6 +116,8 @@ abstract class PlayerUsuablePowerSuit extends PowerSuit {
           armor: armor,
           power: power,
           polarities: polarities,
+          vaultDate: vaultDate,
+          vaulted: vaulted,
         );
 
   final double sprintSpeed;
@@ -160,6 +168,8 @@ class Warframe extends PlayerUsuablePowerSuit {
     required this.sex,
     required this.introduced,
     required this.color,
+    DateTime? vaultDate,
+    bool? vaulted,
     List<Patchlog>? patchlogs,
     String? wikiaThumbnail,
     String? wikiaUrl,
@@ -189,6 +199,8 @@ class Warframe extends PlayerUsuablePowerSuit {
           patchlogs: patchlogs,
           wikiaThumbnail: wikiaThumbnail,
           wikiaUrl: wikiaUrl,
+          vaultDate: vaultDate,
+          vaulted: vaulted,
         );
 
   final String? aura;
@@ -240,6 +252,8 @@ class HeavyPowerSuit extends PlayerUsuablePowerSuit {
     required List<Ability> abilities,
     required double sprintSpeed,
     List<Patchlog>? patchlogs,
+    DateTime? vaultDate,
+    bool? vaulted,
     String? wikiaThumbnail,
     String? wikiaUrl,
   }) : super(
@@ -268,6 +282,8 @@ class HeavyPowerSuit extends PlayerUsuablePowerSuit {
           patchlogs: patchlogs,
           wikiaThumbnail: wikiaThumbnail,
           wikiaUrl: wikiaUrl,
+          vaultDate: vaultDate,
+          vaulted: vaulted,
         );
 }
 

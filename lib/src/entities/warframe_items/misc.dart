@@ -42,7 +42,8 @@ class MiscFoundryItem extends FoundryItem {
     required bool tradable,
     int? masteryReq,
     List<Component>? components,
-    // List<Drop>? drops,
+    DateTime? vaultDate,
+    bool? vaulted,
     required int buildPrice,
     required int buildTime,
     required int skipBuildTimePrice,
@@ -70,5 +71,7 @@ class MiscFoundryItem extends FoundryItem {
           patchlogs: patchlogs ?? const <Patchlog>[],
           wikiaUrl: wikiaUrl,
           wikiaThumbnail: wikiaThumbnail,
+          vaultDate: vaultDate,
+          vaulted: vaulted,
         );
 }

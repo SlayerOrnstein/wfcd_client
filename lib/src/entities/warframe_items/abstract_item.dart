@@ -80,6 +80,8 @@ abstract class FoundryItem extends Item {
     this.buildTime,
     this.skipBuildTimePrice,
     this.buildQuantity,
+    this.vaultDate,
+    this.vaulted,
     this.consumeOnBuild,
     List<Patchlog>? patchlogs,
     String? wikiaUrl,
@@ -101,7 +103,8 @@ abstract class FoundryItem extends Item {
   final int? masteryReq;
   final List<Component>? components;
   final int? buildPrice, buildTime, skipBuildTimePrice, buildQuantity;
-  final bool? consumeOnBuild;
+  final DateTime? vaultDate;
+  final bool? consumeOnBuild, vaulted;
 
   @override
   List<Object?> get props {
@@ -113,6 +116,8 @@ abstract class FoundryItem extends Item {
         skipBuildTimePrice,
         buildQuantity,
         consumeOnBuild,
+        vaultDate,
+        vaulted,
         productCategory,
       ]);
   }

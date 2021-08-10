@@ -34,7 +34,8 @@ class WeaponItem extends FoundryItem {
     this.marketCost,
     this.sentinel,
     this.releaseDate,
-    this.vaulted,
+    DateTime? vaultDate,
+    bool? vaulted,
     this.estimatedVaultDate,
     List<Patchlog>? patchlogs,
     String? wikiaThumbnail,
@@ -59,6 +60,8 @@ class WeaponItem extends FoundryItem {
           patchlogs: patchlogs,
           wikiaThumbnail: wikiaThumbnail,
           wikiaUrl: wikiaUrl,
+          vaultDate: vaultDate,
+          vaulted: vaulted,
         );
 
   final int slot;
@@ -75,7 +78,7 @@ class WeaponItem extends FoundryItem {
   final List<String>? polarities;
   final int? marketCost;
   final int? disposition;
-  final bool? sentinel, vaulted;
+  final bool? sentinel;
   final String? releaseDate, estimatedVaultDate;
 
   double? get damage {
@@ -140,6 +143,7 @@ class ProjectileWeapon extends WeaponItem {
     int? marketCost,
     bool? sentinel,
     String? releaseDate,
+    DateTime? vaultDate,
     bool? vaulted,
     String? estimatedVaultDate,
     this.accuracy,
@@ -193,6 +197,7 @@ class ProjectileWeapon extends WeaponItem {
           patchlogs: patchlogs,
           wikiaThumbnail: wikiaThumbnail,
           wikiaUrl: wikiaUrl,
+          vaultDate: vaultDate,
         );
 
   final dynamic _ammo;

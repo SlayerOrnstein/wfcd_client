@@ -6,99 +6,104 @@ part of 'worldstate_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-WorldstateModel _$WorldstateModelFromJson(Map json) => $checkedCreate(
-      'WorldstateModel',
-      json,
-      ($checkedConvert) {
-        final val = WorldstateModel(
-          timestamp:
-              $checkedConvert('timestamp', (v) => DateTime.parse(v as String)),
-          news: $checkedConvert(
-              'news',
-              (v) => (v as List<dynamic>)
-                  .map((e) => OrbiterNewsModel.fromJson(
-                      Map<String, dynamic>.from(e as Map)))
-                  .toList()),
-          events: $checkedConvert(
-              'events',
-              (v) => (v as List<dynamic>)
-                  .map((e) =>
-                      EventModel.fromJson(Map<String, dynamic>.from(e as Map)))
-                  .toList()),
-          alerts: $checkedConvert(
-              'alerts',
-              (v) => (v as List<dynamic>)
-                  .map((e) =>
-                      AlertModel.fromJson(Map<String, dynamic>.from(e as Map)))
-                  .toList()),
-          sortie: $checkedConvert('sortie',
-              (v) => SortieModel.fromJson(Map<String, dynamic>.from(v as Map))),
-          syndicateMissions: $checkedConvert(
-              'syndicateMissions',
-              (v) => (v as List<dynamic>)
-                  .map((e) => SyndicateModel.fromJson(
-                      Map<String, dynamic>.from(e as Map)))
-                  .toList()),
-          fissures: $checkedConvert(
-              'fissures',
-              (v) => (v as List<dynamic>)
-                  .map((e) => VoidFissureModel.fromJson(
-                      Map<String, dynamic>.from(e as Map)))
-                  .toList()),
-          invasions: $checkedConvert(
-              'invasions',
-              (v) => (v as List<dynamic>)
-                  .map((e) => InvasionModel.fromJson(
-                      Map<String, dynamic>.from(e as Map)))
-                  .toList()),
-          voidTrader: $checkedConvert(
-              'voidTrader',
-              (v) => VoidTraderModel.fromJson(
-                  Map<String, dynamic>.from(v as Map))),
-          dailyDeals: $checkedConvert(
-              'dailyDeals',
-              (v) => (v as List<dynamic>)
-                  .map((e) => DarvoDealModel.fromJson(
-                      Map<String, dynamic>.from(e as Map)))
-                  .toList()),
-          persistentEnemies: $checkedConvert(
-              'persistentEnemies',
-              (v) => (v as List<dynamic>)
-                  .map((e) => PersistentEnemyModel.fromJson(
-                      Map<String, dynamic>.from(e as Map)))
-                  .toList()),
-          earthCycle: $checkedConvert('earthCycle',
-              (v) => EarthModel.fromJson(Map<String, dynamic>.from(v as Map))),
-          cetusCycle: $checkedConvert('cetusCycle',
-              (v) => EarthModel.fromJson(Map<String, dynamic>.from(v as Map))),
-          constructionProgress: $checkedConvert(
-              'constructionProgress',
-              (v) => ConstructionProgressModel.fromJson(
-                  Map<String, dynamic>.from(v as Map))),
-          vallisCycle: $checkedConvert('vallisCycle',
-              (v) => VallisModel.fromJson(Map<String, dynamic>.from(v as Map))),
-          nightwave: $checkedConvert(
-              'nightwave',
-              (v) => v == null
-                  ? null
-                  : NightwaveModel.fromJson(
-                      Map<String, dynamic>.from(v as Map))),
-          sentientOutposts: $checkedConvert(
-              'sentientOutposts',
-              (v) => SentientOutpostModel.fromJson(
-                  Map<String, dynamic>.from(v as Map))),
-          arbitration: $checkedConvert(
-              'arbitration',
-              (v) => ArbitrationModel.fromJson(
-                  Map<String, dynamic>.from(v as Map))),
-          steelPath: $checkedConvert(
-              'steelPath',
-              (v) =>
-                  SteelPathMdoel.fromJson(Map<String, dynamic>.from(v as Map))),
-        );
-        return val;
-      },
+WorldstateModel _$WorldstateModelFromJson(Map json) {
+  return $checkedNew('WorldstateModel', json, () {
+    final val = WorldstateModel(
+      timestamp: $checkedConvert(
+          json, 'timestamp', (v) => DateTime.parse(v as String)),
+      news: $checkedConvert(
+          json,
+          'news',
+          (v) => (v as List<dynamic>)
+              .map((e) => OrbiterNewsModel.fromJson(
+                  Map<String, dynamic>.from(e as Map)))
+              .toList()),
+      events: $checkedConvert(
+          json,
+          'events',
+          (v) => (v as List<dynamic>)
+              .map((e) =>
+                  EventModel.fromJson(Map<String, dynamic>.from(e as Map)))
+              .toList()),
+      alerts: $checkedConvert(
+          json,
+          'alerts',
+          (v) => (v as List<dynamic>)
+              .map((e) =>
+                  AlertModel.fromJson(Map<String, dynamic>.from(e as Map)))
+              .toList()),
+      sortie: $checkedConvert(json, 'sortie',
+          (v) => SortieModel.fromJson(Map<String, dynamic>.from(v as Map))),
+      syndicateMissions: $checkedConvert(
+          json,
+          'syndicateMissions',
+          (v) => (v as List<dynamic>)
+              .map((e) =>
+                  SyndicateModel.fromJson(Map<String, dynamic>.from(e as Map)))
+              .toList()),
+      fissures: $checkedConvert(
+          json,
+          'fissures',
+          (v) => (v as List<dynamic>)
+              .map((e) => VoidFissureModel.fromJson(
+                  Map<String, dynamic>.from(e as Map)))
+              .toList()),
+      invasions: $checkedConvert(
+          json,
+          'invasions',
+          (v) => (v as List<dynamic>)
+              .map((e) =>
+                  InvasionModel.fromJson(Map<String, dynamic>.from(e as Map)))
+              .toList()),
+      voidTrader: $checkedConvert(json, 'voidTrader',
+          (v) => VoidTraderModel.fromJson(Map<String, dynamic>.from(v as Map))),
+      dailyDeals: $checkedConvert(
+          json,
+          'dailyDeals',
+          (v) => (v as List<dynamic>)
+              .map((e) =>
+                  DarvoDealModel.fromJson(Map<String, dynamic>.from(e as Map)))
+              .toList()),
+      persistentEnemies: $checkedConvert(
+          json,
+          'persistentEnemies',
+          (v) => (v as List<dynamic>)
+              .map((e) => PersistentEnemyModel.fromJson(
+                  Map<String, dynamic>.from(e as Map)))
+              .toList()),
+      earthCycle: $checkedConvert(json, 'earthCycle',
+          (v) => EarthModel.fromJson(Map<String, dynamic>.from(v as Map))),
+      cetusCycle: $checkedConvert(json, 'cetusCycle',
+          (v) => EarthModel.fromJson(Map<String, dynamic>.from(v as Map))),
+      constructionProgress: $checkedConvert(
+          json,
+          'constructionProgress',
+          (v) => ConstructionProgressModel.fromJson(
+              Map<String, dynamic>.from(v as Map))),
+      vallisCycle: $checkedConvert(json, 'vallisCycle',
+          (v) => VallisModel.fromJson(Map<String, dynamic>.from(v as Map))),
+      nightwave: $checkedConvert(
+          json,
+          'nightwave',
+          (v) => v == null
+              ? null
+              : NightwaveModel.fromJson(Map<String, dynamic>.from(v as Map))),
+      sentientOutposts: $checkedConvert(
+          json,
+          'sentientOutposts',
+          (v) => SentientOutpostModel.fromJson(
+              Map<String, dynamic>.from(v as Map))),
+      arbitration: $checkedConvert(
+          json,
+          'arbitration',
+          (v) =>
+              ArbitrationModel.fromJson(Map<String, dynamic>.from(v as Map))),
+      steelPath: $checkedConvert(json, 'steelPath',
+          (v) => SteelPathMdoel.fromJson(Map<String, dynamic>.from(v as Map))),
     );
+    return val;
+  });
+}
 
 Map<String, dynamic> _$WorldstateModelToJson(WorldstateModel instance) =>
     <String, dynamic>{

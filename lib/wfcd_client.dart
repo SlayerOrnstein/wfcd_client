@@ -27,7 +27,7 @@ class WarframestatClient {
   Future<Worldstate?> getWorldstate(GamePlatforms platform,
       {SupportedLocale language = SupportedLocale.en}) async {
     final path = platform.asString;
-    var response =
+    final response =
         await _warframestat<Map<String, dynamic>>(path, language: language);
 
     if (response != null && response['timestamp'] != null) {

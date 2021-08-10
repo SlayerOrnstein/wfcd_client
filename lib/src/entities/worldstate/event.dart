@@ -38,7 +38,7 @@ class Event extends WorldstateObject {
     } else if (health != null) {
       return (health! * 100).toDouble();
     } else {
-      return -1.0;
+      return -1;
     }
   }
 

@@ -39,15 +39,15 @@ Item toBaseItem(Map<String, dynamic> item) {
   const _frameReg = 'Warframes';
   const _mods = 'Mods';
 
-  final _companion = RegExp(r'(Sentinels)|(Pets)');
-  final _exSuits = RegExp(r'(SpaceSuits)|(MechSuits)');
-  final _gunReg = RegExp(r'(Primary)|(Secondary)|(Arch-Gun)');
-  final _meleeReg = RegExp(r'(Melee)|(Arch-Melee)');
+  final _companion = RegExp('(Sentinels)|(Pets)');
+  final _exSuits = RegExp('(SpaceSuits)|(MechSuits)');
+  final _gunReg = RegExp('(Primary)|(Secondary)|(Arch-Gun)');
+  final _meleeReg = RegExp('(Melee)|(Arch-Melee)');
 
   // Pet parts have a pistol structure but are not actually pistols
   // so we're filtering them out into Misc items.
   final isCompanionPart = (item['uniqueName'] as String)
-      .contains(RegExp(r'(MoaPetParts)|(CreaturePetParts)|'
+      .contains(RegExp('(MoaPetParts)|(CreaturePetParts)|'
           '(ZanukaPetParts)|(WoundedInfestedCritter)'
           '|(WoundedInfestedPredator)'));
 

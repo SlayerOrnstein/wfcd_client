@@ -1,5 +1,4 @@
 import 'package:json_annotation/json_annotation.dart';
-import 'package:wfcd_client/src/models/worldstate/steel_path_model.dart';
 
 import '../../entities/worldstate/worldstate.dart';
 import 'alert_model.dart';
@@ -15,6 +14,7 @@ import 'nightwave_model.dart';
 import 'persistent_enemy_model.dart';
 import 'sentient_outpost_model.dart';
 import 'sortie_model.dart';
+import 'steel_path_model.dart';
 import 'syndicate_model.dart';
 import 'vallis_model.dart';
 import 'void_trader_model.dart';

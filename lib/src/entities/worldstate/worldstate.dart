@@ -1,5 +1,4 @@
 import 'package:equatable/equatable.dart';
-import 'package:wfcd_client/src/entities/worldstate/steel_path.dart';
 
 import 'alert.dart';
 import 'arbitration.dart';
@@ -14,6 +13,7 @@ import 'nigthwave.dart';
 import 'persistent_enemy.dart';
 import 'sentient_outpost.dart';
 import 'sortie.dart';
+import 'steel_path.dart';
 import 'syndicate.dart';
 import 'vallis.dart';
 import 'void_trader.dart';
@@ -42,7 +42,6 @@ class Worldstate extends Equatable {
   });
 
   final DateTime timestamp;
-
   final List<OrbiterNews> news;
   final List<Event> events;
   final List<Alert> alerts;

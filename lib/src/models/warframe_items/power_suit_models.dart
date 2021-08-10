@@ -1,6 +1,6 @@
 import 'package:json_annotation/json_annotation.dart';
-import 'package:wfcd_client/entities.dart';
 
+import '../../../entities.dart';
 import '../../entities/warframe_items/power_suits.dart';
 import 'component_model.dart';
 import 'patch_log_model.dart';

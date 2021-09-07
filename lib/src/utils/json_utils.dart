@@ -112,14 +112,10 @@ Map<String, dynamic> fromRivens(List<Riven> rivens) {
 }
 
 /// Converts Riven rolls of riven weapon type to [RivenRoll]
-List<Riven> toRivens(Map<String, dynamic> data) {
-  final rivens = <Riven>[];
-
+Iterable<Riven> toRivens(Map<String, dynamic> data) sync* {
   for (final riven in data.keys) {
-    rivens.add(RivenDataModel.fromJson(data[riven] as Map<String, dynamic>));
+    yield RivenDataModel.fromJson(data[riven] as Map<String, dynamic>);
   }
-
-  return rivens;
 }
 
 /// Converts a json decoded list into [SynthTarget] objects

@@ -12,7 +12,7 @@ class VoidFissure extends WorldstateObject {
     required this.tierNum,
     required this.active,
     required this.expired,
-    required this.isStorm,
+    this.isStorm = false,
   }) : super(id: id, activation: activation, expiry: expiry);
 
   final String node, missionType, enemy, tier;

@@ -28,5 +28,5 @@ Future<void> loadFixtures() async {
       toSynthTargets(await synthTargets.json<List<dynamic>>());
 
   rivenSearchTestModel =
-      toRivens(await rivenSearch.json<Map<String, dynamic>>());
+      toRivens(await rivenSearch.json<Map<String, dynamic>>()).toList();
 }

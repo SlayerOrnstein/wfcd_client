@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+import 'package:wfcd_client/entities.dart';
 
 import 'alert.dart';
 import 'arbitration.dart';
@@ -90,5 +91,46 @@ class Worldstate extends Equatable {
       arbitration,
       steelPath
     ];
+  }
+
+  Worldstate copyWith({
+    final DateTime? timestamp,
+    List<OrbiterNews>? news,
+    List<Event>? events,
+    List<Alert>? alerts,
+    Sortie? sortie,
+    List<Syndicate>? syndicateMissions,
+    List<VoidFissure>? fissures,
+    List<Invasion>? invasions,
+    VoidTrader? voidTrader,
+    List<DarvoDeal>? dailyDeals,
+    List<PersistentEnemy>? persistentEnemies,
+    Earth? earthCycle,
+    Earth? cetusCycle,
+    ConstructionProgress? constructionProgress,
+    Vallis? vallisCycle,
+    Nightwave? nightwave,
+    SentientOutpost? sentientOutposts,
+    Arbitration? arbitration,
+    SteelPath? steelPath,
+  }) {
+    return Worldstate(
+      timestamp: timestamp ?? this.timestamp,
+      news: news ?? this.news,
+      events: events ?? this.events,
+      alerts: alerts ?? this.alerts,
+      sortie: sortie ?? this.sortie,
+      syndicateMissions: syndicateMissions ?? this.syndicateMissions,
+      fissures: fissures ?? this.fissures,
+      invasions: invasions ?? this.invasions,
+      voidTrader: voidTrader ?? this.voidTrader,
+      dailyDeals: dailyDeals ?? this.dailyDeals,
+      earthCycle: earthCycle ?? this.earthCycle,
+      cetusCycle: cetusCycle ?? this.cetusCycle,
+      constructionProgress: constructionProgress ?? this.constructionProgress,
+      vallisCycle: vallisCycle ?? this.vallisCycle,
+      sentientOutposts: sentientOutposts ?? this.sentientOutposts,
+      steelPath: steelPath ?? this.steelPath,
+    );
   }
 }

@@ -6,9 +6,9 @@ part of 'steel_path_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-SteelPathMdoel _$SteelPathMdoelFromJson(Map json) {
-  return $checkedNew('SteelPathMdoel', json, () {
-    final val = SteelPathMdoel(
+SteelPathModel _$SteelPathModelFromJson(Map json) {
+  return $checkedNew('SteelPathModel', json, () {
+    final val = SteelPathModel(
       activation: $checkedConvert(
           json, 'activation', (v) => DateTime.parse(v as String)),
       expiry:
@@ -30,7 +30,7 @@ SteelPathMdoel _$SteelPathMdoelFromJson(Map json) {
   });
 }
 
-Map<String, dynamic> _$SteelPathMdoelToJson(SteelPathMdoel instance) =>
+Map<String, dynamic> _$SteelPathModelToJson(SteelPathModel instance) =>
     <String, dynamic>{
       'activation': instance.activation?.toIso8601String(),
       'expiry': instance.expiry?.toIso8601String(),

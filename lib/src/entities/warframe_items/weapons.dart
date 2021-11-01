@@ -217,8 +217,6 @@ class ProjectileWeapon extends WeaponItem {
     return super.props
       ..addAll([
         _ammo,
-        ammo,
-        flight,
         magazineSize,
         reloadTime,
         trigger,

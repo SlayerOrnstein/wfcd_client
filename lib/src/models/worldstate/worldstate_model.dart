@@ -121,7 +121,7 @@ class WorldstateModel extends Worldstate {
   final ArbitrationModel arbitration;
 
   @override
-  final SteelPathMdoel steelPath;
+  final SteelPathModel steelPath;
 
   Map<String, dynamic> toJson() => _$WorldstateModelToJson(this);
 }

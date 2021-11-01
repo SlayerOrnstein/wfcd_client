@@ -99,7 +99,7 @@ WorldstateModel _$WorldstateModelFromJson(Map json) {
           (v) =>
               ArbitrationModel.fromJson(Map<String, dynamic>.from(v as Map))),
       steelPath: $checkedConvert(json, 'steelPath',
-          (v) => SteelPathMdoel.fromJson(Map<String, dynamic>.from(v as Map))),
+          (v) => SteelPathModel.fromJson(Map<String, dynamic>.from(v as Map))),
     );
     return val;
   });

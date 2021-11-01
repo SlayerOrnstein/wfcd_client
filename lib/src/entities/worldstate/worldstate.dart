@@ -125,11 +125,14 @@ class Worldstate extends Equatable {
       invasions: invasions ?? this.invasions,
       voidTrader: voidTrader ?? this.voidTrader,
       dailyDeals: dailyDeals ?? this.dailyDeals,
+      persistentEnemies: persistentEnemies ?? this.persistentEnemies,
       earthCycle: earthCycle ?? this.earthCycle,
       cetusCycle: cetusCycle ?? this.cetusCycle,
       constructionProgress: constructionProgress ?? this.constructionProgress,
       vallisCycle: vallisCycle ?? this.vallisCycle,
+      nightwave: nightwave ?? this.nightwave,
       sentientOutposts: sentientOutposts ?? this.sentientOutposts,
+      arbitration: arbitration ?? this.arbitration,
       steelPath: steelPath ?? this.steelPath,
     );
   }

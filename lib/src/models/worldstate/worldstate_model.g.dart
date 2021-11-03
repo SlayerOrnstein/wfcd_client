@@ -96,8 +96,9 @@ WorldstateModel _$WorldstateModelFromJson(Map json) {
       arbitration: $checkedConvert(
           json,
           'arbitration',
-          (v) =>
-              ArbitrationModel.fromJson(Map<String, dynamic>.from(v as Map))),
+          (v) => v == null
+              ? null
+              : ArbitrationModel.fromJson(Map<String, dynamic>.from(v as Map))),
       steelPath: $checkedConvert(json, 'steelPath',
           (v) => SteelPathModel.fromJson(Map<String, dynamic>.from(v as Map))),
     );
@@ -126,6 +127,6 @@ Map<String, dynamic> _$WorldstateModelToJson(WorldstateModel instance) =>
       'vallisCycle': instance.vallisCycle.toJson(),
       'nightwave': instance.nightwave?.toJson(),
       'sentientOutposts': instance.sentientOutposts.toJson(),
-      'arbitration': instance.arbitration.toJson(),
+      'arbitration': instance.arbitration?.toJson(),
       'steelPath': instance.steelPath.toJson(),
     };

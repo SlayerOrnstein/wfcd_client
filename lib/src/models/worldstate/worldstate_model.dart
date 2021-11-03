@@ -1,5 +1,6 @@
 import 'package:json_annotation/json_annotation.dart';
 
+import '../../../models.dart';
 import '../../entities/worldstate/worldstate.dart';
 import 'alert_model.dart';
 import 'arbitration_model.dart';
@@ -69,6 +70,35 @@ class WorldstateModel extends Worldstate {
     return _$WorldstateModelFromJson(json);
   }
 
+  factory WorldstateModel.fromWorldstate(Worldstate worldstate) {
+    return WorldstateModel(
+      timestamp: worldstate.timestamp,
+      news: List<OrbiterNewsModel>.from(worldstate.news),
+      events: List<EventModel>.from(worldstate.events),
+      alerts: List<AlertModel>.from(worldstate.alerts),
+      sortie: worldstate.sortie as SortieModel,
+      syndicateMissions:
+          List<SyndicateModel>.from(worldstate.syndicateMissions),
+      fissures: List<VoidFissureModel>.from(worldstate.fissures),
+      invasions: List<InvasionModel>.from(worldstate.invasions),
+      voidTrader: worldstate.voidTrader as VoidTraderModel,
+      dailyDeals: List<DarvoDealModel>.from(worldstate.dailyDeals),
+      persistentEnemies: List<PersistentEnemyModel>.from(
+          worldstate.persistentEnemies ?? <PersistentEnemyModel>[]),
+      earthCycle: worldstate.earthCycle as EarthModel,
+      cetusCycle: worldstate.cetusCycle as EarthModel,
+      constructionProgress:
+          worldstate.constructionProgress as ConstructionProgressModel,
+      vallisCycle: worldstate.vallisCycle as VallisModel,
+      nightwave: worldstate.nightwave != null
+          ? worldstate.nightwave! as NightwaveModel
+          : null,
+      sentientOutposts: worldstate.sentientOutposts as SentientOutpostModel,
+      arbitration: worldstate.arbitration as ArbitrationModel?,
+      steelPath: worldstate.steelPath as SteelPathModel,
+    );
+  }
+
   @override
   final List<OrbiterNewsModel> news;
 
@@ -118,7 +148,7 @@ class WorldstateModel extends Worldstate {
   final SentientOutpostModel sentientOutposts;
 
   @override
-  final ArbitrationModel arbitration;
+  final ArbitrationModel? arbitration;
 
   @override
   final SteelPathModel steelPath;

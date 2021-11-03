@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
-import 'package:wfcd_client/entities.dart';
 
+import '../../../entities.dart';
 import 'alert.dart';
 import 'arbitration.dart';
 import 'construction_progress.dart';

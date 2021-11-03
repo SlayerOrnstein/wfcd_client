@@ -39,6 +39,7 @@ void main() {
       expect(state, equals(worldstateTestModel));
       verify(
           () => mockClient.get(worldstateUri, headers: any(named: 'headers')));
+      expect(WorldstateModel.fromWorldstate(state!), isA<WorldstateModel>());
     });
 
     test('SynthTargets', () async {

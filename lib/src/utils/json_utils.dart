@@ -46,10 +46,13 @@ Item toBaseItem(Map<String, dynamic> item) {
 
   // Pet parts have a pistol structure but are not actually pistols
   // so we're filtering them out into Misc items.
-  final isCompanionPart = (item['uniqueName'] as String)
-      .contains(RegExp('(MoaPetParts)|(CreaturePetParts)|'
-          '(ZanukaPetParts)|(WoundedInfestedCritter)'
-          '|(WoundedInfestedPredator)'));
+  final isCompanionPart = (item['uniqueName'] as String).contains(
+    RegExp(
+      '(MoaPetParts)|(CreaturePetParts)|'
+      '(ZanukaPetParts)|(WoundedInfestedCritter)'
+      '|(WoundedInfestedPredator)',
+    ),
+  );
 
   final isSentinalMelee =
       (item['uniqueName'] as String).contains('SentinelWeapons');

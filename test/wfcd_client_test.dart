@@ -28,17 +28,20 @@ void main() {
       final worldstateUri = Uri.parse('https://api.warframestat.us/pc');
 
       when(() => mockClient.get(worldstateUri, headers: any(named: 'headers')))
-          .thenAnswer((_) async => http.Response(
-                json.encode(worldstateTestModel as WorldstateModel),
-                200,
-                headers: testHeader,
-              ));
+          .thenAnswer(
+        (_) async => http.Response(
+          json.encode(worldstateTestModel as WorldstateModel),
+          200,
+          headers: testHeader,
+        ),
+      );
 
       final state = await clientApi.getWorldstate(GamePlatforms.pc);
 
       expect(state, equals(worldstateTestModel));
       verify(
-          () => mockClient.get(worldstateUri, headers: any(named: 'headers')));
+        () => mockClient.get(worldstateUri, headers: any(named: 'headers')),
+      );
       expect(WorldstateModel.fromWorldstate(state!), isA<WorldstateModel>());
     });
 
@@ -46,34 +49,39 @@ void main() {
       final synthTargetsUri =
           Uri.parse('https://api.warframestat.us/synthTargets');
 
-      when(() =>
-              mockClient.get(synthTargetsUri, headers: any(named: 'headers')))
-          .thenAnswer((_) async => http.Response(
-                json.encode(fromSynthTargets(synthTargetsTestModels)),
-                200,
-                headers: testHeader,
-              ));
+      when(
+        () => mockClient.get(synthTargetsUri, headers: any(named: 'headers')),
+      ).thenAnswer(
+        (_) async => http.Response(
+          json.encode(fromSynthTargets(synthTargetsTestModels)),
+          200,
+          headers: testHeader,
+        ),
+      );
 
       final targets = await clientApi.getSynthTargets();
 
       expect(targets, equals(synthTargetsTestModels));
-      verify(() =>
-          mockClient.get(synthTargetsUri, headers: any(named: 'headers')));
+      verify(
+        () => mockClient.get(synthTargetsUri, headers: any(named: 'headers')),
+      );
     });
 
     test('Item search results', () async {
       const term = 'Chroma';
       final searchUri = Uri.parse(
-          'https://api.warframestat.us/items/search/${term.toLowerCase()}');
+          'https://api.warframestat.us/items/search/${term.toLowerCase()}',);
 
       when(() => mockClient.get(searchUri, headers: any(named: 'headers')))
-          .thenAnswer((_) async => http.Response(
-                json.encode(fromBaseItems(warframeItemTestModels
-                    .where((e) => e.name.contains(term))
-                    .toList())),
-                200,
-                headers: testHeader,
-              ));
+          .thenAnswer(
+        (_) async => http.Response(
+          json.encode(fromBaseItems(warframeItemTestModels
+              .where((e) => e.name.contains(term))
+              .toList(),),),
+          200,
+          headers: testHeader,
+        ),
+      );
 
       final results = await clientApi.searchItems(term);
 
@@ -81,7 +89,7 @@ void main() {
         results,
         equals(warframeItemTestModels
             .where((e) => e.name.contains(term))
-            .toList()),
+            .toList(),),
       );
       verify(() => mockClient.get(searchUri, headers: any(named: 'headers')));
     });
@@ -89,23 +97,23 @@ void main() {
     test('Drops', () async {
       const term = 'Chroma';
       final dropUri = Uri.parse(
-          'https://api.warframestat.us/drops/search/${term.toLowerCase()}');
+          'https://api.warframestat.us/drops/search/${term.toLowerCase()}',);
 
       when(() => mockClient.get(dropUri, headers: any(named: 'headers')))
           .thenAnswer((_) async => http.Response(
                 json.encode(fromDrops(dropTableTestModels
                     .where((e) => e.item.contains(term))
-                    .toList())),
+                    .toList(),),),
                 200,
                 headers: testHeader,
-              ));
+              ),);
 
       final drops = await clientApi.searchDrops(term);
 
       expect(
         drops,
         equals(
-            dropTableTestModels.where((e) => e.item.contains(term)).toList()),
+            dropTableTestModels.where((e) => e.item.contains(term)).toList(),),
       );
       verify(() => mockClient.get(dropUri, headers: any(named: 'headers')));
     });
@@ -120,7 +128,7 @@ void main() {
                 json.encode(fromRivens(rivenSearchTestModel)),
                 200,
                 headers: testHeader,
-              ));
+              ),);
 
       final rivens = await clientApi.searchRivens(term);
 
@@ -128,7 +136,7 @@ void main() {
         rivens,
         equals(rivenSearchTestModel
             .where((e) => e.unrolled.compatibility == term)
-            .toList()),
+            .toList(),),
       );
       verify(() => mockClient.get(rivenUri, headers: any(named: 'headers')));
     });

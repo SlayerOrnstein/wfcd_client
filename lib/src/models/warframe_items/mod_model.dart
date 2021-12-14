@@ -1,7 +1,7 @@
 import 'package:json_annotation/json_annotation.dart';
 
-import '../../../models.dart';
 import '../../entities/warframe_items/mod.dart';
+import 'component_model.dart';
 import 'patch_log_model.dart';
 
 part 'mod_model.g.dart';

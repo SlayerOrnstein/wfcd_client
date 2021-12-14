@@ -34,12 +34,12 @@ class OrbiterNews extends WorldstateObject {
     final duration = date.toLocal().difference(DateTime.now()).abs();
 
     if (duration < hour) {
-      return '${duration.inMinutes.floor()}m';
+      return '${duration.inMinutes}m';
     } else if (duration >= hour && duration < day) {
-      return '${duration.inHours.floor()}h'
-          ' ${(duration.inMinutes % 60).floor()}m';
+      return '${duration.inHours}h'
+          ' ${duration.inMinutes % 60}m';
     } else {
-      return '${duration.inDays.floor()}d';
+      return '${duration.inDays}d';
     }
   }
 

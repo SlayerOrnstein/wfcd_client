@@ -24,8 +24,10 @@ class WarframestatClient {
   final http.Client _client;
 
   /// Retrive the latest worldstate using [GamePlatforms]
-  Future<Worldstate?> getWorldstate(GamePlatforms platform,
-      {SupportedLocale language = SupportedLocale.en}) async {
+  Future<Worldstate?> getWorldstate(
+    GamePlatforms platform, {
+    SupportedLocale language = SupportedLocale.en,
+  }) async {
     final path = platform.asString;
     final response =
         await _warframestat<Map<String, dynamic>>(path, language: language);
@@ -88,8 +90,10 @@ class WarframestatClient {
     return <T>[];
   }
 
-  Future<T?> _warframestat<T>(String path,
-      {SupportedLocale language = SupportedLocale.en}) async {
+  Future<T?> _warframestat<T>(
+    String path, {
+    SupportedLocale language = SupportedLocale.en,
+  }) async {
     final headers = <String, String>{'Accept-Language': language.asString};
 
     try {

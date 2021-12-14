@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
-import '../../../objects.dart';
 
+import '../../../objects.dart';
 import 'job.dart';
 import 'reward.dart';
 
@@ -34,7 +34,7 @@ class Event extends WorldstateObject {
 
   double? get eventHealth {
     if (currentScore != null && maximumScore != null) {
-      return (100 - currentScore! / maximumScore! * 100).toDouble();
+      return 100 - currentScore! / maximumScore! * 100;
     } else if (health != null) {
       return (health! * 100).toDouble();
     } else {

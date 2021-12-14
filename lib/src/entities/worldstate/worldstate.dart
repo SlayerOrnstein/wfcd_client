@@ -1,23 +1,6 @@
 import 'package:equatable/equatable.dart';
 
 import '../../../entities.dart';
-import 'alert.dart';
-import 'arbitration.dart';
-import 'construction_progress.dart';
-import 'darvo_deal.dart';
-import 'earth.dart';
-import 'event.dart';
-import 'fissure.dart';
-import 'invasion.dart';
-import 'news.dart';
-import 'nigthwave.dart';
-import 'persistent_enemy.dart';
-import 'sentient_outpost.dart';
-import 'sortie.dart';
-import 'steel_path.dart';
-import 'syndicate.dart';
-import 'vallis.dart';
-import 'void_trader.dart';
 
 class Worldstate extends Equatable {
   const Worldstate({

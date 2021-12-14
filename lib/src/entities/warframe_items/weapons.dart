@@ -84,7 +84,8 @@ class WeaponItem extends FoundryItem {
   double? get damage {
     if (_damage is String) {
       return double.parse(
-          (_damage as String).replaceAll(RegExp('[a-zA-Z]'), ''));
+        (_damage as String).replaceAll(RegExp('[a-zA-Z]'), ''),
+      );
     } else if (_damage is int) {
       return (_damage as int).toDouble();
     } else {

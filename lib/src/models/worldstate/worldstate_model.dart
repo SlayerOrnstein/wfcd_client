@@ -2,23 +2,6 @@ import 'package:json_annotation/json_annotation.dart';
 
 import '../../../models.dart';
 import '../../entities/worldstate/worldstate.dart';
-import 'alert_model.dart';
-import 'arbitration_model.dart';
-import 'construction_progress_model.dart';
-import 'darvo_deal_model.dart';
-import 'earth_model.dart';
-import 'event_model.dart';
-import 'fissure_model.dart';
-import 'invasion_model.dart';
-import 'news_model.dart';
-import 'nightwave_model.dart';
-import 'persistent_enemy_model.dart';
-import 'sentient_outpost_model.dart';
-import 'sortie_model.dart';
-import 'steel_path_model.dart';
-import 'syndicate_model.dart';
-import 'vallis_model.dart';
-import 'void_trader_model.dart';
 
 part 'worldstate_model.g.dart';
 
@@ -84,7 +67,8 @@ class WorldstateModel extends Worldstate {
       voidTrader: worldstate.voidTrader as VoidTraderModel,
       dailyDeals: List<DarvoDealModel>.from(worldstate.dailyDeals),
       persistentEnemies: List<PersistentEnemyModel>.from(
-          worldstate.persistentEnemies ?? <PersistentEnemyModel>[]),
+        worldstate.persistentEnemies ?? <PersistentEnemyModel>[],
+      ),
       earthCycle: worldstate.earthCycle as EarthModel,
       cetusCycle: worldstate.cetusCycle as EarthModel,
       constructionProgress:

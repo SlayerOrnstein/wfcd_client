@@ -11,7 +11,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v1
       - name: Setup Dart
-        uses: cedx/setup-dart@v2
+        uses: dart-lang/setup-dart@v1
       - name: Install dependacies
         run: pub global activate cider
       - name: Semantic Release

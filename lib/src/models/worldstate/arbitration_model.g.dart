@@ -6,22 +6,24 @@ part of 'arbitration_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-ArbitrationModel _$ArbitrationModelFromJson(Map json) {
-  return $checkedNew('ArbitrationModel', json, () {
-    final val = ArbitrationModel(
-      activation: $checkedConvert(json, 'activation',
-          (v) => v == null ? null : DateTime.parse(v as String)),
-      expiry: $checkedConvert(json, 'expiry',
-          (v) => v == null ? null : DateTime.parse(v as String)),
-      node: $checkedConvert(json, 'node', (v) => v as String?),
-      enemy: $checkedConvert(json, 'enemy', (v) => v as String?),
-      type: $checkedConvert(json, 'type', (v) => v as String?),
-      archwing: $checkedConvert(json, 'archwing', (v) => v as bool?),
-      sharkwing: $checkedConvert(json, 'sharkwing', (v) => v as bool?),
+ArbitrationModel _$ArbitrationModelFromJson(Map json) => $checkedCreate(
+      'ArbitrationModel',
+      json,
+      ($checkedConvert) {
+        final val = ArbitrationModel(
+          activation: $checkedConvert('activation',
+              (v) => v == null ? null : DateTime.parse(v as String)),
+          expiry: $checkedConvert(
+              'expiry', (v) => v == null ? null : DateTime.parse(v as String)),
+          node: $checkedConvert('node', (v) => v as String?),
+          enemy: $checkedConvert('enemy', (v) => v as String?),
+          type: $checkedConvert('type', (v) => v as String?),
+          archwing: $checkedConvert('archwing', (v) => v as bool?),
+          sharkwing: $checkedConvert('sharkwing', (v) => v as bool?),
+        );
+        return val;
+      },
     );
-    return val;
-  });
-}
 
 Map<String, dynamic> _$ArbitrationModelToJson(ArbitrationModel instance) =>
     <String, dynamic>{

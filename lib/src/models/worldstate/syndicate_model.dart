@@ -12,6 +12,7 @@ class SyndicateModel extends Syndicate {
     required DateTime activation,
     required DateTime expiry,
     required this.syndicate,
+    required this.syndicateKey,
     required bool active,
     required this.jobs,
   }) : super(
@@ -19,6 +20,7 @@ class SyndicateModel extends Syndicate {
           activation: activation,
           expiry: expiry,
           name: syndicate,
+          nameKey: syndicateKey,
           active: active,
           jobs: jobs,
         );
@@ -28,6 +30,7 @@ class SyndicateModel extends Syndicate {
   }
 
   final String syndicate;
+  final String syndicateKey;
 
   @override
   final List<JobModel> jobs;

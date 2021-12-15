@@ -12,6 +12,7 @@ class SortieModel extends Sortie {
     required DateTime expiry,
     required String boss,
     required String faction,
+    required String factionKey,
     required this.variants,
   }) : super(
           id: id,
@@ -19,6 +20,7 @@ class SortieModel extends Sortie {
           expiry: expiry,
           boss: boss,
           faction: faction,
+          factionKey: factionKey,
           variants: variants,
         );
 

@@ -6,24 +6,25 @@ part of 'darvo_deal_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-DarvoDealModel _$DarvoDealModelFromJson(Map json) {
-  return $checkedNew('DarvoDealModel', json, () {
-    final val = DarvoDealModel(
-      id: $checkedConvert(json, 'id', (v) => v as String),
-      activation: $checkedConvert(
-          json, 'activation', (v) => DateTime.parse(v as String)),
-      expiry:
-          $checkedConvert(json, 'expiry', (v) => DateTime.parse(v as String)),
-      item: $checkedConvert(json, 'item', (v) => v as String),
-      originalPrice: $checkedConvert(json, 'originalPrice', (v) => v as int),
-      salePrice: $checkedConvert(json, 'salePrice', (v) => v as int),
-      total: $checkedConvert(json, 'total', (v) => v as int),
-      sold: $checkedConvert(json, 'sold', (v) => v as int),
-      discount: $checkedConvert(json, 'discount', (v) => v as int),
+DarvoDealModel _$DarvoDealModelFromJson(Map json) => $checkedCreate(
+      'DarvoDealModel',
+      json,
+      ($checkedConvert) {
+        final val = DarvoDealModel(
+          id: $checkedConvert('id', (v) => v as String),
+          activation:
+              $checkedConvert('activation', (v) => DateTime.parse(v as String)),
+          expiry: $checkedConvert('expiry', (v) => DateTime.parse(v as String)),
+          item: $checkedConvert('item', (v) => v as String),
+          originalPrice: $checkedConvert('originalPrice', (v) => v as int),
+          salePrice: $checkedConvert('salePrice', (v) => v as int),
+          total: $checkedConvert('total', (v) => v as int),
+          sold: $checkedConvert('sold', (v) => v as int),
+          discount: $checkedConvert('discount', (v) => v as int),
+        );
+        return val;
+      },
     );
-    return val;
-  });
-}
 
 Map<String, dynamic> _$DarvoDealModelToJson(DarvoDealModel instance) =>
     <String, dynamic>{

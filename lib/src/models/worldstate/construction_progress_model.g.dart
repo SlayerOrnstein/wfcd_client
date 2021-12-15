@@ -6,20 +6,23 @@ part of 'construction_progress_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-ConstructionProgressModel _$ConstructionProgressModelFromJson(Map json) {
-  return $checkedNew('ConstructionProgressModel', json, () {
-    final val = ConstructionProgressModel(
-      id: $checkedConvert(json, 'id', (v) => v as String),
-      fomorianProgress:
-          $checkedConvert(json, 'fomorianProgress', (v) => v as String),
-      razorbackProgress:
-          $checkedConvert(json, 'razorbackProgress', (v) => v as String),
-      unknownProgress:
-          $checkedConvert(json, 'unknownProgress', (v) => v as String),
+ConstructionProgressModel _$ConstructionProgressModelFromJson(Map json) =>
+    $checkedCreate(
+      'ConstructionProgressModel',
+      json,
+      ($checkedConvert) {
+        final val = ConstructionProgressModel(
+          id: $checkedConvert('id', (v) => v as String),
+          fomorianProgress:
+              $checkedConvert('fomorianProgress', (v) => v as String),
+          razorbackProgress:
+              $checkedConvert('razorbackProgress', (v) => v as String),
+          unknownProgress:
+              $checkedConvert('unknownProgress', (v) => v as String),
+        );
+        return val;
+      },
     );
-    return val;
-  });
-}
 
 Map<String, dynamic> _$ConstructionProgressModelToJson(
         ConstructionProgressModel instance) =>

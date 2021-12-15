@@ -6,27 +6,28 @@ part of 'sortie_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-SortieModel _$SortieModelFromJson(Map json) {
-  return $checkedNew('SortieModel', json, () {
-    final val = SortieModel(
-      id: $checkedConvert(json, 'id', (v) => v as String),
-      activation: $checkedConvert(
-          json, 'activation', (v) => DateTime.parse(v as String)),
-      expiry:
-          $checkedConvert(json, 'expiry', (v) => DateTime.parse(v as String)),
-      boss: $checkedConvert(json, 'boss', (v) => v as String),
-      faction: $checkedConvert(json, 'faction', (v) => v as String),
-      variants: $checkedConvert(
-          json,
-          'variants',
-          (v) => (v as List<dynamic>)
-              .map((e) =>
-                  VariantModel.fromJson(Map<String, dynamic>.from(e as Map)))
-              .toList()),
+SortieModel _$SortieModelFromJson(Map json) => $checkedCreate(
+      'SortieModel',
+      json,
+      ($checkedConvert) {
+        final val = SortieModel(
+          id: $checkedConvert('id', (v) => v as String),
+          activation:
+              $checkedConvert('activation', (v) => DateTime.parse(v as String)),
+          expiry: $checkedConvert('expiry', (v) => DateTime.parse(v as String)),
+          boss: $checkedConvert('boss', (v) => v as String),
+          faction: $checkedConvert('faction', (v) => v as String),
+          factionKey: $checkedConvert('factionKey', (v) => v as String),
+          variants: $checkedConvert(
+              'variants',
+              (v) => (v as List<dynamic>)
+                  .map((e) => VariantModel.fromJson(
+                      Map<String, dynamic>.from(e as Map)))
+                  .toList()),
+        );
+        return val;
+      },
     );
-    return val;
-  });
-}
 
 Map<String, dynamic> _$SortieModelToJson(SortieModel instance) =>
     <String, dynamic>{
@@ -35,21 +36,24 @@ Map<String, dynamic> _$SortieModelToJson(SortieModel instance) =>
       'expiry': instance.expiry?.toIso8601String(),
       'boss': instance.boss,
       'faction': instance.faction,
+      'factionKey': instance.factionKey,
       'variants': instance.variants.map((e) => e.toJson()).toList(),
     };
 
-VariantModel _$VariantModelFromJson(Map json) {
-  return $checkedNew('VariantModel', json, () {
-    final val = VariantModel(
-      missionType: $checkedConvert(json, 'missionType', (v) => v as String),
-      modifier: $checkedConvert(json, 'modifier', (v) => v as String),
-      modifierDescription:
-          $checkedConvert(json, 'modifierDescription', (v) => v as String),
-      node: $checkedConvert(json, 'node', (v) => v as String),
+VariantModel _$VariantModelFromJson(Map json) => $checkedCreate(
+      'VariantModel',
+      json,
+      ($checkedConvert) {
+        final val = VariantModel(
+          missionType: $checkedConvert('missionType', (v) => v as String),
+          modifier: $checkedConvert('modifier', (v) => v as String),
+          modifierDescription:
+              $checkedConvert('modifierDescription', (v) => v as String),
+          node: $checkedConvert('node', (v) => v as String),
+        );
+        return val;
+      },
     );
-    return val;
-  });
-}
 
 Map<String, dynamic> _$VariantModelToJson(VariantModel instance) =>
     <String, dynamic>{

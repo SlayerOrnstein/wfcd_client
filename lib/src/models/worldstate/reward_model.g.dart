@@ -6,24 +6,25 @@ part of 'reward_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-RewardModel _$RewardModelFromJson(Map json) {
-  return $checkedNew('RewardModel', json, () {
-    final val = RewardModel(
-      itemString: $checkedConvert(json, 'itemString', (v) => v as String),
-      thumbnail: $checkedConvert(json, 'thumbnail', (v) => v as String),
-      asString: $checkedConvert(json, 'asString', (v) => v as String),
-      credits: $checkedConvert(json, 'credits', (v) => v as int),
-      countedItems: $checkedConvert(
-          json,
-          'countedItems',
-          (v) => (v as List<dynamic>)
-              .map((e) => CountedItemModel.fromJson(
-                  Map<String, dynamic>.from(e as Map)))
-              .toList()),
+RewardModel _$RewardModelFromJson(Map json) => $checkedCreate(
+      'RewardModel',
+      json,
+      ($checkedConvert) {
+        final val = RewardModel(
+          itemString: $checkedConvert('itemString', (v) => v as String),
+          thumbnail: $checkedConvert('thumbnail', (v) => v as String),
+          asString: $checkedConvert('asString', (v) => v as String),
+          credits: $checkedConvert('credits', (v) => v as int),
+          countedItems: $checkedConvert(
+              'countedItems',
+              (v) => (v as List<dynamic>)
+                  .map((e) => CountedItemModel.fromJson(
+                      Map<String, dynamic>.from(e as Map)))
+                  .toList()),
+        );
+        return val;
+      },
     );
-    return val;
-  });
-}
 
 Map<String, dynamic> _$RewardModelToJson(RewardModel instance) =>
     <String, dynamic>{
@@ -34,15 +35,17 @@ Map<String, dynamic> _$RewardModelToJson(RewardModel instance) =>
       'countedItems': instance.countedItems.map((e) => e.toJson()).toList(),
     };
 
-CountedItemModel _$CountedItemModelFromJson(Map json) {
-  return $checkedNew('CountedItemModel', json, () {
-    final val = CountedItemModel(
-      count: $checkedConvert(json, 'count', (v) => v as int),
-      type: $checkedConvert(json, 'type', (v) => v as String),
+CountedItemModel _$CountedItemModelFromJson(Map json) => $checkedCreate(
+      'CountedItemModel',
+      json,
+      ($checkedConvert) {
+        final val = CountedItemModel(
+          count: $checkedConvert('count', (v) => v as int),
+          type: $checkedConvert('type', (v) => v as String),
+        );
+        return val;
+      },
     );
-    return val;
-  });
-}
 
 Map<String, dynamic> _$CountedItemModelToJson(CountedItemModel instance) =>
     <String, dynamic>{

@@ -17,7 +17,7 @@ SortieModel _$SortieModelFromJson(Map json) => $checkedCreate(
           expiry: $checkedConvert('expiry', (v) => DateTime.parse(v as String)),
           boss: $checkedConvert('boss', (v) => v as String),
           faction: $checkedConvert('faction', (v) => v as String),
-          factionKey: $checkedConvert('factionKey', (v) => v as String),
+          factionKey: $checkedConvert('factionKey', (v) => v as String?),
           variants: $checkedConvert(
               'variants',
               (v) => (v as List<dynamic>)

@@ -9,11 +9,12 @@ class Sortie extends WorldstateObject {
     required DateTime expiry,
     required this.boss,
     required this.faction,
-    required this.factionKey,
+    this.factionKey,
     required this.variants,
   }) : super(id: id, activation: activation, expiry: expiry);
 
-  final String boss, faction, factionKey;
+  final String boss, faction;
+  final String? factionKey;
   final List<Variant> variants;
 
   @override

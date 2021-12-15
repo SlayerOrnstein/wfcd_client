@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+
 import '../../../objects.dart';
 
 class Sortie extends WorldstateObject {
@@ -8,14 +9,16 @@ class Sortie extends WorldstateObject {
     required DateTime expiry,
     required this.boss,
     required this.faction,
+    required this.factionKey,
     required this.variants,
   }) : super(id: id, activation: activation, expiry: expiry);
 
-  final String boss, faction;
+  final String boss, faction, factionKey;
   final List<Variant> variants;
 
   @override
-  List<Object?> get props => super.props..addAll([boss, faction, variants]);
+  List<Object?> get props =>
+      super.props..addAll([boss, faction, factionKey, variants]);
 }
 
 class Variant extends Equatable {

@@ -32,9 +32,11 @@ class WarframestatClient {
     final response =
         await _warframestat<Map<String, dynamic>>(path, language: language);
 
-    if (response != null && response['timestamp'] != null) {
-      return toWorldstate(response);
+    if (response != null) {
+      return response['timestamp'] != null ? toWorldstate(response) : null;
     }
+
+    return null;
   }
 
   /// Retrive a list of all available synthtargets

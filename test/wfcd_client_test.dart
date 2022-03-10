@@ -35,7 +35,7 @@ void main() {
         ),
       );
 
-      final state = await clientApi.getWorldstate(GamePlatforms.pc);
+      final state = await clientApi.getWorldstate();
 
       verify(() {
         return mockClient.get(worldstateUri, headers: any(named: 'headers'));
@@ -55,7 +55,7 @@ void main() {
         );
       });
 
-      final state = await clientApi.getWorldstate(GamePlatforms.pc);
+      final state = await clientApi.getWorldstate();
 
       expect(state, isNull);
       verify(() {

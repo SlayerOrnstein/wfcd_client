@@ -6,8 +6,8 @@ A simple usage example:
 import 'package:warframestat_api_models/warframestat_api_models.dart';
 
 Future<void> main() async {
-  final client = WarframestatClient();
-  final worldstate = await client.getWorldstate(GamePlatforms.pc);
+  final client = WarframestatClient(platform: GamePlatforms.pc);
+  final worldstate = await client.getWorldstate();
 
   print(worldstate?.timestamp);
 }

@@ -19,15 +19,18 @@ const _endpoint = 'https://api.warframestat.us';
 /// Dart client for Warframestat API
 class WarframestatClient {
   /// Main entry for Warframestat API Dart wrapper
-  WarframestatClient({http.Client? client}) : _client = client ?? http.Client();
+  WarframestatClient({
+    http.Client? client,
+    this.platform = GamePlatforms.pc,
+    this.language = SupportedLocale.en,
+  }) : _client = client ?? http.Client();
 
   final http.Client _client;
+  final GamePlatforms platform;
+  final SupportedLocale language;
 
   /// Retrive the latest worldstate using [GamePlatforms]
-  Future<Worldstate?> getWorldstate(
-    GamePlatforms platform, {
-    SupportedLocale language = SupportedLocale.en,
-  }) async {
+  Future<Worldstate?> getWorldstate() async {
     final path = platform.asString;
     final response =
         await _warframestat<Map<String, dynamic>>(path, language: language);
@@ -60,11 +63,7 @@ class WarframestatClient {
 
   /// Search using warframestat's riven information endpoint.
   /// Platform defaults to [GamePlatforms.pc]
-  Future<List<Riven>> searchRivens(
-    String name, {
-    GamePlatforms platform = GamePlatforms.pc,
-    SupportedLocale language = SupportedLocale.en,
-  }) async {
+  Future<List<Riven>> searchRivens(String name) async {
     final response = await _warframestat<Map<String, dynamic>>(
       '${platform.asString}/rivens/search/$name',
       language: language,
@@ -82,10 +81,14 @@ class WarframestatClient {
   Future<List<T>> _search<T>(
     String term,
     String path,
-    List<T> Function(List<dynamic>) toObject,
-  ) async {
+    List<T> Function(List<dynamic>) toObject, {
+    SupportedLocale language = SupportedLocale.en,
+  }) async {
     final toSearch = term.toLowerCase();
-    final response = await _warframestat<List<dynamic>>('$path/$toSearch');
+    final response = await _warframestat<List<dynamic>>(
+      '$path/$toSearch',
+      language: language,
+    );
 
     if (response != null) return toObject(response);
 

@@ -8,16 +8,12 @@ part 'sentient_outpost_model.g.dart';
 @JsonSerializable()
 class SentientOutpostModel extends SentientOutpost {
   const SentientOutpostModel({
-    required String id,
-    required DateTime activation,
-    required DateTime expiry,
-    required bool active,
+    required super.id,
+    required super.activation,
+    required super.expiry,
+    required super.active,
     this.mission,
   }) : super(
-          id: id,
-          activation: activation,
-          expiry: expiry,
-          active: active,
           mission: mission,
         );
 

@@ -1,14 +1,13 @@
 import 'abstract_item.dart';
-import 'patch_log.dart';
 
 class SolNode extends Item {
   const SolNode({
-    required String uniqueName,
-    required String name,
-    required String description,
-    required String type,
-    required String category,
-    required bool tradable,
+    required super.uniqueName,
+    required super.name,
+    required String super.description,
+    required super.type,
+    required super.category,
+    required super.tradable,
     required this.systemIndex,
     required this.systemName,
     required this.masterReq,
@@ -16,16 +15,8 @@ class SolNode extends Item {
     required this.factionIndex,
     required this.minEnemyLevel,
     required this.maxEnemyLevel,
-    List<Patchlog>? patchlogs,
-  }) : super(
-          uniqueName: uniqueName,
-          name: name,
-          description: description,
-          type: type,
-          category: category,
-          tradable: tradable,
-          patchlogs: patchlogs,
-        );
+    super.patchlogs,
+  });
 
   final int systemIndex;
   final String systemName;

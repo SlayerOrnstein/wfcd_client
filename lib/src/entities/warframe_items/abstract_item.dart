@@ -66,14 +66,14 @@ abstract class Item extends Equatable {
 @immutable
 abstract class FoundryItem extends Item {
   const FoundryItem({
-    required String uniqueName,
-    required String name,
-    String? description,
-    required String type,
-    required String imageName,
-    String? productCategory,
-    required String category,
-    required bool tradable,
+    required super.uniqueName,
+    required super.name,
+    super.description,
+    required super.type,
+    required String super.imageName,
+    super.productCategory,
+    required super.category,
+    required super.tradable,
     this.masteryReq,
     this.components,
     this.buildPrice,
@@ -83,22 +83,10 @@ abstract class FoundryItem extends Item {
     this.vaultDate,
     this.vaulted,
     this.consumeOnBuild,
-    List<Patchlog>? patchlogs,
-    String? wikiaUrl,
-    String? wikiaThumbnail,
-  }) : super(
-          uniqueName: uniqueName,
-          name: name,
-          description: description,
-          type: type,
-          imageName: imageName,
-          productCategory: productCategory,
-          category: category,
-          tradable: tradable,
-          patchlogs: patchlogs,
-          wikiaUrl: wikiaUrl,
-          wikiaThumbnail: wikiaThumbnail,
-        );
+    super.patchlogs,
+    super.wikiaUrl,
+    super.wikiaThumbnail,
+  });
 
   final int? masteryReq;
   final List<Component>? components;

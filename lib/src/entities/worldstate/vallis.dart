@@ -2,12 +2,12 @@ import '../../../objects.dart';
 
 class Vallis extends CycleObject {
   const Vallis({
-    required String id,
-    required DateTime activation,
-    required DateTime expiry,
-    required String state,
+    required super.id,
+    required super.activation,
+    required super.expiry,
+    required super.state,
     required this.isWarm,
-  }) : super(id: id, activation: activation, expiry: expiry, state: state);
+  });
 
   final bool isWarm;
 

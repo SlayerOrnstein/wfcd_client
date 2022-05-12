@@ -2,13 +2,13 @@ import '../../../objects.dart';
 
 class Earth extends CycleObject {
   const Earth({
-    required String id,
-    required DateTime activation,
-    required DateTime expiry,
-    required String state,
+    required super.id,
+    required super.activation,
+    required super.expiry,
+    required super.state,
     required this.isDay,
     this.isCetus,
-  }) : super(id: id, activation: activation, expiry: expiry, state: state);
+  });
 
   final bool isDay;
   final bool? isCetus;

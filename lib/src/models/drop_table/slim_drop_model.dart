@@ -7,14 +7,11 @@ part 'slim_drop_model.g.dart';
 @JsonSerializable()
 class SlimDropModel extends SlimDrop {
   const SlimDropModel({
-    required String place,
-    required String item,
-    required String rarity,
+    required super.place,
+    required super.item,
+    required super.rarity,
     required this.dropchance,
   }) : super(
-          place: place,
-          item: item,
-          rarity: rarity,
           dropChance: dropchance,
         );
 

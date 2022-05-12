@@ -7,19 +7,14 @@ part 'arbitration_model.g.dart';
 @JsonSerializable()
 class ArbitrationModel extends Arbitration {
   const ArbitrationModel({
-    DateTime? activation,
-    DateTime? expiry,
-    String? node,
-    String? enemy,
-    String? type,
+    super.activation,
+    super.expiry,
+    super.node,
+    super.enemy,
+    super.type,
     this.archwing,
     this.sharkwing,
   }) : super(
-          activation: activation,
-          expiry: expiry,
-          node: node,
-          enemy: enemy,
-          type: type,
           archwingRequired: (archwing ?? false) || (sharkwing ?? false),
         );
 

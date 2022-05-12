@@ -4,22 +4,16 @@ import 'abstract_item.dart';
 
 class Component extends Item {
   const Component({
-    required String uniqueName,
-    required String name,
-    required String description,
+    required super.uniqueName,
+    required super.name,
+    required String super.description,
     required this.itemCount,
-    required String imageName,
-    required bool tradable,
+    required String super.imageName,
+    required super.tradable,
     String? type,
     String? category,
-    List<Drop>? drops,
+    super.drops,
   }) : super(
-          uniqueName: uniqueName,
-          name: name,
-          description: description,
-          imageName: imageName,
-          tradable: tradable,
-          drops: drops,
           type: type ?? '',
           category: category ?? '',
         );

@@ -7,20 +7,14 @@ part 'void_trader_model.g.dart';
 @JsonSerializable()
 class VoidTraderModel extends VoidTrader {
   const VoidTraderModel({
-    required String id,
-    required DateTime activation,
-    required DateTime expiry,
-    required String character,
-    required String location,
-    required bool active,
+    required super.id,
+    required super.activation,
+    required super.expiry,
+    required super.character,
+    required super.location,
+    required super.active,
     required this.inventory,
   }) : super(
-          id: id,
-          activation: activation,
-          expiry: expiry,
-          character: character,
-          location: location,
-          active: active,
           inventory: inventory,
         );
 
@@ -37,10 +31,10 @@ class VoidTraderModel extends VoidTrader {
 @JsonSerializable()
 class InventoryItemModel extends InventoryItem {
   const InventoryItemModel({
-    required String item,
-    required int ducats,
-    required int credits,
-  }) : super(item: item, ducats: ducats, credits: credits);
+    required super.item,
+    required super.ducats,
+    required super.credits,
+  });
 
   factory InventoryItemModel.fromJson(Map<String, dynamic> json) {
     return _$InventoryItemModelFromJson(json);

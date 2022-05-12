@@ -2,13 +2,13 @@ import '../../objects.dart';
 
 class ExternalMission extends WorldstateObject {
   const ExternalMission({
-    DateTime? activation,
-    DateTime? expiry,
+    super.activation,
+    super.expiry,
     this.node,
     this.enemy,
     this.type,
     required this.archwingRequired,
-  }) : super(activation: activation, expiry: expiry);
+  });
 
   /// The node this mission takes place in.
   final String? node;

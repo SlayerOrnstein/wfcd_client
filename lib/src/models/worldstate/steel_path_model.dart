@@ -7,13 +7,11 @@ part 'steel_path_model.g.dart';
 @JsonSerializable()
 class SteelPathModel extends SteelPath {
   const SteelPathModel({
-    required DateTime activation,
-    required DateTime expiry,
+    required super.activation,
+    required super.expiry,
     required this.currentReward,
     required this.rotation,
   }) : super(
-          activation: activation,
-          expiry: expiry,
           currentReward: currentReward,
           rotation: rotation,
         );
@@ -33,8 +31,7 @@ class SteelPathModel extends SteelPath {
 
 @JsonSerializable()
 class SteelPathRewardModel extends SteelPathReward {
-  const SteelPathRewardModel({required String name, required int cost})
-      : super(name: name, cost: cost);
+  const SteelPathRewardModel({required super.name, required super.cost});
 
   factory SteelPathRewardModel.fromJson(Map<String, dynamic> json) {
     return _$SteelPathRewardModelFromJson(json);

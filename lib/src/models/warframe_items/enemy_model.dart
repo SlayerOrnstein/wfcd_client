@@ -9,33 +9,22 @@ part 'enemy_model.g.dart';
 @JsonSerializable()
 class EnemyModel extends Enemy {
   const EnemyModel({
-    required String uniqueName,
-    required String name,
-    required String description,
-    required String type,
-    required String imageName,
-    required String category,
-    required bool tradable,
-    required int health,
-    required int shield,
-    required int armor,
-    required int regionBits,
+    required super.uniqueName,
+    required super.name,
+    required super.description,
+    required super.type,
+    required super.imageName,
+    required super.category,
+    required super.tradable,
+    required super.health,
+    required super.shield,
+    required super.armor,
+    required super.regionBits,
     required this.resistances,
     this.patchlogs,
     this.drops,
   }) : super(
-          uniqueName: uniqueName,
-          name: name,
-          description: description,
-          imageName: imageName,
-          type: type,
-          category: category,
-          tradable: tradable,
           patchlogs: patchlogs,
-          health: health,
-          shield: shield,
-          armor: armor,
-          regionBits: regionBits,
           resistances: resistances,
         );
 
@@ -58,10 +47,10 @@ class EnemyModel extends Enemy {
 @JsonSerializable()
 class ResistancesModel extends Resistances {
   const ResistancesModel({
-    required int amount,
-    required String type,
+    required super.amount,
+    required super.type,
     required this.affectors,
-  }) : super(amount: amount, type: type, affectors: affectors);
+  }) : super(affectors: affectors);
 
   factory ResistancesModel.fromJson(Map<String, dynamic> json) {
     return _$ResistancesModelFromJson(json);
@@ -75,8 +64,7 @@ class ResistancesModel extends Resistances {
 
 @JsonSerializable()
 class AffectorsModel extends Affectors {
-  const AffectorsModel({required String element, required double modifier})
-      : super(element: element, modifier: modifier);
+  const AffectorsModel({required super.element, required super.modifier});
 
   factory AffectorsModel.fromJson(Map<String, dynamic> json) {
     return _$AffectorsModelFromJson(json);

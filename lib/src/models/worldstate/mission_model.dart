@@ -8,26 +8,17 @@ part 'mission_model.g.dart';
 @JsonSerializable()
 class MissionModel extends Mission {
   const MissionModel({
-    required String node,
-    required String type,
-    required String faction,
-    int? minEnemyLevel,
-    int? maxEnemyLevel,
-    int? maxWaveNum,
-    bool? nightmare,
-    bool? archwingRequired,
+    required super.node,
+    required super.type,
+    required super.faction,
+    super.minEnemyLevel,
+    super.maxEnemyLevel,
+    super.maxWaveNum,
+    super.nightmare,
+    super.archwingRequired,
     this.reward,
-    String? exclusiveWeapon,
+    super.exclusiveWeapon,
   }) : super(
-          node: node,
-          type: type,
-          faction: faction,
-          minEnemyLevel: minEnemyLevel,
-          maxEnemyLevel: maxEnemyLevel,
-          maxWaveNum: maxWaveNum,
-          nightmare: nightmare,
-          archwingRequired: archwingRequired,
-          exclusiveWeapon: exclusiveWeapon,
           reward: reward,
         );
 

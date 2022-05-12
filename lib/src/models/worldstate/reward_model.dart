@@ -7,16 +7,12 @@ part 'reward_model.g.dart';
 @JsonSerializable()
 class RewardModel extends Reward {
   const RewardModel({
-    required String itemString,
-    required String thumbnail,
-    required String asString,
-    required int credits,
+    required super.itemString,
+    required super.thumbnail,
+    required super.asString,
+    required super.credits,
     required this.countedItems,
   }) : super(
-          itemString: itemString,
-          thumbnail: thumbnail,
-          asString: asString,
-          credits: credits,
           countedItems: countedItems,
         );
 
@@ -32,8 +28,7 @@ class RewardModel extends Reward {
 
 @JsonSerializable()
 class CountedItemModel extends CountedItem {
-  const CountedItemModel({required int count, required String type})
-      : super(count: count, type: type);
+  const CountedItemModel({required int super.count, required super.type});
 
   factory CountedItemModel.fromJson(Map<String, dynamic> json) {
     return _$CountedItemModelFromJson(json);

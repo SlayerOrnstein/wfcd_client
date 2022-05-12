@@ -7,24 +7,16 @@ part 'component_model.g.dart';
 @JsonSerializable()
 class ComponentModel extends Component {
   const ComponentModel({
-    required String uniqueName,
-    required String name,
-    required String description,
-    required int itemCount,
-    required String imageName,
-    required bool tradable,
-    String? type,
-    String? category,
+    required super.uniqueName,
+    required super.name,
+    required super.description,
+    required super.itemCount,
+    required super.imageName,
+    required super.tradable,
+    super.type,
+    super.category,
     this.drops,
   }) : super(
-          uniqueName: uniqueName,
-          name: name,
-          description: description,
-          itemCount: itemCount,
-          imageName: imageName,
-          tradable: tradable,
-          type: type,
-          category: category,
           drops: drops,
         );
 
@@ -40,18 +32,12 @@ class ComponentModel extends Component {
 @JsonSerializable()
 class DropModel extends Drop {
   const DropModel({
-    required String location,
-    required String type,
-    required String rarity,
-    String? rotation,
-    double? chance,
-  }) : super(
-          location: location,
-          type: type,
-          rarity: rarity,
-          rotation: rotation,
-          chance: chance,
-        );
+    required super.location,
+    required super.type,
+    required super.rarity,
+    super.rotation,
+    super.chance,
+  });
 
   factory DropModel.fromJson(Map<String, dynamic> json) {
     return _$DropModelFromJson(json);

@@ -7,28 +7,18 @@ part 'fissure_model.g.dart';
 @JsonSerializable()
 class VoidFissureModel extends VoidFissure {
   const VoidFissureModel({
-    required String id,
-    required DateTime activation,
-    required DateTime expiry,
-    required String node,
-    required String missionType,
-    required String enemy,
-    required String tier,
-    required int tierNum,
-    required bool active,
-    required bool expired,
+    required super.id,
+    required super.activation,
+    required super.expiry,
+    required super.node,
+    required super.missionType,
+    required super.enemy,
+    required super.tier,
+    required super.tierNum,
+    required super.active,
+    required super.expired,
     bool? isStorm,
   }) : super(
-          id: id,
-          activation: activation,
-          expiry: expiry,
-          node: node,
-          missionType: missionType,
-          enemy: enemy,
-          tier: tier,
-          tierNum: tierNum,
-          active: active,
-          expired: expired,
           isStorm: isStorm ?? false,
         );
 

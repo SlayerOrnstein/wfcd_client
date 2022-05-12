@@ -7,26 +7,16 @@ part 'darvo_deal_model.g.dart';
 @JsonSerializable()
 class DarvoDealModel extends DarvoDeal {
   const DarvoDealModel({
-    required String id,
-    required DateTime activation,
-    required DateTime expiry,
-    required String item,
-    required int originalPrice,
-    required int salePrice,
-    required int total,
-    required int sold,
-    required int discount,
-  }) : super(
-          id: id,
-          activation: activation,
-          expiry: expiry,
-          item: item,
-          originalPrice: originalPrice,
-          salePrice: salePrice,
-          total: total,
-          sold: sold,
-          discount: discount,
-        );
+    required super.id,
+    required super.activation,
+    required super.expiry,
+    required super.item,
+    required super.originalPrice,
+    required super.salePrice,
+    required super.total,
+    required super.sold,
+    required super.discount,
+  });
 
   factory DarvoDealModel.fromJson(Map<String, dynamic> json) {
     return _$DarvoDealModelFromJson(json);

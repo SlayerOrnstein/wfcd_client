@@ -8,20 +8,16 @@ part 'syndicate_model.g.dart';
 @JsonSerializable()
 class SyndicateModel extends Syndicate {
   const SyndicateModel({
-    required String id,
-    required DateTime activation,
-    required DateTime expiry,
+    required super.id,
+    required super.activation,
+    required super.expiry,
     required this.syndicate,
     required this.syndicateKey,
-    required bool active,
+    required super.active,
     required this.jobs,
   }) : super(
-          id: id,
-          activation: activation,
-          expiry: expiry,
           name: syndicate,
           nameKey: syndicateKey,
-          active: active,
           jobs: jobs,
         );
 

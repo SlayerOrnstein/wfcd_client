@@ -1,15 +1,13 @@
 import 'abstract_item.dart';
-import 'component.dart';
-import 'patch_log.dart';
 
 class Mod extends Item {
   const Mod({
-    required String uniqueName,
-    required String name,
+    required super.uniqueName,
+    required super.name,
     String? description,
-    required String type,
-    required String imageName,
-    required String category,
+    required super.type,
+    required String super.imageName,
+    required super.category,
     required this.polarity,
     required this.rarity,
     required this.baseDrain,
@@ -18,24 +16,14 @@ class Mod extends Item {
     this.modSet,
     this.levelStats,
     required this.isAugment,
-    required bool tradable,
+    required super.tradable,
     this.transmutable,
-    required List<Drop>? drops,
-    List<Patchlog>? patchlogs,
-    String? wikiaThumbnail,
-    String? wikiaUrl,
+    required super.drops,
+    super.patchlogs,
+    super.wikiaThumbnail,
+    super.wikiaUrl,
   }) : super(
-          uniqueName: uniqueName,
-          name: name,
           description: description ?? '',
-          imageName: imageName,
-          type: type,
-          category: category,
-          tradable: tradable,
-          patchlogs: patchlogs,
-          drops: drops,
-          wikiaThumbnail: wikiaThumbnail,
-          wikiaUrl: wikiaUrl,
         );
 
   final String polarity, rarity;

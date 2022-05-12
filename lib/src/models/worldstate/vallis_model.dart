@@ -7,18 +7,12 @@ part 'vallis_model.g.dart';
 @JsonSerializable()
 class VallisModel extends Vallis {
   const VallisModel({
-    required String id,
-    required DateTime activation,
-    required DateTime expiry,
-    required String state,
-    required bool isWarm,
-  }) : super(
-          id: id,
-          activation: activation,
-          expiry: expiry,
-          state: state,
-          isWarm: isWarm,
-        );
+    required super.id,
+    required super.activation,
+    required super.expiry,
+    required super.state,
+    required super.isWarm,
+  });
 
   factory VallisModel.fromJson(Map<String, dynamic> json) {
     return _$VallisModelFromJson(json);

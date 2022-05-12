@@ -1,36 +1,24 @@
 import 'package:equatable/equatable.dart';
 
 import 'abstract_item.dart';
-import 'component.dart';
-import 'patch_log.dart';
 
 class Enemy extends Item {
   const Enemy({
-    required String uniqueName,
-    required String name,
-    required String description,
-    required String type,
-    required String imageName,
-    required String category,
-    required bool tradable,
+    required super.uniqueName,
+    required super.name,
+    required String super.description,
+    required super.type,
+    required String super.imageName,
+    required super.category,
+    required super.tradable,
     required this.health,
     required this.shield,
     required this.armor,
     required this.regionBits,
     required this.resistances,
-    List<Patchlog>? patchlogs,
-    List<Drop>? drops,
-  }) : super(
-          uniqueName: uniqueName,
-          name: name,
-          description: description,
-          imageName: imageName,
-          type: type,
-          category: category,
-          tradable: tradable,
-          patchlogs: patchlogs,
-          drops: drops,
-        );
+    super.patchlogs,
+    super.drops,
+  });
 
   final int health, shield, armor;
   final int regionBits;

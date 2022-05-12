@@ -7,29 +7,20 @@ part 'nightwave_model.g.dart';
 @JsonSerializable()
 class NightwaveModel extends Nightwave {
   const NightwaveModel({
-    required String id,
-    required DateTime activation,
-    required DateTime expiry,
-    required String tag,
-    required bool active,
-    required int season,
-    required int phase,
+    required super.id,
+    required super.activation,
+    required super.expiry,
+    required super.tag,
+    required super.active,
+    required int super.season,
+    required int super.phase,
     required this.possibleChallenges,
     required this.activeChallenges,
-    required List<String> rewardTypes,
-    required String startString,
+    required super.rewardTypes,
+    required super.startString,
   }) : super(
-          id: id,
-          activation: activation,
-          expiry: expiry,
-          tag: tag,
-          active: active,
-          season: season,
-          phase: phase,
-          rewardTypes: rewardTypes,
           possibleChallenges: possibleChallenges,
           activeChallenges: activeChallenges,
-          startString: startString,
         );
 
   factory NightwaveModel.fromJson(Map<String, dynamic> json) {
@@ -48,26 +39,16 @@ class NightwaveModel extends Nightwave {
 @JsonSerializable()
 class ChallengeModel extends Challenge {
   const ChallengeModel({
-    required String id,
-    required DateTime activation,
-    required DateTime expiry,
-    required String title,
-    required String desc,
-    required bool active,
-    bool? isDaily,
-    required bool isElite,
-    required int reputation,
-  }) : super(
-          id: id,
-          activation: activation,
-          expiry: expiry,
-          title: title,
-          desc: desc,
-          active: active,
-          isDaily: isDaily,
-          isElite: isElite,
-          reputation: reputation,
-        );
+    required super.id,
+    required super.activation,
+    required super.expiry,
+    required super.title,
+    required super.desc,
+    required super.active,
+    super.isDaily,
+    required super.isElite,
+    required super.reputation,
+  });
 
   factory ChallengeModel.fromJson(Map<String, dynamic> json) {
     return _$ChallengeModelFromJson(json);

@@ -8,7 +8,7 @@ part 'worldstate_model.g.dart';
 @JsonSerializable()
 class WorldstateModel extends Worldstate {
   const WorldstateModel({
-    required DateTime timestamp,
+    required super.timestamp,
     required this.news,
     required this.events,
     required this.alerts,
@@ -28,7 +28,6 @@ class WorldstateModel extends Worldstate {
     required this.arbitration,
     required this.steelPath,
   }) : super(
-          timestamp: timestamp,
           news: news,
           events: events,
           alerts: alerts,

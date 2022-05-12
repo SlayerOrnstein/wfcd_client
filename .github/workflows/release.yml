@@ -13,7 +13,7 @@ jobs:
       - name: Setup Dart
         uses: dart-lang/setup-dart@v1
       - name: Install dependacies
-        run: pub global activate cider
+        run: dart pub global activate cider
       - name: Semantic Release
         uses: cycjimmy/semantic-release-action@v2
         env:

@@ -8,15 +8,15 @@ class Fixture {
 
   final String name;
 
-  Future<String> fixture() {
+  Future<T> json<T>() async => convert.json.decode(await _fixture()) as T;
+
+  Future<String> _file(String path) => File(path).readAsString();
+
+  Future<String> _fixture() {
     try {
       return _file(p.join('test', 'fixtures', name));
     } on FileSystemException {
       return _file(p.join('fixtures', name));
     }
   }
-
-  Future<T> json<T>() async => convert.json.decode(await fixture()) as T;
-
-  Future<String> _file(String path) => File(path).readAsString();
 }

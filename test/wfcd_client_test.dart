@@ -10,6 +10,12 @@ import 'fixtures.dart';
 
 class MockClient extends Mock implements http.Client {}
 
+Uri apiUri(String path) => Uri.https(
+      'api.warframestat.us',
+      path,
+      <String, String>{'language': 'en', 'ua': 'navis'},
+    );
+
 void main() {
   const testHeader = {'content-type': 'application/json; charset=utf-8'};
 
@@ -24,7 +30,7 @@ void main() {
   });
 
   group('Worldstate', () {
-    final worldstateUri = Uri.parse('https://api.warframestat.us/pc');
+    final worldstateUri = apiUri('pc');
     test('Model serelization', () async {
       when(() => mockClient.get(worldstateUri, headers: any(named: 'headers')))
           .thenAnswer(
@@ -65,8 +71,7 @@ void main() {
   });
 
   test('SynthTargets', () async {
-    final synthTargetsUri =
-        Uri.parse('https://api.warframestat.us/synthTargets');
+    final synthTargetsUri = apiUri('synthTargets');
 
     when(
       () => mockClient.get(synthTargetsUri, headers: any(named: 'headers')),
@@ -88,9 +93,7 @@ void main() {
 
   test('Item search results', () async {
     const term = 'Chroma';
-    final searchUri = Uri.parse(
-      'https://api.warframestat.us/items/search/${term.toLowerCase()}',
-    );
+    final searchUri = apiUri('items/search/${term.toLowerCase()}');
 
     when(() => mockClient.get(searchUri, headers: any(named: 'headers')))
         .thenAnswer(
@@ -118,9 +121,7 @@ void main() {
 
   test('Drops', () async {
     const term = 'Chroma';
-    final dropUri = Uri.parse(
-      'https://api.warframestat.us/drops/search/${term.toLowerCase()}',
-    );
+    final dropUri = apiUri('drops/search/${term.toLowerCase()}');
 
     when(() => mockClient.get(dropUri, headers: any(named: 'headers')))
         .thenAnswer(
@@ -148,8 +149,7 @@ void main() {
 
   test('Rivens', () async {
     const term = 'Arca Plasmor';
-    final rivenUri =
-        Uri.parse('https://api.warframestat.us/pc/rivens/search/$term');
+    final rivenUri = apiUri('pc/rivens/search/$term');
 
     when(() => mockClient.get(rivenUri, headers: any(named: 'headers')))
         .thenAnswer(

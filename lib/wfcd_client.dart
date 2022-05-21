@@ -14,8 +14,6 @@ export 'src/utils/enums.dart';
 export 'src/utils/extensions.dart';
 export 'src/utils/json_utils.dart';
 
-const _endpoint = 'https://api.warframestat.us';
-
 /// Dart client for Warframestat API
 class WarframestatClient {
   /// Main entry for Warframestat API Dart wrapper
@@ -98,14 +96,20 @@ class WarframestatClient {
   Future<T?> _warframestat<T>(
     String path, {
     SupportedLocale language = SupportedLocale.en,
+    String ua = 'navis',
   }) async {
     final headers = <String, String>{'Accept-Language': language.asString};
+    final uri = Uri.https(
+      'api.warframestat.us',
+      path,
+      <String, String>{'language': language.asString, 'ua': ua},
+    );
 
     try {
       return retry(
         () async {
           final res = await _client
-              .get(Uri.parse('$_endpoint/$path'), headers: headers)
+              .get(uri, headers: headers)
               .timeout(const Duration(seconds: 5));
 
           return json.decode(res.body) as T;

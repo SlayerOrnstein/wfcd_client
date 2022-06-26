@@ -11,9 +11,13 @@ class SteelPathModel extends SteelPath {
     required super.expiry,
     required this.currentReward,
     required this.rotation,
+    required this.evergreens,
+    required this.incursions,
   }) : super(
           currentReward: currentReward,
           rotation: rotation,
+          evergreens: evergreens,
+          incursions: incursions,
         );
 
   factory SteelPathModel.fromJson(Map<String, dynamic> json) {
@@ -25,6 +29,12 @@ class SteelPathModel extends SteelPath {
 
   @override
   final List<SteelPathRewardModel> rotation;
+
+  @override
+  final List<SteelPathRewardModel> evergreens;
+
+  @override
+  final IncursionsModel incursions;
 
   Map<String, dynamic> toJson() => _$SteelPathModelToJson(this);
 }
@@ -38,4 +48,19 @@ class SteelPathRewardModel extends SteelPathReward {
   }
 
   Map<String, dynamic> toJson() => _$SteelPathRewardModelToJson(this);
+}
+
+@JsonSerializable()
+class IncursionsModel extends Incursions {
+  const IncursionsModel({
+    required super.id,
+    required super.activation,
+    required super.expiry,
+  });
+
+  factory IncursionsModel.fromJson(Map<dynamic, dynamic> json) {
+    return _$IncursionsModelFromJson(json);
+  }
+
+  Map<String, dynamic> toJson() => _$IncursionsModelToJson(this);
 }

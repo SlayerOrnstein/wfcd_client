@@ -24,6 +24,14 @@ SteelPathModel _$SteelPathModelFromJson(Map json) => $checkedCreate(
                   .map((e) => SteelPathRewardModel.fromJson(
                       Map<String, dynamic>.from(e as Map)))
                   .toList()),
+          evergreens: $checkedConvert(
+              'evergreens',
+              (v) => (v as List<dynamic>)
+                  .map((e) => SteelPathRewardModel.fromJson(
+                      Map<String, dynamic>.from(e as Map)))
+                  .toList()),
+          incursions: $checkedConvert(
+              'incursions', (v) => IncursionsModel.fromJson(v as Map)),
         );
         return val;
       },
@@ -35,6 +43,8 @@ Map<String, dynamic> _$SteelPathModelToJson(SteelPathModel instance) =>
       'expiry': instance.expiry?.toIso8601String(),
       'currentReward': instance.currentReward.toJson(),
       'rotation': instance.rotation.map((e) => e.toJson()).toList(),
+      'evergreens': instance.evergreens.map((e) => e.toJson()).toList(),
+      'incursions': instance.incursions.toJson(),
     };
 
 SteelPathRewardModel _$SteelPathRewardModelFromJson(Map json) => $checkedCreate(
@@ -54,4 +64,26 @@ Map<String, dynamic> _$SteelPathRewardModelToJson(
     <String, dynamic>{
       'name': instance.name,
       'cost': instance.cost,
+    };
+
+IncursionsModel _$IncursionsModelFromJson(Map json) => $checkedCreate(
+      'IncursionsModel',
+      json,
+      ($checkedConvert) {
+        final val = IncursionsModel(
+          id: $checkedConvert('id', (v) => v as String?),
+          activation: $checkedConvert('activation',
+              (v) => v == null ? null : DateTime.parse(v as String)),
+          expiry: $checkedConvert(
+              'expiry', (v) => v == null ? null : DateTime.parse(v as String)),
+        );
+        return val;
+      },
+    );
+
+Map<String, dynamic> _$IncursionsModelToJson(IncursionsModel instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'activation': instance.activation?.toIso8601String(),
+      'expiry': instance.expiry?.toIso8601String(),
     };

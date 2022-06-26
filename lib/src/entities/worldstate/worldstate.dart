@@ -1,6 +1,7 @@
 import 'package:equatable/equatable.dart';
 
 import '../../../entities.dart';
+import 'zariman.dart';
 
 class Worldstate extends Equatable {
   const Worldstate({
@@ -23,6 +24,7 @@ class Worldstate extends Equatable {
     required this.sentientOutposts,
     this.arbitration,
     required this.steelPath,
+    required this.zariman,
   });
 
   final DateTime timestamp;
@@ -43,6 +45,7 @@ class Worldstate extends Equatable {
   final SentientOutpost sentientOutposts;
   final Arbitration? arbitration;
   final SteelPath steelPath;
+  final Zariman zariman;
 
   bool get activeAlerts => alerts.isNotEmpty;
   bool get activeArbitration => arbitration?.node != null;
@@ -72,7 +75,8 @@ class Worldstate extends Equatable {
       nightwave,
       sentientOutposts,
       arbitration,
-      steelPath
+      steelPath,
+      zariman,
     ];
   }
 
@@ -96,6 +100,7 @@ class Worldstate extends Equatable {
     SentientOutpost? sentientOutposts,
     Arbitration? arbitration,
     SteelPath? steelPath,
+    Zariman? zariman,
   }) {
     return Worldstate(
       timestamp: timestamp ?? this.timestamp,
@@ -117,6 +122,7 @@ class Worldstate extends Equatable {
       sentientOutposts: sentientOutposts ?? this.sentientOutposts,
       arbitration: arbitration ?? this.arbitration,
       steelPath: steelPath ?? this.steelPath,
+      zariman: zariman ?? this.zariman,
     );
   }
 }

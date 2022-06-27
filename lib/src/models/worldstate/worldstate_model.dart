@@ -1,5 +1,4 @@
 import 'package:json_annotation/json_annotation.dart';
-import 'package:wfcd_client/src/models/worldstate/zariman.dart';
 
 import '../../../models.dart';
 import '../../entities/worldstate/worldstate.dart';
@@ -28,7 +27,7 @@ class WorldstateModel extends Worldstate {
     required this.sentientOutposts,
     required this.arbitration,
     required this.steelPath,
-    required this.zariman,
+    required this.zarimanCycle,
   }) : super(
           news: news,
           events: events,
@@ -48,7 +47,7 @@ class WorldstateModel extends Worldstate {
           sentientOutposts: sentientOutposts,
           arbitration: arbitration,
           steelPath: steelPath,
-          zariman: zariman,
+          zarimanCycle: zarimanCycle,
         );
 
   factory WorldstateModel.fromJson(Map<String, dynamic> json) {
@@ -82,7 +81,7 @@ class WorldstateModel extends Worldstate {
       sentientOutposts: worldstate.sentientOutposts as SentientOutpostModel,
       arbitration: worldstate.arbitration as ArbitrationModel?,
       steelPath: worldstate.steelPath as SteelPathModel,
-      zariman: worldstate.zariman as ZarimanModel,
+      zarimanCycle: worldstate.zarimanCycle as ZarimanModel,
     );
   }
 
@@ -141,7 +140,7 @@ class WorldstateModel extends Worldstate {
   final SteelPathModel steelPath;
 
   @override
-  final ZarimanModel zariman;
+  final ZarimanModel zarimanCycle;
 
   Map<String, dynamic> toJson() => _$WorldstateModelToJson(this);
 }

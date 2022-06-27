@@ -97,8 +97,8 @@ WorldstateModel _$WorldstateModelFromJson(Map json) => $checkedCreate(
               'steelPath',
               (v) =>
                   SteelPathModel.fromJson(Map<String, dynamic>.from(v as Map))),
-          zariman: $checkedConvert(
-              'zariman',
+          zarimanCycle: $checkedConvert(
+              'zarimanCycle',
               (v) =>
                   ZarimanModel.fromJson(Map<String, dynamic>.from(v as Map))),
         );
@@ -129,5 +129,5 @@ Map<String, dynamic> _$WorldstateModelToJson(WorldstateModel instance) =>
       'sentientOutposts': instance.sentientOutposts.toJson(),
       'arbitration': instance.arbitration?.toJson(),
       'steelPath': instance.steelPath.toJson(),
-      'zariman': instance.zariman.toJson(),
+      'zarimanCycle': instance.zarimanCycle.toJson(),
     };

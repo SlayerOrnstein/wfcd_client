@@ -37,3 +37,4 @@ export 'src/models/worldstate/syndicate_model.dart';
 export 'src/models/worldstate/vallis_model.dart';
 export 'src/models/worldstate/void_trader_model.dart';
 export 'src/models/worldstate/worldstate_model.dart';
+export 'src/models/worldstate/zariman.dart';

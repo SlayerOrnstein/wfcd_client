@@ -24,7 +24,7 @@ class Worldstate extends Equatable {
     required this.sentientOutposts,
     this.arbitration,
     required this.steelPath,
-    required this.zariman,
+    required this.zarimanCycle,
   });
 
   final DateTime timestamp;
@@ -45,7 +45,7 @@ class Worldstate extends Equatable {
   final SentientOutpost sentientOutposts;
   final Arbitration? arbitration;
   final SteelPath steelPath;
-  final Zariman zariman;
+  final Zariman zarimanCycle;
 
   bool get activeAlerts => alerts.isNotEmpty;
   bool get activeArbitration => arbitration?.node != null;
@@ -76,7 +76,7 @@ class Worldstate extends Equatable {
       sentientOutposts,
       arbitration,
       steelPath,
-      zariman,
+      zarimanCycle,
     ];
   }
 
@@ -100,7 +100,7 @@ class Worldstate extends Equatable {
     SentientOutpost? sentientOutposts,
     Arbitration? arbitration,
     SteelPath? steelPath,
-    Zariman? zariman,
+    Zariman? zarimanCycle,
   }) {
     return Worldstate(
       timestamp: timestamp ?? this.timestamp,
@@ -122,7 +122,7 @@ class Worldstate extends Equatable {
       sentientOutposts: sentientOutposts ?? this.sentientOutposts,
       arbitration: arbitration ?? this.arbitration,
       steelPath: steelPath ?? this.steelPath,
-      zariman: zariman ?? this.zariman,
+      zarimanCycle: zarimanCycle ?? this.zarimanCycle,
     );
   }
 }

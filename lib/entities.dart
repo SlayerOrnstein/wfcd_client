@@ -38,3 +38,4 @@ export 'src/entities/worldstate/syndicate.dart';
 export 'src/entities/worldstate/vallis.dart';
 export 'src/entities/worldstate/void_trader.dart';
 export 'src/entities/worldstate/worldstate.dart';
+export 'src/entities/worldstate/zariman.dart';

@@ -19,7 +19,7 @@ MiscItemModel _$MiscItemModelFromJson(Map json) => $checkedCreate(
           productCategory:
               $checkedConvert('productCategory', (v) => v as String?),
           category: $checkedConvert('category', (v) => v as String),
-          tradable: $checkedConvert('tradable', (v) => v as bool),
+          tradable: $checkedConvert('tradable', (v) => v as bool?),
           patchlogs: $checkedConvert(
               'patchlogs',
               (v) => (v as List<dynamic>?)
@@ -62,7 +62,7 @@ MiscFoundryItemModel _$MiscFoundryItemModelFromJson(Map json) => $checkedCreate(
           productCategory:
               $checkedConvert('productCategory', (v) => v as String?),
           category: $checkedConvert('category', (v) => v as String),
-          tradable: $checkedConvert('tradable', (v) => v as bool),
+          tradable: $checkedConvert('tradable', (v) => v as bool?),
           masteryReq: $checkedConvert('masteryReq', (v) => v as int?),
           drops: $checkedConvert(
               'drops',

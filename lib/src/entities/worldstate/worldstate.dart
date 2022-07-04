@@ -1,7 +1,6 @@
 import 'package:equatable/equatable.dart';
 
 import '../../../entities.dart';
-import 'zariman.dart';
 
 class Worldstate extends Equatable {
   const Worldstate({

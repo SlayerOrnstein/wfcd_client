@@ -145,7 +145,7 @@ MeleeWeaponModel _$MeleeWeaponModelFromJson(Map json) => $checkedCreate(
           category: $checkedConvert('category', (v) => v as String),
           productCategory:
               $checkedConvert('productCategory', (v) => v as String),
-          tradable: $checkedConvert('tradable', (v) => v as bool),
+          tradable: $checkedConvert('tradable', (v) => v as bool?),
           masteryReq: $checkedConvert('masteryReq', (v) => v as int),
           buildPrice: $checkedConvert('buildPrice', (v) => v as int?),
           buildTime: $checkedConvert('buildTime', (v) => v as int?),

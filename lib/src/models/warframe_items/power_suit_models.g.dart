@@ -65,7 +65,7 @@ WarframeModel _$WarframeModelFromJson(Map json) => $checkedCreate(
           category: $checkedConvert('category', (v) => v as String),
           productCategory:
               $checkedConvert('productCategory', (v) => v as String),
-          tradable: $checkedConvert('tradable', (v) => v as bool),
+          tradable: $checkedConvert('tradable', (v) => v as bool?),
           stamina: $checkedConvert('stamina', (v) => v as int),
           patchlogs: $checkedConvert(
               'patchlogs',
@@ -163,7 +163,7 @@ HeavyPowerSuitModel _$HeavyPowerSuitModelFromJson(Map json) => $checkedCreate(
               $checkedConvert('productCategory', (v) => v as String),
           polarities: $checkedConvert('polarities',
               (v) => (v as List<dynamic>?)?.map((e) => e as String).toList()),
-          tradable: $checkedConvert('tradable', (v) => v as bool),
+          tradable: $checkedConvert('tradable', (v) => v as bool?),
           masteryReq: $checkedConvert('masteryReq', (v) => v as int),
           buildPrice: $checkedConvert('buildPrice', (v) => v as int),
           buildTime: $checkedConvert('buildTime', (v) => v as int),
@@ -250,7 +250,7 @@ CompanionModel _$CompanionModelFromJson(Map json) => $checkedCreate(
           category: $checkedConvert('category', (v) => v as String),
           productCategory:
               $checkedConvert('productCategory', (v) => v as String),
-          tradable: $checkedConvert('tradable', (v) => v as bool),
+          tradable: $checkedConvert('tradable', (v) => v as bool?),
           masteryReq: $checkedConvert('masteryReq', (v) => v as int?),
           buildPrice: $checkedConvert('buildPrice', (v) => v as int?),
           buildTime: $checkedConvert('buildTime', (v) => v as int?),

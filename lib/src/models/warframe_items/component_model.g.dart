@@ -16,7 +16,7 @@ ComponentModel _$ComponentModelFromJson(Map json) => $checkedCreate(
           description: $checkedConvert('description', (v) => v as String),
           itemCount: $checkedConvert('itemCount', (v) => v as int),
           imageName: $checkedConvert('imageName', (v) => v as String),
-          tradable: $checkedConvert('tradable', (v) => v as bool),
+          tradable: $checkedConvert('tradable', (v) => v as bool?),
           type: $checkedConvert('type', (v) => v as String?),
           category: $checkedConvert('category', (v) => v as String?),
           drops: $checkedConvert(

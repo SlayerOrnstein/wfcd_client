@@ -30,7 +30,7 @@ abstract class Item extends Equatable {
   final String? imageName;
   final String? productCategory;
   final String category;
-  final bool tradable;
+  final bool? tradable;
   final List<Drop>? drops;
   final List<Patchlog>? patchlogs;
   final String? wikiaUrl, wikiaThumbnail;

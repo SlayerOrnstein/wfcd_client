@@ -42,7 +42,7 @@ ModModel _$ModModelFromJson(Map json) => $checkedCreate(
                       DropModel.fromJson(Map<String, dynamic>.from(e as Map)))
                   .toList()),
           isAugment: $checkedConvert('isAugment', (v) => v as bool?),
-          tradable: $checkedConvert('tradable', (v) => v as bool),
+          tradable: $checkedConvert('tradable', (v) => v as bool?),
           patchlogs: $checkedConvert(
               'patchlogs',
               (v) => (v as List<dynamic>?)

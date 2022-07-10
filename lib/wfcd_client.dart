@@ -101,7 +101,7 @@ class WarframestatClient {
     final headers = <String, String>{'Accept-Language': language.asString};
     final uri = Uri.https(
       'api.warframestat.us',
-      path,
+      '$path/',
       <String, String>{'language': language.asString, 'ua': ua},
     );
 

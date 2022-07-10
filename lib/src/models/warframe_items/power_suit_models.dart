@@ -50,7 +50,7 @@ class WarframeModel extends Warframe {
     super.vaultDate,
     super.vaulted,
     required super.sex,
-    required this.introduced,
+    this.introduced,
     required super.polarities,
     required super.color,
   }) : super(
@@ -79,7 +79,7 @@ class WarframeModel extends Warframe {
   final List<PatchlogModel>? patchlogs;
 
   @override
-  final IntroducedModel introduced;
+  final IntroducedModel? introduced;
 
   Map<String, dynamic> toJson() => _$WarframeModelToJson(this);
 }

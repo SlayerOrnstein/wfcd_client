@@ -118,7 +118,7 @@ class Warframe extends PlayerUsuablePowerSuit {
     required super.abilities,
     required List<String> super.polarities,
     required this.sex,
-    required this.introduced,
+    this.introduced,
     required this.color,
     super.vaultDate,
     super.vaulted,
@@ -130,7 +130,7 @@ class Warframe extends PlayerUsuablePowerSuit {
   final String? aura;
   final int stamina;
   final String passiveDescription, sex;
-  final Introduced introduced;
+  final Introduced? introduced;
   final int color;
 
   @override

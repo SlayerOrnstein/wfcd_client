@@ -81,8 +81,10 @@ WarframeModel _$WarframeModelFromJson(Map json) => $checkedCreate(
           sex: $checkedConvert('sex', (v) => v as String),
           introduced: $checkedConvert(
               'introduced',
-              (v) => IntroducedModel.fromJson(
-                  Map<String, dynamic>.from(v as Map))),
+              (v) => v == null
+                  ? null
+                  : IntroducedModel.fromJson(
+                      Map<String, dynamic>.from(v as Map))),
           polarities: $checkedConvert('polarities',
               (v) => (v as List<dynamic>).map((e) => e as String).toList()),
           color: $checkedConvert('color', (v) => v as int),
@@ -125,7 +127,7 @@ Map<String, dynamic> _$WarframeModelToJson(WarframeModel instance) =>
       'components': instance.components?.map((e) => e.toJson()).toList(),
       'abilities': instance.abilities.map((e) => e.toJson()).toList(),
       'patchlogs': instance.patchlogs?.map((e) => e.toJson()).toList(),
-      'introduced': instance.introduced.toJson(),
+      'introduced': instance.introduced?.toJson(),
     };
 
 IntroducedModel _$IntroducedModelFromJson(Map json) => $checkedCreate(

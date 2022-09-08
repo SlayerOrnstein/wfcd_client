@@ -13,11 +13,12 @@ class VoidFissure extends WorldstateObject {
     required this.active,
     required this.expired,
     this.isStorm = false,
+    this.isHard = false,
   }) : super(id: id, activation: activation, expiry: expiry);
 
   final String node, missionType, enemy, tier;
   final int tierNum;
-  final bool active, expired, isStorm;
+  final bool active, expired, isStorm, isHard;
 
   @override
   List<Object?> get props {
@@ -31,6 +32,7 @@ class VoidFissure extends WorldstateObject {
         active,
         expired,
         isStorm,
+        isHard,
       ]);
   }
 }

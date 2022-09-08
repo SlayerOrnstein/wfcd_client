@@ -18,8 +18,10 @@ class VoidFissureModel extends VoidFissure {
     required super.active,
     required super.expired,
     bool? isStorm,
+    bool? isHard,
   }) : super(
           isStorm: isStorm ?? false,
+          isHard: isHard ?? false,
         );
 
   factory VoidFissureModel.fromJson(Map<String, dynamic> json) {

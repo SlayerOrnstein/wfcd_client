@@ -17,7 +17,7 @@ class VoidFissure extends WorldstateObject {
 
   final String node, missionType, enemy, tier;
   final int tierNum;
-  final bool active, expired, isStorm;
+  final bool active, expired, isStorm, isHard;
 
   @override
   List<Object?> get props {
@@ -31,6 +31,7 @@ class VoidFissure extends WorldstateObject {
         active,
         expired,
         isStorm,
+        isHard,
       ]);
   }
 }

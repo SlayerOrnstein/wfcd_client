@@ -12,7 +12,7 @@ class MockClient extends Mock implements http.Client {}
 
 Uri apiUri(String path) => Uri.https(
       'api.warframestat.us',
-      path,
+      '$path/',
       <String, String>{'language': 'en', 'ua': 'navis'},
     );
 

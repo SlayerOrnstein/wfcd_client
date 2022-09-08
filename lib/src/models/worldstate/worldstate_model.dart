@@ -13,6 +13,7 @@ class WorldstateModel extends Worldstate {
     required this.events,
     required this.alerts,
     required this.sortie,
+    required this.archonHunt,
     required this.syndicateMissions,
     required this.fissures,
     required this.invasions,
@@ -33,6 +34,7 @@ class WorldstateModel extends Worldstate {
           events: events,
           alerts: alerts,
           sortie: sortie,
+          archonHunt: archonHunt,
           syndicateMissions: syndicateMissions,
           fissures: fissures,
           invasions: invasions,
@@ -61,6 +63,7 @@ class WorldstateModel extends Worldstate {
       events: List<EventModel>.from(worldstate.events),
       alerts: List<AlertModel>.from(worldstate.alerts),
       sortie: worldstate.sortie as SortieModel,
+      archonHunt: worldstate.archonHunt as SortieModel,
       syndicateMissions:
           List<SyndicateModel>.from(worldstate.syndicateMissions),
       fissures: List<VoidFissureModel>.from(worldstate.fissures),
@@ -96,6 +99,9 @@ class WorldstateModel extends Worldstate {
 
   @override
   final SortieModel sortie;
+
+  @override
+  final SortieModel archonHunt;
 
   @override
   final List<SyndicateModel> syndicateMissions;

@@ -33,6 +33,8 @@ WorldstateModel _$WorldstateModelFromJson(Map json) => $checkedCreate(
                   .toList()),
           sortie: $checkedConvert('sortie',
               (v) => SortieModel.fromJson(Map<String, dynamic>.from(v as Map))),
+          archonHunt: $checkedConvert('archonHunt',
+              (v) => SortieModel.fromJson(Map<String, dynamic>.from(v as Map))),
           syndicateMissions: $checkedConvert(
               'syndicateMissions',
               (v) => (v as List<dynamic>)
@@ -113,6 +115,7 @@ Map<String, dynamic> _$WorldstateModelToJson(WorldstateModel instance) =>
       'events': instance.events.map((e) => e.toJson()).toList(),
       'alerts': instance.alerts.map((e) => e.toJson()).toList(),
       'sortie': instance.sortie.toJson(),
+      'archonHunt': instance.archonHunt.toJson(),
       'syndicateMissions':
           instance.syndicateMissions.map((e) => e.toJson()).toList(),
       'fissures': instance.fissures.map((e) => e.toJson()).toList(),

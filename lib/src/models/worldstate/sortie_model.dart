@@ -1,5 +1,6 @@
 import 'package:json_annotation/json_annotation.dart';
 
+import '../../../models.dart';
 import '../../entities/worldstate/sortie.dart';
 
 part 'sortie_model.g.dart';
@@ -12,11 +13,10 @@ class SortieModel extends Sortie {
     required super.expiry,
     required super.boss,
     required super.faction,
-    super.factionKey,
+    required super.factionKey,
     required this.variants,
-  }) : super(
-          variants: variants,
-        );
+    required this.missions,
+  }) : super(variants: variants, missions: missions);
 
   factory SortieModel.fromJson(Map<String, dynamic> json) {
     return _$SortieModelFromJson(json);
@@ -24,6 +24,9 @@ class SortieModel extends Sortie {
 
   @override
   final List<VariantModel> variants;
+
+  @override
+  final List<MissionModel> missions;
 
   Map<String, dynamic> toJson() => _$SortieModelToJson(this);
 }

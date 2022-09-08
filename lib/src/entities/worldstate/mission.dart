@@ -6,7 +6,7 @@ class Mission extends Equatable {
   const Mission({
     required this.node,
     required this.type,
-    required this.faction,
+    this.faction,
     this.minEnemyLevel,
     this.maxEnemyLevel,
     this.maxWaveNum,
@@ -16,7 +16,8 @@ class Mission extends Equatable {
     this.exclusiveWeapon,
   });
 
-  final String node, type, faction;
+  final String node, type;
+  final String? faction;
   final String? exclusiveWeapon;
   final int? minEnemyLevel, maxEnemyLevel, maxWaveNum;
   final bool? nightmare, archwingRequired;

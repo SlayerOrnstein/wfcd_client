@@ -9,6 +9,7 @@ class Worldstate extends Equatable {
     required this.events,
     required this.alerts,
     required this.sortie,
+    required this.archonHunt,
     required this.syndicateMissions,
     required this.fissures,
     required this.invasions,
@@ -31,6 +32,7 @@ class Worldstate extends Equatable {
   final List<Event> events;
   final List<Alert> alerts;
   final Sortie sortie;
+  final Sortie archonHunt;
   final List<Syndicate> syndicateMissions;
   final List<VoidFissure> fissures;
   final List<Invasion> invasions;
@@ -61,6 +63,7 @@ class Worldstate extends Equatable {
       events,
       alerts,
       sortie,
+      archonHunt,
       syndicateMissions,
       fissures,
       invasions,
@@ -85,6 +88,7 @@ class Worldstate extends Equatable {
     List<Event>? events,
     List<Alert>? alerts,
     Sortie? sortie,
+    Sortie? archonHunt,
     List<Syndicate>? syndicateMissions,
     List<VoidFissure>? fissures,
     List<Invasion>? invasions,
@@ -107,6 +111,7 @@ class Worldstate extends Equatable {
       events: events ?? this.events,
       alerts: alerts ?? this.alerts,
       sortie: sortie ?? this.sortie,
+      archonHunt: archonHunt ?? this.archonHunt,
       syndicateMissions: syndicateMissions ?? this.syndicateMissions,
       fissures: fissures ?? this.fissures,
       invasions: invasions ?? this.invasions,

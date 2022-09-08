@@ -24,6 +24,12 @@ SortieModel _$SortieModelFromJson(Map json) => $checkedCreate(
                   .map((e) => VariantModel.fromJson(
                       Map<String, dynamic>.from(e as Map)))
                   .toList()),
+          missions: $checkedConvert(
+              'missions',
+              (v) => (v as List<dynamic>)
+                  .map((e) => MissionModel.fromJson(
+                      Map<String, dynamic>.from(e as Map)))
+                  .toList()),
         );
         return val;
       },
@@ -38,6 +44,7 @@ Map<String, dynamic> _$SortieModelToJson(SortieModel instance) =>
       'faction': instance.faction,
       'factionKey': instance.factionKey,
       'variants': instance.variants.map((e) => e.toJson()).toList(),
+      'missions': instance.missions.map((e) => e.toJson()).toList(),
     };
 
 VariantModel _$VariantModelFromJson(Map json) => $checkedCreate(

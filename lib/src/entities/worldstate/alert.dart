@@ -20,7 +20,7 @@ class Alert extends WorldstateObject {
   String get type => mission.type;
 
   /// shorthand for [Mission.faction]
-  String get faction => mission.faction;
+  String get faction => mission.faction ?? 'Unknown';
 
   /// shorthand for [Mission.nightmare]
   bool? get isNightmare => mission.nightmare;

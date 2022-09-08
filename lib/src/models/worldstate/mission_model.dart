@@ -10,7 +10,7 @@ class MissionModel extends Mission {
   const MissionModel({
     required super.node,
     required super.type,
-    required super.faction,
+    super.faction,
     super.minEnemyLevel,
     super.maxEnemyLevel,
     super.maxWaveNum,

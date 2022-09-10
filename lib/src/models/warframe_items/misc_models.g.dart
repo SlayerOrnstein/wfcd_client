@@ -14,6 +14,12 @@ MiscItemModel _$MiscItemModelFromJson(Map json) => $checkedCreate(
           uniqueName: $checkedConvert('uniqueName', (v) => v as String),
           name: $checkedConvert('name', (v) => v as String),
           description: $checkedConvert('description', (v) => v as String?),
+          drops: $checkedConvert(
+              'drops',
+              (v) => (v as List<dynamic>?)
+                  ?.map((e) =>
+                      DropModel.fromJson(Map<String, dynamic>.from(e as Map)))
+                  .toList()),
           type: $checkedConvert('type', (v) => v as String),
           imageName: $checkedConvert('imageName', (v) => v as String?),
           productCategory:
@@ -47,6 +53,7 @@ Map<String, dynamic> _$MiscItemModelToJson(MiscItemModel instance) =>
       'wikiaUrl': instance.wikiaUrl,
       'wikiaThumbnail': instance.wikiaThumbnail,
       'patchlogs': instance.patchlogs?.map((e) => e.toJson()).toList(),
+      'drops': instance.drops?.map((e) => e.toJson()).toList(),
     };
 
 MiscFoundryItemModel _$MiscFoundryItemModelFromJson(Map json) => $checkedCreate(

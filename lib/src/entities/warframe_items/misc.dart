@@ -7,6 +7,7 @@ class MiscItem extends Item {
     required super.uniqueName,
     required super.name,
     super.description,
+    super.drops,
     required super.type,
     super.imageName,
     super.productCategory,

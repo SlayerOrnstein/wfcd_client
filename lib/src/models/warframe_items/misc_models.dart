@@ -1,6 +1,6 @@
 import 'package:json_annotation/json_annotation.dart';
-import '../../entities/warframe_items/misc.dart';
 
+import '../../entities/warframe_items/misc.dart';
 import 'component_model.dart';
 import 'patch_log_model.dart';
 
@@ -12,6 +12,7 @@ class MiscItemModel extends MiscItem {
     required super.uniqueName,
     required super.name,
     super.description,
+    this.drops,
     required super.type,
     super.imageName,
     super.productCategory,
@@ -22,6 +23,7 @@ class MiscItemModel extends MiscItem {
     super.wikiaThumbnail,
   }) : super(
           patchlogs: patchlogs,
+          drops: drops,
         );
 
   factory MiscItemModel.fromJson(Map<String, dynamic> json) {
@@ -30,6 +32,9 @@ class MiscItemModel extends MiscItem {
 
   @override
   final List<PatchlogModel>? patchlogs;
+
+  @override
+  final List<DropModel>? drops;
 
   Map<String, dynamic> toJson() => _$MiscItemModelToJson(this);
 }

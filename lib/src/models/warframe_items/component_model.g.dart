@@ -50,7 +50,7 @@ DropModel _$DropModelFromJson(Map json) => $checkedCreate(
         final val = DropModel(
           location: $checkedConvert('location', (v) => v as String),
           type: $checkedConvert('type', (v) => v as String),
-          rarity: $checkedConvert('rarity', (v) => v as String),
+          rarity: $checkedConvert('rarity', (v) => v as String?),
           rotation: $checkedConvert('rotation', (v) => v as String?),
           chance: $checkedConvert('chance', (v) => (v as num?)?.toDouble()),
         );

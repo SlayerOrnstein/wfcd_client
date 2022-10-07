@@ -34,7 +34,7 @@ class DropModel extends Drop {
   const DropModel({
     required super.location,
     required super.type,
-    required super.rarity,
+    super.rarity,
     super.rotation,
     super.chance,
   });

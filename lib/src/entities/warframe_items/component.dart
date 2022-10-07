@@ -28,12 +28,13 @@ class Drop extends Equatable {
   const Drop({
     required this.location,
     required this.type,
-    required this.rarity,
+    this.rarity,
     this.chance,
     this.rotation,
   });
 
-  final String location, type, rarity;
+  final String location, type;
+  final String? rarity;
   final String? rotation;
   final double? chance;
 

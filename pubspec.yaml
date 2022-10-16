@@ -1,6 +1,6 @@
 name: wfcd_client
 description: Simple wrapper for worldstate api and maybe other WFCD APIs.
-version: 3.10.2
+version: 3.10.3
 publish_to: none
 
 environment:

@@ -33,19 +33,19 @@ class Event extends WorldstateObject {
   final List<Job>? jobs;
 
   double? get eventHealth {
+    if (health != null) return health!.toDouble();
+
     if (currentScore != null && maximumScore != null) {
       return 100 - currentScore! / maximumScore! * 100;
-    } else if (health != null) {
-      return (health! * 100).toDouble();
-    } else {
-      return -1;
     }
+
+    return null;
   }
 
   List<Reward> get eventRewards {
-    final _rewards = List<Reward>.from(rewards);
+    final rewards = List<Reward>.from(this.rewards);
 
-    return _rewards
+    return rewards
       ..addAll(interimSteps?.map<Reward>((i) => i.reward) ?? [])
       ..removeWhere((r) => r.itemString.isEmpty);
   }

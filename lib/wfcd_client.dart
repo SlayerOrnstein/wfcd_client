@@ -18,11 +18,13 @@ export 'src/utils/json_utils.dart';
 class WarframestatClient {
   /// Main entry for Warframestat API Dart wrapper
   WarframestatClient({
+    this.baseUrl,
     http.Client? client,
     this.platform = GamePlatforms.pc,
     this.language = SupportedLocale.en,
   }) : _client = client ?? http.Client();
 
+  final String? baseUrl;
   final http.Client _client;
   final GamePlatforms platform;
   final SupportedLocale language;
@@ -100,7 +102,7 @@ class WarframestatClient {
   }) async {
     final headers = <String, String>{'Accept-Language': language.asString};
     final uri = Uri.https(
-      'api.warframestat.us',
+      baseUrl ?? 'api.warframestat.us',
       '$path/',
       <String, String>{'language': language.asString, 'ua': ua},
     );

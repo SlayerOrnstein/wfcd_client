@@ -8,7 +8,7 @@ import 'fixtures/fixture_reader.dart';
 void main() {
   const searchResults = Fixture('warframe_items.json');
 
-  late List<Item> testModels;
+  late List<Item?> testModels;
 
   setUp(() async {
     testModels = toBaseItems(await searchResults.json<List<dynamic>>());

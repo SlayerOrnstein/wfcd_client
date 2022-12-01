@@ -26,9 +26,12 @@ class Mod extends Item {
           description: description ?? '',
         );
 
-  final String polarity, rarity;
-  final String? compatName, modSet;
-  final int baseDrain, fusionLimit;
+  final String? polarity;
+  final String? rarity;
+  final String? compatName;
+  final String? modSet;
+  final int? baseDrain;
+  final int? fusionLimit;
   final List<Map<String, List<String>>>? levelStats;
   final bool isAugment;
   final bool? transmutable;

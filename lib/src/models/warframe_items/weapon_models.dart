@@ -44,7 +44,7 @@ class ProjectileWeaponModel extends ProjectileWeapon {
     bool? vaulted,
     int? disposition,
     double? multishot,
-    required dynamic damage,
+    required this.damage,
     required double totalDamage,
     String? estimatedVaultDate,
     String? releaseDate,
@@ -106,6 +106,9 @@ class ProjectileWeaponModel extends ProjectileWeapon {
   @override
   final List<PatchlogModel>? patchlogs;
 
+  @override
+  final DamageModel? damage;
+
   Map<String, dynamic> toJson() => _$ProjectileWeaponModelToJson(this);
 }
 
@@ -133,7 +136,7 @@ class MeleeWeaponModel extends MeleeWeapon {
     required this.procChance,
     required double fireRate,
     required super.omegaAttenuation,
-    required super.damage,
+    required this.damage,
     required super.totalDamage,
     required super.damagePerShot,
     super.polarities,
@@ -166,6 +169,7 @@ class MeleeWeaponModel extends MeleeWeapon {
           marketCost: marketCost is String ? 0 : marketCost as int?,
           components: components,
           patchlogs: patchlogs,
+          damage: damage,
         );
 
   factory MeleeWeaponModel.fromJson(Map<String, dynamic> json) {
@@ -180,5 +184,47 @@ class MeleeWeaponModel extends MeleeWeapon {
   @override
   final List<PatchlogModel>? patchlogs;
 
+  @override
+  final DamageModel? damage;
+
   Map<String, dynamic> toJson() => _$MeleeWeaponModelToJson(this);
+}
+
+@JsonSerializable()
+class DamageModel extends Damage {
+  const DamageModel({
+    required super.total,
+    required super.impact,
+    required super.puncture,
+    required super.slash,
+    required super.heat,
+    required super.cold,
+    required super.electricty,
+    required super.toxin,
+    required super.blast,
+    required super.radiation,
+    required super.gas,
+    required super.magnetic,
+    required super.viral,
+    required super.corrosive,
+    required this.voidE,
+    required super.tau,
+    required super.cinematic,
+    required super.shieldDrain,
+    required super.healthDrain,
+    required super.energyDrain,
+    required this.trueD,
+  }) : super(voidEnergy: voidE, trueDamage: trueD);
+
+  factory DamageModel.fromJson(Map<String, dynamic> json) {
+    return _$DamageModelFromJson(json);
+  }
+
+  @JsonKey(name: 'void')
+  final double voidE;
+
+  @JsonKey(name: 'true')
+  final double trueD;
+
+  Map<String, dynamic> toJson() => _$DamageModelToJson(this);
 }

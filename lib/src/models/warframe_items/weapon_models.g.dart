@@ -65,7 +65,11 @@ ProjectileWeaponModel _$ProjectileWeaponModelFromJson(Map json) =>
           disposition: $checkedConvert('disposition', (v) => v as int?),
           multishot:
               $checkedConvert('multishot', (v) => (v as num?)?.toDouble()),
-          damage: $checkedConvert('damage', (v) => v),
+          damage: $checkedConvert(
+              'damage',
+              (v) => v == null
+                  ? null
+                  : DamageModel.fromJson(Map<String, dynamic>.from(v as Map))),
           totalDamage:
               $checkedConvert('totalDamage', (v) => (v as num).toDouble()),
           estimatedVaultDate:
@@ -118,7 +122,6 @@ Map<String, dynamic> _$ProjectileWeaponModelToJson(
       'sentinel': instance.sentinel,
       'releaseDate': instance.releaseDate,
       'estimatedVaultDate': instance.estimatedVaultDate,
-      'damage': instance.damage,
       'magazineSize': instance.magazineSize,
       'reloadTime': instance.reloadTime,
       'trigger': instance.trigger,
@@ -130,6 +133,7 @@ Map<String, dynamic> _$ProjectileWeaponModelToJson(
       'procChance': instance.procChance,
       'components': instance.components?.map((e) => e.toJson()).toList(),
       'patchlogs': instance.patchlogs?.map((e) => e.toJson()).toList(),
+      'damage': instance.damage?.toJson(),
     };
 
 MeleeWeaponModel _$MeleeWeaponModelFromJson(Map json) => $checkedCreate(
@@ -169,7 +173,11 @@ MeleeWeaponModel _$MeleeWeaponModelFromJson(Map json) => $checkedCreate(
           fireRate: $checkedConvert('fireRate', (v) => (v as num).toDouble()),
           omegaAttenuation:
               $checkedConvert('omegaAttenuation', (v) => (v as num).toDouble()),
-          damage: $checkedConvert('damage', (v) => v),
+          damage: $checkedConvert(
+              'damage',
+              (v) => v == null
+                  ? null
+                  : DamageModel.fromJson(Map<String, dynamic>.from(v as Map))),
           totalDamage:
               $checkedConvert('totalDamage', (v) => (v as num).toDouble()),
           damagePerShot: $checkedConvert(
@@ -251,7 +259,6 @@ Map<String, dynamic> _$MeleeWeaponModelToJson(MeleeWeaponModel instance) =>
       'sentinel': instance.sentinel,
       'releaseDate': instance.releaseDate,
       'estimatedVaultDate': instance.estimatedVaultDate,
-      'damage': instance.damage,
       'blockingAngle': instance.blockingAngle,
       'comboDuration': instance.comboDuration,
       'followThrough': instance.followThrough,
@@ -269,4 +276,66 @@ Map<String, dynamic> _$MeleeWeaponModelToJson(MeleeWeaponModel instance) =>
       'procChance': instance.procChance,
       'components': instance.components?.map((e) => e.toJson()).toList(),
       'patchlogs': instance.patchlogs?.map((e) => e.toJson()).toList(),
+      'damage': instance.damage?.toJson(),
+    };
+
+DamageModel _$DamageModelFromJson(Map json) => $checkedCreate(
+      'DamageModel',
+      json,
+      ($checkedConvert) {
+        final val = DamageModel(
+          total: $checkedConvert('total', (v) => (v as num).toDouble()),
+          impact: $checkedConvert('impact', (v) => (v as num).toDouble()),
+          puncture: $checkedConvert('puncture', (v) => (v as num).toDouble()),
+          slash: $checkedConvert('slash', (v) => (v as num).toDouble()),
+          heat: $checkedConvert('heat', (v) => (v as num).toDouble()),
+          cold: $checkedConvert('cold', (v) => (v as num).toDouble()),
+          electricty:
+              $checkedConvert('electricty', (v) => (v as num?)?.toDouble()),
+          toxin: $checkedConvert('toxin', (v) => (v as num).toDouble()),
+          blast: $checkedConvert('blast', (v) => (v as num).toDouble()),
+          radiation: $checkedConvert('radiation', (v) => (v as num).toDouble()),
+          gas: $checkedConvert('gas', (v) => (v as num).toDouble()),
+          magnetic: $checkedConvert('magnetic', (v) => (v as num).toDouble()),
+          viral: $checkedConvert('viral', (v) => (v as num).toDouble()),
+          corrosive: $checkedConvert('corrosive', (v) => (v as num).toDouble()),
+          voidE: $checkedConvert('void', (v) => (v as num).toDouble()),
+          tau: $checkedConvert('tau', (v) => (v as num).toDouble()),
+          cinematic: $checkedConvert('cinematic', (v) => (v as num).toDouble()),
+          shieldDrain:
+              $checkedConvert('shieldDrain', (v) => (v as num).toDouble()),
+          healthDrain:
+              $checkedConvert('healthDrain', (v) => (v as num).toDouble()),
+          energyDrain:
+              $checkedConvert('energyDrain', (v) => (v as num).toDouble()),
+          trueD: $checkedConvert('true', (v) => (v as num).toDouble()),
+        );
+        return val;
+      },
+      fieldKeyMap: const {'voidE': 'void', 'trueD': 'true'},
+    );
+
+Map<String, dynamic> _$DamageModelToJson(DamageModel instance) =>
+    <String, dynamic>{
+      'total': instance.total,
+      'impact': instance.impact,
+      'puncture': instance.puncture,
+      'slash': instance.slash,
+      'heat': instance.heat,
+      'cold': instance.cold,
+      'electricty': instance.electricty,
+      'toxin': instance.toxin,
+      'blast': instance.blast,
+      'radiation': instance.radiation,
+      'gas': instance.gas,
+      'magnetic': instance.magnetic,
+      'viral': instance.viral,
+      'corrosive': instance.corrosive,
+      'tau': instance.tau,
+      'cinematic': instance.cinematic,
+      'shieldDrain': instance.shieldDrain,
+      'healthDrain': instance.healthDrain,
+      'energyDrain': instance.energyDrain,
+      'void': instance.voidE,
+      'true': instance.trueD,
     };

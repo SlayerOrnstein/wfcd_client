@@ -1,3 +1,5 @@
+import 'package:equatable/equatable.dart';
+
 import 'abstract_item.dart';
 
 class WeaponItem extends FoundryItem {
@@ -24,7 +26,7 @@ class WeaponItem extends FoundryItem {
     required this.fireRate,
     required this.omegaAttenuation,
     this.polarities,
-    required dynamic damage,
+    required this.damage,
     required this.totalDamage,
     required this.damagePerShot,
     // this.damageTypes,
@@ -38,7 +40,7 @@ class WeaponItem extends FoundryItem {
     super.patchlogs,
     super.wikiaThumbnail,
     super.wikiaUrl,
-  })  : _damage = damage;
+  });
 
   final int slot;
   final double criticalChance, criticalMultiplier, statusChance;
@@ -47,7 +49,7 @@ class WeaponItem extends FoundryItem {
   final double fireRate;
 
   final double omegaAttenuation;
-  final dynamic _damage;
+  final Damage? damage;
   final double totalDamage;
   final List<double> damagePerShot;
   // final Map<String, num>? damageTypes;
@@ -56,18 +58,6 @@ class WeaponItem extends FoundryItem {
   final int? disposition;
   final bool? sentinel;
   final String? releaseDate, estimatedVaultDate;
-
-  double? get damage {
-    if (_damage is String) {
-      return double.parse(
-        (_damage as String).replaceAll(RegExp('[a-zA-Z]'), ''),
-      );
-    } else if (_damage is int) {
-      return (_damage as int).toDouble();
-    } else {
-      return _damage as double?;
-    }
-  }
 
   @override
   List<Object?> get props {
@@ -79,7 +69,7 @@ class WeaponItem extends FoundryItem {
         fireRate,
         omegaAttenuation,
         slot,
-        _damage,
+        damage,
         damage,
         damagePerShot,
         polarities,
@@ -264,5 +254,80 @@ class MeleeWeapon extends WeaponItem {
         windUp,
         stancePolarity,
       ]);
+  }
+}
+
+class Damage extends Equatable {
+  const Damage({
+    required this.total,
+    required this.impact,
+    required this.puncture,
+    required this.slash,
+    required this.heat,
+    required this.cold,
+    required this.electricty,
+    required this.toxin,
+    required this.blast,
+    required this.radiation,
+    required this.gas,
+    required this.magnetic,
+    required this.viral,
+    required this.corrosive,
+    required this.voidEnergy,
+    required this.tau,
+    required this.cinematic,
+    required this.shieldDrain,
+    required this.healthDrain,
+    required this.energyDrain,
+    required this.trueDamage,
+  });
+
+  final double total;
+  final double impact;
+  final double puncture;
+  final double slash;
+  final double heat;
+  final double cold;
+  final double? electricty;
+  final double toxin;
+  final double blast;
+  final double radiation;
+  final double gas;
+  final double magnetic;
+  final double viral;
+  final double corrosive;
+  final double voidEnergy;
+  final double tau;
+  final double cinematic;
+  final double shieldDrain;
+  final double healthDrain;
+  final double energyDrain;
+  final double trueDamage;
+
+  @override
+  List<Object?> get props {
+    return [
+      total,
+      impact,
+      puncture,
+      slash,
+      heat,
+      cold,
+      electricty,
+      toxin,
+      blast,
+      radiation,
+      gas,
+      magnetic,
+      viral,
+      corrosive,
+      voidEnergy,
+      tau,
+      cinematic,
+      shieldDrain,
+      healthDrain,
+      energyDrain,
+      trueDamage
+    ];
   }
 }

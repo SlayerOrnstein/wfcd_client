@@ -36,13 +36,13 @@ List<Map<String, dynamic>> fromSynthTargets(List<SynthTarget> targets) {
 
 /// Serializes giving json values into their proper [Item] type
 Item toBaseItem(Map<String, dynamic> item) {
-  const _frameReg = 'Warframes';
-  const _mods = 'Mods';
+  const frameReg = 'Warframes';
+  const mods = 'Mods';
 
-  final _companion = RegExp('(Sentinels)|(Pets)');
-  final _exSuits = RegExp('(SpaceSuits)|(MechSuits)');
-  final _gunReg = RegExp('(Primary)|(Secondary)|(Arch-Gun)');
-  final _meleeReg = RegExp('(Melee)|(Arch-Melee)');
+  final companion = RegExp('(Sentinels)|(Pets)');
+  final exSuits = RegExp('(SpaceSuits)|(MechSuits)');
+  final gunReg = RegExp('(Primary)|(Secondary)|(Arch-Gun)');
+  final meleeReg = RegExp('(Melee)|(Arch-Melee)');
 
   // Pet parts have a pistol structure but are not actually pistols
   // so we're filtering them out into Misc items.
@@ -61,18 +61,18 @@ Item toBaseItem(Map<String, dynamic> item) {
   final productCategory = item['productCategory'] as String?;
 
   if (!isCompanionPart) {
-    if (category.contains(_gunReg) && !isSentinalMelee) {
+    if (category.contains(gunReg) && !isSentinalMelee) {
       return ProjectileWeaponModel.fromJson(item);
-    } else if (category.contains(_meleeReg) || isSentinalMelee) {
+    } else if (category.contains(meleeReg) || isSentinalMelee) {
       return MeleeWeaponModel.fromJson(item);
-    } else if (category.contains(_frameReg) &&
+    } else if (category.contains(frameReg) &&
         !(productCategory?.contains('MechSuits') ?? false)) {
       return WarframeModel.fromJson(item);
-    } else if (productCategory?.contains(_exSuits) ?? false) {
+    } else if (productCategory?.contains(exSuits) ?? false) {
       return HeavyPowerSuitModel.fromJson(item);
-    } else if (category.contains(_companion)) {
+    } else if (category.contains(companion)) {
       return CompanionModel.fromJson(item);
-    } else if (category.contains(_mods)) {
+    } else if (category.contains(mods)) {
       return ModModel.fromJson(item);
     } else {
       if (item.containsKey('consumeOnBuild')) {
